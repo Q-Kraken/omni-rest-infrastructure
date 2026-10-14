@@ -19,6 +19,36 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
     private const string Password = "Correct-Horse-9!Battery";
 
     [Fact]
+    public async Task ProfileWebsiteOptionalPostalCodeAndGeneratedPhoneDisplaySurvivePublication()
+    {
+        using var factory = postgres.CreateFactory();
+        await postgres.RecreateLatestAndSeedAsync(factory);
+        await CreateOwnerAsync(factory, GuardedSampleDataSeeder.OrdinaryRestaurantId);
+        using var client = CreateSecureClient(factory);
+        await LoginAsync(client);
+        var current = (await client.GetFromJsonAsync<AdminRestaurantResponse>("/api/v1/admin/restaurant"))!;
+        var request = ValidProfile("Restaurant") with { WebsiteUrl = "https://restaurant.example/menu", PhoneDisplay = null };
+        request = request with { Address = request.Address with { PostalCode = null } };
+        var saved = await PutMutationAsync(client, "/api/v1/admin/restaurant/profile", request, await GetAntiforgeryAsync(client), current.ETag);
+        Assert.Equal("(204) 555-0123", saved.Restaurant.PhoneDisplay);
+        Assert.Equal(request.WebsiteUrl, saved.Restaurant.WebsiteUrl);
+        Assert.Null(saved.Restaurant.Address!.PostalCode);
+        var special = await SendWithHeadersAsync(client, HttpMethod.Post, "/api/v1/admin/special-hours",
+            new AdminSpecialHoursRequest("2026-12-25", true, "Holiday", []), await GetAntiforgeryAsync(client), saved.Restaurant.ETag);
+        Assert.Equal(HttpStatusCode.OK, special.StatusCode);
+        await using var scope = factory.Services.CreateAsyncScope();
+        var db = scope.ServiceProvider.GetRequiredService<MenuDbContext>();
+        var row = await db.SpecialHours.SingleAsync(item => item.RestaurantId == GuardedSampleDataSeeder.OrdinaryRestaurantId);
+        Assert.True(row.CreatedAt > DateTimeOffset.UtcNow.AddMinutes(-1));
+        Assert.True(row.UpdatedAt >= row.CreatedAt);
+        client.DefaultRequestHeaders.Host = "menu.localhost";
+        var published = (await client.GetFromJsonAsync<PublicRestaurantResponse>("/api/v1/public/restaurant"))!;
+        Assert.Equal(request.WebsiteUrl, published.WebsiteUrl);
+        Assert.Equal("(204) 555-0123", published.Phone!.Display);
+        Assert.Null(published.Address!.PostalCode);
+    }
+
+    [Fact]
     public async Task OwnerCanEditProfilePreviewPublishAndReadCompatiblePublicPhoneContract()
     {
         using var factory = postgres.CreateFactory();

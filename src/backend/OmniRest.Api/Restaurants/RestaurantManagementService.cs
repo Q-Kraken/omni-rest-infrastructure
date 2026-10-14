@@ -68,7 +68,7 @@ public sealed partial class RestaurantManagementService(
         restaurant.Name = request.Name.Trim();
         restaurant.Description = request.Description?.Trim();
         restaurant.PhoneE164 = request.PhoneE164;
-        restaurant.PhoneDisplay = request.PhoneDisplay?.Trim();
+        restaurant.PhoneDisplay = RestaurantValidation.FormatPhoneDisplay(request.PhoneE164, request.PhoneDisplay);
         restaurant.Email = request.Email?.Trim();
         restaurant.WebsiteUrl = string.IsNullOrWhiteSpace(request.WebsiteUrl) ? null : request.WebsiteUrl.Trim();
         restaurant.RestaurantType = string.IsNullOrEmpty(request.RestaurantType) ? null : request.RestaurantType;

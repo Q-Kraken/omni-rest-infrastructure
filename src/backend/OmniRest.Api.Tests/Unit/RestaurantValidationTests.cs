@@ -4,6 +4,16 @@ namespace OmniRest.Api.Tests.Unit;
 
 public sealed class RestaurantValidationTests
 {
+    [Fact]
+    public void MissingPhoneDisplayIsDerivedWhileDisplayWithoutNumberIsInvalid()
+    {
+        Assert.Empty(RestaurantValidation.ValidateProfile(ValidProfile() with { PhoneDisplay = null }));
+        Assert.Equal("(204) 555-0123", RestaurantValidation.FormatPhoneDisplay("+12045550123", "  "));
+        Assert.Equal("Custom number", RestaurantValidation.FormatPhoneDisplay("+12045550123", " Custom number "));
+        Assert.Null(RestaurantValidation.FormatPhoneDisplay(null, null));
+        Assert.Contains("phoneDisplay", RestaurantValidation.ValidateProfile(ValidProfile() with { PhoneE164 = null }).Keys);
+    }
+
     [Theory]
     [InlineData(null, true)]
     [InlineData("https://restaurant.example/menu", true)]

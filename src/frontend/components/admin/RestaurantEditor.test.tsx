@@ -39,6 +39,18 @@ const mutation: AdminMutation = { restaurant: initial, publication: initial.publ
 describe("RestaurantEditor", () => {
   beforeEach(() => { mocks.mutate.mockReset().mockResolvedValue(mutation); mocks.browserGet.mockReset(); });
 
+  it("formats the display automatically and supplies it when the field is empty", async () => {
+    const user = userEvent.setup({ delay: null });
+    render(<RestaurantEditor initial={initial} initialMedia={[]} />);
+    fireEvent.change(screen.getByLabelText("Phone (E.164)"), { target: { value: "+14313778457" } });
+    fireEvent.change(screen.getByLabelText("Phone display"), { target: { value: "" } });
+    await user.click(screen.getByRole("button", { name: "Format automatically" }));
+    expect(screen.getByLabelText("Phone display")).toHaveValue("(431) 377-8457");
+    fireEvent.change(screen.getByLabelText("Phone display"), { target: { value: "" } });
+    await user.click(screen.getByRole("button", { name: "Save profile" }));
+    expect(mocks.mutate).toHaveBeenCalledWith("/api/v1/admin/restaurant/profile", "PUT", expect.objectContaining({ phoneDisplay: "(431) 377-8457" }), initial.eTag);
+  });
+
   it("requires and resets confirmation when regular overnight times change", async () => {
     const user = userEvent.setup({ delay: null });
     render(<RestaurantEditor initial={initial} initialMedia={[]} />);

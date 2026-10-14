@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 import { BrowserApiError, browserGet, mutate, uploadMedia } from "@/lib/browser-api";
 import { isE164 } from "@/lib/phone";
+import { formatPhoneDisplay } from "@/lib/phone-display";
 import type { AdminMediaAsset, AdminMutation, AdminRestaurant, MainImage, PublicationStatus, RegularHoursDay, SocialLink, SpecialHours } from "@/lib/restaurant-contract";
 import { priceRanges, restaurantTypes } from "@/lib/restaurant-contract";
 import styles from "@/app/admin/admin.module.css";
@@ -211,6 +212,7 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
       const result = await mutate<AdminMutation>(path, method, body, restaurant.eTag);
       if (result) {
         setRestaurant(result.restaurant);
+        if (label === "Profile") setProfile((current) => ({ ...current, phoneDisplay: result.restaurant.phoneDisplay ?? "" }));
         setNotice(`${label} saved. Publishing ${result.publication.status}.`);
       } else {
         setNotice(`${label} saved.`);
@@ -243,7 +245,7 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
       description: profile.description || null,
       websiteUrl: profile.websiteUrl.trim() || null,
       phoneE164: profile.phoneE164 || null,
-      phoneDisplay: profile.phoneDisplay || null,
+      phoneDisplay: profile.phoneDisplay.trim() || formatPhoneDisplay(profile.phoneE164),
       email: profile.email || null,
       restaurantType: profile.restaurantType || null,
       priceRange: profile.priceRange || null,
@@ -342,6 +344,8 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
           <label>Name<input required maxLength={120} {...fieldA11y("name")} value={profile.name} onChange={(e) => setProfile({ ...profile, name: e.target.value })} />{errorFor("name")}</label>
           <label>Description<textarea maxLength={300} {...fieldA11y("description")} value={profile.description} onChange={(e) => setProfile({ ...profile, description: e.target.value })} />{errorFor("description")}</label>
           <label>Phone (E.164)<input inputMode="tel" placeholder="+12045550123" {...fieldA11y("phoneE164")} value={profile.phoneE164} onChange={(e) => setProfile({ ...profile, phoneE164: e.target.value })} />{errorFor("phoneE164")}</label>
+          <button type="button" disabled={!isE164(profile.phoneE164)} onClick={() => { setProfile({ ...profile, phoneDisplay: formatPhoneDisplay(profile.phoneE164) ?? "" }); setDirty(true); }}>Format automatically</button>
+          {profile.phoneE164 && profile.phoneDisplay === profile.phoneE164 ? <p role="status">The display matches the international number. Use automatic formatting or enter a readable display.</p> : null}
           <label>Website<input type="url" placeholder="https://example.com" {...fieldA11y("websiteUrl")} value={profile.websiteUrl} onChange={(e) => { setProfile({ ...profile, websiteUrl: e.target.value }); setDirty(true); }} />{errorFor("websiteUrl")}</label>
           <label>Phone display<input inputMode="tel" placeholder="(204) 555-0123" {...fieldA11y("phoneDisplay")} value={profile.phoneDisplay} onChange={(e) => setProfile({ ...profile, phoneDisplay: e.target.value })} />{errorFor("phoneDisplay")}</label>
           <label>Email<input type="email" autoComplete="email" {...fieldA11y("email")} value={profile.email} onChange={(e) => setProfile({ ...profile, email: e.target.value })} />{errorFor("email")}</label>

@@ -19,6 +19,15 @@ public static partial class RestaurantValidation
             ["linkedin"] = ["linkedin.com", "www.linkedin.com"]
         };
 
+    public static string? FormatPhoneDisplay(string? e164, string? display)
+    {
+        if (!string.IsNullOrWhiteSpace(display)) return display.Trim();
+        if (e164 is null) return null;
+        return e164.StartsWith("+1", StringComparison.Ordinal) && e164.Length == 12
+            ? $"({e164[2..5]}) {e164[5..8]}-{e164[8..]}"
+            : e164;
+    }
+
     public static IReadOnlyDictionary<string, string[]> ValidateProfile(UpdateRestaurantProfileRequest? request)
     {
         var errors = NewErrors();
@@ -29,7 +38,7 @@ public static partial class RestaurantValidation
         {
             Add(errors, "phoneE164", "phone_e164_invalid");
         }
-        if ((request.PhoneE164 is null) != (request.PhoneDisplay is null) || request.PhoneDisplay?.Length > 40)
+        if ((request.PhoneE164 is null && !string.IsNullOrWhiteSpace(request.PhoneDisplay)) || request.PhoneDisplay?.Length > 40)
         {
             Add(errors, "phoneDisplay", "phone_display_invalid");
         }
