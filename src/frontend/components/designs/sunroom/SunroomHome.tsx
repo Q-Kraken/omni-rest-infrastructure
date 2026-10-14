@@ -1,3 +1,5 @@
+import { Hero } from "@/components/restaurant/Hero";
+import { About } from "@/components/restaurant/About";
 import type { WebsiteDesignHomeProps } from "../design-contract";
 import { DesignGallery } from "../shared/DesignGallery";
 import {
@@ -27,17 +29,17 @@ export default function SunroomHome({ restaurant }: WebsiteDesignHomeProps) {
         <nav aria-label="Primary navigation"><MenuNavigationLink className={styles.navLink} /></nav>
       </header>
       <main className={styles.homeMain} id="main-content">
-        <section className={styles.hero} aria-labelledby="sunroom-title">
+        <Hero className={styles.hero} headingId="sunroom-title">
           <div className={styles.sunShape} aria-hidden="true" />
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>Come as you are</p>
             <h1 id="sunroom-title">{name}</h1>
-            {restaurant?.shortDescription ? <p className={styles.intro}>{restaurant.shortDescription}</p> : null}
+            <About description={restaurant?.shortDescription} className={styles.intro} />
             {restaurant ? <p className={styles.status}>{restaurant.status.label}</p> : null}
             <RestaurantActions restaurant={restaurant} className={styles.actions} menuClassName={styles.primaryAction} actionClassName={styles.secondaryAction} />
           </div>
           <RestaurantHeroImage restaurant={restaurant} className={styles.heroImage} sizes="(max-width: 52rem) 100vw, 48vw" />
-        </section>
+        </Hero>
         {restaurant ? (
           <>
             <div className={styles.detailsGrid}>

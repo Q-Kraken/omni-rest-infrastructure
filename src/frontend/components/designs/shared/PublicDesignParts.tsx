@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CtaGroup } from "@/components/restaurant/CtaGroup";
 import { RestaurantMap } from "@/components/restaurant/RestaurantMap";
 import Link from "next/link";
 
@@ -52,7 +53,7 @@ export function RestaurantActions({
   actionClassName: string;
 }>) {
   return (
-    <div className={className}>
+    <CtaGroup className={className}>
       <MenuLink className={menuClassName}>Browse the menu</MenuLink>
       {restaurant?.phone ? (
         <PhoneLink
@@ -66,7 +67,7 @@ export function RestaurantActions({
       {restaurant?.address ? (
         <a className={actionClassName} href={restaurant.address.directionsUrl} rel="noreferrer">Directions</a>
       ) : null}
-    </div>
+    </CtaGroup>
   );
 }
 

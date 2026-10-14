@@ -37,7 +37,9 @@ for (const design of designs) {
     await setContentMode(page, "standard");
 
     for (const viewport of [
-      { width: 1280, height: 900, label: "desktop" },
+      { width: 1440, height: 900, label: "desktop" },
+      { width: 768, height: 1024, label: "tablet" },
+      { width: 320, height: 568, label: "minimum" },
       { width: 375, height: 812, label: "mobile" },
     ]) {
       await page.setViewportSize(viewport);

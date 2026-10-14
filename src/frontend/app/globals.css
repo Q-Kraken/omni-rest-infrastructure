@@ -188,3 +188,14 @@ button {
     border: 1px solid CanvasText;
   }
 }
+
+/* Shared public shell: mobile below 768px, tablet from 768px, desktop from 1024px.
+   Individual design layouts remain fluid and add their own content-driven grid breakpoints. */
+@media (min-width: 48rem) {
+  .publicHeader, .publicFooter { width: min(100% - 3rem, 76rem); }
+}
+
+@media (min-width: 64rem) {
+  .publicHeader, .publicFooter { width: min(100% - 4rem, 76rem); }
+  .publicHeader { min-height: 5rem; }
+}

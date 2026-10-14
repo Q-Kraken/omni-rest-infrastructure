@@ -1,3 +1,6 @@
+import { Hero } from "@/components/restaurant/Hero";
+import { CtaGroup } from "@/components/restaurant/CtaGroup";
+import { About } from "@/components/restaurant/About";
 import { MenuLink } from "@/components/MenuLink";
 import { PublicShell } from "@/components/PublicShell";
 import { CallButton } from "@/components/phone/CallButton";
@@ -19,15 +22,17 @@ export default function LegacyHome({ restaurant }: WebsiteDesignHomeProps) {
       <PublicShell restaurantName={restaurant?.name}>
         <main className={styles.homeMain} id="main-content">
           <section className={styles.homeCard} aria-labelledby="page-title">
+          <Hero headingId="page-title">
           {image ? <Image className={styles.homeImage} src={image.url} width={image.width} height={image.height} sizes="(max-width: 704px) 100vw, 704px" alt={restaurant?.mainImage?.altText ?? ""} priority /> : null}
           <p className={styles.eyebrow}>Welcome</p>
           <h1 id="page-title">{restaurant?.name ?? "Omni REST"}</h1>
-          <p>{restaurant?.shortDescription ?? "Discover the restaurant's current published dishes."}</p>
+          <About description={restaurant?.shortDescription} />
           {restaurant ? <p className={styles.restaurantStatus}><strong>{restaurant.status.label}</strong></p> : null}
-          <div className={styles.homeActions}>
+          <CtaGroup className={styles.homeActions}>
             <MenuLink className={styles.primaryLink}>Browse the menu</MenuLink>
             {restaurant?.phone ? <CallButton e164={restaurant.phone.e164} display={restaurant.phone.display} /> : null}
-          </div>
+          </CtaGroup>
+          </Hero>
           {restaurant?.websiteUrl ? <p><a href={restaurant.websiteUrl}>Website</a></p> : null}
           {restaurant?.email ? <p><a href={`mailto:${restaurant.email}`}>{restaurant.email}</a></p> : null}
           {restaurant?.address ? <address className={styles.restaurantAddress}><span>{restaurant.address.formatted}</span><a href={restaurant.address.directionsUrl} rel="noreferrer">Get directions</a></address> : null}

@@ -1,3 +1,5 @@
+import { Hero } from "@/components/restaurant/Hero";
+import { About } from "@/components/restaurant/About";
 import type { WebsiteDesignHomeProps } from "../design-contract";
 import { DesignGallery } from "../shared/DesignGallery";
 import {
@@ -28,13 +30,11 @@ export default function BroadsheetHome({ restaurant }: WebsiteDesignHomeProps) {
         <nav aria-label="Primary navigation"><MenuNavigationLink className={styles.navLink} /></nav>
       </header>
       <main className={styles.homeMain} id="main-content">
-        <section className={styles.hero} aria-labelledby="broadsheet-title">
+        <Hero className={styles.hero} headingId="broadsheet-title">
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>Food · Place · People</p>
             <h1 id="broadsheet-title">{name}</h1>
-            {restaurant?.shortDescription ? (
-              <p className={styles.intro}>{restaurant.shortDescription}</p>
-            ) : null}
+            <About description={restaurant?.shortDescription} className={styles.intro} />
             {restaurant ? <p className={styles.status}>{restaurant.status.label}</p> : null}
             <RestaurantActions
               restaurant={restaurant}
@@ -48,7 +48,7 @@ export default function BroadsheetHome({ restaurant }: WebsiteDesignHomeProps) {
             className={styles.heroImage}
             sizes="(max-width: 52rem) 100vw, 52vw"
           />
-        </section>
+        </Hero>
         {restaurant ? (
           <>
             <div className={styles.detailsGrid}>
