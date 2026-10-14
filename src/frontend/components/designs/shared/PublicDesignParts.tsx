@@ -65,7 +65,7 @@ export function RestaurantActions({
         </PhoneLink>
       ) : null}
       {restaurant?.address ? (
-        <a className={actionClassName} href={restaurant.address.directionsUrl} rel="noreferrer">Directions</a>
+        <a className={actionClassName} href={restaurant.address.directionsUrl} target="_blank" rel="noreferrer noopener">Directions</a>
       ) : null}
     </CtaGroup>
   );
@@ -93,7 +93,7 @@ export function MenuRestaurantActions({
         </PhoneLink>
       ) : null}
       {restaurant.address ? (
-        <a className={actionClassName} href={restaurant.address.directionsUrl} rel="noreferrer">Directions</a>
+        <a className={actionClassName} href={restaurant.address.directionsUrl} target="_blank" rel="noreferrer noopener">Directions</a>
       ) : null}
     </nav>
   );

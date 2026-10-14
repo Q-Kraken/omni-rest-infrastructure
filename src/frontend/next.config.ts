@@ -2,12 +2,15 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.example.test",
-      },
-    ],
+    remotePatterns: (process.env.OMNI_REST_MEDIA_HOSTS ?? "")
+      .split(",").map((host) => host.trim().toLowerCase()).filter(Boolean)
+      .map((hostname) => {
+        // Reject URL fragments, ports and wildcard patterns: the same exact-host contract as the API.
+        if (!/^(?=.{1,253}$)[a-z0-9]+(?:[.-][a-z0-9]+)*$/.test(hostname)) {
+          throw new Error("OMNI_REST_MEDIA_HOSTS must contain exact HTTPS hostnames.");
+        }
+        return { protocol: "https" as const, hostname };
+      }),
   },
   async headers() {
     return [

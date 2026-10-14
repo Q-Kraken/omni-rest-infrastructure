@@ -19,7 +19,7 @@ export async function getPublicMenu(): Promise<PublicMenuResponse> {
   const host = normalizePublicHost(requestHeaders.get("host"));
   const apiBase = process.env.OMNI_REST_API_BASE_URL ?? "http://127.0.0.1:5279";
   const allowedMediaHosts = new Set(
-    (process.env.OMNI_REST_MEDIA_HOSTS ?? "images.example.test")
+    (process.env.OMNI_REST_MEDIA_HOSTS ?? "")
       .split(",")
       .map((value) => value.trim().toLowerCase())
       .filter(Boolean),

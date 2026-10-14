@@ -35,7 +35,7 @@ export default function LegacyHome({ restaurant }: WebsiteDesignHomeProps) {
           </Hero>
           {restaurant?.websiteUrl ? <p><a href={restaurant.websiteUrl}>Website</a></p> : null}
           {restaurant?.email ? <p><a href={`mailto:${restaurant.email}`}>{restaurant.email}</a></p> : null}
-          {restaurant?.address ? <address className={styles.restaurantAddress}><span>{restaurant.address.formatted}</span><a href={restaurant.address.directionsUrl} rel="noreferrer">Get directions</a></address> : null}
+          {restaurant?.address ? <address className={styles.restaurantAddress}><span>{restaurant.address.formatted}</span><a href={restaurant.address.directionsUrl} target="_blank" rel="noreferrer noopener">Get directions</a></address> : null}
           <RestaurantMap address={restaurant?.address ?? null} apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY} />
           {restaurant ? <RestaurantHours restaurant={restaurant} className="" listClassName={styles.publicHours} headingId="public-hours" /> : null}
           {restaurant ? <RestaurantSpecialHours restaurant={restaurant} className={styles.specialSection} headingId="public-special" /> : null}
