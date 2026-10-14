@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 
 import { absoluteUrlFrom, buildOrigin } from "./site-origin";
+import { readRestaurant } from "./public-data";
 
 /**
  * Request-bound SEO helpers.
@@ -36,9 +37,20 @@ export async function publicPageMetadata(
   path: string,
   metadata: Omit<Metadata, "alternates" | "robots">,
 ): Promise<Metadata> {
+  const restaurant = await readRestaurant();
+  if (!restaurant) return nonIndexableMetadata(metadata);
+  const canonical = await absoluteUrl(path);
+  const image = restaurant.mainImage?.variants.at(-1);
   return {
     ...metadata,
-    alternates: { canonical: await absoluteUrl(path) },
+    openGraph: {
+      title: metadata.title ?? restaurant.name,
+      description: metadata.description ?? restaurant.shortDescription ?? undefined,
+      type: "website",
+      url: canonical,
+      ...(image ? { images: [{ url: new URL(image.url, await siteOrigin()).href, width: image.width, height: image.height, alt: restaurant.mainImage?.altText }] } : {}),
+    },
+    alternates: { canonical },
     robots: {
       index: true,
       follow: true,

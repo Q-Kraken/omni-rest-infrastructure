@@ -21,11 +21,11 @@ export default async function Home() {
   // `hasMenu` must only be emitted when the URL leads somewhere, so the schema needs to know whether a
   // menu is published. Both reads are request-memoized, so this costs no extra round trip.
   const site = await readSiteForSchema();
-  const origin = await siteOrigin();
+  const origin = restaurant ? await siteOrigin() : null;
 
   return (
     <>
-      {restaurant ? (
+      {restaurant && origin ? (
         <JsonLd
           nodes={[buildRestaurantSchema(origin, restaurant, { hasPublishedMenu: site?.menu != null })]}
         />

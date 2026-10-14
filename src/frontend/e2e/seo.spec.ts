@@ -71,6 +71,7 @@ test.describe("@seo", () => {
     for (const path of ["/", "/menu", "/menu/starters"]) {
       await page.goto(`${origin}${path}`);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${origin}${path}`);
+      await expect(page.locator('meta[property="og:title"]')).toHaveCount(1);
       const robots = await page.locator('meta[name="robots"]').getAttribute("content");
       expect(robots, `${path} must be indexable`).toContain("index");
       expect(robots, `${path} must not be noindex`).not.toContain("noindex");
