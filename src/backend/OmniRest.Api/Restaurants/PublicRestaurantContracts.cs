@@ -74,6 +74,7 @@ public sealed record PublicRestaurantResponse(
     /// <c>publications.published_at</c> rather than from the snapshot. Null before first publication.
     /// </summary>
     DateTimeOffset? PublishedAt = null,
+    string? LocalDate = null,
     string? WebsiteUrl = null);
 
 public sealed class RestaurantPublicProjectionBuilder(
@@ -137,7 +138,11 @@ public sealed class RestaurantPublicProjectionBuilder(
             logo,
             coverImage,
             WebsiteUrl: restaurant.WebsiteUrl);
-        return response with { Status = statusCalculator.Calculate(response, timeProvider.GetUtcNow()) };
+        return response with
+        {
+            Status = statusCalculator.Calculate(response, timeProvider.GetUtcNow()),
+            LocalDate = DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(timeProvider.GetUtcNow(), TimeZoneInfo.FindSystemTimeZoneById(restaurant.Settings.TimeZoneId)).DateTime).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
+        };
     }
 
     /// <summary>

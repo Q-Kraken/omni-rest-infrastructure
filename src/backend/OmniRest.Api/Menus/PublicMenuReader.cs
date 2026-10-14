@@ -18,7 +18,8 @@ public sealed class PublicMenuReader(
     MenuDbContext dbContext,
     IMemoryCache cache,
     PublicMenuSnapshotSerializer serializer,
-    ILogger<PublicMenuReader>? suppliedLogger = null) : IPublicMenuReader
+    ILogger<PublicMenuReader>? suppliedLogger = null,
+    TimeProvider? timeProvider = null) : IPublicMenuReader
 {
     private readonly ILogger<PublicMenuReader> logger = suppliedLogger ??
         Microsoft.Extensions.Logging.Abstractions.NullLogger<PublicMenuReader>.Instance;
@@ -87,7 +88,17 @@ public sealed class PublicMenuReader(
             });
         }
 
-        return new PublicMenuReadResult(response, CreateETag(restaurant.Id, publication.Version));
+        var etag = CreateETag(restaurant.Id, publication.Version);
+        if (response.Restaurant is { } publicRestaurant)
+        {
+            var now = (timeProvider ?? TimeProvider.System).GetUtcNow();
+            var prepared = PublicRestaurantSchedule.Prepare(publicRestaurant, now);
+            // Keep cached snapshots complete and immutable. The response's calendar/status can change
+            // without a new publication, so its validator must change at those boundaries too.
+            response = response with { Restaurant = prepared };
+            etag = $"{etag[..^1]}-{PublicRestaurantSchedule.CacheToken(prepared, now)}\"";
+        }
+        return new PublicMenuReadResult(response, etag);
     }
 
     public static string CreateETag(Guid restaurantId, long version) => $"\"{restaurantId:N}-{version}\"";

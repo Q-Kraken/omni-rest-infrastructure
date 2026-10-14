@@ -20,7 +20,10 @@ import { getPublicRestaurant } from "./server-api";
 /** The published restaurant for the requesting host, or `null` when there is nothing to show. */
 export const readRestaurant = cache(async (): Promise<PublicRestaurant | null> => {
   const result = await getPublicRestaurant().catch(() => ({ status: 503, data: null }));
-  return result.data;
+  if (!result.data) return null;
+  return { ...result.data, localDate: result.data.localDate ?? new Intl.DateTimeFormat("en-CA", {
+    timeZone: result.data.timeZone, year: "numeric", month: "2-digit", day: "2-digit",
+  }).format(new Date()) };
 });
 
 /**

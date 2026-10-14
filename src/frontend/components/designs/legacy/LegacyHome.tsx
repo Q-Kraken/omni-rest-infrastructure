@@ -5,6 +5,7 @@ import type { WebsiteDesignHomeProps } from "../design-contract";
 import { DesignGallery } from "../shared/DesignGallery";
 import { createDesignClassNames } from "../shared/designClassNames";
 import Image from "next/image";
+import { RestaurantSpecialHours } from "../shared/PublicDesignParts";
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const styles = createDesignClassNames("legacy-current-v1");
@@ -30,7 +31,7 @@ export default function LegacyHome({ restaurant }: WebsiteDesignHomeProps) {
           {restaurant?.email ? <p><a href={`mailto:${restaurant.email}`}>{restaurant.email}</a></p> : null}
           {restaurant?.address ? <address className={styles.restaurantAddress}><span>{restaurant.address.formatted}</span><a href={restaurant.address.directionsUrl} rel="noreferrer">Get directions</a></address> : null}
           {restaurant ? <section aria-labelledby="public-hours"><h2 id="public-hours">Hours</h2><dl className={styles.publicHours}>{restaurant.regularHours.map((day) => <div key={day.dayOfWeek}><dt>{days[day.dayOfWeek]}</dt><dd>{day.intervals.length === 0 ? "Closed" : day.intervals.map((period) => `${period.opensAt.slice(0, 5)}–${period.closesAt.slice(0, 5)}${period.closesNextDay ? " next day" : ""}`).join(", ")}</dd></div>)}</dl></section> : null}
-          {restaurant && restaurant.specialHours.length > 0 ? <section aria-labelledby="public-special"><h2 id="public-special">Special hours</h2><ul>{restaurant.specialHours.map((day) => <li key={day.date}><strong>{day.date}</strong>: {day.isClosed ? "Closed" : day.intervals.map((period) => `${period.opensAt.slice(0, 5)}–${period.closesAt.slice(0, 5)}`).join(", ")} {day.note}</li>)}</ul></section> : null}
+          {restaurant ? <RestaurantSpecialHours restaurant={restaurant} className={styles.specialSection} headingId="public-special" /> : null}
           {restaurant && gallery.length > 0 ? <DesignGallery photos={gallery} classes={styles} headingId="legacy-gallery" restaurantName={restaurant.name} /> : null}
           {restaurant && restaurant.socialLinks.length > 0 ? <nav aria-label="Social media" className={styles.publicSocial}>{restaurant.socialLinks.map((link) => <a key={link.platform} href={link.url} rel="noreferrer">{link.platform}</a>)}</nav> : null}
           </section>

@@ -138,6 +138,7 @@ function parseRestaurant(
 ): PublicRestaurant {
   const restaurant = record(value, "restaurant");
   return {
+    ...(restaurant.localDate === undefined ? {} : { localDate: nonblank(restaurant.localDate, "restaurant.localDate") }),
     ...(restaurant.websiteUrl === undefined ? {} : { websiteUrl: parseWebsiteUrl(restaurant.websiteUrl) }),
     id: uuid(restaurant.id, "restaurant.id"),
     name: nonblank(restaurant.name, "restaurant.name"),

@@ -144,12 +144,14 @@ export function RestaurantSpecialHours({
   className,
   headingId,
 }: Readonly<{ restaurant: PublicRestaurant; className: string; headingId: string }>) {
-  if (restaurant.specialHours.length === 0) return null;
+  const today = restaurant.localDate ?? new Intl.DateTimeFormat("en-CA", { timeZone: restaurant.timeZone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  const upcoming = restaurant.specialHours.filter((day) => day.date >= today);
+  if (upcoming.length === 0) return null;
   return (
     <section className={className} aria-labelledby={headingId}>
       <h2 id={headingId}>Special hours</h2>
       <ul>
-        {restaurant.specialHours.map((day) => (
+        {upcoming.map((day) => (
           <li key={day.date}>
             <strong>{day.date}</strong>: {day.isClosed ? "Closed" : formatIntervals(day.intervals)}
             {day.note ? ` — ${day.note}` : ""}

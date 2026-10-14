@@ -87,6 +87,8 @@ export type PublicImage = Omit<MainImage, "id" | "processingStatus">;
 
 export type PublicRestaurant = {
   websiteUrl?: string | null;
+  /** Prepared by the API in the restaurant's time zone on every public read. */
+  localDate?: string;
   id: string; name: string; shortDescription: string | null;
   phone: { e164: string; display: string } | null; email: string | null; timeZone: string;
   address: ({ streetLine1: string; streetLine2: string | null; city: string; region: string;
