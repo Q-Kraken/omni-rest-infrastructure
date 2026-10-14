@@ -35,6 +35,9 @@ information.
     -   Facebook
     -   TikTok
     -   Google Business Profile
+    -   X (Twitter)
+    -   YouTube
+    -   LinkedIn
 -   Support timestamps.
 -   Support future expansion without schema changes.
 
