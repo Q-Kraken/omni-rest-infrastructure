@@ -12,8 +12,10 @@ test("@perf renders and switches the 30 category by 1000 dish fixture", async ({
   await expect(page.getByRole("link", { name: /^Category \d+$/ })).toHaveCount(30);
   await expect(page.getByRole("heading", { level: 3, includeHidden: true })).toHaveCount(1_000);
 
+  await expect.poll(() => page.locator("[data-enhanced]").getAttribute("data-enhanced")).toBe("true");
+
   const categorySwitchMilliseconds = await page.evaluate(async () => {
-    const link = document.querySelector<HTMLAnchorElement>('a[href="#category-30"]');
+    const link = document.querySelector<HTMLAnchorElement>('a[href="/menu/category-30"]');
     if (!link) throw new Error("Category 30 link is missing.");
     const switchStartedAt = performance.now();
     link.click();
@@ -23,6 +25,7 @@ test("@perf renders and switches the 30 category by 1000 dish fixture", async ({
     return performance.now() - switchStartedAt;
   });
   await expect(page.getByRole("heading", { level: 2, name: "Category 30" })).toBeVisible();
+  await expect(page).toHaveURL(/#category-30$/);
   expect(categorySwitchMilliseconds).toBeLessThan(100);
 
   const outputDirectory = path.resolve("test-results");
