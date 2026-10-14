@@ -1,6 +1,6 @@
 # Phase 1 — Technical Specification
 
-**Status:** Proposed
+**Status:** Implemented with verification limits; see `implementation-evidence.md` and the task-level traceability matrix.
 
 **Version:** 0.1
 

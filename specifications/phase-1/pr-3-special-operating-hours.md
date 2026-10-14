@@ -1,6 +1,6 @@
 # PR-3 — Special Operating Hours Technical Specification
 
-**Status:** Proposed
+**Status:** Implemented with verification limits; see `implementation-evidence.md` and the task-level traceability matrix.
 
 **Depends on:** Phase 0, PR-2
 

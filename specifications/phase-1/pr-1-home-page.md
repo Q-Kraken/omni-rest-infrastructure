@@ -1,6 +1,6 @@
 # PR-1 — Home Page Technical Specification
 
-**Status:** Proposed
+**Status:** Implemented with verification limits; see `implementation-evidence.md` and the task-level traceability matrix.
 
 **Depends on:** Phase 0
 
