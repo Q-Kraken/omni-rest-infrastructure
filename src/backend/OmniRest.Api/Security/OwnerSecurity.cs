@@ -159,14 +159,14 @@ public sealed class OwnerCookieEvents(
 
     public override Task RedirectToLogin(RedirectContext<CookieAuthenticationOptions> context)
     {
-        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-        return Task.CompletedTask;
+        return ApiProblems.Problem(StatusCodes.Status401Unauthorized, "auth_required", "Authentication required")
+            .ExecuteAsync(context.HttpContext);
     }
 
     public override Task RedirectToAccessDenied(RedirectContext<CookieAuthenticationOptions> context)
     {
-        context.Response.StatusCode = StatusCodes.Status403Forbidden;
-        return Task.CompletedTask;
+        return ApiProblems.Problem(StatusCodes.Status403Forbidden, "auth_forbidden", "Access forbidden")
+            .ExecuteAsync(context.HttpContext);
     }
 }
 
