@@ -49,6 +49,36 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
     }
 
     [Fact]
+    public async Task SmallImagesCannotBeUploadedForMainPurposeOrSelectedAsMainImages()
+    {
+        using var factory = postgres.CreateFactory();
+        await postgres.RecreateLatestAndSeedAsync(factory);
+        await CreateOwnerAsync(factory, GuardedSampleDataSeeder.OrdinaryRestaurantId);
+        using var client = CreateSecureClient(factory);
+        await LoginAsync(client);
+        var current = (await client.GetFromJsonAsync<AdminRestaurantResponse>("/api/v1/admin/restaurant"))!;
+        await using var mediaScope = factory.Services.CreateAsyncScope();
+        var small = await mediaScope.ServiceProvider.GetRequiredService<MenuDbContext>()
+            .MediaAssets.Where(item => item.RestaurantId == GuardedSampleDataSeeder.OrdinaryRestaurantId).Select(item => item.Id).FirstAsync();
+        using var response = await PutWithHeadersAsync(client, "/api/v1/admin/restaurant/main-image",
+            new SelectMainImageRequest(small), await GetAntiforgeryAsync(client), current.ETag);
+        Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        Assert.Contains("main_image_too_small", await response.Content.ReadAsStringAsync(), StringComparison.Ordinal);
+        var png = Convert.FromBase64String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=");
+        using var content = new MultipartFormDataContent();
+        var file = new ByteArrayContent(png);
+        file.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("image/png");
+        content.Add(file, "file", "small.png");
+        content.Add(new StringContent("Small image"), "altText");
+        content.Add(new StringContent("main"), "purpose");
+        using var uploadRequest = new HttpRequestMessage(HttpMethod.Post, "/api/v1/admin/media-assets") { Content = content };
+        uploadRequest.Headers.Add("X-CSRF-TOKEN", await GetAntiforgeryAsync(client));
+        using var upload = await client.SendAsync(uploadRequest);
+        Assert.Equal(HttpStatusCode.BadRequest, upload.StatusCode);
+        Assert.Contains("main_image_too_small", await upload.Content.ReadAsStringAsync(), StringComparison.Ordinal);
+    }
+
+    [Fact]
     public async Task OwnerCanEditProfilePreviewPublishAndReadCompatiblePublicPhoneContract()
     {
         using var factory = postgres.CreateFactory();
@@ -164,12 +194,8 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         await using (var scope = factory.Services.CreateAsyncScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<MenuDbContext>();
-            // Phase 5 seeds gallery photos as media assets of the same restaurant, so this must pick the one
-            // standalone asset the main-image workflow uses rather than every asset the tenant owns.
-            ordinaryMedia = await db.MediaAssets
-                .Where(item => item.RestaurantId == GuardedSampleDataSeeder.OrdinaryRestaurantId
-                    && !db.GalleryImages.Any(gallery => gallery.MediaAssetId == item.Id))
-                .Select(item => item.Id).SingleAsync();
+            var ordinary = await db.Restaurants.SingleAsync(item => item.Id == GuardedSampleDataSeeder.OrdinaryRestaurantId);
+            ordinaryMedia = AddReadyAsset(db, ordinary, "Full size dining room", "https://images.example.test/dining-room.webp").Id;
             var alternate = await db.Restaurants.SingleAsync(item => item.Id == GuardedSampleDataSeeder.AlternateRestaurantId);
             var media = new MediaAssetEntity
             {
@@ -512,7 +538,10 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         var current = await client.GetFromJsonAsync<AdminRestaurantResponse>("/api/v1/admin/restaurant");
         Assert.NotNull(current);
 
-        var png = Convert.FromBase64String("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=");
+        using var image = new SixLabors.ImageSharp.Image<SixLabors.ImageSharp.PixelFormats.Rgb24>(1200, 800);
+        using var buffer = new MemoryStream();
+        await SixLabors.ImageSharp.ImageExtensions.SaveAsPngAsync(image, buffer);
+        var png = buffer.ToArray();
         using (var mismatched = await UploadAsync(client, png, "text/plain", "Validated dining room", await GetAntiforgeryAsync(client)))
         {
             Assert.Equal(HttpStatusCode.BadRequest, mismatched.StatusCode);
@@ -524,8 +553,8 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         var uploaded = await uploadedResponse.Content.ReadFromJsonAsync<AdminMediaAssetResponse>();
         Assert.NotNull(uploaded);
         Assert.Equal("ready", uploaded.ProcessingStatus);
-        Assert.Single(uploaded.Variants);
-        Assert.Equal((1, 1), (uploaded.Variants[0].Width, uploaded.Variants[0].Height));
+        Assert.Equal(new[] { 320, 640, 1024, 1200 }, uploaded.Variants.Select(variant => variant.Width));
+        Assert.Equal((1200, 800), (uploaded.Variants[^1].Width, uploaded.Variants[^1].Height));
 
         var ready = await client.GetFromJsonAsync<AdminMediaAssetResponse[]>("/api/v1/admin/media-assets");
         Assert.Contains(ready!, item => item.Id == uploaded.Id);
@@ -541,7 +570,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         client.DefaultRequestHeaders.Host = "menu.localhost";
         var publicRestaurant = await client.GetFromJsonAsync<PublicRestaurantResponse>("/api/v1/public/restaurant");
         Assert.Equal("Accessible dining room", publicRestaurant!.MainImage?.AltText);
-        using var storedBytes = await client.GetAsync(uploaded.Variants[0].Url);
+        using var storedBytes = await client.GetAsync(uploaded.Variants[^1].Url);
         Assert.Equal(HttpStatusCode.OK, storedBytes.StatusCode);
         Assert.Equal("image/png", storedBytes.Content.Headers.ContentType?.MediaType);
         Assert.Equal(png, await storedBytes.Content.ReadAsByteArrayAsync());
@@ -828,8 +857,8 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
             MediaAssetId = asset.Id,
             MediaAsset = asset,
             Url = url,
-            Width = 512,
-            Height = 512
+            Width = 1200,
+            Height = 800
         });
         db.MediaAssets.Add(asset);
         return asset;

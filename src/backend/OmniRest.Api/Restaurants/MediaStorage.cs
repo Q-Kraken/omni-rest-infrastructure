@@ -542,7 +542,7 @@ public sealed class MediaValidationException(string code) : Exception(code)
 public interface IMediaAssetService
 {
     Task<IReadOnlyList<AdminMediaAssetResponse>> ListReadyAsync(OwnerRestaurantAccess access, CancellationToken cancellationToken);
-    Task<ManagementResult<AdminMediaAssetResponse>> UploadAsync(OwnerRestaurantAccess access, string? altText, IFormFile? file, CancellationToken cancellationToken);
+    Task<ManagementResult<AdminMediaAssetResponse>> UploadAsync(OwnerRestaurantAccess access, string? altText, IFormFile? file, CancellationToken cancellationToken, string? purpose = null);
 }
 
 public sealed class MediaAssetService(
@@ -566,7 +566,8 @@ public sealed class MediaAssetService(
         OwnerRestaurantAccess access,
         string? altText,
         IFormFile? file,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        string? purpose = null)
     {
         var errors = RestaurantValidation.ValidateAltText(altText);
         if (file is null) errors = errors.Concat(new[] { new KeyValuePair<string, string[]>("file", ["field_required"]) }).ToDictionary();
@@ -581,10 +582,21 @@ public sealed class MediaAssetService(
         {
             return ManagementResult<AdminMediaAssetResponse>.Failed(new ManagementFailure(400, "admin_validation", "Media upload is invalid", Errors: new Dictionary<string, string[]> { ["file"] = [exception.Code] }));
         }
+        if (purpose == "main" && image.Width < ResponsiveImages.MinimumMainImageWidth)
+        {
+            return ManagementResult<AdminMediaAssetResponse>.Failed(new ManagementFailure(400, "admin_validation", "Main image is too small",
+                Errors: new Dictionary<string, string[]> { ["file"] = ["main_image_too_small"] }));
+        }
         var id = Guid.NewGuid();
-        var stored = await storage.StoreAsync(access.RestaurantId, id, image, cancellationToken);
+        var storedVariants = new List<StoredMedia>();
         try
         {
+            var images = await ResponsiveImages.CreateAsync(image, cancellationToken);
+            foreach (var variant in images)
+            {
+                storedVariants.Add(await storage.StoreAsync(access.RestaurantId,
+                    ReferenceEquals(variant, image) ? id : Guid.NewGuid(), variant, cancellationToken));
+            }
             var entity = new MediaAssetEntity
             {
                 Id = id,
@@ -592,16 +604,19 @@ public sealed class MediaAssetService(
                 AltText = altText!.Trim(),
                 ProcessingStatus = "ready"
             };
-            entity.Variants.Add(new MediaVariantEntity
+            foreach (var stored in storedVariants)
             {
-                Id = Guid.NewGuid(),
-                RestaurantId = access.RestaurantId,
-                MediaAssetId = id,
-                MediaAsset = entity,
-                Url = stored.Url,
-                Width = stored.Width,
-                Height = stored.Height
-            });
+                entity.Variants.Add(new MediaVariantEntity
+                {
+                    Id = Guid.NewGuid(),
+                    RestaurantId = access.RestaurantId,
+                    MediaAssetId = id,
+                    MediaAsset = entity,
+                    Url = stored.Url,
+                    Width = stored.Width,
+                    Height = stored.Height
+                });
+            }
             dbContext.MediaAssets.Add(entity);
             dbContext.AuditEvents.Add(new AuditEventEntity
             {
@@ -616,14 +631,15 @@ public sealed class MediaAssetService(
             await dbContext.SaveChangesAsync(cancellationToken);
             return ManagementResult<AdminMediaAssetResponse>.Success(new AdminMediaAssetResponse(
                 id.ToString(), entity.AltText, entity.ProcessingStatus,
-                [new OmniRest.Api.Menus.PublicMediaVariant(stored.Url, stored.Width, stored.Height)]));
+                storedVariants.Select(stored => new OmniRest.Api.Menus.PublicMediaVariant(stored.Url, stored.Width, stored.Height)).ToArray()));
         }
         catch (Exception persistenceException)
         {
             dbContext.ChangeTracker.Clear();
             try
             {
-                await stored.CompensateAsync(CancellationToken.None);
+                // Try every exact-file lease even when one cleanup fails.
+                await Task.WhenAll(storedVariants.Select(async stored => await stored.CompensateAsync(CancellationToken.None)));
             }
             catch (Exception cleanupException)
             {
@@ -641,7 +657,7 @@ public sealed class MediaAssetService(
         }
         finally
         {
-            await stored.DisposeAsync();
+            foreach (var stored in storedVariants) await stored.DisposeAsync();
         }
     }
 }

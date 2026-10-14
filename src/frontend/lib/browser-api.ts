@@ -77,11 +77,12 @@ export async function uploadGalleryPhoto<T>(
   return await response.json() as T;
 }
 
-export async function uploadMedia<T>(file: File, altText: string): Promise<T> {
+export async function uploadMedia<T>(file: File, altText: string, purpose?: "main"): Promise<T> {
   const token = await antiforgeryToken();
   const body = new FormData();
   body.set("file", file);
   body.set("altText", altText);
+  if (purpose) body.set("purpose", purpose);
   let response: Response;
   try {
     response = await fetch("/api/v1/admin/media-assets", {

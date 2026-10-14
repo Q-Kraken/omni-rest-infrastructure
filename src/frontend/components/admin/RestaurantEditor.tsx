@@ -18,6 +18,7 @@ const ERROR_MESSAGES: Record<string, string> = {
   phone_e164_invalid: "Use E.164 format, such as +12045550123.", phone_display_invalid: "Provide both phone formats or leave both blank.",
   email_invalid: "Enter a valid email address.", time_zone_invalid: "Enter a valid IANA time zone.",
   website_url_invalid: "Use an HTTPS website URL without credentials or a custom port.",
+  main_image_too_small: "Use a main image at least 704 pixels wide.",
   country_code_invalid: "Use a two-letter uppercase country code.", coordinates_invalid: "Provide both coordinates within valid latitude and longitude ranges.",
   hours_days_duplicate: "Provide each day once.", hours_day_invalid: "Choose a valid day.",
   hours_interval_required: "Add at least one opening period.", hours_interval_limit: "Use no more than 12 periods.",
@@ -307,7 +308,7 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
     if (!uploadFile || !mediaAltText.trim()) return;
     setBusy("Media upload"); setNotice(null);
     try {
-      const uploaded = await uploadMedia<AdminMediaAsset>(uploadFile, mediaAltText);
+      const uploaded = await uploadMedia<AdminMediaAsset>(uploadFile, mediaAltText, "main");
       setMediaAssets((current) => [...current, uploaded]);
       setImageId(uploaded.id);
       setMediaAltText(uploaded.altText);
@@ -315,7 +316,7 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
       setNotice("Image uploaded and ready to select.");
     } catch (error) {
       setNotice(error instanceof BrowserApiError && error.status === 400
-        ? "The image must be a valid PNG, JPEG, or WebP within the configured size and dimensions."
+        ? "The main image must be a valid PNG, JPEG, or WebP at least 704 pixels wide and within the configured size limit."
         : "Image upload failed. Try again.");
     } finally { setBusy(null); }
   }

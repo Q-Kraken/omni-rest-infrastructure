@@ -15,6 +15,25 @@ public sealed class MediaStorageTests
         "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=");
 
     [Fact]
+    public async Task DatabaseFailureCompensatesEveryResponsiveVariant()
+    {
+        using var sandbox = new MediaSandbox();
+        var restaurantId = Guid.NewGuid();
+        var directory = sandbox.TenantPath(restaurantId);
+        Directory.CreateDirectory(directory);
+        var decoy = Path.Combine(directory, "preserve.txt");
+        await File.WriteAllTextAsync(decoy, "preserve");
+        using var source = new SixLabors.ImageSharp.Image<SixLabors.ImageSharp.PixelFormats.Rgb24>(1200, 800);
+        using var buffer = new MemoryStream();
+        await SixLabors.ImageSharp.ImageExtensions.SaveAsPngAsync(source, buffer);
+        var failure = new DbUpdateException("Injected persistence failure.");
+        var thrown = await UploadWithInjectedPersistenceFailureAsync(sandbox.Root, restaurantId, failure, CancellationToken.None, null, buffer.ToArray());
+        Assert.Same(failure, thrown);
+        Assert.Equal([decoy], Directory.GetFiles(directory));
+        sandbox.AssertOutsideSentinelUntouched();
+    }
+
+    [Fact]
     public async Task DatabaseFailureAfterBlobWriteDeletesOnlyTheExactRandomizedBlob()
     {
         var failure = new DbUpdateException("Injected persistence failure.");
@@ -224,7 +243,8 @@ public sealed class MediaStorageTests
         Guid restaurantId,
         Exception failure,
         CancellationToken cancellationToken,
-        Action<DbContext?>? beforeFailure)
+        Action<DbContext?>? beforeFailure,
+        byte[]? imageBytes = null)
     {
         var options = new DbContextOptionsBuilder<MenuDbContext>()
             .UseNpgsql("Host=127.0.0.1;Port=1;Database=unused;Username=unused;Password=unused")
@@ -236,8 +256,9 @@ public sealed class MediaStorageTests
             CreateStorage(root),
             TimeProvider.System,
             NullLogger<MediaAssetService>.Instance);
-        await using var stream = new MemoryStream(Png);
-        var file = new FormFile(stream, 0, Png.Length, "file", "image.png")
+        var bytes = imageBytes ?? Png;
+        await using var stream = new MemoryStream(bytes);
+        var file = new FormFile(stream, 0, bytes.Length, "file", "image.png")
         {
             Headers = new HeaderDictionary(),
             ContentType = "image/png"

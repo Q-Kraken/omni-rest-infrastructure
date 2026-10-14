@@ -264,6 +264,11 @@ public sealed partial class RestaurantManagementService(
         {
             return new ManagementFailure(409, "media_not_ready", "The selected image is not ready for publication");
         }
+        if (auditActionPrefix == "restaurant.main_image" && media.Variants.Max(item => item.Width) < ResponsiveImages.MinimumMainImageWidth)
+        {
+            return new ManagementFailure(400, "admin_validation", "Main image is too small",
+                Errors: new Dictionary<string, string[]> { ["mediaAssetId"] = ["main_image_too_small"] });
+        }
         assign(restaurant, media);
         return null;
     }, cancellationToken);
