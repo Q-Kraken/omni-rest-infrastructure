@@ -108,11 +108,12 @@ export function RestaurantContact({
   linkClassName: string;
   headingId: string;
 }>) {
-  if (!restaurant.address && !restaurant.email) return null;
+  if (!restaurant.address && !restaurant.email && !restaurant.websiteUrl) return null;
   return (
     <section className={className} aria-labelledby={headingId}>
       <h2 id={headingId}>Visit</h2>
       {restaurant.address ? <address>{restaurant.address.formatted}</address> : null}
+      {restaurant.websiteUrl ? <a className={linkClassName} href={restaurant.websiteUrl}>Website</a> : null}
       {restaurant.email ? <a className={linkClassName} href={`mailto:${restaurant.email}`}>{restaurant.email}</a> : null}
     </section>
   );

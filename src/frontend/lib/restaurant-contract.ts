@@ -20,7 +20,7 @@ export function resolveWebsiteDesignId(value: unknown): WebsiteDesignId {
 
 export type Address = {
   line1: string; line2: string | null; city: string; region: string;
-  postalCode: string; countryCode: string; latitude: number | null; longitude: number | null;
+  postalCode: string | null; countryCode: string; latitude: number | null; longitude: number | null;
 };
 export type RegularHoursDay = { dayOfWeek: number; intervals: HourInterval[] };
 export type SpecialHours = { id: string; date: string; isClosed: boolean; note: string | null; intervals: HourInterval[] };
@@ -51,6 +51,7 @@ export type PublicationStatus = {
   errorCode: string | null; updatedAt: string;
 };
 export type AdminRestaurant = {
+  websiteUrl?: string | null;
   id: string; name: string; description: string | null; phoneE164: string | null;
   phoneDisplay: string | null; email: string | null; timeZone: string; address: Address | null;
   regularHours: RegularHoursDay[]; specialHours: SpecialHours[]; socialLinks: SocialLink[];
@@ -85,10 +86,11 @@ export function isPriceRange(value: unknown): value is PriceRange {
 export type PublicImage = Omit<MainImage, "id" | "processingStatus">;
 
 export type PublicRestaurant = {
+  websiteUrl?: string | null;
   id: string; name: string; shortDescription: string | null;
   phone: { e164: string; display: string } | null; email: string | null; timeZone: string;
   address: ({ streetLine1: string; streetLine2: string | null; city: string; region: string;
-    postalCode: string; countryCode: string; formatted: string; directionsUrl: string;
+    postalCode: string | null; countryCode: string; formatted: string; directionsUrl: string;
     /** Absent on snapshots published before Phase 6, and on addresses that were never geocoded. */
     latitude: number | null; longitude: number | null }) | null;
   regularHours: RegularHoursDay[]; specialHours: Omit<SpecialHours, "id">[];

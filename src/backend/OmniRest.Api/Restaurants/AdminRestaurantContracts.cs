@@ -7,7 +7,7 @@ public sealed record AdminAddressRequest(
     string? Line2,
     string City,
     string Region,
-    string PostalCode,
+    string? PostalCode,
     string CountryCode,
     decimal? Latitude,
     decimal? Longitude);
@@ -25,7 +25,8 @@ public sealed record UpdateRestaurantProfileRequest(
     string? RestaurantType = null,
 
     /// <summary>Schema.org price band; see <see cref="Data.PriceRanges"/>.</summary>
-    string? PriceRange = null);
+    string? PriceRange = null,
+    string? WebsiteUrl = null);
 
 public sealed record AdminHourIntervalRequest(string OpensAt, string ClosesAt);
 public sealed record AdminRegularHoursDayRequest(int DayOfWeek, IReadOnlyList<AdminHourIntervalRequest> Intervals);
@@ -48,7 +49,7 @@ public sealed record AdminAddressResponse(
     string? Line2,
     string City,
     string Region,
-    string PostalCode,
+    string? PostalCode,
     string CountryCode,
     decimal? Latitude,
     decimal? Longitude);
@@ -98,7 +99,8 @@ public sealed record AdminRestaurantResponse(
     string? RestaurantType = null,
     string? PriceRange = null,
     AdminMainImageResponse? Logo = null,
-    AdminMainImageResponse? CoverImage = null);
+    AdminMainImageResponse? CoverImage = null,
+    string? WebsiteUrl = null);
 
 public sealed record AdminMutationResponse(AdminRestaurantResponse Restaurant, PublicationStatusResponse Publication);
 

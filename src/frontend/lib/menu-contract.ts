@@ -138,6 +138,7 @@ function parseRestaurant(
 ): PublicRestaurant {
   const restaurant = record(value, "restaurant");
   return {
+    ...(restaurant.websiteUrl === undefined ? {} : { websiteUrl: parseWebsiteUrl(restaurant.websiteUrl) }),
     id: uuid(restaurant.id, "restaurant.id"),
     name: nonblank(restaurant.name, "restaurant.name"),
     shortDescription: nullableString(restaurant.shortDescription, "restaurant.shortDescription"),
@@ -195,6 +196,13 @@ function parseTimestamp(value: unknown, path: string): string | null {
   return new Date(parsed).toISOString();
 }
 
+function parseWebsiteUrl(value: unknown): string | null {
+  if (value === null) return null;
+  const url = nonblank(value, "restaurant.websiteUrl");
+  if (!safeHttpsUrl(url)) fail("restaurant.websiteUrl", "safe HTTPS URL");
+  return url;
+}
+
 function parseRestaurantMainImage(
   value: unknown,
   allowedMediaHosts: ReadonlySet<string>,
@@ -250,7 +258,7 @@ function parseAddress(value: unknown, path: string): NonNullable<PublicRestauran
     streetLine2: nullableString(address.streetLine2, `${path}.streetLine2`),
     city: nonblank(address.city, `${path}.city`),
     region: nonblank(address.region, `${path}.region`),
-    postalCode: nonblank(address.postalCode, `${path}.postalCode`),
+    postalCode: nullableString(address.postalCode, `${path}.postalCode`),
     countryCode: nonblank(address.countryCode, `${path}.countryCode`),
     formatted: nonblank(address.formatted, `${path}.formatted`),
     directionsUrl,

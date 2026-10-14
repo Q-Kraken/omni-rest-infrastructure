@@ -26,6 +26,7 @@ export default function LegacyHome({ restaurant }: WebsiteDesignHomeProps) {
             <MenuLink className={styles.primaryLink}>Browse the menu</MenuLink>
             {restaurant?.phone ? <CallButton e164={restaurant.phone.e164} display={restaurant.phone.display} /> : null}
           </div>
+          {restaurant?.websiteUrl ? <p><a href={restaurant.websiteUrl}>Website</a></p> : null}
           {restaurant?.email ? <p><a href={`mailto:${restaurant.email}`}>{restaurant.email}</a></p> : null}
           {restaurant?.address ? <address className={styles.restaurantAddress}><span>{restaurant.address.formatted}</span><a href={restaurant.address.directionsUrl} rel="noreferrer">Get directions</a></address> : null}
           {restaurant ? <section aria-labelledby="public-hours"><h2 id="public-hours">Hours</h2><dl className={styles.publicHours}>{restaurant.regularHours.map((day) => <div key={day.dayOfWeek}><dt>{days[day.dayOfWeek]}</dt><dd>{day.intervals.length === 0 ? "Closed" : day.intervals.map((period) => `${period.opensAt.slice(0, 5)}–${period.closesAt.slice(0, 5)}${period.closesNextDay ? " next day" : ""}`).join(", ")}</dd></div>)}</dl></section> : null}

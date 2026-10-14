@@ -61,6 +61,12 @@ public static partial class RestaurantValidation
             Add(errors, "priceRange", "price_range_invalid");
         }
 
+        if (!string.IsNullOrWhiteSpace(request.WebsiteUrl) &&
+            (request.WebsiteUrl.Length > 2048 || !Uri.TryCreate(request.WebsiteUrl, UriKind.Absolute, out var website) ||
+             website.Scheme != Uri.UriSchemeHttps || website.UserInfo.Length != 0 || !website.IsDefaultPort))
+        {
+            Add(errors, "websiteUrl", "website_url_invalid");
+        }
         ValidateAddress(errors, request.Address);
         return ToArrays(errors);
     }
@@ -149,7 +155,7 @@ public static partial class RestaurantValidation
         ValidateText(errors, "address.line2", address.Line2, 1, 160, required: false);
         ValidateText(errors, "address.city", address.City, 1, 100, required: true);
         ValidateText(errors, "address.region", address.Region, 1, 100, required: true);
-        ValidateText(errors, "address.postalCode", address.PostalCode, 1, 20, required: true);
+        ValidateText(errors, "address.postalCode", address.PostalCode, 1, 20, required: false);
         if (address.CountryCode is null || !CountryCode().IsMatch(address.CountryCode))
         {
             Add(errors, "address.countryCode", "country_code_invalid");

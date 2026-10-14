@@ -4,6 +4,19 @@ namespace OmniRest.Api.Tests.Unit;
 
 public sealed class RestaurantValidationTests
 {
+    [Theory]
+    [InlineData(null, true)]
+    [InlineData("https://restaurant.example/menu", true)]
+    [InlineData("http://restaurant.example", false)]
+    [InlineData("https://owner:password@restaurant.example", false)]
+    [InlineData("javascript:alert(1)", false)]
+    public void WebsiteIsOptionalHttpsAndPostalCodeIsOptional(string? website, bool valid)
+    {
+        var request = ValidProfile();
+        var errors = RestaurantValidation.ValidateProfile(request with { WebsiteUrl = website, Address = request.Address with { PostalCode = null } });
+        Assert.Equal(valid, errors.Count == 0);
+    }
+
     [Fact]
     public void ProfileValidationAcceptsE164AndPairedCoordinates()
     {

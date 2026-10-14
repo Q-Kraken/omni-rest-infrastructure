@@ -10,6 +10,27 @@ namespace OmniRest.Api.Tests.Integration;
 public sealed class MigrationTests(PostgresFixture postgres)
 {
     [Fact]
+    public async Task ProfileRemediationBackfillsExistingSpecialDatesAndPreservesRows()
+    {
+        await using var context = CreateContext();
+        await context.Database.EnsureDeletedAsync();
+        var migrator = context.Database.GetService<IMigrator>();
+        await migrator.MigrateAsync("20260901120000_Phase6RestaurantIdentity");
+        await context.Database.ExecuteSqlRawAsync("""
+            INSERT INTO public.restaurants (id, name, created_at, updated_at)
+            VALUES ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'Legacy', now(), now());
+            INSERT INTO public.special_hours (id, restaurant_id, date, is_closed)
+            VALUES ('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', '2026-12-25', true);
+            """);
+        await migrator.MigrateAsync();
+        var row = await context.SpecialHours.SingleAsync();
+        Assert.Equal(DateOnly.Parse("2026-12-25"), row.Date);
+        Assert.True(row.CreatedAt > DateTimeOffset.UtcNow.AddMinutes(-1));
+        Assert.True(row.UpdatedAt >= row.CreatedAt);
+        Assert.Equal("Legacy", (await context.Restaurants.SingleAsync()).Name);
+    }
+
+    [Fact]
     public async Task CleanDatabaseMigratesToLatestModel()
     {
         await using var context = CreateContext();
@@ -18,7 +39,7 @@ public sealed class MigrationTests(PostgresFixture postgres)
 
         var pending = await context.Database.GetPendingMigrationsAsync();
         Assert.Empty(pending);
-        Assert.Equal(9, (await context.Database.GetAppliedMigrationsAsync()).Count());
+        Assert.Equal(10, (await context.Database.GetAppliedMigrationsAsync()).Count());
     }
 
     [Fact]

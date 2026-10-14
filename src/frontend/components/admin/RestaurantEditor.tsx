@@ -16,6 +16,7 @@ const ERROR_MESSAGES: Record<string, string> = {
   field_required: "This field is required.", field_length_invalid: "Use a valid value within the allowed length.",
   phone_e164_invalid: "Use E.164 format, such as +12045550123.", phone_display_invalid: "Provide both phone formats or leave both blank.",
   email_invalid: "Enter a valid email address.", time_zone_invalid: "Enter a valid IANA time zone.",
+  website_url_invalid: "Use an HTTPS website URL without credentials or a custom port.",
   country_code_invalid: "Use a two-letter uppercase country code.", coordinates_invalid: "Provide both coordinates within valid latitude and longitude ranges.",
   hours_days_duplicate: "Provide each day once.", hours_day_invalid: "Choose a valid day.",
   hours_interval_required: "Add at least one opening period.", hours_interval_limit: "Use no more than 12 periods.",
@@ -179,7 +180,8 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
     name: initial.name, description: initial.description ?? "", phoneE164: initial.phoneE164 ?? "",
     phoneDisplay: initial.phoneDisplay ?? "", email: initial.email ?? "", timeZone: initial.timeZone,
     restaurantType: initial.restaurantType ?? "", priceRange: initial.priceRange ?? "",
-    address: initial.address ?? EMPTY_ADDRESS,
+    websiteUrl: initial.websiteUrl ?? "",
+    address: { ...(initial.address ?? EMPTY_ADDRESS), postalCode: initial.address?.postalCode ?? "" },
   });
   const [hours, setHours] = useState(() => normalizeHours(initial.regularHours));
   const [socialLinks, setSocialLinks] = useState<SocialLink[]>(initial.socialLinks);
@@ -239,6 +241,7 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
     void save("/api/v1/admin/restaurant/profile", {
       ...profile,
       description: profile.description || null,
+      websiteUrl: profile.websiteUrl.trim() || null,
       phoneE164: profile.phoneE164 || null,
       phoneDisplay: profile.phoneDisplay || null,
       email: profile.email || null,
@@ -325,6 +328,7 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
           <label>Name<input required maxLength={120} {...fieldA11y("name")} value={profile.name} onChange={(e) => setProfile({ ...profile, name: e.target.value })} />{errorFor("name")}</label>
           <label>Description<textarea maxLength={300} {...fieldA11y("description")} value={profile.description} onChange={(e) => setProfile({ ...profile, description: e.target.value })} />{errorFor("description")}</label>
           <label>Phone (E.164)<input inputMode="tel" placeholder="+12045550123" {...fieldA11y("phoneE164")} value={profile.phoneE164} onChange={(e) => setProfile({ ...profile, phoneE164: e.target.value })} />{errorFor("phoneE164")}</label>
+          <label>Website<input type="url" placeholder="https://example.com" {...fieldA11y("websiteUrl")} value={profile.websiteUrl} onChange={(e) => { setProfile({ ...profile, websiteUrl: e.target.value }); setDirty(true); }} />{errorFor("websiteUrl")}</label>
           <label>Phone display<input inputMode="tel" placeholder="(204) 555-0123" {...fieldA11y("phoneDisplay")} value={profile.phoneDisplay} onChange={(e) => setProfile({ ...profile, phoneDisplay: e.target.value })} />{errorFor("phoneDisplay")}</label>
           <label>Email<input type="email" autoComplete="email" {...fieldA11y("email")} value={profile.email} onChange={(e) => setProfile({ ...profile, email: e.target.value })} />{errorFor("email")}</label>
           <label>Time zone<input required {...fieldA11y("timeZone")} value={profile.timeZone} onChange={(e) => setProfile({ ...profile, timeZone: e.target.value })} />{errorFor("timeZone")}</label>
@@ -335,7 +339,7 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
           <label>Address line 2<input autoComplete="address-line2" {...fieldA11y("address.line2")} value={profile.address.line2 ?? ""} onChange={(e) => setProfile({ ...profile, address: { ...profile.address, line2: e.target.value } })} />{errorFor("address.line2")}</label>
           <label>City<input required autoComplete="address-level2" {...fieldA11y("address.city")} value={profile.address.city} onChange={(e) => setProfile({ ...profile, address: { ...profile.address, city: e.target.value } })} />{errorFor("address.city")}</label>
           <label>Province or state<input required autoComplete="address-level1" {...fieldA11y("address.region")} value={profile.address.region} onChange={(e) => setProfile({ ...profile, address: { ...profile.address, region: e.target.value } })} />{errorFor("address.region")}</label>
-          <label>Postal code<input required autoComplete="postal-code" {...fieldA11y("address.postalCode")} value={profile.address.postalCode} onChange={(e) => setProfile({ ...profile, address: { ...profile.address, postalCode: e.target.value } })} />{errorFor("address.postalCode")}</label>
+          <label>Postal code<input autoComplete="postal-code" {...fieldA11y("address.postalCode")} value={profile.address.postalCode ?? ""} onChange={(e) => setProfile({ ...profile, address: { ...profile.address, postalCode: e.target.value } })} />{errorFor("address.postalCode")}</label>
           <label>Country code<input required minLength={2} maxLength={2} autoComplete="country" {...fieldA11y("address.countryCode")} value={profile.address.countryCode} onChange={(e) => setProfile({ ...profile, address: { ...profile.address, countryCode: e.target.value.toUpperCase() } })} />{errorFor("address.countryCode")}</label>
           <label>Latitude<input type="number" min={-90} max={90} step="any" {...fieldA11y("address.coordinates")} value={profile.address.latitude ?? ""} onChange={(e) => setProfile({ ...profile, address: { ...profile.address, latitude: e.target.value === "" ? null : Number(e.target.value) } })} />{errorFor("address.coordinates")}</label>
           <label>Longitude<input type="number" min={-180} max={180} step="any" {...fieldA11y("address.coordinates")} value={profile.address.longitude ?? ""} onChange={(e) => setProfile({ ...profile, address: { ...profile.address, longitude: e.target.value === "" ? null : Number(e.target.value) } })} /></label>

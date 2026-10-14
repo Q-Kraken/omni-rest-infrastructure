@@ -55,6 +55,7 @@ public sealed partial class MenuDbContext(DbContextOptions<MenuDbContext> option
         entity.Property(x => x.Id).HasColumnName("id");
         entity.Property(x => x.Name).HasColumnName("name").HasMaxLength(120).IsRequired();
         entity.Property(x => x.Description).HasColumnName("description").HasMaxLength(300);
+        entity.Property(x => x.WebsiteUrl).HasColumnName("website_url").HasMaxLength(2048);
         entity.Property(x => x.PhoneE164).HasColumnName("phone_e164").HasMaxLength(16);
         entity.Property(x => x.PhoneDisplay).HasColumnName("phone_display").HasMaxLength(40);
         entity.Property(x => x.Email).HasColumnName("email").HasMaxLength(320);
@@ -264,6 +265,7 @@ public sealed class RestaurantEntity
     public Guid Id { get; set; }
     public string Name { get; set; } = null!;
     public string? Description { get; set; }
+    public string? WebsiteUrl { get; set; }
     public string? PhoneE164 { get; set; }
     public string? PhoneDisplay { get; set; }
     public string? Email { get; set; }

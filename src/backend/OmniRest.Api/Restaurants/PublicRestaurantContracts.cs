@@ -12,7 +12,7 @@ public sealed record PublicAddress(
     string? StreetLine2,
     string City,
     string Region,
-    string PostalCode,
+    string? PostalCode,
     string CountryCode,
     string Formatted,
     decimal? Latitude,
@@ -73,7 +73,8 @@ public sealed record PublicRestaurantResponse(
     /// When the current publication row was written; supplied by <c>PublicMenuReader</c> from
     /// <c>publications.published_at</c> rather than from the snapshot. Null before first publication.
     /// </summary>
-    DateTimeOffset? PublishedAt = null);
+    DateTimeOffset? PublishedAt = null,
+    string? WebsiteUrl = null);
 
 public sealed class RestaurantPublicProjectionBuilder(
     TimeProvider timeProvider,
@@ -134,7 +135,8 @@ public sealed class RestaurantPublicProjectionBuilder(
             restaurant.RestaurantType,
             restaurant.PriceRange,
             logo,
-            coverImage);
+            coverImage,
+            WebsiteUrl: restaurant.WebsiteUrl);
         return response with { Status = statusCalculator.Calculate(response, timeProvider.GetUtcNow()) };
     }
 

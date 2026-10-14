@@ -34,7 +34,7 @@ public sealed class RestaurantAddressEntity
     public string? Line2 { get; set; }
     public string City { get; set; } = null!;
     public string Region { get; set; } = null!;
-    public string PostalCode { get; set; } = null!;
+    public string? PostalCode { get; set; }
     public string CountryCode { get; set; } = null!;
     public decimal? Latitude { get; set; }
     public decimal? Longitude { get; set; }
@@ -58,6 +58,8 @@ public sealed class SpecialHourEntity
 {
     public Guid Id { get; set; }
     public Guid RestaurantId { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
     public DateOnly Date { get; set; }
     public bool IsClosed { get; set; }
     public string? Note { get; set; }
@@ -217,7 +219,7 @@ public sealed partial class MenuDbContext
         entity.Property(x => x.Line2).HasColumnName("line2").HasMaxLength(160);
         entity.Property(x => x.City).HasColumnName("city").HasMaxLength(100).IsRequired();
         entity.Property(x => x.Region).HasColumnName("region").HasMaxLength(100).IsRequired();
-        entity.Property(x => x.PostalCode).HasColumnName("postal_code").HasMaxLength(20).IsRequired();
+        entity.Property(x => x.PostalCode).HasColumnName("postal_code").HasMaxLength(20);
         entity.Property(x => x.CountryCode).HasColumnName("country_code").HasMaxLength(2).IsFixedLength().IsRequired();
         entity.Property(x => x.Latitude).HasColumnName("latitude").HasPrecision(9, 6);
         entity.Property(x => x.Longitude).HasColumnName("longitude").HasPrecision(9, 6);
@@ -249,6 +251,8 @@ public sealed partial class MenuDbContext
     private static void ConfigureSpecialHours(ModelBuilder modelBuilder)
     {
         var special = modelBuilder.Entity<SpecialHourEntity>();
+        special.Property(x => x.CreatedAt).HasColumnName("created_at");
+        special.Property(x => x.UpdatedAt).HasColumnName("updated_at");
         special.ToTable("special_hours", table =>
             table.HasCheckConstraint("ck_special_hours_note", "note IS NULL OR length(btrim(note)) > 0"));
         special.HasKey(x => x.Id);
