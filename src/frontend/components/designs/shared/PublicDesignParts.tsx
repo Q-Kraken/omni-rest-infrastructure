@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { RestaurantMap } from "@/components/restaurant/RestaurantMap";
 import Link from "next/link";
 
 import { MenuLink } from "@/components/MenuLink";
@@ -114,6 +115,7 @@ export function RestaurantContact({
       <h2 id={headingId}>Visit</h2>
       {restaurant.address ? <address>{restaurant.address.formatted}</address> : null}
       {restaurant.websiteUrl ? <a className={linkClassName} href={restaurant.websiteUrl}>Website</a> : null}
+      <RestaurantMap address={restaurant.address} apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY} />
       {restaurant.email ? <a className={linkClassName} href={`mailto:${restaurant.email}`}>{restaurant.email}</a> : null}
     </section>
   );

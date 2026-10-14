@@ -5,6 +5,7 @@ import type { WebsiteDesignHomeProps } from "../design-contract";
 import { DesignGallery } from "../shared/DesignGallery";
 import { createDesignClassNames } from "../shared/designClassNames";
 import Image from "next/image";
+import { RestaurantMap } from "@/components/restaurant/RestaurantMap";
 import { RestaurantSpecialHours } from "../shared/PublicDesignParts";
 
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -30,6 +31,7 @@ export default function LegacyHome({ restaurant }: WebsiteDesignHomeProps) {
           {restaurant?.websiteUrl ? <p><a href={restaurant.websiteUrl}>Website</a></p> : null}
           {restaurant?.email ? <p><a href={`mailto:${restaurant.email}`}>{restaurant.email}</a></p> : null}
           {restaurant?.address ? <address className={styles.restaurantAddress}><span>{restaurant.address.formatted}</span><a href={restaurant.address.directionsUrl} rel="noreferrer">Get directions</a></address> : null}
+          <RestaurantMap address={restaurant?.address ?? null} apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY} />
           {restaurant ? <section aria-labelledby="public-hours"><h2 id="public-hours">Hours</h2><dl className={styles.publicHours}>{restaurant.regularHours.map((day) => <div key={day.dayOfWeek}><dt>{days[day.dayOfWeek]}</dt><dd>{day.intervals.length === 0 ? "Closed" : day.intervals.map((period) => `${period.opensAt.slice(0, 5)}–${period.closesAt.slice(0, 5)}${period.closesNextDay ? " next day" : ""}`).join(", ")}</dd></div>)}</dl></section> : null}
           {restaurant ? <RestaurantSpecialHours restaurant={restaurant} className={styles.specialSection} headingId="public-special" /> : null}
           {restaurant && gallery.length > 0 ? <DesignGallery photos={gallery} classes={styles} headingId="legacy-gallery" restaurantName={restaurant.name} /> : null}
