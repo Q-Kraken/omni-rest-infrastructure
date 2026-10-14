@@ -39,6 +39,36 @@ const mutation: AdminMutation = { restaurant: initial, publication: initial.publ
 describe("RestaurantEditor", () => {
   beforeEach(() => { mocks.mutate.mockReset().mockResolvedValue(mutation); mocks.browserGet.mockReset(); });
 
+  it("requires and resets confirmation when regular overnight times change", async () => {
+    const user = userEvent.setup({ delay: null });
+    render(<RestaurantEditor initial={initial} initialMedia={[]} />);
+    const monday = screen.getByRole("group", { name: "Monday" });
+    fireEvent.change(within(monday).getByLabelText("Opens"), { target: { value: "18:00" } });
+    fireEvent.change(within(monday).getByLabelText("Closes"), { target: { value: "02:00" } });
+    await user.click(screen.getByRole("button", { name: "Save regular hours" }));
+    expect(mocks.mutate).not.toHaveBeenCalled();
+    await user.click(within(monday).getByLabelText("Closes next day"));
+    await user.click(screen.getByRole("button", { name: "Save regular hours" }));
+    expect(mocks.mutate).toHaveBeenCalledWith("/api/v1/admin/restaurant/regular-hours", "PUT", expect.any(Object), initial.eTag);
+    fireEvent.change(within(monday).getByLabelText("Closes"), { target: { value: "03:00" } });
+    expect(within(monday).getByLabelText("Closes next day")).not.toBeChecked();
+  });
+
+  it("requires confirmation before saving an overnight special period", async () => {
+    const user = userEvent.setup({ delay: null });
+    render(<RestaurantEditor initial={initial} initialMedia={[]} />);
+    fireEvent.change(screen.getByLabelText("Date"), { target: { value: "2026-12-31" } });
+    const section = screen.getByRole("heading", { name: "Special hours" }).parentElement!;
+    fireEvent.change(within(section).getByLabelText("Opens"), { target: { value: "18:00" } });
+    fireEvent.change(within(section).getByLabelText("Closes"), { target: { value: "02:00" } });
+    await user.click(screen.getByRole("button", { name: "Add special date" }));
+    expect(mocks.mutate).not.toHaveBeenCalled();
+    expect(screen.getByText(/Confirm Closes next day/)).toBeVisible();
+    await user.click(within(section).getByLabelText("Closes next day"));
+    await user.click(screen.getByRole("button", { name: "Add special date" }));
+    expect(mocks.mutate).toHaveBeenCalledWith("/api/v1/admin/special-hours", "POST", expect.objectContaining({ intervals: [{ opensAt: "18:00", closesAt: "02:00" }] }), initial.eTag);
+  });
+
   it("edits and saves each restaurant section while preserving accessible structure", async () => {
     const user = userEvent.setup({ delay: null });
     const { container } = render(<RestaurantEditor initial={initial} initialMedia={[initial.mainImage!]} />);
@@ -81,6 +111,7 @@ describe("RestaurantEditor", () => {
     setValue(within(specialSection).getByLabelText("Opens"), "20:00");
     setValue(within(specialSection).getByLabelText("Closes"), "01:00");
     setValue(within(specialSection).getByLabelText("Note"), "New Year");
+    await user.click(within(specialSection).getByLabelText("Closes next day"));
     await user.click(screen.getByRole("button", { name: "Add special date" }));
     expect(mocks.mutate).toHaveBeenCalledWith("/api/v1/admin/special-hours", "POST", expect.any(Object), '"draft-3"');
     await user.click(screen.getByRole("button", { name: "Delete special hours for 2026-12-25" }));

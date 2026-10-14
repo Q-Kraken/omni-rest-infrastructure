@@ -253,7 +253,7 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
 
   function changeInterval(day: number, index: number, key: "opensAt" | "closesAt", value: string) {
     setHours((current) => current.map((entry) => entry.dayOfWeek !== day ? entry : {
-      ...entry, intervals: entry.intervals.map((interval, position) => position === index ? { ...interval, [key]: value } : interval),
+      ...entry, intervals: entry.intervals.map((interval, position) => position === index ? { ...interval, [key]: value, closesNextDay: false } : interval),
     }));
     setDirty(true);
   }
@@ -278,7 +278,21 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
     }
   }
 
+  function overnightConfirmed(intervals: RegularHoursDay["intervals"]) {
+    if (intervals.some((interval) => interval.closesAt.slice(0, 5) < interval.opensAt.slice(0, 5) && !interval.closesNextDay)) {
+      setNotice("Confirm Closes next day for each overnight period before saving.");
+      return false;
+    }
+    return true;
+  }
+
+  function saveRegularHours() {
+    if (!overnightConfirmed(hours.flatMap((day) => day.intervals))) return;
+    void save("/api/v1/admin/restaurant/regular-hours", { days: hours.map((day) => ({ dayOfWeek: day.dayOfWeek, intervals: day.intervals.map(({ opensAt, closesAt }) => ({ opensAt, closesAt })) })) }, "Regular hours");
+  }
+
   async function saveSpecial() {
+    if (!special.isClosed && !overnightConfirmed(special.intervals)) return;
     const body = { date: special.date, isClosed: special.isClosed, note: special.note || null, intervals: special.isClosed ? [] : special.intervals.map(({ opensAt, closesAt }) => ({ opensAt, closesAt })) };
     const path = editingSpecialId ? `/api/v1/admin/special-hours/${editingSpecialId}` : "/api/v1/admin/special-hours";
     if (await save(path, body, "Special hours", editingSpecialId ? "PUT" : "POST")) {
@@ -360,11 +374,12 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
           {day.intervals.map((interval, index) => <div className={styles.intervalRow} key={index}>
             <label>Opens<input type="time" required value={interval.opensAt.slice(0, 5)} onChange={(e) => changeInterval(day.dayOfWeek, index, "opensAt", e.target.value)} /></label>
             <label>Closes<input type="time" required value={interval.closesAt.slice(0, 5)} onChange={(e) => changeInterval(day.dayOfWeek, index, "closesAt", e.target.value)} /></label>
+            {interval.closesAt.slice(0, 5) < interval.opensAt.slice(0, 5) ? <label><input type="checkbox" checked={interval.closesNextDay} onChange={(e) => { setHours(hours.map((entry) => entry.dayOfWeek !== day.dayOfWeek ? entry : { ...entry, intervals: entry.intervals.map((period, position) => position === index ? { ...period, closesNextDay: e.target.checked } : period) })); setDirty(true); }} />Closes next day</label> : null}
             <button type="button" aria-label={`Remove ${DAYS[day.dayOfWeek]} period ${index + 1}`} onClick={() => { setHours(hours.map((entry) => entry.dayOfWeek === day.dayOfWeek ? { ...entry, intervals: entry.intervals.filter((_, position) => position !== index) } : entry)); setDirty(true); }}>Remove</button>
           </div>)}
           <button type="button" onClick={() => { setHours(hours.map((entry) => entry.dayOfWeek === day.dayOfWeek ? { ...entry, intervals: [...entry.intervals, { opensAt: "09:00", closesAt: "17:00", closesNextDay: false }] } : entry)); setDirty(true); }}>Add period</button>
         </fieldset>)}</div>
-        <button className={styles.primaryButton} type="button" disabled={busy !== null} onClick={() => void save("/api/v1/admin/restaurant/regular-hours", { days: hours.map((day) => ({ dayOfWeek: day.dayOfWeek, intervals: day.intervals.map(({ opensAt, closesAt }) => ({ opensAt, closesAt })) })) }, "Regular hours")}>Save regular hours</button>
+        <button className={styles.primaryButton} type="button" disabled={busy !== null} onClick={saveRegularHours}>Save regular hours</button>
       </section>
 
       <section className={styles.editorSection} aria-labelledby="special-title">
@@ -382,7 +397,7 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
           <label>Date<input type="date" required {...fieldA11y("date")} value={special.date} onChange={(e) => { setSpecial({ ...special, date: e.target.value }); setDirty(true); }} />{errorFor("date")}</label>
           <label className={styles.checkLabel}><input type="checkbox" checked={special.isClosed} onChange={(e) => { setSpecial({ ...special, isClosed: e.target.checked }); setDirty(true); }} /> Closed all day</label>
           <div role="group" aria-label="Special-hour intervals" tabIndex={-1} {...fieldA11y("intervals")}>
-            {!special.isClosed && special.intervals.map((period, index) => <div className={styles.intervalRow} key={index}><label>Opens<input type="time" value={period.opensAt} onChange={(e) => { setSpecial({ ...special, intervals: special.intervals.map((item, position) => position === index ? { ...item, opensAt: e.target.value } : item) }); setDirty(true); }} /></label><label>Closes<input type="time" value={period.closesAt} onChange={(e) => { setSpecial({ ...special, intervals: special.intervals.map((item, position) => position === index ? { ...item, closesAt: e.target.value } : item) }); setDirty(true); }} /></label><button type="button" aria-label={`Remove special period ${index + 1}`} onClick={() => { setSpecial({ ...special, intervals: special.intervals.filter((_, position) => position !== index) }); setDirty(true); }}>Remove</button></div>)}
+            {!special.isClosed && special.intervals.map((period, index) => <div className={styles.intervalRow} key={index}><label>Opens<input type="time" value={period.opensAt} onChange={(e) => { setSpecial({ ...special, intervals: special.intervals.map((item, position) => position === index ? { ...item, opensAt: e.target.value, closesNextDay: false } : item) }); setDirty(true); }} /></label><label>Closes<input type="time" value={period.closesAt} onChange={(e) => { setSpecial({ ...special, intervals: special.intervals.map((item, position) => position === index ? { ...item, closesAt: e.target.value, closesNextDay: false } : item) }); setDirty(true); }} /></label>{period.closesAt < period.opensAt ? <label><input type="checkbox" checked={period.closesNextDay} onChange={(e) => { setSpecial({ ...special, intervals: special.intervals.map((item, position) => position === index ? { ...item, closesNextDay: e.target.checked } : item) }); setDirty(true); }} />Closes next day</label> : null}<button type="button" aria-label={`Remove special period ${index + 1}`} onClick={() => { setSpecial({ ...special, intervals: special.intervals.filter((_, position) => position !== index) }); setDirty(true); }}>Remove</button></div>)}
             {errorFor("intervals")}
           </div>
           <label>Note<input maxLength={200} {...fieldA11y("note")} value={special.note ?? ""} onChange={(e) => setSpecial({ ...special, note: e.target.value })} />{errorFor("note")}</label>

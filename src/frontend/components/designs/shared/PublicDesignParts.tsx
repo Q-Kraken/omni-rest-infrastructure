@@ -6,7 +6,7 @@ import { MenuLink } from "@/components/MenuLink";
 import { PhoneLink } from "@/components/phone/PhoneLink";
 import type { PublicRestaurant } from "@/lib/restaurant-contract";
 
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+import { BusinessHours, HourIntervals, prepareBusinessHours } from "@/components/restaurant/BusinessHours";
 
 export function DesignSkipLink({ className }: Readonly<{ className: string }>) {
   return <a className={className} href="#main-content">Skip to content</a>;
@@ -125,18 +125,12 @@ export function RestaurantHours({
   restaurant,
   className,
   headingId,
-}: Readonly<{ restaurant: PublicRestaurant; className: string; headingId: string }>) {
+  listClassName,
+}: Readonly<{ restaurant: PublicRestaurant; className: string; headingId: string; listClassName?: string }>) {
   return (
     <section className={className} aria-labelledby={headingId}>
       <h2 id={headingId}>Hours</h2>
-      <dl>
-        {restaurant.regularHours.map((day) => (
-          <div key={day.dayOfWeek}>
-            <dt>{days[day.dayOfWeek]}</dt>
-            <dd>{formatIntervals(day.intervals)}</dd>
-          </div>
-        ))}
-      </dl>
+      <BusinessHours model={prepareBusinessHours(restaurant.regularHours, restaurant.localDate)} className={listClassName} />
     </section>
   );
 }
@@ -155,7 +149,7 @@ export function RestaurantSpecialHours({
       <ul>
         {upcoming.map((day) => (
           <li key={day.date}>
-            <strong>{day.date}</strong>: {day.isClosed ? "Closed" : formatIntervals(day.intervals)}
+            <strong>{day.date}</strong>: {day.isClosed ? "Closed" : <HourIntervals intervals={day.intervals} />}
             {day.note ? ` — ${day.note}` : ""}
           </li>
         ))}
@@ -180,13 +174,6 @@ export function RestaurantSocialLinks({
 
 export function DesignFooter({ className, restaurantName }: Readonly<{ className: string; restaurantName: string }>) {
   return <footer className={className}><p>{restaurantName}</p></footer>;
-}
-
-function formatIntervals(intervals: PublicRestaurant["regularHours"][number]["intervals"]): string {
-  if (intervals.length === 0) return "Closed";
-  return intervals.map((period) =>
-    `${period.opensAt.slice(0, 5)}–${period.closesAt.slice(0, 5)}${period.closesNextDay ? " next day" : ""}`,
-  ).join(", ");
 }
 
 function humanize(value: string): string {
