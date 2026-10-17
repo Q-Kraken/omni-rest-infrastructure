@@ -7,7 +7,7 @@ public sealed record AdminAddressRequest(
     string? Line2,
     string City,
     string Region,
-    string PostalCode,
+    string? PostalCode,
     string CountryCode,
     decimal? Latitude,
     decimal? Longitude);
@@ -54,7 +54,7 @@ public sealed record AdminAddressResponse(
     string? Line2,
     string City,
     string Region,
-    string PostalCode,
+    string? PostalCode,
     string CountryCode,
     decimal? Latitude,
     decimal? Longitude);

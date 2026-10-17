@@ -90,6 +90,19 @@ public static class GuardedSampleDataSeeder
     private static void AddOrdinaryRestaurant(MenuDbContext dbContext, PublicMenuProjectionBuilder builder, PublicMenuSnapshotSerializer serializer)
     {
         var restaurant = NewRestaurant(OrdinaryRestaurantId, "Prairie Table", "menu.localhost", "en-CA", "CAD", "exclusive", "menu.tax.exclusive");
+        restaurant.Settings.TimeZoneId = "America/Winnipeg";
+        restaurant.Address = new RestaurantAddressEntity
+        {
+            RestaurantId = restaurant.Id,
+            Restaurant = restaurant,
+            Line1 = "1 Main Street",
+            City = "Winnipeg",
+            Region = "MB",
+            PostalCode = "R3C 0V8",
+            CountryCode = "CA",
+            Latitude = 49.8951m,
+            Longitude = -97.1384m
+        };
         var menu = NewMenu(restaurant, "All Day Menu");
         var slugs = new HashSet<string>(StringComparer.Ordinal);
         var starters = NewCategory(menu, "Starters", 0, slugs, "Small plates to begin.");

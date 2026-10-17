@@ -2,12 +2,18 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.example.test",
-      },
-    ],
+    // The hosts allowed to serve optimized media, configured rather than hardcoded so a deployment
+    // names its own CDN. Each entry must be an exact hostname: a wildcard here would let any
+    // subdomain an attacker controls be proxied through the optimizer under our origin.
+    remotePatterns: (process.env.OMNI_REST_MEDIA_HOSTS ?? "")
+      .split(",").map((host) => host.trim().toLowerCase()).filter(Boolean)
+      .map((hostname) => {
+        // Reject URL fragments, ports and wildcard patterns: the same exact-host contract as the API.
+        if (!/^(?=.{1,253}$)[a-z0-9]+(?:[.-][a-z0-9]+)*$/.test(hostname)) {
+          throw new Error("OMNI_REST_MEDIA_HOSTS must contain exact HTTPS hostnames.");
+        }
+        return { protocol: "https" as const, hostname };
+      }),
     // AVIF first, WebP second, original last. Both are negotiated from the `Accept` header, so a
     // browser that supports neither still gets the stored rendition.
     formats: ["image/avif", "image/webp"],

@@ -4,10 +4,9 @@ import { expect, test, type Page } from "@playwright/test";
 const OWNER_EMAIL = "real.owner@example.test";
 const OWNER_PASSWORD = "Real-Stack-Owner-9!Password";
 const OTHER_TENANT_MEDIA_ID = "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa";
-const VALID_PNG = Buffer.from(
-  "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
-  "base64",
-);
+const VALID_PNG = await (await import("sharp")).default({ create: {
+  width: 1200, height: 800, channels: 3, background: { r: 80, g: 120, b: 60 },
+} }).png().toBuffer();
 
 async function expectSaved(page: Page, label: string) {
   await expect(page.getByText(new RegExp(`${label} saved`))).toBeVisible();
@@ -20,7 +19,7 @@ async function expectNoSeriousAccessibilityViolations(page: Page) {
   expect(result.violations.filter(({ impact }) => impact === "serious" || impact === "critical")).toEqual([]);
 }
 
-test("real owner workflow persists and publishes every Phase 3 restaurant field", async ({ page }) => {
+test("real owner workflow persists and publishes every Phase 3 restaurant field", async ({ page }, testInfo) => {
   test.setTimeout(120_000);
 
   await page.goto("/admin/restaurant/preview?from=deep-link&section=hours");
@@ -57,6 +56,7 @@ test("real owner workflow persists and publishes every Phase 3 restaurant field"
   await monday.getByLabel("Closes").nth(0).fill("14:00");
   await monday.getByLabel("Opens").nth(1).fill("17:00");
   await monday.getByLabel("Closes").nth(1).fill("01:00");
+  await monday.getByLabel("Closes next day").check();
   await page.getByRole("button", { name: "Save regular hours" }).click();
   await expectSaved(page, "Regular hours");
 
@@ -146,6 +146,12 @@ test("real owner workflow persists and publishes every Phase 3 restaurant field"
   await expect(page.getByText(/2026-12-31.*10:00–14:00, 17:00–23:00.*New Year's Eve service/)).toBeVisible();
   await expect(page.getByRole("link", { name: "instagram" })).toHaveAttribute("href", "https://www.instagram.com/real_prairie");
   await expect(page.getByRole("img", { name: "Accessible real dining room" })).toBeVisible();
+  const hero = page.getByRole("img", { name: "Accessible real dining room" });
+  await expect.poll(() => hero.evaluate((image: HTMLImageElement) => image.naturalWidth >= image.clientWidth)).toBe(true);
+  await expect(page.locator('[aria-current="date"]')).toHaveCount(1);
+  await expect(page.locator("time[datetime]")).not.toHaveCount(0);
+  await page.screenshot({ path: testInfo.outputPath("public-home.png"), fullPage: true });
+
   await expectNoSeriousAccessibilityViolations(page);
 
   await page.goto("/admin/design");
@@ -174,7 +180,7 @@ test("real owner workflow persists and publishes every Phase 3 restaurant field"
   await page.getByRole("button", { name: "Sign Out" }).click();
   await expect(page).toHaveURL(/\/admin\/login$/);
   await page.goBack();
-  await expect(page).toHaveURL(/\/$/);
+  await expect(page).toHaveURL(/\/menu$/);
   await expect(page.getByRole("button", { name: "Sign Out" })).toHaveCount(0);
   await page.goto("/admin/restaurant");
   await expect(page).toHaveURL(/\/admin\/login/);

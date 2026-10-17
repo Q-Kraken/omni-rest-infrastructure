@@ -1,6 +1,6 @@
 # PR-2 — Restaurant Information Technical Specification
 
-**Status:** Proposed
+**Status:** Implemented with verification limits; see `implementation-evidence.md` and the task-level traceability matrix.
 
 **Depends on:** Phase 0, PR-1
 
@@ -88,7 +88,7 @@ Zero intervals for a weekday means closed. Multiple non-overlapping intervals su
 | --- | --- | --- |
 | `id` | `uuid` | Primary key. |
 | `restaurant_id` | `uuid` | Required foreign key. |
-| `platform` | `varchar(40)` | Instagram, Facebook, TikTok, or GoogleBusinessProfile. |
+| `platform` | `varchar(40)` | Instagram, Facebook, TikTok, GoogleBusinessProfile, X, YouTube, or LinkedIn. |
 | `url` | `varchar(2048)` | Required HTTPS URL matching the platform's allowed hosts. |
 | `display_order` | `smallint` | Required. |
 

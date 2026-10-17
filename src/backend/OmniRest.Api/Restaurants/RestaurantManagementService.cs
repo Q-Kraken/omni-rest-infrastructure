@@ -69,7 +69,7 @@ public sealed partial class RestaurantManagementService(
         restaurant.Name = request.Name.Trim();
         restaurant.Description = request.Description?.Trim();
         restaurant.PhoneE164 = request.PhoneE164;
-        restaurant.PhoneDisplay = request.PhoneDisplay?.Trim();
+        restaurant.PhoneDisplay = RestaurantValidation.FormatPhoneDisplay(request.PhoneE164, request.PhoneDisplay);
         restaurant.Email = request.Email?.Trim();
         restaurant.WebsiteUrl = string.IsNullOrWhiteSpace(request.WebsiteUrl) ? null : request.WebsiteUrl.Trim();
         restaurant.RestaurantType = string.IsNullOrEmpty(request.RestaurantType) ? null : request.RestaurantType;
@@ -264,6 +264,11 @@ public sealed partial class RestaurantManagementService(
         if (media.ProcessingStatus != "ready" || media.Variants.Count == 0)
         {
             return new ManagementFailure(409, "media_not_ready", "The selected image is not ready for publication");
+        }
+        if (auditActionPrefix == "restaurant.main_image" && media.Variants.Max(item => item.Width) < RestaurantValidation.MinimumMainImageWidth)
+        {
+            return new ManagementFailure(400, "admin_validation", "Main image is too small",
+                Errors: new Dictionary<string, string[]> { ["mediaAssetId"] = ["main_image_too_small"] });
         }
         assign(restaurant, media);
         return null;
@@ -628,20 +633,21 @@ public sealed partial class RestaurantManagementService(
     private static void ApplyAddress(RestaurantAddressEntity target, AdminAddressRequest source)
     {
         target.Line1 = source.Line1.Trim(); target.Line2 = source.Line2?.Trim(); target.City = source.City.Trim();
-        target.Region = source.Region.Trim(); target.PostalCode = source.PostalCode.Trim();
+        target.Region = source.Region.Trim(); target.PostalCode = string.IsNullOrWhiteSpace(source.PostalCode) ? null : source.PostalCode.Trim().Trim();
         target.CountryCode = source.CountryCode; target.Latitude = source.Latitude; target.Longitude = source.Longitude;
         target.ConcurrencyVersion++;
     }
 
-    private static SpecialHourEntity CreateSpecial(RestaurantEntity restaurant, Guid id, AdminSpecialHoursRequest request)
+    private SpecialHourEntity CreateSpecial(RestaurantEntity restaurant, Guid id, AdminSpecialHoursRequest request)
     {
-        var special = new SpecialHourEntity { Id = id, RestaurantId = restaurant.Id, Restaurant = restaurant };
+        var special = new SpecialHourEntity { Id = id, RestaurantId = restaurant.Id, Restaurant = restaurant, CreatedAt = timeProvider.GetUtcNow() };
         ApplySpecial(special, request);
         return special;
     }
 
-    private static void ApplySpecial(SpecialHourEntity special, AdminSpecialHoursRequest request)
+    private void ApplySpecial(SpecialHourEntity special, AdminSpecialHoursRequest request)
     {
+        special.UpdatedAt = timeProvider.GetUtcNow();
         special.Date = ParseDate(request.Date); special.IsClosed = request.IsClosed; special.Note = request.Note?.Trim();
         special.ConcurrencyVersion++;
         var order = 0;

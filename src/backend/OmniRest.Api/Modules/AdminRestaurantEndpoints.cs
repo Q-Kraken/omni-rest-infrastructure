@@ -232,7 +232,7 @@ internal static class AdminRestaurantEndpoints
         if (access is null) return TypedResults.Forbid();
         if (!request.HasFormContentType) return ApiProblems.Validation(new Dictionary<string, string[]> { ["file"] = ["media_form_required"] });
         var form = await request.ReadFormAsync(cancellationToken);
-        var result = await mediaService.UploadAsync(access, form["altText"].FirstOrDefault(), form.Files.GetFile("file"), cancellationToken);
+        var result = await mediaService.UploadAsync(access, form["altText"].FirstOrDefault(), form.Files.GetFile("file"), cancellationToken, form["purpose"].FirstOrDefault());
         if (result.Value is not null) return TypedResults.Created($"/api/v1/admin/media-assets/{result.Value.Id}", result.Value);
         return result.Failure?.Errors is not null
             ? ApiProblems.Validation(result.Failure.Errors)

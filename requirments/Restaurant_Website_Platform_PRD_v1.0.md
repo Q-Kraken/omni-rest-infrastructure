@@ -139,6 +139,9 @@ Supported platforms:
 - Facebook
 - TikTok
 - Google Business Profile
+- X (Twitter)
+- YouTube
+- LinkedIn
 
 After saving, changes are published automatically.
 

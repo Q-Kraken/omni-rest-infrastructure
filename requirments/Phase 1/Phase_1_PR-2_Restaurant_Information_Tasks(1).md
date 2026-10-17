@@ -118,7 +118,7 @@ Add support for storing restaurant social media links.
 
 ### Requirements
 
-Supported platforms: - Facebook - Instagram - TikTok - X (Twitter) -
+Supported platforms: - Facebook - Instagram - TikTok - Google Business Profile - X (Twitter) -
 YouTube - LinkedIn
 
 All fields are optional.
@@ -160,7 +160,7 @@ Implement validation for restaurant information.
 
 Validate: - Phone format - Email format - Website URL - Social media
 URLs - Latitude (-90 to 90) - Longitude (-180 to 180) -
-`openTime < closeTime`
+Opening and closing times must differ. An earlier closing time denotes overnight service and requires the owner to confirm “Closes next day” in the editor.
 
 ### Acceptance Criteria
 

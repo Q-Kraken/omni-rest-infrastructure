@@ -5,6 +5,29 @@ namespace OmniRest.Api.Tests.Unit;
 public sealed class RestaurantValidationTests
 {
     [Fact]
+    public void MissingPhoneDisplayIsDerivedWhileDisplayWithoutNumberIsInvalid()
+    {
+        Assert.Empty(RestaurantValidation.ValidateProfile(ValidProfile() with { PhoneDisplay = null }));
+        Assert.Equal("(204) 555-0123", RestaurantValidation.FormatPhoneDisplay("+12045550123", "  "));
+        Assert.Equal("Custom number", RestaurantValidation.FormatPhoneDisplay("+12045550123", " Custom number "));
+        Assert.Null(RestaurantValidation.FormatPhoneDisplay(null, null));
+        Assert.Contains("phoneDisplay", RestaurantValidation.ValidateProfile(ValidProfile() with { PhoneE164 = null }).Keys);
+    }
+
+    [Theory]
+    [InlineData(null, true)]
+    [InlineData("https://restaurant.example/menu", true)]
+    [InlineData("http://restaurant.example", false)]
+    [InlineData("https://owner:password@restaurant.example", false)]
+    [InlineData("javascript:alert(1)", false)]
+    public void WebsiteIsOptionalHttpsAndPostalCodeIsOptional(string? website, bool valid)
+    {
+        var request = ValidProfile();
+        var errors = RestaurantValidation.ValidateProfile(request with { WebsiteUrl = website, Address = request.Address with { PostalCode = null } });
+        Assert.Equal(valid, errors.Count == 0);
+    }
+
+    [Fact]
     public void ProfileValidationAcceptsE164AndPairedCoordinates()
     {
         var request = ValidProfile();

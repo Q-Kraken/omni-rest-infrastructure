@@ -109,11 +109,14 @@ export async function uploadGalleryPhoto<T>(
   return await response.json() as T;
 }
 
-export async function uploadMedia<T>(file: File, altText: string): Promise<T> {
+export async function uploadMedia<T>(file: File, altText: string, purpose?: "main"): Promise<T> {
   const token = await antiforgeryToken();
   const body = new FormData();
   body.set("file", file);
   body.set("altText", altText);
+  // A hero upload is declared at upload time so the API can reject an image too small to publish
+  // full-bleed, rather than accepting it and failing later when the owner selects it.
+  if (purpose) body.set("purpose", purpose);
   const response = await send(
     "/api/v1/admin/media-assets",
     { method: "POST", headers: { "X-CSRF-TOKEN": token }, body },

@@ -1,3 +1,5 @@
+import { Hero } from "@/components/restaurant/Hero";
+import { About } from "@/components/restaurant/About";
 import { message } from "@/lib/menu-messages";
 import type { WebsiteDesignHomeProps } from "../design-contract";
 import { DesignGallery } from "../shared/DesignGallery";
@@ -30,7 +32,7 @@ export default function NightfallHome({ restaurant }: WebsiteDesignHomeProps) {
         </nav>
       </header>
       <main className={styles.homeMain} id="main-content">
-        <section className={styles.hero} aria-labelledby="nightfall-title">
+        <Hero className={styles.hero} headingId="nightfall-title">
           <RestaurantHeroImage
             restaurant={restaurant}
             className={styles.heroImage}
@@ -39,9 +41,7 @@ export default function NightfallHome({ restaurant }: WebsiteDesignHomeProps) {
           <div className={styles.heroCopy}>
             <p className={styles.eyebrow}>After dark</p>
             <h1 id="nightfall-title">{name}</h1>
-            {restaurant?.shortDescription ? (
-              <p className={styles.intro}>{restaurant.shortDescription}</p>
-            ) : null}
+            <About description={restaurant?.shortDescription} className={styles.intro} />
             {restaurant ? <p className={styles.status}>{restaurant.status.label}</p> : null}
             <RestaurantActions
               restaurant={restaurant}
@@ -50,7 +50,7 @@ export default function NightfallHome({ restaurant }: WebsiteDesignHomeProps) {
               actionClassName={styles.secondaryAction}
             />
           </div>
-        </section>
+        </Hero>
         {restaurant ? (
           <>
             <div className={styles.detailsGrid}>

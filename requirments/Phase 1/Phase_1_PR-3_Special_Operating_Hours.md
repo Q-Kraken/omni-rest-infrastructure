@@ -56,7 +56,7 @@ Validation:
 
 - Date is required.
 - Date must be valid.
-- Opening time must be earlier than closing time.
+- Opening and closing times must differ; an earlier closing time denotes overnight service, confirmed by the owner.
 - Closed days do not require times.
 
 ### Acceptance Criteria
@@ -163,7 +163,7 @@ Validate:
 
 - One record per restaurant per date.
 - Valid calendar dates.
-- Opening time before closing time.
+- Opening and closing times must differ. Overnight service requires an explicit “Closes next day” confirmation.
 - Closed days cannot contain business hours.
 - Open days must include both opening and closing times.
 

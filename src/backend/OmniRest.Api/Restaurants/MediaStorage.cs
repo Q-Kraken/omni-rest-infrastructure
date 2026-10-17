@@ -542,7 +542,7 @@ public sealed class MediaValidationException(string code) : Exception(code)
 public interface IMediaAssetService
 {
     Task<IReadOnlyList<AdminMediaAssetResponse>> ListReadyAsync(OwnerRestaurantAccess access, CancellationToken cancellationToken);
-    Task<ManagementResult<AdminMediaAssetResponse>> UploadAsync(OwnerRestaurantAccess access, string? altText, IFormFile? file, CancellationToken cancellationToken);
+    Task<ManagementResult<AdminMediaAssetResponse>> UploadAsync(OwnerRestaurantAccess access, string? altText, IFormFile? file, CancellationToken cancellationToken, string? purpose = null);
 }
 
 public sealed class MediaAssetService(
@@ -567,7 +567,8 @@ public sealed class MediaAssetService(
         OwnerRestaurantAccess access,
         string? altText,
         IFormFile? file,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        string? purpose = null)
     {
         var errors = RestaurantValidation.ValidateAltText(altText);
         if (file is null) errors = errors.Concat(new[] { new KeyValuePair<string, string[]>("file", ["field_required"]) }).ToDictionary();
@@ -581,6 +582,13 @@ public sealed class MediaAssetService(
         catch (MediaValidationException exception)
         {
             return ManagementResult<AdminMediaAssetResponse>.Failed(new ManagementFailure(400, "admin_validation", "Media upload is invalid", Errors: new Dictionary<string, string[]> { ["file"] = [exception.Code] }));
+        }
+        // An image destined for a hero slot is rejected at upload rather than at selection, so the owner
+        // learns the file is too small before it becomes an asset they have to hunt down and delete.
+        if (purpose == "main" && image.Width < RestaurantValidation.MinimumMainImageWidth)
+        {
+            return ManagementResult<AdminMediaAssetResponse>.Failed(new ManagementFailure(400, "admin_validation", "Main image is too small",
+                Errors: new Dictionary<string, string[]> { ["file"] = ["main_image_too_small"] }));
         }
         var id = Guid.NewGuid();
 

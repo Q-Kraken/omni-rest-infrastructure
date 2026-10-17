@@ -5,7 +5,9 @@ repo: BrzValentin/omni-rest-infrastructure
 branch: feature/requirements-changes
 head: 00b7be7
 audited: 2026-08-19
-open_defects: 29
+open_defects: 2
+open_work_orders: 1
+remediation_reviewed: 2026-10-13
 tags: [agent-task, remediation, omni-rest]
 ---
 
@@ -13,12 +15,20 @@ tags: [agent-task, remediation, omni-rest]
 
 You are fixing defects found in an audit of Phase 1–3 of this repository. Each **work order (WO)** below is self-contained: it names the exact files, the current behaviour, the required behaviour, and a machine-checkable "Done when".
 
+## Current remediation status (2026-10-13)
+
+Latest main `7ecd51d` was fetched into the restored configured workspace. Fixes are on `fix/bug-folder`. WO-07/08 decisions were approved by the owner. The owner explicitly left WO-06 open because the original PR-9 Tasks 3–14 are unavailable.
+
+All actionable code work orders are implemented and tested; details and limits are in [REMEDIATION-EVIDENCE.md](REMEDIATION-EVIDENCE.md) and [PHASE-1-TRACEABILITY.md](PHASE-1-TRACEABILITY.md). WO-11's configured iframe and missing-key/coordinate fallbacks pass tests; a live Google marker cannot be checked without a deployment-restricted key. Actual browser applications/physical phone devices remain manual verification, separate from the passing Chromium/Firefox/WebKit engine matrix.
+
+WO-20's deferral is historical: Phase 4 now supplies dish/category management and availability controls with persistence tests. BUG-017 and BUG-020 remain intentionally unchanged as instructed. Older work-order descriptions below preserve the audit's original findings and may refer to removed paths or earlier behavior. The execution checklist represents the current review.
+
 ## Rules
 
 1. **One WO per commit.** Commit message: `fix(<area>): <WO-id> <short title>`.
 2. **Do not start a WO whose `blocked_by` is unresolved.** The dependency graph is in §Execution order.
 3. **Never mark a WO done without running its verification command.** If you cannot run it, say so explicitly and leave the WO open.
-4. **Three WOs are decisions, not code** (WO-03, WO-04, WO-05). Do not implement them. Produce the written artefact and stop for human approval.
+4. **Three WOs are decisions, not code** (WO-06, WO-07, WO-08). Do not implement them. Produce the written artefact and stop for human approval.
 5. **Do not "fix" anything not listed here.** If you find a new defect, append it to §Newly discovered and continue.
 6. Backend targets .NET 10 (`global.json` pins SDK `10.0.302`, `rollForward: disable`). Frontend targets Node `26.5.0` / npm `11.17.0`. Do not bump versions.
 7. **Path warning:** `start-app.ps1` runs a **WSL-internal copy** at `$HOME/projects/omni-rest-infrastructure`. The canonical source is `C:\Work\Projects\Winnipeg restorans website\omni-rest-infrastructure`. Confirm which tree you are editing and keep them in sync, or every runtime check will be misleading.
@@ -705,23 +715,23 @@ DEFERRED
 [x] WO-01  High    seeded dish images 404
 [x] WO-02  Medium  hero image priority
 [x] WO-03  Medium  status next-day look-ahead
-[ ] WO-04  Medium  stale special hours
-[ ] WO-05  High    SEO metadata
+[x] WO-04  Medium  stale special hours
+[x] WO-05  High    SEO metadata
 [ ] WO-06  Medium  PR-9 requirements truncated      (decision)
-[ ] WO-07  Medium  3 requirement contradictions     (decision)
-[ ] WO-08  CRIT    Phase 1 never delivered          (decision)
-[ ] WO-09  High    website_url + special timestamps (migration)
-[ ] WO-10  Low     coordinates never captured
-[ ] WO-11  High    Google Maps integration
-[ ] WO-12  High    current-day highlight + <time>
-[ ] WO-13  High    Hero / About / CTA
-[ ] WO-14  Medium  image variants
-[ ] WO-15  Medium  phone formatting
-[ ] WO-16  High    evidence doc + LogoutButton test
-[ ] WO-17  Medium  .gitattributes normalization
-[ ] WO-18  Low     Problem Details on 401/403
-[ ] WO-19  Low     directions target, postalCode, image hosts
-[~] WO-20  Medium  dish availability — DEFERRED to Phase 4
+[x] WO-07  Medium  3 requirement contradictions     (decision)
+[x] WO-08  CRIT    Phase 1 never delivered          (decision)
+[x] WO-09  High    website_url + special timestamps (migration)
+[x] WO-10  Low     coordinates never captured
+[x] WO-11  High    Google Maps integration
+[x] WO-12  High    current-day highlight + <time>
+[x] WO-13  High    Hero / About / CTA
+[x] WO-14  Medium  image variants
+[x] WO-15  Medium  phone formatting
+[x] WO-16  High    evidence doc + LogoutButton test
+[x] WO-17  Medium  .gitattributes normalization
+[x] WO-18  Low     Problem Details on 401/403
+[x] WO-19  Low     directions target, postalCode, image hosts
+[x] WO-20  Medium  dish availability — delivered by Phase 4 on current main
 ```
 
 ---
@@ -732,8 +742,8 @@ Two audit items could not be checked. Resolve them before claiming Phase 1–3 i
 
 | ID | What | Why it is open |
 |---|---|---|
-| VER-02 | `dotnet test` + `npm test` / `test:e2e` / `test:e2e:real` on current HEAD | Never executed during the audit (no .NET SDK, npm registry returned 403). **Several WOs above assume the existing suites are green — confirm that first.** |
-| VER-03 | Responsive rendering at 320 / 768 / 1440 px across Chrome, Edge, Safari, Firefox | Browser viewport resizing was ignored during the audit (`innerWidth` stayed 2174 px). Only desktop width was checked: no horizontal overflow. Use the Playwright projects `chromium-minimum` (320×568) and `chromium-tablet` (768×1024), which already exist in `playwright.config.ts`. |
+| VER-02 (verified 2026-10-13; see remediation evidence) | `dotnet test` + `npm test` / `test:e2e` / `test:e2e:real` on current HEAD | Never executed during the audit (no .NET SDK, npm registry returned 403). **Several WOs above assume the existing suites are green — confirm that first.** |
+| VER-03 (automated engine/viewport coverage verified; actual vendor apps manual) | Responsive rendering at 320 / 768 / 1440 px across Chrome, Edge, Safari, Firefox | Browser viewport resizing was ignored during the audit (`innerWidth` stayed 2174 px). Only desktop width was checked: no horizontal overflow. Use the Playwright projects `chromium-minimum` (320×568) and `chromium-tablet` (768×1024), which already exist in `playwright.config.ts`. |
 
 Related open finding, unchanged: **BUG-018** — only two layout media queries exist (`menu.module.css` `max-width: 35rem`, `admin.module.css` `max-width: 48rem`) against a documented three-breakpoint strategy (320–767 / 768–1023 / 1024+), with **no 1024 px rule at all**. Layouts are fluid, which mitigates it, but "responsive behavior is defined for each breakpoint" is not demonstrable. Address it while doing VER-03.
 
@@ -745,4 +755,7 @@ Related open finding, unchanged: **BUG-018** — only two layout media queries e
 
 | ID | Severity | Description | Found during |
 |---|---|---|---|
-| | | | |
+| BUG-030 | Medium | General browser config also ran design journeys against the wrong host fixture. Fixed by routing design specs through the existing dedicated admin-host configuration. | VER-02 / WO-13 |
+| BUG-031 | Medium | Performance selector still expected pre-Phase-6 hash hrefs; updated to the published category URL and required hydration before measuring the client switch. | VER-02 / responsive performance |
+| BUG-032 | Low | Real owner test expected logout Back to return home although the previous public page was `/menu`; corrected the exact history assertion. | WO-16 / real owner verification |
+| DEP-001 | High | Existing pinned ImageSharp 3.1.12 and transitive SSH.NET 2025.1.0 have NuGet vulnerability advisories. Recorded; no package changes under this remediation's version constraint. | Backend restore |

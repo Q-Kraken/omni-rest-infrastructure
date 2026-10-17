@@ -1,6 +1,6 @@
 # Phase 1 — Technical Specification
 
-**Status:** Proposed
+**Status:** Implemented with verification limits; see `implementation-evidence.md` and the task-level traceability matrix.
 
 **Version:** 0.1
 
@@ -32,7 +32,7 @@ The source documents contain overlaps and sequencing conflicts. Phase 1 uses the
 5. PR-3 owner CRUD endpoints and owner UI are specified for traceability but deferred until the Phase 3 authentication and management foundation exists.
 6. PR-4 applies its verification to Phase 1 pages and components. It establishes standards inherited by later phases but does not create unused forms, tables, or dialogs.
 7. PR-1 uses a typed server-side fixture through an abstraction. PR-2 replaces that source with the public restaurant API without rewriting presentation components.
-8. The Phase 1 social-platform set follows the PRD: Instagram, Facebook, TikTok, and Google Business Profile. Adding other platforms requires a product update but not a schema redesign.
+8. The approved social-platform set includes Instagram, Facebook, TikTok, Google Business Profile, X, YouTube, and LinkedIn. Phase 6 added the final three, and the owner approved reconciliation of the older requirements on 2026-10-13 (see `bugs/DECISIONS.md`).
 
 ## 3. Phase 0 prerequisites
 

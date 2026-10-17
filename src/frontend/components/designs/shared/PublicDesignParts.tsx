@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { CtaGroup } from "@/components/restaurant/CtaGroup";
+import { RestaurantMap } from "@/components/restaurant/RestaurantMap";
 import Link from "next/link";
 
 import { MenuLink } from "@/components/MenuLink";
@@ -6,7 +8,7 @@ import { PhoneLink } from "@/components/phone/PhoneLink";
 import { brandLogoVariant } from "@/lib/brand";
 import type { PublicImage, PublicRestaurant } from "@/lib/restaurant-contract";
 
-const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+import { BusinessHours, HourIntervals, prepareBusinessHours } from "@/components/restaurant/BusinessHours";
 
 export function DesignSkipLink({ className }: Readonly<{ className: string }>) {
   return <a className={className} href="#main-content">Skip to content</a>;
@@ -86,7 +88,7 @@ export function RestaurantActions({
   actionClassName: string;
 }>) {
   return (
-    <div className={className}>
+    <CtaGroup className={className}>
       <MenuLink className={menuClassName}>Browse the menu</MenuLink>
       {restaurant?.phone ? (
         <PhoneLink
@@ -98,9 +100,9 @@ export function RestaurantActions({
         </PhoneLink>
       ) : null}
       {restaurant?.address ? (
-        <a className={actionClassName} href={restaurant.address.directionsUrl} rel="noreferrer">Directions</a>
+        <a className={actionClassName} href={restaurant.address.directionsUrl} target="_blank" rel="noreferrer noopener">Directions</a>
       ) : null}
-    </div>
+    </CtaGroup>
   );
 }
 
@@ -126,7 +128,7 @@ export function MenuRestaurantActions({
         </PhoneLink>
       ) : null}
       {restaurant.address ? (
-        <a className={actionClassName} href={restaurant.address.directionsUrl} rel="noreferrer">Directions</a>
+        <a className={actionClassName} href={restaurant.address.directionsUrl} target="_blank" rel="noreferrer noopener">Directions</a>
       ) : null}
     </nav>
   );
@@ -143,11 +145,13 @@ export function RestaurantContact({
   linkClassName: string;
   headingId: string;
 }>) {
-  if (!restaurant.address && !restaurant.email) return null;
+  if (!restaurant.address && !restaurant.email && !restaurant.websiteUrl) return null;
   return (
     <section className={className} aria-labelledby={headingId}>
       <h2 id={headingId}>Visit</h2>
       {restaurant.address ? <address>{restaurant.address.formatted}</address> : null}
+      {restaurant.websiteUrl ? <a className={linkClassName} href={restaurant.websiteUrl}>Website</a> : null}
+      <RestaurantMap address={restaurant.address} apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY} />
       {restaurant.email ? <a className={linkClassName} href={`mailto:${restaurant.email}`}>{restaurant.email}</a> : null}
     </section>
   );
@@ -157,18 +161,12 @@ export function RestaurantHours({
   restaurant,
   className,
   headingId,
-}: Readonly<{ restaurant: PublicRestaurant; className: string; headingId: string }>) {
+  listClassName,
+}: Readonly<{ restaurant: PublicRestaurant; className: string; headingId: string; listClassName?: string }>) {
   return (
     <section className={className} aria-labelledby={headingId}>
       <h2 id={headingId}>Hours</h2>
-      <dl>
-        {restaurant.regularHours.map((day) => (
-          <div key={day.dayOfWeek}>
-            <dt>{days[day.dayOfWeek]}</dt>
-            <dd>{formatIntervals(day.intervals)}</dd>
-          </div>
-        ))}
-      </dl>
+      <BusinessHours model={prepareBusinessHours(restaurant.regularHours, restaurant.localDate)} className={listClassName} />
     </section>
   );
 }
@@ -178,14 +176,16 @@ export function RestaurantSpecialHours({
   className,
   headingId,
 }: Readonly<{ restaurant: PublicRestaurant; className: string; headingId: string }>) {
-  if (restaurant.specialHours.length === 0) return null;
+  const today = restaurant.localDate ?? new Intl.DateTimeFormat("en-CA", { timeZone: restaurant.timeZone, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+  const upcoming = restaurant.specialHours.filter((day) => day.date >= today);
+  if (upcoming.length === 0) return null;
   return (
     <section className={className} aria-labelledby={headingId}>
       <h2 id={headingId}>Special hours</h2>
       <ul>
-        {restaurant.specialHours.map((day) => (
+        {upcoming.map((day) => (
           <li key={day.date}>
-            <strong>{day.date}</strong>: {day.isClosed ? "Closed" : formatIntervals(day.intervals)}
+            <strong>{day.date}</strong>: {day.isClosed ? "Closed" : <HourIntervals intervals={day.intervals} />}
             {day.note ? ` — ${day.note}` : ""}
           </li>
         ))}
@@ -210,13 +210,6 @@ export function RestaurantSocialLinks({
 
 export function DesignFooter({ className, restaurantName }: Readonly<{ className: string; restaurantName: string }>) {
   return <footer className={className}><p>{restaurantName}</p></footer>;
-}
-
-function formatIntervals(intervals: PublicRestaurant["regularHours"][number]["intervals"]): string {
-  if (intervals.length === 0) return "Closed";
-  return intervals.map((period) =>
-    `${period.opensAt.slice(0, 5)}–${period.closesAt.slice(0, 5)}${period.closesNextDay ? " next day" : ""}`,
-  ).join(", ");
 }
 
 function humanize(value: string): string {

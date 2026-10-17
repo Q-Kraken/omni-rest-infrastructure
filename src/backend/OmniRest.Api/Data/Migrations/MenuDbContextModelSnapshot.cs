@@ -968,7 +968,6 @@ namespace OmniRest.Api.Data.Migrations
                         .HasColumnName("longitude");
 
                     b.Property<string>("PostalCode")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)")
                         .HasColumnName("postal_code");
@@ -1314,6 +1313,10 @@ namespace OmniRest.Api.Data.Migrations
                         .HasDefaultValue(1L)
                         .HasColumnName("concurrency_version");
 
+                    b.Property<DateTimeOffset>("CreatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at");
+
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date")
                         .HasColumnName("date");
@@ -1330,6 +1333,10 @@ namespace OmniRest.Api.Data.Migrations
                     b.Property<Guid>("RestaurantId")
                         .HasColumnType("uuid")
                         .HasColumnName("restaurant_id");
+
+                    b.Property<DateTimeOffset>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("updated_at");
 
                     b.HasKey("Id");
 

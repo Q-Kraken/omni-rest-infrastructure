@@ -36,7 +36,17 @@ export class PublicRestaurantApiError extends Error {
  */
 export const readRestaurant = cache(async (): Promise<PublicRestaurant | null> => {
   const result = await getPublicRestaurant().catch(() => ({ status: 503, data: null }));
-  if (result.data) return result.data;
+  if (result.data) {
+    // `localDate` is what expires a special-hour notice at the restaurant's own midnight rather than
+    // the viewer's. A payload published before the field existed has none, so derive it here from the
+    // restaurant's time zone instead of letting the components fall back to the viewer's locale.
+    return {
+      ...result.data,
+      localDate: result.data.localDate ?? new Intl.DateTimeFormat("en-CA", {
+        timeZone: result.data.timeZone, year: "numeric", month: "2-digit", day: "2-digit",
+      }).format(new Date()),
+    };
+  }
   if (result.status === 404) return null;
   throw new PublicRestaurantApiError(result.status);
 });

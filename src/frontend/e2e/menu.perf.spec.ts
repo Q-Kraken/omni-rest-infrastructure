@@ -26,6 +26,8 @@ test("@perf renders and switches the 30 category by 1000 dish fixture", async ({
   await expect(page.getByRole("link", { name: /^Category \d+$/ })).toHaveCount(30);
   await expect(page.getByRole("heading", { level: 3, includeHidden: true })).toHaveCount(1_000);
 
+  await expect.poll(() => page.locator("[data-enhanced]").getAttribute("data-enhanced")).toBe("true");
+
   const categorySwitchMilliseconds = await page.evaluate(async () => {
     // The category nav links to the real `/menu/<slug>` page so a crawler can discover every
     // category (PR-19 Task 6); the click handler switches panels in place and pushes the `#slug`

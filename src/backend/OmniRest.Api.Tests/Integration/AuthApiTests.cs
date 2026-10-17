@@ -61,6 +61,8 @@ public sealed class AuthApiTests(PostgresFixture postgres)
         Assert.Equal(HttpStatusCode.NoContent, logout.StatusCode);
         using var afterLogout = await client.GetAsync("/api/v1/auth/session");
         Assert.Equal(HttpStatusCode.Unauthorized, afterLogout.StatusCode);
+        Assert.Equal("application/problem+json", afterLogout.Content.Headers.ContentType?.MediaType);
+        Assert.Contains("auth_required", await afterLogout.Content.ReadAsStringAsync(), StringComparison.Ordinal);
     }
 
     [Fact]

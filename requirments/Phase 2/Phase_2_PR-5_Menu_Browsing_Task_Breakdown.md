@@ -73,7 +73,7 @@ Create backend API for menu retrieval.
 - Return badges
 - Return image URL
 - Return pricing information
-- Return only available menu items
+- Return only active, unarchived menu items. Keep unavailable active dishes visible with an explicit availability indicator, as PR-7 requires.
 - Support sorting
 
 ### Acceptance Criteria

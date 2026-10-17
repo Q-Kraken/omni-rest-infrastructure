@@ -1,6 +1,6 @@
 # Phase 3 Frontend Implementation Evidence
 
-**Implementation base:** `46db811`
+**Implementation base:** `7ecd51d` (main); remediation refreshed on 2026-10-13.
 
 **Scope:** `src/frontend/**` and frontend-specific Phase 3 documentation. No Phase 4 menu-management UI or deployment action is included.
 
@@ -31,12 +31,12 @@ The final local results were:
 
 - ESLint: passed with zero warnings.
 - TypeScript: passed with no errors.
-- Vitest: 62 tests passed across 14 files.
-- V8 coverage: 84.40% statements, 77.27% branches, 83.59% functions, and 89.12% lines; all configured thresholds passed.
+- Vitest: 234 tests passed across 30 files on the remediation tree. The logout cases now live in `LogoutButton.test.tsx`, including failed-logout recovery and router refresh.
+- V8 coverage: 81.07% statements, 75.62% branches, 81.83% functions, and 84.21% lines; all configured thresholds passed.
 - Next.js production build: passed.
-- Playwright: 11 tests passed; 24 project-specific skips were intentional. The existing public menu matrix ran against the seeded PostgreSQL backend. Phase 3 owner authentication/editing used the deterministic test proxy, while the public telephone test verified server HTML with JavaScript disabled.
+- Playwright: 24 tests passed; 76 project-specific skips were intentional. The separate design suite passed 8 scenarios, including 320, 375, 768 and 1440 px. The existing public menu matrix ran against the seeded PostgreSQL backend. Phase 3 owner authentication/editing used the deterministic test proxy, while the public telephone test verified server HTML with JavaScript disabled.
 - Real-stack Playwright: 1 comprehensive scenario passed against a fresh ephemeral PostgreSQL 18 database, applied EF migration, guarded seed, controlled owner provisioning, real Kestrel API, and real Next production server. It verifies deep-link login return, all supported fields, an actual-row destructive-dialog keyboard flow and background isolation, actual image upload, cross-tenant denial, draft/public exact values, accessibility, logout, back navigation, and protected refresh.
-- Dependency audit: `npm audit --audit-level=high` reported 0 vulnerabilities.
+- Historical frontend dependency audit reported 0 vulnerabilities. This remediation did not rerun that audit. Backend restore reports existing ImageSharp and SSH.NET vulnerability advisories; they are recorded in `bugs/REMEDIATION-EVIDENCE.md`, and package/runtime pins remain unchanged.
 
 ## Manual verification
 

@@ -71,6 +71,7 @@ test.describe("@seo", () => {
     for (const path of ["/", "/menu", "/menu/starters"]) {
       await page.goto(`${origin}${path}`);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `${origin}${path}`);
+      await expect(page.locator('meta[property="og:title"]')).toHaveCount(1);
       const robots = await page.locator('meta[name="robots"]').getAttribute("content");
       expect(robots, `${path} must be indexable`).toContain("index");
       expect(robots, `${path} must not be noindex`).not.toContain("noindex");
@@ -167,12 +168,15 @@ test.describe("@seo", () => {
     expect(schema.hasMenu).toBe(`${origin}/menu`);
     expect(schema.menu).toBe(`${origin}/menu`);
 
-    // The seeded tenant has no address, phone, description, or social links. Those properties must
+    // The seeded tenant has no phone, description, or social links. Those properties must
     // therefore be *absent* rather than present and empty — this is the no-empty-property rule
     // observed against real data, which is stronger evidence than a fully populated fixture.
-    for (const absent of ["address", "telephone", "email", "description", "geo", "sameAs"]) {
+    for (const absent of ["telephone", "email", "description", "sameAs"]) {
       expect(schema, `${absent} must be omitted when unset`).not.toHaveProperty(absent);
     }
+
+    expect(schema.address).toMatchObject({ streetAddress: "1 Main Street", addressLocality: "Winnipeg" });
+    expect(schema.geo).toMatchObject({ latitude: 49.8951, longitude: -97.1384 });
 
     // PR-18: no property is ever present-and-empty.
     const walk = (node: unknown): void => {

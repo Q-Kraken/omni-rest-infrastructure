@@ -20,6 +20,15 @@ public static partial class RestaurantValidation
             ["linkedin"] = ["linkedin.com", "www.linkedin.com"]
         };
 
+    public static string? FormatPhoneDisplay(string? e164, string? display)
+    {
+        if (!string.IsNullOrWhiteSpace(display)) return display.Trim();
+        if (e164 is null) return null;
+        return e164.StartsWith("+1", StringComparison.Ordinal) && e164.Length == 12
+            ? $"({e164[2..5]}) {e164[5..8]}-{e164[8..]}"
+            : e164;
+    }
+
     public static IReadOnlyDictionary<string, string[]> ValidateProfile(UpdateRestaurantProfileRequest? request)
     {
         var errors = NewErrors();
@@ -30,7 +39,7 @@ public static partial class RestaurantValidation
         {
             Add(errors, "phoneE164", "phone_e164_invalid");
         }
-        if ((request.PhoneE164 is null) != (request.PhoneDisplay is null) || request.PhoneDisplay?.Length > 40)
+        if ((request.PhoneE164 is null && !string.IsNullOrWhiteSpace(request.PhoneDisplay)) || request.PhoneDisplay?.Length > 40)
         {
             Add(errors, "phoneDisplay", "phone_display_invalid");
         }
@@ -154,6 +163,12 @@ public static partial class RestaurantValidation
     public const int MaximumUrlLength = 2048;
 
     /// <summary>
+    /// Narrowest image allowed in a hero slot. A main image is published full-bleed, so anything below
+    /// this is visibly soft on a laptop; the responsive ladder cannot invent pixels the upload lacks.
+    /// </summary>
+    public const int MinimumMainImageWidth = 704;
+
+    /// <summary>
     /// The shared rule for every owner-supplied URL that reaches the public page: an absolute https URL
     /// with no userinfo (which browsers render deceptively), no explicit port, and a length the column
     /// can hold. Host allow-listing is the caller's business; everything structural is settled here.
@@ -177,7 +192,7 @@ public static partial class RestaurantValidation
         ValidateText(errors, "address.line2", address.Line2, 1, 160, required: false);
         ValidateText(errors, "address.city", address.City, 1, 100, required: true);
         ValidateText(errors, "address.region", address.Region, 1, 100, required: true);
-        ValidateText(errors, "address.postalCode", address.PostalCode, 1, 20, required: true);
+        ValidateText(errors, "address.postalCode", address.PostalCode, 1, 20, required: false);
         if (address.CountryCode is null || !CountryCode().IsMatch(address.CountryCode))
         {
             Add(errors, "address.countryCode", "country_code_invalid");
