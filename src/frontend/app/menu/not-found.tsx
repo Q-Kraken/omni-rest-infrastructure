@@ -9,7 +9,7 @@ import { message } from "@/lib/menu-messages";
  */
 export default function RestaurantNotFound() {
   return (
-    <PublicShell>
+    <PublicShell onMenuPage>
       <main className="publicMenuMain" id="main-content">
         <StateCard
           variant="notFound"

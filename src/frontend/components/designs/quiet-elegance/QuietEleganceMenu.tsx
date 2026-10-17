@@ -5,7 +5,7 @@ import {
   DesignFooter,
   DesignSkipLink,
   HomeLink,
-  MenuNavigationLink,
+  HomeNavigationLink,
   MenuRestaurantActions,
 } from "../shared/PublicDesignParts";
 import { createDesignClassNames } from "../shared/designClassNames";
@@ -42,7 +42,7 @@ export default function QuietEleganceMenu({ site }: WebsiteDesignMenuProps) {
       <DesignSkipLink className={styles.skipLink} />
       <header className={styles.header}>
         <HomeLink className={styles.brand} restaurantName={site.restaurantName} logo={site.restaurant?.logo} logoClassName={styles.brandLogo} />
-        <nav aria-label="Primary navigation"><MenuNavigationLink className={styles.navLink} /></nav>
+        <nav aria-label="Primary navigation"><HomeNavigationLink className={styles.navLink} /></nav>
       </header>
       <main className={styles.menuMain} id="main-content" lang={site.locale}>
         <header className={styles.menuHero}>

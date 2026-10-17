@@ -56,6 +56,15 @@ export function MenuNavigationLink({ className }: Readonly<{ className: string }
   return <MenuLink className={className}>Menu</MenuLink>;
 }
 
+/**
+ * The header link the menu page shows in place of `MenuNavigationLink`. A "Menu" link on the menu
+ * itself pointed back at the page already open, so clicking it only announced "Loading menu…" and
+ * never went anywhere; on the menu the useful way out is home.
+ */
+export function HomeNavigationLink({ className }: Readonly<{ className: string }>) {
+  return <Link className={className} href="/" prefetch={false}>Home</Link>;
+}
+
 export function RestaurantHeroImage({
   restaurant,
   className,

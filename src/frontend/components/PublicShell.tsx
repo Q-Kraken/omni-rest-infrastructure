@@ -11,6 +11,8 @@ import { MenuLink } from "./MenuLink";
 type PublicShellProps = Readonly<{
   restaurantName?: string;
   logo?: PublicImage | null;
+  /** Set on the menu pages: the header then links home instead of back to the menu already open. */
+  onMenuPage?: boolean;
   children: ReactNode;
 }>;
 
@@ -23,7 +25,7 @@ type PublicShellProps = Readonly<{
  * belongs to no tenant on that host. When the restaurant is unknown the header carries a plain home
  * link and no brand mark at all.
  */
-export function PublicShell({ restaurantName, logo, children }: PublicShellProps) {
+export function PublicShell({ restaurantName, logo, onMenuPage = false, children }: PublicShellProps) {
   const name = restaurantName?.trim() ? restaurantName.trim() : null;
   const logoVariant = brandLogoVariant(logo);
   const initials = brandInitials(name);
@@ -57,7 +59,13 @@ export function PublicShell({ restaurantName, logo, children }: PublicShellProps
           <span>{name ?? message("home")}</span>
         </Link>
         <nav aria-label="Primary navigation">
-          <MenuLink className="publicNavLink">{message("menu")}</MenuLink>
+          {onMenuPage ? (
+            <Link className="publicNavLink" href="/" prefetch={false}>
+              {message("home")}
+            </Link>
+          ) : (
+            <MenuLink className="publicNavLink">{message("menu")}</MenuLink>
+          )}
         </nav>
       </header>
       {children}

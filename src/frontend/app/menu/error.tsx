@@ -15,7 +15,7 @@ export default function MenuError({ error, reset }: Readonly<{ error: Error & { 
   useReportedDigest(error);
 
   return (
-    <PublicShell>
+    <PublicShell onMenuPage>
       <main className="publicMenuMain" id="main-content">
         <StateCard
           variant="error"

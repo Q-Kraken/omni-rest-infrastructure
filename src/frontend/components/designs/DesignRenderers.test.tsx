@@ -87,6 +87,9 @@ describe("selectable website design renderers", () => {
       expect(screen.getByText("Contains nuts")).toBeInTheDocument();
       expect(screen.getByText("Unavailable")).toBeInTheDocument();
       expect(screen.getByText("No dishes in this category.")).toBeInTheDocument();
+      const primaryNavigation = screen.getByRole("navigation", { name: "Primary navigation" });
+      expect(within(primaryNavigation).getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
+      expect(within(primaryNavigation).queryByRole("link", { name: "Menu" })).toBeNull();
       expect(screen.getByRole("link", { name: /Call/ })).toHaveAttribute("href", "tel:+12045550123");
       expect(screen.getByRole("link", { name: "Directions" })).toHaveAttribute(
         "href",
