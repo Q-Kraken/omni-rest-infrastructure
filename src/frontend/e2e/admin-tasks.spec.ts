@@ -22,9 +22,8 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
  * ## Fixture
  *
  * `owner.localhost` is a self-contained portal in `e2e/api-proxy.mjs` with state this spec alone
- * owns; it shares nothing with the `admin.localhost` fixture that `restaurant.spec.ts` and
- * `design.spec.ts` mutate. Every test resets it first, and the file runs serially because that
- * state is shared server-side.
+ * owns; it shares nothing with the restaurant or per-project design fixtures. Every test resets it
+ * first, and the file runs serially because that state is shared server-side.
  */
 
 test.describe.configure({ mode: "serial" });
@@ -113,7 +112,18 @@ function observe(page: Page): Observed {
   });
   page.on("pageerror", (error) => consoleErrors.push(`uncaught: ${error.message}`));
   page.on("requestfailed", (request) => {
-    if (!selfInflicted(request.url())) failedRequests.push(`failed ${request.method()} ${request.url()}`);
+    // Next cancels obsolete streamed RSC reads when navigating/refreshing. The CI trace shows
+    // these returning 200 before ERR_ABORTED. Keep API failures, other transport errors and all
+    // HTTP errors observable; only this deliberate router cancellation is exempt.
+    const url = new URL(request.url());
+    const cancelledRouterRead = request.method() === "GET" &&
+      request.failure()?.errorText === "net::ERR_ABORTED" &&
+      request.headers().rsc === "1" && url.origin === ORIGIN &&
+      (url.pathname === "/admin" || url.pathname.startsWith("/admin/")) &&
+      url.searchParams.has("_rsc");
+    if (!selfInflicted(request.url()) && !cancelledRouterRead) {
+      failedRequests.push(`failed ${request.method()} ${request.url()}`);
+    }
   });
   page.on("response", (response) => {
     if (response.status() >= 400 && !selfInflicted(response.url())) {
@@ -335,7 +345,7 @@ const walkthroughs: readonly Walkthrough[] = [
       await typeInto(effort, page.getByLabel("Phone number (with country code)"), "+12045550188");
       await typeInto(effort, page.getByLabel("Phone number as shown to visitors"), "(204) 555-0188");
       await typeInto(effort, page.getByLabel("Email"), "hello@riverbend.test");
-      await typeInto(effort, page.getByLabel("Website"), "https://riverbend.test");
+      await typeInto(effort, page.getByLabel("Website", { exact: true }), "https://riverbend.test");
       await click(effort, page.getByRole("button", { name: "Save profile" }));
 
       await expect(page.getByText(/Profile saved\./)).toBeVisible();
@@ -352,7 +362,7 @@ const walkthroughs: readonly Walkthrough[] = [
       // The public design does not surface the website field, so it is confirmed where it was
       // entered — a reload proves it was stored rather than merely echoed into the form.
       await page.goto(`${ORIGIN}/admin/restaurant`);
-      await expect(page.getByLabel("Website")).toHaveValue("https://riverbend.test");
+      await expect(page.getByLabel("Website", { exact: true })).toHaveValue("https://riverbend.test");
     },
   },
 ];
@@ -427,7 +437,7 @@ test("every task can be completed with the keyboard alone", async ({ page }, tes
   await keyType(page, page.getByLabel("Phone number (with country code)"), "phone", "+12045550188");
   await keyType(page, page.getByLabel("Phone number as shown to visitors"), "shown phone", "(204) 555-0188");
   await keyType(page, page.getByLabel("Email"), "email", "hello@riverbend.test");
-  await keyType(page, page.getByLabel("Website"), "website", "https://riverbend.test");
+  await keyType(page, page.getByLabel("Website", { exact: true }), "website", "https://riverbend.test");
   await keyActivate(page, page.getByRole("button", { name: "Save profile" }), "Save profile");
   await expect(page.getByText(/Profile saved\./)).toBeVisible();
 

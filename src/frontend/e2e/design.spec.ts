@@ -1,17 +1,15 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test as base, type Page } from "@playwright/test";
 
-/**
- * The owner portal in this suite lives on `admin.localhost`, which `e2e/api-proxy.mjs` serves from its
- * admin fixture. Every other host — `menu.localhost` for most projects, `127.0.0.1` for webkit — is
- * forwarded to the real backend instead.
- *
- * That distinction has to be explicit here. A relative `page.goto("/admin/...")` resolves against the
- * project's baseURL, so it lands on the public host, where the session cookie set during sign-in does
- * not apply and the fixture's seeded owner does not exist. Public pages below deliberately keep using
- * the relative form, because those genuinely belong to the visitor-facing host.
- */
-const ADMIN_ORIGIN = "http://admin.localhost:3000";
+/** One server-side fixture per project; owner and public pages share that same tenant. */
+const test = base.extend({
+  baseURL: async ({ browserName }, provideBaseURL, testInfo) => {
+    // macOS WebKit resolves localhost but not arbitrary *.localhost names. Its project alone
+    // owns this host; all other projects get named, isolated loopback fixtures.
+    const host = browserName === "webkit" ? "localhost" : `design-${testInfo.project.name}.localhost`;
+    await provideBaseURL(`http://${host}:3000`);
+  },
+});
 
 const designs = [
   {
@@ -40,7 +38,13 @@ const designs = [
   },
 ] as const;
 
-test.describe.configure({ mode: "serial" });
+// Order this file within each project; other projects still run concurrently on their own hosts.
+test.describe.configure({ mode: "default" });
+test.beforeEach(async ({ page, baseURL }) => {
+  const host = new URL(baseURL!).hostname;
+  const response = await page.request.post(`http://127.0.0.1:5290/__e2e/admin-reset?host=${host}`);
+  expect(response.ok(), "could not reset the design fixture").toBe(true);
+});
 test.setTimeout(60_000);
 
 for (const design of designs) {
@@ -54,7 +58,7 @@ for (const design of designs) {
     ]) {
       await page.setViewportSize(viewport);
 
-      await page.goto(`${ADMIN_ORIGIN}/admin/design-preview/${design.id}/home`);
+      await page.goto(`/admin/design-preview/${design.id}/home`);
       await expect(page.locator(`[data-website-design="${design.id}"]`)).toBeVisible();
       await expect(page.getByRole("heading", { level: 1, name: "Prairie Table" })).toBeVisible();
       await assertNoHorizontalOverflow(page, `${design.name} Home ${viewport.label}`);
@@ -68,7 +72,7 @@ for (const design of designs) {
         );
       }
 
-      await page.goto(`${ADMIN_ORIGIN}/admin/design-preview/${design.id}/menu`);
+      await page.goto(`/admin/design-preview/${design.id}/menu`);
       await expect(page.locator(`[data-website-design="${design.id}"]`)).toBeVisible();
       await expect(page.getByRole("heading", { name: "Prairie Poutine" })).toBeVisible();
       await expect(page.getByRole("link", { name: "Desserts" })).toBeVisible();
@@ -92,14 +96,14 @@ test("all designs wrap long content and preserve minimal-content states", async 
 
   await setContentMode(page, "long");
   for (const design of designs) {
-    await page.goto(`${ADMIN_ORIGIN}/admin/design-preview/${design.id}/home`);
+    await page.goto(`/admin/design-preview/${design.id}/home`);
     await expect(page.getByRole("heading", {
       level: 1,
       name: "The Prairie Table and Northern Harvest Dining Room",
     })).toBeVisible();
     await assertNoHorizontalOverflow(page, `${design.name} long Home`);
 
-    await page.goto(`${ADMIN_ORIGIN}/admin/design-preview/${design.id}/menu`);
+    await page.goto(`/admin/design-preview/${design.id}/menu`);
     await expect(page.getByRole("heading", {
       name: "Crispy Prairie Potato Poutine with Bothwell Cheese Curds and House Gravy",
     })).toBeVisible();
@@ -108,11 +112,11 @@ test("all designs wrap long content and preserve minimal-content states", async 
 
   await setContentMode(page, "minimal");
   for (const design of designs) {
-    await page.goto(`${ADMIN_ORIGIN}/admin/design-preview/${design.id}/home`);
+    await page.goto(`/admin/design-preview/${design.id}/home`);
     await expect(page.getByRole("heading", { level: 1, name: "M" })).toBeVisible();
     await assertNoHorizontalOverflow(page, `${design.name} minimal Home`);
 
-    await page.goto(`${ADMIN_ORIGIN}/admin/design-preview/${design.id}/menu`);
+    await page.goto(`/admin/design-preview/${design.id}/menu`);
     await expect(page.getByRole("heading", { level: 2, name: "Menu coming soon" })).toBeVisible();
     await expect(page.getByRole("link", { name: /Call|Directions/ })).toHaveCount(0);
     await assertNoHorizontalOverflow(page, `${design.name} minimal Menu`);
@@ -132,7 +136,7 @@ test("design selection is keyboard-safe and publication changes the public Home 
     }
   });
 
-  await page.goto(`${ADMIN_ORIGIN}/admin/design`);
+  await page.goto("/admin/design");
   await expect(page.getByRole("heading", { name: "Choose a design" })).toBeVisible();
   for (const { name } of designs) {
     await expect(page.getByRole("heading", { name, level: 3 })).toBeVisible();
@@ -175,7 +179,7 @@ test("design selection is keyboard-safe and publication changes the public Home 
 
   const previewResponse = await page.request.get(
     "http://127.0.0.1:3000/admin/design-preview/nightfall-v1/home",
-    { headers: { host: "admin.localhost", cookie: "omni-e2e=1" } },
+    { headers: { host: new URL(page.url()).hostname, cookie: "omni-e2e=1" } },
   );
   expect(previewResponse.headers()["cache-control"]).toContain("no-store");
   expect(previewResponse.headers()["x-robots-tag"]).toContain("noindex");
@@ -193,6 +197,7 @@ test("design selection is keyboard-safe and publication changes the public Home 
 });
 
 test("retained design styles stay isolated across real public links and browser history", async ({ page }) => {
+  await page.goto("/");
   await setContentMode(page, "standard");
   await setPublishedDesign(page, "legacy-current-v1");
   await page.goto("/?style-history=legacy");
@@ -262,7 +267,7 @@ test("menu keyboard navigation honors reduced motion", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await signIn(page);
   await setContentMode(page, "standard");
-  await page.goto(`${ADMIN_ORIGIN}/admin/design-preview/quiet-elegance-v1/menu`);
+  await page.goto("/admin/design-preview/quiet-elegance-v1/menu");
 
   const desserts = page.getByRole("link", { name: "Desserts" });
   await desserts.focus();
@@ -277,13 +282,7 @@ test("menu keyboard navigation honors reduced motion", async ({ page }) => {
 });
 
 async function signIn(page: Page) {
-  // Absolute, and on admin.localhost specifically. A relative path resolves against each project's
-  // baseURL — menu.localhost for most, 127.0.0.1 for webkit — and api-proxy forwards both of those to
-  // the REAL backend, which has no owner seeded with this fixture password. The rest of this file
-  // already talks to admin.localhost explicitly for its API helpers; only sign-in did not, so it asked
-  // the wrong server to authenticate and was told, correctly, that the credentials were invalid.
-  // restaurant.spec.ts has always used the absolute form here.
-  await page.goto(`${ADMIN_ORIGIN}/admin/restaurant`);
+  await page.goto("/admin/restaurant");
   await page.getByLabel("Email").fill("owner@prairietable.test");
   await page.getByLabel("Password", { exact: true }).fill("correct horse battery staple");
 
@@ -309,7 +308,7 @@ async function signIn(page: Page) {
 async function setContentMode(page: Page, mode: "standard" | "long" | "minimal") {
   const response = await page.request.post(
     `http://127.0.0.1:5290/__e2e/design-content?mode=${mode}`,
-    { headers: { host: "admin.localhost" } },
+    { headers: { host: new URL(page.url()).hostname } },
   );
   expect(response.ok()).toBe(true);
 }
@@ -317,7 +316,7 @@ async function setContentMode(page: Page, mode: "standard" | "long" | "minimal")
 async function setPublishedDesign(page: Page, designId: string) {
   const response = await page.request.post(
     "http://127.0.0.1:5290/__e2e/published-design?designId=" + encodeURIComponent(designId),
-    { headers: { host: "admin.localhost" } },
+    { headers: { host: new URL(page.url()).hostname } },
   );
   expect(response.ok()).toBe(true);
 }
