@@ -1,14 +1,24 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using OmniRest.Api.Infrastructure;
 using OmniRest.Api.Menus;
 using OmniRest.Api.Restaurants;
 
 namespace OmniRest.Api.Data;
 
-public sealed partial class MenuDbContext(DbContextOptions<MenuDbContext> options)
+/// <summary>
+/// The <paramref name="tenantScope"/> is optional so migrations, the design-time factory, and tests
+/// that new up a context directly keep working. When it is absent the Phase 7 query filters are inert
+/// and the context behaves exactly as it did before multi-tenancy.
+/// </summary>
+public sealed partial class MenuDbContext(
+    DbContextOptions<MenuDbContext> options,
+    ITenantScope? tenantScope = null)
     : IdentityDbContext<OwnerUser, IdentityRole<Guid>, Guid>(options)
 {
+    private readonly ITenantScope? tenantScope = tenantScope;
+
     public DbSet<RestaurantEntity> Restaurants => Set<RestaurantEntity>();
     public DbSet<RestaurantSettingsEntity> RestaurantSettings => Set<RestaurantSettingsEntity>();
     public DbSet<RestaurantDomainEntity> RestaurantDomains => Set<RestaurantDomainEntity>();
@@ -46,6 +56,7 @@ public sealed partial class MenuDbContext(DbContextOptions<MenuDbContext> option
         ConfigurePhase3(modelBuilder);
         ConfigurePhase5(modelBuilder);
         ConfigurePhase6(modelBuilder);
+        ConfigurePhase7(modelBuilder);
     }
 
     private static void ConfigureRestaurant(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<RestaurantEntity> entity)
@@ -55,10 +66,10 @@ public sealed partial class MenuDbContext(DbContextOptions<MenuDbContext> option
         entity.Property(x => x.Id).HasColumnName("id");
         entity.Property(x => x.Name).HasColumnName("name").HasMaxLength(120).IsRequired();
         entity.Property(x => x.Description).HasColumnName("description").HasMaxLength(300);
-        entity.Property(x => x.WebsiteUrl).HasColumnName("website_url").HasMaxLength(2048);
         entity.Property(x => x.PhoneE164).HasColumnName("phone_e164").HasMaxLength(16);
         entity.Property(x => x.PhoneDisplay).HasColumnName("phone_display").HasMaxLength(40);
         entity.Property(x => x.Email).HasColumnName("email").HasMaxLength(320);
+        entity.Property(x => x.WebsiteUrl).HasColumnName("website_url").HasMaxLength(2048);
         entity.Property(x => x.MainMediaAssetId).HasColumnName("main_media_asset_id");
         entity.Property(x => x.DraftVersion).HasColumnName("draft_version").HasDefaultValue(1L).IsConcurrencyToken();
         entity.Property(x => x.CreatedAt).HasColumnName("created_at");
@@ -264,11 +275,23 @@ public sealed class RestaurantEntity
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = null!;
+
+    /// <summary>
+    /// The tenant's label on a shared platform domain, so <c>prairie-table.example.app</c> resolves
+    /// without a dedicated <see cref="RestaurantDomainEntity"/> row. Null for a restaurant reached only
+    /// through an explicit custom domain. See <see cref="RestaurantSlugs"/>.
+    /// </summary>
+    public string? Slug { get; set; }
     public string? Description { get; set; }
-    public string? WebsiteUrl { get; set; }
     public string? PhoneE164 { get; set; }
     public string? PhoneDisplay { get; set; }
     public string? Email { get; set; }
+
+    /// <summary>
+    /// The restaurant's own site, shown on the published page and used as the JSON-LD <c>url</c>. Null
+    /// when the tenant has none. Always an absolute https URL; see <see cref="Restaurants.RestaurantValidation"/>.
+    /// </summary>
+    public string? WebsiteUrl { get; set; }
     public Guid? MainMediaAssetId { get; set; }
 
     /// <summary>Schema.org FoodEstablishment subtype; see <see cref="RestaurantTypes"/>.</summary>

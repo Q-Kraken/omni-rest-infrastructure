@@ -4,6 +4,7 @@ import { About } from "@/components/restaurant/About";
 import { MenuLink } from "@/components/MenuLink";
 import { PublicShell } from "@/components/PublicShell";
 import { CallButton } from "@/components/phone/CallButton";
+import { message } from "@/lib/menu-messages";
 import type { WebsiteDesignHomeProps } from "../design-contract";
 import { DesignGallery } from "../shared/DesignGallery";
 import { createDesignClassNames } from "../shared/designClassNames";
@@ -19,13 +20,13 @@ export default function LegacyHome({ restaurant }: WebsiteDesignHomeProps) {
   const gallery = restaurant?.gallery ?? [];
   return (
     <div data-website-design="legacy-current-v1">
-      <PublicShell restaurantName={restaurant?.name}>
+      <PublicShell restaurantName={restaurant?.name} logo={restaurant?.logo}>
         <main className={styles.homeMain} id="main-content">
           <section className={styles.homeCard} aria-labelledby="page-title">
           <Hero headingId="page-title">
           {image ? <Image className={styles.homeImage} src={image.url} width={image.width} height={image.height} sizes="(max-width: 704px) 100vw, 704px" alt={restaurant?.mainImage?.altText ?? ""} priority /> : null}
           <p className={styles.eyebrow}>Welcome</p>
-          <h1 id="page-title">{restaurant?.name ?? "Omni REST"}</h1>
+          <h1 id="page-title">{restaurant?.name ?? message("unnamedRestaurant")}</h1>
           <About description={restaurant?.shortDescription} />
           {restaurant ? <p className={styles.restaurantStatus}><strong>{restaurant.status.label}</strong></p> : null}
           <CtaGroup className={styles.homeActions}>

@@ -51,7 +51,6 @@ export type PublicationStatus = {
   errorCode: string | null; updatedAt: string;
 };
 export type AdminRestaurant = {
-  websiteUrl?: string | null;
   id: string; name: string; description: string | null; phoneE164: string | null;
   phoneDisplay: string | null; email: string | null; timeZone: string; address: Address | null;
   regularHours: RegularHoursDay[]; specialHours: SpecialHours[]; socialLinks: SocialLink[];
@@ -61,8 +60,31 @@ export type AdminRestaurant = {
   mainImage: MainImage | null; draftDesignId: WebsiteDesignId; publishedDesignId: WebsiteDesignId;
   websiteDesigns: AdminWebsiteDesign[]; draftVersion: string; eTag: string;
   publicationStatus: PublicationStatus | null;
+  /**
+   * The restaurant's own site. Optional in the type because a draft read from a backend older than
+   * PR-24 simply omits the field; the server validates it as an absolute https URL of at most 2048
+   * characters and reports `website_url_invalid` when it is neither.
+   */
+  websiteUrl?: string | null;
 };
 export type AdminMutation = { restaurant: AdminRestaurant; publication: PublicationStatus };
+/**
+ * Where this restaurant's public site actually lives, as the backend resolves it.
+ *
+ * The owner portal is not guaranteed to be served on the tenant's public host: owner endpoints bind
+ * the tenant from the signed-in membership rather than from `Host`, so the portal may legitimately
+ * run on a separate admin origin — the Playwright fixtures already do exactly that. This makes the
+ * request-derived origin in `lib/seo.ts` the wrong answer for anything naming the *visitor-facing*
+ * address, and most of all for a QR code, which is printed once and cannot be corrected afterwards.
+ * Only the backend knows this value.
+ *
+ * `host` carries no scheme and no port; `lib/public-menu-url.ts` turns it into a URL. `source`
+ * records which resolution strategy answered, and is `"none"` exactly when `host` is null.
+ */
+export type AdminPublicAddress = {
+  host: string | null;
+  source: "domain" | "slug" | "none";
+};
 /** A Schema.org `FoodEstablishment` subtype, used verbatim as the JSON-LD `@type`. */
 export const restaurantTypes = [
   "Restaurant", "CafeOrCoffeeShop", "Bakery", "BarOrPub", "Brewery",
@@ -86,7 +108,6 @@ export function isPriceRange(value: unknown): value is PriceRange {
 export type PublicImage = Omit<MainImage, "id" | "processingStatus">;
 
 export type PublicRestaurant = {
-  websiteUrl?: string | null;
   /** Prepared by the API in the restaurant's time zone on every public read. */
   localDate?: string;
   id: string; name: string; shortDescription: string | null;
@@ -106,4 +127,24 @@ export type PublicRestaurant = {
   /** Publication timestamp, ISO 8601. Sourced from the publication row, not the snapshot. */
   publishedAt: string | null;
   publicationVersion: string; websiteDesignId: WebsiteDesignId;
+  /** The restaurant's own site, already validated as an absolute https URL. Absent on older snapshots. */
+  websiteUrl?: string | null;
 };
+
+/**
+ * The time zones a Canadian restaurant realistically sits in, with the names an owner recognises.
+ *
+ * The profile form used to take a free-text IANA identifier, which is a database key an owner has no
+ * reason to know. The stored value is still that identifier — the backend validates it — but the
+ * owner now picks a place rather than typing `America/Winnipeg` from memory.
+ */
+export const canadianTimeZones = [
+  { id: "America/St_Johns", label: "Newfoundland — St. John's" },
+  { id: "America/Halifax", label: "Atlantic — Halifax" },
+  { id: "America/Toronto", label: "Eastern — Toronto" },
+  { id: "America/Winnipeg", label: "Central — Winnipeg" },
+  { id: "America/Regina", label: "Central, no daylight saving — Regina" },
+  { id: "America/Edmonton", label: "Mountain — Edmonton" },
+  { id: "America/Vancouver", label: "Pacific — Vancouver" },
+  { id: "America/Whitehorse", label: "Yukon — Whitehorse" },
+] as const;

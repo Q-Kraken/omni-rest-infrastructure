@@ -27,13 +27,10 @@ namespace OmniRest.Api.Data.Migrations
                 nullable: false,
                 defaultValueSql: "CURRENT_TIMESTAMP");
 
-            migrationBuilder.AddColumn<string>(
-                name: "website_url",
-                schema: "public",
-                table: "restaurants",
-                type: "character varying(2048)",
-                maxLength: 2048,
-                nullable: true);
+            // restaurants.website_url is deliberately absent here: Phase 8
+            // (20260920120000_Phase8RestaurantWebsiteUrl) already adds it with the same
+            // character varying(2048) nullable shape, and this migration runs after it. Adding it again
+            // would fail with Postgres 42701 on any database that has taken the Phase 8 upgrade.
 
             migrationBuilder.AlterColumn<string>(
                 name: "postal_code",
@@ -60,10 +57,7 @@ namespace OmniRest.Api.Data.Migrations
                 schema: "public",
                 table: "special_hours");
 
-            migrationBuilder.DropColumn(
-                name: "website_url",
-                schema: "public",
-                table: "restaurants");
+            // website_url is Phase 8's column to drop, not this migration's.
 
             migrationBuilder.AlterColumn<string>(
                 name: "postal_code",

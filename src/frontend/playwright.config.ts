@@ -7,7 +7,15 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,
-  reporter: [["list"]],
+  // `list` is the readable one while working, one line per test.
+  //
+  // CI uses `dot` instead, and the reason is not taste. Five browser projects × 46 tests makes `list`
+  // produce a 1000+ line log, and GitHub's viewer virtualises long logs — it renders roughly the first
+  // half, which is precisely the half without the failure summary in it. The run becomes unreadable
+  // from outside exactly when it fails. `dot` collapses the per-test lines to single characters and
+  // still prints every failure in full at the end, so the whole log fits in what the viewer renders.
+  // The HTML report is added for the artifact upload; without it `playwright-report/` never exists.
+  reporter: process.env.CI ? [["dot"], ["html", { open: "never" }]] : [["list"]],
   use: {
     baseURL: "http://menu.localhost:3000",
     screenshot: "only-on-failure",
@@ -31,6 +39,13 @@ export default defineConfig({
       url: "http://127.0.0.1:3000",
       timeout: 60_000,
       reuseExistingServer: false,
+      // The QR code encodes the tenant's public address as the backend reports it, and that address
+      // never carries a port: `restaurant_domains.host` is constrained to hold a hostname alone, and
+      // in production it needs nothing more. Here the public site answers on :3000, so the port has
+      // to be reattached from deployment configuration — without this the printed URL would be
+      // syntactically perfect and completely unreachable, and `e2e/qr-code.spec.ts` would be
+      // asserting against a code no phone could follow.
+      env: { OMNI_REST_PUBLIC_PORT: "3000" },
     },
   ],
   projects: [

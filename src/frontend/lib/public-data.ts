@@ -17,13 +17,38 @@ import { getPublicRestaurant } from "./server-api";
  * how many callers ask for it.
  */
 
-/** The published restaurant for the requesting host, or `null` when there is nothing to show. */
+/** Raised when the restaurant endpoint fails for a reason other than "this host has no restaurant". */
+export class PublicRestaurantApiError extends Error {
+  constructor(public readonly status: number) {
+    super("Public restaurant request failed.");
+    this.name = "PublicRestaurantApiError";
+  }
+}
+
+/**
+ * The published restaurant for the requesting host, or `null` when the host resolves to none.
+ *
+ * The `null`/throw split matters as much here as it does in `readSite`. `null` means the host is not a
+ * published restaurant, and the caller answers `404`. Every other failure — an unreachable API, a
+ * `503` — throws, so the caller renders its error boundary. Collapsing the two would either tell a
+ * crawler a live tenant is permanently gone or, worse, keep rendering a page for a restaurant that was
+ * never resolved, which on a multi-tenant platform means rendering someone else's branding.
+ */
 export const readRestaurant = cache(async (): Promise<PublicRestaurant | null> => {
   const result = await getPublicRestaurant().catch(() => ({ status: 503, data: null }));
-  if (!result.data) return null;
-  return { ...result.data, localDate: result.data.localDate ?? new Intl.DateTimeFormat("en-CA", {
-    timeZone: result.data.timeZone, year: "numeric", month: "2-digit", day: "2-digit",
-  }).format(new Date()) };
+  if (result.data) {
+    // `localDate` is what expires a special-hour notice at the restaurant's own midnight rather than
+    // the viewer's. A payload published before the field existed has none, so derive it here from the
+    // restaurant's time zone instead of letting the components fall back to the viewer's locale.
+    return {
+      ...result.data,
+      localDate: result.data.localDate ?? new Intl.DateTimeFormat("en-CA", {
+        timeZone: result.data.timeZone, year: "numeric", month: "2-digit", day: "2-digit",
+      }).format(new Date()),
+    };
+  }
+  if (result.status === 404) return null;
+  throw new PublicRestaurantApiError(result.status);
 });
 
 /**

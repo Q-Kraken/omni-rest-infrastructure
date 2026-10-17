@@ -5,7 +5,13 @@ import { describe, expect, it, vi } from "vitest";
 import type { PublicRestaurant } from "@/lib/restaurant-contract";
 import { RestaurantPreview } from "./RestaurantPreview";
 
-vi.mock("next/image", () => ({ default: (props: Record<string, unknown>) => React.createElement("img", props) }));
+vi.mock("next/image", () => ({
+  default: (props: Record<string, unknown>) => {
+    const imageProps = { ...props };
+    Reflect.deleteProperty(imageProps, "unoptimized");
+    return React.createElement("img", imageProps);
+  },
+}));
 
 const fixture: PublicRestaurant = {
   id: "restaurant", name: "Prairie Table", shortDescription: "Seasonal", email: "hello@example.test", timeZone: "America/Winnipeg",
@@ -19,6 +25,7 @@ const fixture: PublicRestaurant = {
   gallery: [],
   restaurantType: null, priceRange: null, logo: null, coverImage: null, publishedAt: null,
   publicationVersion: "3", websiteDesignId: "legacy-current-v1",
+  websiteUrl: "https://prairietable.example",
 };
 
 describe("RestaurantPreview", () => {
@@ -28,6 +35,8 @@ describe("RestaurantPreview", () => {
     expect(screen.getByRole("link", { name: "Call (204) 555-0123" })).toHaveAttribute("href", "tel:+12045550123");
     expect(screen.getByText(/2026-12-25/)).toBeVisible();
     expect(screen.getByRole("img", { name: "Dining room" })).toBeVisible();
+    expect(screen.getByRole("link", { name: "https://prairietable.example" }))
+      .toHaveAttribute("href", "https://prairietable.example");
     expect((await axe.run(container, { rules: { "color-contrast": { enabled: false } } })).violations).toEqual([]);
   });
 });

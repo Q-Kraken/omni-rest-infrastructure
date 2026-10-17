@@ -74,7 +74,17 @@ public sealed record PublicRestaurantResponse(
     /// <c>publications.published_at</c> rather than from the snapshot. Null before first publication.
     /// </summary>
     DateTimeOffset? PublishedAt = null,
+
+    /// <summary>
+    /// Today's date in the restaurant's own time zone, as <c>yyyy-MM-dd</c>. Supplied so the page can
+    /// expire a special-hour notice at the restaurant's local midnight rather than the viewer's.
+    /// </summary>
     string? LocalDate = null,
+
+    /// <summary>
+    /// The restaurant's own site, already validated as an absolute https URL, so the page may render it
+    /// as an anchor and JSON-LD may use it as <c>url</c> without further checks. Null when unset.
+    /// </summary>
     string? WebsiteUrl = null);
 
 public sealed class RestaurantPublicProjectionBuilder(
@@ -136,12 +146,12 @@ public sealed class RestaurantPublicProjectionBuilder(
             restaurant.RestaurantType,
             restaurant.PriceRange,
             logo,
-            coverImage,
-            WebsiteUrl: restaurant.WebsiteUrl);
+            coverImage);
         return response with
         {
             Status = statusCalculator.Calculate(response, timeProvider.GetUtcNow()),
-            LocalDate = DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(timeProvider.GetUtcNow(), TimeZoneInfo.FindSystemTimeZoneById(restaurant.Settings.TimeZoneId)).DateTime).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture)
+            LocalDate = DateOnly.FromDateTime(TimeZoneInfo.ConvertTime(timeProvider.GetUtcNow(), TimeZoneInfo.FindSystemTimeZoneById(restaurant.Settings.TimeZoneId)).DateTime).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture),
+            WebsiteUrl = restaurant.WebsiteUrl
         };
     }
 

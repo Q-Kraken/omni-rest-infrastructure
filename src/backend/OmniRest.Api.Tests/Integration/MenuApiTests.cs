@@ -74,27 +74,43 @@ public sealed class MenuApiTests(PostgresFixture postgres)
             .ToArray();
         Assert.NotEmpty(publishedVariantUrls);
 
-        IReadOnlyList<string> variantUrls;
+        IReadOnlyList<(Guid RestaurantId, string Url)> variants;
         await using (var scope = factory.Services.CreateAsyncScope())
         {
+            // The tenant scope is unbound here, so this deliberately sees every restaurant's variants.
             var dbContext = scope.ServiceProvider.GetRequiredService<MenuDbContext>();
-            variantUrls = await dbContext.MediaVariants.AsNoTracking()
+            variants = await dbContext.MediaVariants.AsNoTracking()
                 .OrderBy(item => item.Url)
-                .Select(item => item.Url)
+                .Select(item => new ValueTuple<Guid, string>(item.RestaurantId, item.Url))
                 .ToArrayAsync();
         }
 
-        Assert.NotEmpty(variantUrls);
+        var variantUrls = variants.Select(item => item.Url).ToArray();
+        Assert.NotEmpty(variants);
         Assert.All(publishedVariantUrls, url => Assert.Contains(url, variantUrls));
-        Assert.All(variantUrls, url => Assert.StartsWith("/media/uploads/seed/", url, StringComparison.Ordinal));
-        foreach (var url in variantUrls)
+
+        // Every media URL is filed under the restaurant that owns it, which is what makes the
+        // per-tenant media check in PR-20 Task 8 expressible at all.
+        Assert.All(variants, item => Assert.StartsWith(
+            $"/media/uploads/{item.RestaurantId:N}/", item.Url, StringComparison.Ordinal));
+        Assert.Contains(variants, item => item.RestaurantId == GuardedSampleDataSeeder.AlternateRestaurantId);
+
+        foreach (var (restaurantId, url) in variants)
         {
             using var request = new HttpRequestMessage(HttpMethod.Get, url);
             request.Headers.Host = "menu.localhost";
             using var response = await client.SendAsync(request);
 
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal("image/webp", response.Content.Headers.ContentType?.MediaType);
+            if (restaurantId == GuardedSampleDataSeeder.OrdinaryRestaurantId)
+            {
+                Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+                Assert.Equal("image/webp", response.Content.Headers.ContentType?.MediaType);
+            }
+            else
+            {
+                // Another tenant's blob is not readable from this host even with its exact URL.
+                Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+            }
         }
     }
 
@@ -119,6 +135,11 @@ public sealed class MenuApiTests(PostgresFixture postgres)
         var problem = await unknown.Content.ReadFromJsonAsync<JsonElement>();
         Assert.Equal(404, problem.GetProperty("status").GetInt32());
         Assert.False(problem.TryGetProperty("stackTrace", out _));
+
+        // The menu endpoint names the same failure its sibling public endpoints do, rather than falling
+        // through to the meaningless http_error the problem-details customisation fills in (PR-22).
+        Assert.Equal("public_restaurant_not_found", problem.GetProperty("code").GetString());
+        Assert.False(string.IsNullOrEmpty(problem.GetProperty("correlationId").GetString()));
     }
 
     [Fact]
@@ -266,12 +287,16 @@ public sealed class MenuApiTests(PostgresFixture postgres)
             .UseNpgsql(postgres.ConnectionString)
             .AddInterceptors(counter)
             .Options;
-        await using var context = new MenuDbContext(options);
+        // Wired the way the request pipeline wires it, so the count covers the tenant-scoped filters
+        // the reader now runs under rather than an unfiltered shortcut.
+        var tenantScope = new TenantScope();
+        await using var context = new MenuDbContext(options, tenantScope);
         await using var scope = factory.Services.CreateAsyncScope();
         var environment = scope.ServiceProvider.GetRequiredService<IHostEnvironment>();
         var resolver = new RestaurantResolver(context, environment, Options.Create(new PublicMenuOptions()));
+        var restaurantContext = new RestaurantContext(resolver, tenantScope, context);
         using var memoryCache = new MemoryCache(new MemoryCacheOptions { SizeLimit = 64 });
-        var reader = new PublicMenuReader(resolver, context, memoryCache, new PublicMenuSnapshotSerializer());
+        var reader = new PublicMenuReader(restaurantContext, context, memoryCache, new PublicMenuSnapshotSerializer());
 
         var result = await reader.ReadAsync(new HostString("menu.localhost"), CancellationToken.None);
 
@@ -397,6 +422,52 @@ public sealed class MenuApiTests(PostgresFixture postgres)
         Assert.Equal("0", unpublished.PublicationVersion);
         Assert.Null(unpublished.PublishedAt);
         Assert.Null(unpublished.Restaurant);
+    }
+
+    /// <summary>
+    /// The public snapshot is the single largest byte cost this API pays, so it must actually go out
+    /// compressed for a client that asks — and the compressed bytes must still be the same parseable
+    /// contract, not a truncated or double-encoded body.
+    /// </summary>
+    [Fact]
+    public async Task ThePublicMenuIsBrotliCompressedWhenAskedAndTheDecodedBodyStillParses()
+    {
+        using var factory = postgres.CreateFactory();
+        await postgres.RecreateLatestAndSeedAsync(factory);
+        using var client = factory.CreateClient();
+
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/api/v1/public/menu");
+        request.Headers.Host = "menu.localhost";
+        request.Headers.AcceptEncoding.Add(new System.Net.Http.Headers.StringWithQualityHeaderValue("br"));
+        using var response = await client.SendAsync(request);
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(["br"], response.Content.Headers.ContentEncoding);
+        Assert.Contains("Accept-Encoding", response.Headers.Vary, StringComparer.OrdinalIgnoreCase);
+        Assert.Equal("application/json", response.Content.Headers.ContentType?.MediaType);
+
+        var compressed = await response.Content.ReadAsByteArrayAsync();
+        await using var compressedStream = new MemoryStream(compressed);
+        await using var brotli = new System.IO.Compression.BrotliStream(
+            compressedStream, System.IO.Compression.CompressionMode.Decompress);
+        using var decoded = new MemoryStream();
+        await brotli.CopyToAsync(decoded);
+        Assert.True(
+            decoded.Length > compressed.Length,
+            $"Expected the decoded body ({decoded.Length} bytes) to be larger than the compressed one ({compressed.Length} bytes).");
+
+        var body = JsonSerializer.Deserialize<PublicMenuResponse>(
+            decoded.ToArray(), new JsonSerializerOptions(JsonSerializerDefaults.Web));
+        Assert.Equal("Prairie Table", body?.RestaurantName);
+        Assert.NotNull(body?.Menu);
+        Assert.Equal(["starters", "mains", "desserts"], body.Menu.Categories.Select(item => item.Slug));
+
+        // A client that advertises nothing still gets plain JSON rather than a body it cannot read.
+        using var plainRequest = new HttpRequestMessage(HttpMethod.Get, "/api/v1/public/menu");
+        plainRequest.Headers.Host = "menu.localhost";
+        using var plain = await client.SendAsync(plainRequest);
+        Assert.Empty(plain.Content.Headers.ContentEncoding);
+        Assert.Equal("Prairie Table", (await plain.Content.ReadFromJsonAsync<PublicMenuResponse>())?.RestaurantName);
     }
 
     private static async Task<HttpResponseMessage> SendForHostAsync(HttpClient client, string host)

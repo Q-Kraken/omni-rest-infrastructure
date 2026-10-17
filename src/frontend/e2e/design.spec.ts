@@ -1,5 +1,15 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test as base, type Page } from "@playwright/test";
+
+/** One server-side fixture per project; owner and public pages share that same tenant. */
+const test = base.extend({
+  baseURL: async ({ browserName }, provideBaseURL, testInfo) => {
+    // macOS WebKit resolves localhost but not arbitrary *.localhost names. Its project alone
+    // owns this host; all other projects get named, isolated loopback fixtures.
+    const host = browserName === "webkit" ? "localhost" : `design-${testInfo.project.name}.localhost`;
+    await provideBaseURL(`http://${host}:3000`);
+  },
+});
 
 const designs = [
   {
@@ -28,7 +38,13 @@ const designs = [
   },
 ] as const;
 
-test.describe.configure({ mode: "serial" });
+// Order this file within each project; other projects still run concurrently on their own hosts.
+test.describe.configure({ mode: "default" });
+test.beforeEach(async ({ page, baseURL }) => {
+  const host = new URL(baseURL!).hostname;
+  const response = await page.request.post(`http://127.0.0.1:5290/__e2e/admin-reset?host=${host}`);
+  expect(response.ok(), "could not reset the design fixture").toBe(true);
+});
 test.setTimeout(60_000);
 
 for (const design of designs) {
@@ -53,7 +69,7 @@ for (const design of designs) {
       if (viewport.label === "desktop") {
         await assertSelectedRendererChunk(
           page,
-          design.homeMarker,
+          design.id,
           designs.map(({ homeMarker }) => homeMarker),
         );
       }
@@ -68,7 +84,7 @@ for (const design of designs) {
       if (viewport.label === "desktop") {
         await assertSelectedRendererChunk(
           page,
-          design.menuMarker,
+          design.id,
           designs.map(({ menuMarker }) => menuMarker),
         );
       }
@@ -165,7 +181,7 @@ test("design selection is keyboard-safe and publication changes the public Home 
 
   const previewResponse = await page.request.get(
     "http://127.0.0.1:3000/admin/design-preview/nightfall-v1/home",
-    { headers: { host: "admin.localhost", cookie: "omni-e2e=1" } },
+    { headers: { host: new URL(page.url()).hostname, cookie: "omni-e2e=1" } },
   );
   expect(previewResponse.headers()["cache-control"]).toContain("no-store");
   expect(previewResponse.headers()["x-robots-tag"]).toContain("noindex");
@@ -183,6 +199,7 @@ test("design selection is keyboard-safe and publication changes the public Home 
 });
 
 test("retained design styles stay isolated across real public links and browser history", async ({ page }) => {
+  await page.goto("/");
   await setContentMode(page, "standard");
   await setPublishedDesign(page, "legacy-current-v1");
   await page.goto("/?style-history=legacy");
@@ -270,14 +287,30 @@ async function signIn(page: Page) {
   await page.goto("/admin/restaurant");
   await page.getByLabel("Email").fill("owner@prairietable.test");
   await page.getByLabel("Password", { exact: true }).fill("correct horse battery staple");
-  await page.getByRole("button", { name: "Sign In" }).click();
+
+  // The login response is captured so a failure says WHY. Without it a rejected sign-in only shows
+  // "expected /admin/restaurant, received /admin/login", which is the same symptom for a rate limit, a
+  // wrong credential, and an unavailable auth service — three very different problems.
+  const [loginResponse] = await Promise.all([
+    page.waitForResponse((response) => response.url().includes("/api/v1/auth/login"), { timeout: 15_000 })
+      .catch(() => null),
+    page.getByRole("button", { name: "Sign In" }).click(),
+  ]);
+
+  if (!/\/admin\/restaurant$/.test(page.url())) {
+    const status = loginResponse?.status() ?? "no response";
+    const body = loginResponse ? await loginResponse.text().catch(() => "") : "";
+    const shown = await page.getByRole("alert").allTextContents().catch(() => []);
+    await expect(page, `sign-in did not reach the editor. Login responded ${status}: ${body.slice(0, 300)}. On-screen: ${shown.join(" | ")}`)
+      .toHaveURL(/\/admin\/restaurant$/);
+  }
   await expect(page).toHaveURL(/\/admin\/restaurant$/);
 }
 
 async function setContentMode(page: Page, mode: "standard" | "long" | "minimal") {
   const response = await page.request.post(
     `http://127.0.0.1:5290/__e2e/design-content?mode=${mode}`,
-    { headers: { host: "admin.localhost" } },
+    { headers: { host: new URL(page.url()).hostname } },
   );
   expect(response.ok()).toBe(true);
 }
@@ -285,7 +318,7 @@ async function setContentMode(page: Page, mode: "standard" | "long" | "minimal")
 async function setPublishedDesign(page: Page, designId: string) {
   const response = await page.request.post(
     "http://127.0.0.1:5290/__e2e/published-design?designId=" + encodeURIComponent(designId),
-    { headers: { host: "admin.localhost" } },
+    { headers: { host: new URL(page.url()).hostname } },
   );
   expect(response.ok()).toBe(true);
 }
@@ -370,18 +403,48 @@ async function assertNoSeriousAccessibilityViolations(page: Page) {
   ).toEqual([]);
 }
 
+/**
+ * Asserted from the DOM rather than from resource timing.
+ *
+ * Phase 8 gave `/design-previews/*` an immutable one-year cache. This test navigates four times inside
+ * one page context and checks after each, so from the second navigation on the stylesheet is served
+ * from cache and contributes no resource-timing entry at all — which silently turned the old
+ * network-only assertion into "expected one entry, received none" on every browser.
+ *
+ * What the test actually cares about is that exactly one design stylesheet is referenced and that it
+ * belongs to the selected design. The DOM answers that truthfully whether or not the bytes crossed the
+ * network. Resource timing is kept, but only as a leak check, and as a subset rather than an equality:
+ * a cache hit legitimately produces no entry, while another design's stylesheet appearing there would
+ * be a real failure however it was served.
+ */
 async function assertSelectedStylesheet(page: Page, designId: string) {
-  const stylesheets = await page.evaluate(() =>
+  const selected = `/design-previews/styles/${designId}.css`;
+
+  const linked = await page.evaluate(() =>
+    [...document.querySelectorAll('link[rel="stylesheet"]')]
+      .map((link) => new URL((link as HTMLLinkElement).href).pathname)
+      .filter((path) => path.startsWith("/design-previews/styles/")),
+  );
+  expect(linked).toEqual([selected]);
+
+  const fetched = await page.evaluate(() =>
     performance.getEntriesByType("resource")
       .map((entry) => new URL(entry.name).pathname)
       .filter((path) => path.startsWith("/design-previews/styles/")),
   );
-  expect(stylesheets).toEqual([`/design-previews/styles/${designId}.css`]);
+  expect(fetched.filter((path) => path !== selected)).toEqual([]);
 }
 
+/**
+ * Phase 8 moved the design renderers back across the server boundary, which inverts what this proves.
+ * It used to assert the selected design's markup was in the downloaded JavaScript and the other four
+ * were not. Now NO design markup may reach the browser at all, while the selected design must still be
+ * the one in the DOM. That is the stronger claim: the old assertion would still pass if a design were
+ * re-clientified into its own chunk, and this one will not.
+ */
 async function assertSelectedRendererChunk(
   page: Page,
-  selectedMarker: string,
+  selectedDesignId: string,
   rendererMarkers: readonly string[],
 ) {
   const loadedJavascript = await page.evaluate(async () => {
@@ -395,8 +458,8 @@ async function assertSelectedRendererChunk(
       }),
     )).join("\n");
   });
-  expect(loadedJavascript).toContain(selectedMarker);
   for (const marker of rendererMarkers) {
-    if (marker !== selectedMarker) expect(loadedJavascript).not.toContain(marker);
+    expect(loadedJavascript).not.toContain(marker);
   }
+  await expect(page.locator(`[data-website-design="${selectedDesignId}"]`)).toHaveCount(1);
 }

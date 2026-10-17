@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
@@ -70,12 +71,14 @@ public static partial class RestaurantValidation
             Add(errors, "priceRange", "price_range_invalid");
         }
 
-        if (!string.IsNullOrWhiteSpace(request.WebsiteUrl) &&
-            (request.WebsiteUrl.Length > 2048 || !Uri.TryCreate(request.WebsiteUrl, UriKind.Absolute, out var website) ||
-             website.Scheme != Uri.UriSchemeHttps || website.UserInfo.Length != 0 || !website.IsDefaultPort))
+        // Optional: null or empty clears the link. Anything else must be an absolute https URL the public
+        // page can render as an anchor without further sanitising, so the same rules the social links use
+        // apply here — no credentials in the authority, no non-default port, no non-https scheme.
+        if (!string.IsNullOrEmpty(request.WebsiteUrl) && !IsPublishableHttpsUrl(request.WebsiteUrl))
         {
             Add(errors, "websiteUrl", "website_url_invalid");
         }
+
         ValidateAddress(errors, request.Address);
         return ToArrays(errors);
     }
@@ -140,8 +143,7 @@ public static partial class RestaurantValidation
             if (link is null) { Add(errors, "links", "social_url_invalid"); continue; }
             if (string.IsNullOrEmpty(link.Platform) || string.IsNullOrEmpty(link.Url) ||
                 !SocialHosts.TryGetValue(link.Platform, out var hosts) ||
-                link.Url.Length > 2048 || !Uri.TryCreate(link.Url, UriKind.Absolute, out var uri) ||
-                uri.Scheme != Uri.UriSchemeHttps || uri.UserInfo.Length != 0 || !uri.IsDefaultPort ||
+                !IsPublishableHttpsUrl(link.Url, out var uri) ||
                 !hosts.Contains(uri.IdnHost, StringComparer.OrdinalIgnoreCase))
             {
                 Add(errors, $"links.{link.Platform}", "social_url_invalid");
@@ -155,6 +157,32 @@ public static partial class RestaurantValidation
         var errors = NewErrors();
         ValidateText(errors, "altText", altText, 1, 200, required: true);
         return ToArrays(errors);
+    }
+
+    /// <summary>Longest URL any restaurant field may hold; matches the <c>url</c> columns.</summary>
+    public const int MaximumUrlLength = 2048;
+
+    /// <summary>
+    /// Narrowest image allowed in a hero slot. A main image is published full-bleed, so anything below
+    /// this is visibly soft on a laptop; the responsive ladder cannot invent pixels the upload lacks.
+    /// </summary>
+    public const int MinimumMainImageWidth = 704;
+
+    /// <summary>
+    /// The shared rule for every owner-supplied URL that reaches the public page: an absolute https URL
+    /// with no userinfo (which browsers render deceptively), no explicit port, and a length the column
+    /// can hold. Host allow-listing is the caller's business; everything structural is settled here.
+    /// </summary>
+    private static bool IsPublishableHttpsUrl(string value) => IsPublishableHttpsUrl(value, out _);
+
+    private static bool IsPublishableHttpsUrl(string value, [NotNullWhen(true)] out Uri? uri)
+    {
+        uri = null;
+        return value.Length <= MaximumUrlLength &&
+            Uri.TryCreate(value, UriKind.Absolute, out uri) &&
+            uri.Scheme == Uri.UriSchemeHttps &&
+            uri.UserInfo.Length == 0 &&
+            uri.IsDefaultPort;
     }
 
     private static void ValidateAddress(Dictionary<string, List<string>> errors, AdminAddressRequest? address)

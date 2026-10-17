@@ -1,0 +1,205 @@
+# Continuous integration for omni-rest-infrastructure.
+#
+# Two environment facts drive the shape below:
+#
+#   * The backend integration suite provisions PostgreSQL 18 through Testcontainers, so this needs a
+#     Docker daemon (present on ubuntu-latest) rather than a `services:` container. Setting
+#     OMNI_TEST_POSTGRES would switch it to an external database instead; we deliberately do not, so CI
+#     exercises the same path developers run.
+#   * That suite calls EnsureDeletedAsync on a shared database and disables parallelisation
+#     assembly-wide. Never run two `dotnet test` invocations concurrently against one database.
+
+name: CI
+
+on:
+  push:
+    branches: ["main", "feature/**"]
+  pull_request:
+    branches: ["main"]
+
+# A second push to the same branch makes the first one's result irrelevant.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  backend:
+    name: Backend (.NET)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      # Version comes from global.json, which pins 10.0.302 with rollForward disabled.
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Restore
+        working-directory: src/backend
+        run: dotnet restore
+
+      - name: Build
+        working-directory: src/backend
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Test
+        working-directory: src/backend
+        run: dotnet test --no-build --configuration Release --logger "console;verbosity=normal"
+
+  frontend:
+    name: Frontend (Next.js)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: src/frontend/package-lock.json
+
+      - name: Install
+        working-directory: src/frontend
+        run: npm ci
+
+      - name: Lint
+        working-directory: src/frontend
+        run: npm run lint
+
+      - name: Typecheck
+        working-directory: src/frontend
+        run: npm run typecheck
+
+      - name: Unit tests
+        working-directory: src/frontend
+        run: npm run test
+
+      - name: Build
+        working-directory: src/frontend
+        run: npm run build
+
+      # Asserts no design markup reaches any client chunk — the regression that Phase 8's largest
+      # performance fix would silently undo. Needs the production build above.
+      - name: Design asset isolation
+        working-directory: src/frontend
+        run: npm run test:design-assets
+
+  # Fixture state is isolated per browser project; E2E and performance failures block CI.
+  e2e:
+    name: End-to-end and performance gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    needs: [backend, frontend]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: src/frontend/package-lock.json
+
+      - name: Install
+        working-directory: src/frontend
+        run: npm ci
+
+      # ALL browsers, not just chromium: playwright.config.ts declares five projects (chromium, firefox,
+      # webkit, and two chromium viewports) and `test:e2e` runs every one of them. Installing chromium
+      # alone leaves firefox and webkit missing, which fails the run before a single assertion executes.
+      #
+      # `--with-deps` is what makes this runnable here and not on a developer's WSL2 box, where the
+      # browsers' system packages need password sudo.
+      - name: Install Playwright browsers
+        working-directory: src/frontend
+        run: npx playwright install --with-deps
+
+      # e2e/start-backend.mjs invokes `dotnet ef`, which is a LOCAL tool pinned in
+      # .config/dotnet-tools.json. Without a restore the command does not exist on the runner.
+      - name: Restore .NET local tools
+        run: dotnet tool restore
+
+      # Every dotnet call in e2e/start-backend.mjs passes --no-build, and none passes a configuration,
+      # so they all expect Debug output to already exist. The backend job builds Release on a different
+      # runner, so its output is not available here — this job has to build for itself.
+      - name: Build backend (Debug, for the e2e harness)
+        run: dotnet build src/backend/OmniRest.Api/OmniRest.Api.csproj
+
+      - name: Build frontend
+        working-directory: src/frontend
+        run: npm run build
+
+      # playwright.config.ts chains three web servers: the API (docker compose + migrations + seed),
+      # the fixture proxy, and `next start`.
+      # Captured to a file as well as the log. `shell: bash` runs with -eo pipefail, so the tee does not
+      # swallow a non-zero exit.
+      - name: End-to-end tests
+        working-directory: src/frontend
+        run: npm run test:e2e 2>&1 | tee playwright-output.log
+
+      # The tail is what matters and it is what the log viewer is least likely to render, so it is
+      # re-printed at the very end of the step list where it always shows. An earlier attempt read
+      # Playwright's per-test error-context.md files; those are not written by this version, which is why
+      # this reads the captured stdout instead.
+      # Written to the job summary, not just stdout. The summary renders on the run page as markdown and
+      # needs no expanding, which matters because the two earlier attempts at this were both defeated by
+      # the UI: a ::group:: wrapper collapses by default, and a step's log only renders when expanded.
+      - name: Show failure details
+        if: failure()
+        working-directory: src/frontend
+        run: |
+          {
+            echo '## Playwright failures'
+            echo
+            echo '```'
+            tail -n 200 playwright-output.log 2>/dev/null || echo 'no output captured'
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo '--- last 200 lines ---'
+          tail -n 200 playwright-output.log 2>/dev/null || echo 'no output captured'
+
+      # Runs the @perf spec, then scripts/perf-report.mjs, which EXITS NON-ZERO when a budget in
+      # specifications/phase-8/performance-budget.md is exceeded. This is the PR-23 Task 15 gate.
+      - name: Performance budget gate
+        working-directory: src/frontend
+        run: npm run test:perf
+
+      - name: Upload raw test results on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-test-results
+          path: src/frontend/test-results
+          if-no-files-found: ignore
+
+      - name: Upload performance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-performance
+          path: src/frontend/test-results/frontend-performance.json
+          if-no-files-found: ignore
+
+      - name: Upload Playwright report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: src/frontend/playwright-report
+          if-no-files-found: ignore

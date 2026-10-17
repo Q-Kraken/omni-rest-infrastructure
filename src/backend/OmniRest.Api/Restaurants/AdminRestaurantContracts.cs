@@ -26,6 +26,11 @@ public sealed record UpdateRestaurantProfileRequest(
 
     /// <summary>Schema.org price band; see <see cref="Data.PriceRanges"/>.</summary>
     string? PriceRange = null,
+
+    /// <summary>
+    /// The restaurant's own site. Null or empty clears it; otherwise an absolute https URL of at most
+    /// 2048 characters (PR-24). Trailing position keeps every existing positional construction valid.
+    /// </summary>
     string? WebsiteUrl = null);
 
 public sealed record AdminHourIntervalRequest(string OpensAt, string ClosesAt);
@@ -77,6 +82,16 @@ public sealed record PublicationStatusResponse(
     string? ErrorCode,
     DateTimeOffset UpdatedAt);
 
+/// <summary>
+/// The host the tenant's public menu is served on, so the dashboard can build a QR target it cannot
+/// derive from its own request host — the owner portal may be served on a different host entirely
+/// (PR-26). <c>Host</c> is null exactly when <c>Source</c> is <c>"none"</c>, meaning the tenant has no
+/// custom domain and the deployment configures no platform base domain to place its slug beneath.
+/// </summary>
+/// <param name="Host">The public host, lowercase and without a scheme, or null when there is none.</param>
+/// <param name="Source">How the host was arrived at: <c>"domain"</c>, <c>"slug"</c> or <c>"none"</c>.</param>
+public sealed record AdminPublicAddressResponse(string? Host, string Source);
+
 public sealed record AdminRestaurantResponse(
     string Id,
     string Name,
@@ -100,6 +115,8 @@ public sealed record AdminRestaurantResponse(
     string? PriceRange = null,
     AdminMainImageResponse? Logo = null,
     AdminMainImageResponse? CoverImage = null,
+
+    /// <summary>The saved website link, so the owner form round-trips what it stored (PR-24).</summary>
     string? WebsiteUrl = null);
 
 public sealed record AdminMutationResponse(AdminRestaurantResponse Restaurant, PublicationStatusResponse Publication);
