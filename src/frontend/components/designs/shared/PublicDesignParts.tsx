@@ -5,9 +5,10 @@ import Link from "next/link";
 
 import { MenuLink } from "@/components/MenuLink";
 import { PhoneLink } from "@/components/phone/PhoneLink";
+import { TenantImage } from "@/components/TenantImage";
 import { brandLogoVariant } from "@/lib/brand";
 import type { PublicImage, PublicRestaurant } from "@/lib/restaurant-contract";
-import { isTenantMedia, tenantMediaLoader } from "@/lib/tenant-media";
+import { isTenantMedia } from "@/lib/tenant-media";
 
 import { BusinessHours, HourIntervals, prepareBusinessHours } from "@/components/restaurant/BusinessHours";
 
@@ -66,10 +67,10 @@ export function RestaurantHeroImage({
   const image = restaurant?.mainImage?.variants.at(-1);
   if (!image || !restaurant?.mainImage) return null;
   return (
-    <Image
+    <TenantImage
       className={className}
       src={image.url}
-      loader={tenantMediaLoader(restaurant.mainImage.variants)}
+      variants={restaurant.mainImage.variants}
       width={image.width}
       height={image.height}
       sizes={sizes}
