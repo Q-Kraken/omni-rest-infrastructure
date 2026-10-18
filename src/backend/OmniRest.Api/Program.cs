@@ -278,6 +278,36 @@ if (args.Contains("--seed-large", StringComparer.Ordinal))
     return;
 }
 
+var createRestaurantIndex = Array.IndexOf(args, "--create-restaurant");
+if (createRestaurantIndex >= 0)
+{
+    if (args.Length < createRestaurantIndex + 3)
+    {
+        throw new InvalidOperationException("Usage: --create-restaurant <slug> <name>.");
+    }
+
+    var onboarded = await RestaurantOnboarding.CreateAsync(
+        app.Services, app.Environment, args[createRestaurantIndex + 1], args[createRestaurantIndex + 2]);
+    // The onboarding script reads these two lines, so their prefixes are part of the CLI contract.
+    Console.WriteLine($"restaurant-status: {(onboarded.Created ? "created" : "already-existed")}");
+    Console.WriteLine($"restaurant-id: {onboarded.Id}");
+    return;
+}
+
+var addDomainIndex = Array.IndexOf(args, "--add-domain");
+if (addDomainIndex >= 0)
+{
+    if (args.Length < addDomainIndex + 3)
+    {
+        throw new InvalidOperationException("Usage: --add-domain <slug> <domain>.");
+    }
+
+    var added = await RestaurantOnboarding.AddDomainAsync(
+        app.Services, app.Environment, args[addDomainIndex + 1], args[addDomainIndex + 2]);
+    Console.WriteLine($"domain-status: {(added ? "added" : "already-existed")}");
+    return;
+}
+
 var provisionIndex = Array.IndexOf(args, "--provision-owner");
 if (provisionIndex >= 0)
 {

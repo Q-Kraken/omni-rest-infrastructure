@@ -60,6 +60,30 @@ scripts/local-dev.sh stop
 
 State, PID records, logs, the lockfile-install marker, and persistent local media live under ignored `.local-run/`. The named PostgreSQL volume is also persistent. This workflow never runs `docker compose down`, `down -v`, volume removal, database reset, or data deletion. If ports `3000`, `5279`, or `55432` are busy, stop the conflicting process first; use `logs` to inspect startup errors.
 
+## Adding a restaurant
+
+Every restaurant runs on this one codebase and database; a new restaurant is new rows, never a copy of the project. Owners cannot create restaurants — the operator does, once per restaurant, and the owner then manages everything else in the portal.
+
+On Windows, with `start-app.cmd` already running in another window (it syncs and builds the copy the command uses):
+
+```bat
+new-restaurant.cmd prairie-table "Prairie Table" owner@prairietable.ca
+new-restaurant.cmd prairie-table "Prairie Table" owner@prairietable.ca -OwnerName "Anna" -Domain www.prairietable.ca
+```
+
+It creates the restaurant with an empty menu and a first publication, optionally attaches a custom domain, provisions the owner with a random password, and prints the public, menu, and admin addresses. Running it again for the same slug changes nothing that already exists. Locally every restaurant answers on `http://<slug>.localhost:3000`, because Development configures `localhost` as a platform base domain.
+
+The underlying backend commands, for other environments (Production additionally requires `OMNIREST_ALLOW_RESTAURANT_ONBOARDING=true`, and owner provisioning its own gate described in `specifications/phase-3/backend-operations.md`):
+
+```sh
+dotnet run --project src/backend/OmniRest.Api/OmniRest.Api.csproj -- --create-restaurant <slug> "<name>"
+dotnet run --project src/backend/OmniRest.Api/OmniRest.Api.csproj -- --add-domain <slug> <domain>
+OMNIREST_PROVISION_PASSWORD='<one-time password>' \
+  dotnet run --project src/backend/OmniRest.Api/OmniRest.Api.csproj -- --provision-owner <email> <restaurant-id> "<owner name>"
+```
+
+New restaurants start with en-CA, CAD, America/Winnipeg, tax-exclusive prices, and the first selectable design; the owner can change all of them in the portal.
+
 ## Frontend setup and run
 
 Install the locked dependencies from the repository root:
