@@ -1,11 +1,17 @@
 {
-  // Source: Alfy's own online ordering page (DoorDash storefront), read 2026-10-18:
-  // https://order.online/en-CA/store/AlfysNoodleHouse-23077627
-  // DoorDash notes that online prices may be higher than in-store; confirm with the owner.
-  // Left out: the DoorDash-only "Most Ordered" list and the two "30% off" promo items.
+  // Sources, read 2026-10-18:
+  //  - Menu, prices, dish photos: Alfy's own online ordering page (DoorDash storefront)
+  //    https://order.online/en-CA/store/AlfysNoodleHouse-23077627
+  //    DoorDash notes online prices may be higher than in-store; confirm with the owner.
+  //    Left out: the DoorDash-only "Most Ordered" list and the two "30% off" promo items.
+  //  - Hours, coordinates, map link: Google Maps listing (matches DoorDash and Instagram).
+  //  - Logo: Instagram profile picture of @alfysnoodlehouse.
+  //  - Main image and dining room: photos posted by the restaurant itself on Google Maps (2021, 2018).
+  //  - Not used: alfysnoodle.com only redirects to SkipTheDishes; the SkipTheDishes menu is an older
+  //    one (A1-A17 broths, Pepsi) with different prices; the email on Facebook is left off the site.
   "slug": "alfys-noodle-house",
   "name": "Alfy's Noodle House",
-  "description": "Beef noodle soups, wontons in chili oil, tonkotsu ramen and Japanese-style sides on Waverley Street in Winnipeg.",
+  "description": "A Chinese noodle house on Waverley Street: beef noodle soup, signature wontons, tonkotsu ramen and Japanese-style sides.",
   "phone": "+12044896814",
   "phoneDisplay": "(204) 489-6814",
   "restaurantType": "Restaurant",
@@ -17,9 +23,11 @@
     "city": "Winnipeg",
     "region": "MB",
     "postalCode": "R3T 5Z7",
-    "countryCode": "CA"
+    "countryCode": "CA",
+    "latitude": 49.849021,
+    "longitude": -97.177709
   },
-  // Store hours from the same page: 11 a.m. to 8 p.m., closed Wednesdays.
+  // 11 a.m. to 8 p.m., closed Wednesdays (Google Maps, DoorDash and Instagram agree).
   "hours": {
     "monday": ["11:00-20:00"],
     "tuesday": ["11:00-20:00"],
@@ -29,8 +37,16 @@
     "saturday": ["11:00-20:00"],
     "sunday": ["11:00-20:00"]
   },
-  "mainImage": { "file": "photos/stew-beef-noodle.jpg", "alt": "A bowl of stewed beef noodle soup with egg and broccoli" },
+  "socialLinks": {
+    "instagram": "https://www.instagram.com/alfysnoodlehouse/",
+    "facebook": "https://www.facebook.com/alfysnoodlehouse",
+    "google_business": "https://maps.google.com/?cid=7508818435708972745"
+  },
+  "logo": { "file": "photos/logo.jpg", "alt": "Alfy's Noodle House logo" },
+  "mainImage": { "file": "photos/noodle-bowls-spread.jpg", "alt": "Six of Alfy's noodle bowls seen from above, with beef, chicken, wontons and eggs" },
   "gallery": [
+    { "file": "photos/noodle-bowls-spread.jpg", "alt": "Six of Alfy's noodle bowls seen from above, with beef, chicken, wontons and eggs", "caption": "House noodle bowls" },
+    { "file": "photos/dining-room.jpg", "alt": "The dining room with red pendant lights and rope curtains", "caption": "The dining room" },
     { "file": "photos/stew-beef-noodle.jpg", "alt": "A bowl of stewed beef noodle soup with egg and broccoli", "caption": "Stew beef noodle soup" },
     { "file": "photos/scallion-oil-chicken-noodle.jpg", "alt": "Wheat noodles with shredded chicken, egg and peanuts in scallion oil", "caption": "Shredded chicken with scallion oil noodle" },
     { "file": "photos/chili-oil-wonton.jpg", "alt": "Pork wontons in Szechuan chili oil with broccoli and peanuts", "caption": "Chili oil wontons" },
