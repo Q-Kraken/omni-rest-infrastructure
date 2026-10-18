@@ -258,29 +258,110 @@ test("retained design styles stay isolated across real public links and browser 
 
 test("menu keyboard navigation honors reduced motion", async ({ page }) => {
   await page.addInitScript(() => {
-    const original = Element.prototype.scrollIntoView;
-    (window as unknown as { __designScrollBehaviors: string[] }).__designScrollBehaviors = [];
-    Element.prototype.scrollIntoView = function scrollIntoView(options?: boolean | ScrollIntoViewOptions) {
-      const behavior = typeof options === "object" ? options.behavior ?? "auto" : "auto";
-      (window as unknown as { __designScrollBehaviors: string[] }).__designScrollBehaviors.push(behavior);
-      original.call(this, options);
-    };
+    const record = window as unknown as { __designScrollBehaviors: string[] };
+    record.__designScrollBehaviors = [];
+    // Both the page (scrolling to the category) and the tab strip (bringing the tab into view) scroll.
+    for (const target of [Element.prototype, window] as { scrollTo: (options?: ScrollToOptions) => void }[]) {
+      const original = target.scrollTo;
+      target.scrollTo = function scrollTo(this: unknown, options?: ScrollToOptions) {
+        record.__designScrollBehaviors.push(typeof options === "object" ? options.behavior ?? "auto" : "auto");
+        original.call(this, options);
+      };
+    }
   });
   await page.emulateMedia({ reducedMotion: "reduce" });
+  // A phone: the tab strip has to scroll to reach the last tab, and the page scrolls to its category.
+  await page.setViewportSize({ width: 375, height: 740 });
   await signIn(page);
-  await setContentMode(page, "standard");
+  await setContentMode(page, "many-categories");
   await page.goto("/admin/design-preview/quiet-elegance-v1/menu");
 
-  const desserts = page.getByRole("link", { name: "Desserts" });
-  await desserts.focus();
+  const specials = page.getByRole("link", { name: "Late Night Specials" });
+  await specials.focus();
   await page.keyboard.press("Enter");
-  await expect(page).toHaveURL(/#desserts$/);
-  await expect(desserts).toHaveAttribute("aria-current", "true");
-  await expect(page.getByRole("heading", { name: "Saskatoon Berry Tart" })).toBeVisible();
-  const behavior = await page.evaluate(
-    () => (window as unknown as { __designScrollBehaviors: string[] }).__designScrollBehaviors.at(-1),
+  await expect(page).toHaveURL(/#late-night-specials$/);
+  await expect(specials).toHaveAttribute("aria-current", "true");
+  await expect(page.getByRole("heading", { name: "Late Night Specials 1" })).toBeVisible();
+  const behaviors = await page.evaluate(
+    () => (window as unknown as { __designScrollBehaviors: string[] }).__designScrollBehaviors,
   );
-  expect(behavior).toBe("auto");
+  expect(behaviors.length).toBeGreaterThan(0);
+  expect(new Set(behaviors)).toEqual(new Set(["auto"]));
+});
+
+// Every design, including the grandfathered one, renders the same shared menu browser.
+const menuDesignIds = ["legacy-current-v1", ...designs.map(({ id }) => id)];
+
+test("tapping any menu tab on a phone never moves the page sideways", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await signIn(page);
+  await setContentMode(page, "many-categories");
+
+  for (const designId of menuDesignIds) {
+    for (const width of [320, 375]) {
+      await page.setViewportSize({ width, height: 740 });
+      await page.goto(`/admin/design-preview/${designId}/menu`);
+      await expect.poll(() => page.locator("[data-enhanced]").getAttribute("data-enhanced")).toBe("true");
+      const tabs = page.getByRole("navigation", { name: "Menu categories" }).getByRole("link");
+      const count = await tabs.count();
+      expect(count, `${designId} tab count`).toBe(6);
+
+      for (let index = 0; index < count; index += 1) {
+        const label = `${designId} ${width}px tab ${index + 1}`;
+        await tabs.nth(index).click();
+        await expect(tabs.nth(index), label).toHaveAttribute("aria-current", "true");
+        const offset = await page.evaluate(() => ({
+          page: window.scrollX,
+          visual: window.visualViewport?.offsetLeft ?? 0,
+        }));
+        expect(offset, `${label} sideways scroll`).toEqual({ page: 0, visual: 0 });
+        await assertNoHorizontalOverflow(page, label);
+      }
+    }
+  }
+});
+
+test("on a phone the menu scrolls through every category and the tabs follow", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.setViewportSize({ width: 375, height: 740 });
+  await signIn(page);
+  await setContentMode(page, "many-categories");
+
+  for (const designId of menuDesignIds) {
+    await page.goto(`/admin/design-preview/${designId}/menu`);
+    await expect(page.locator("[data-layout]")).toHaveAttribute("data-layout", "continuous");
+    await expect(page.locator("section[hidden]"), `${designId} hidden categories`).toHaveCount(0);
+    const nav = page.getByRole("navigation", { name: "Menu categories" });
+    const navBottom = async () => (await nav.boundingBox())!.y + (await nav.boundingBox())!.height;
+
+    // Scrolling down alone brings each category under the nav and moves the highlight with it.
+    for (const name of ["Ramen", "Sides", "Drinks", "Desserts", "Late Night Specials"]) {
+      await page.getByRole("heading", { level: 2, name, exact: true }).evaluate((heading) => {
+        // Where the nav will sit once it has stuck, not where it is now: near the top of the page
+        // it has not reached its sticky position yet.
+        const nav = document.querySelector<HTMLElement>("nav[aria-label='Menu categories']")!;
+        const stuckBottom = nav.getBoundingClientRect().height + (Number.parseFloat(getComputedStyle(nav).top) || 0);
+        window.scrollBy({ top: heading.getBoundingClientRect().top - stuckBottom + 2, behavior: "instant" });
+      });
+      await expect(nav.getByRole("link", { name, exact: true }), `${designId} ${name}`).toHaveAttribute("aria-current", "true");
+    }
+
+    // A tap jumps back up to its category and leaves the heading visible below the sticky nav.
+    await nav.getByRole("link", { name: "Ramen", exact: true }).click();
+    await expect(page).toHaveURL(/#ramen$/);
+    const heading = page.getByRole("heading", { level: 2, name: "Ramen", exact: true });
+    await expect.poll(async () => Math.round((await heading.boundingBox())!.y - (await navBottom())), {
+      message: `${designId} Ramen heading sits just below the nav`,
+    }).toBeGreaterThanOrEqual(-1);
+    await expect(heading).toBeInViewport();
+    await expect(nav.getByRole("link", { name: "Ramen", exact: true })).toHaveAttribute("aria-current", "true");
+  }
+
+  // Wider screens keep one category at a time.
+  await page.setViewportSize({ width: 1_280, height: 900 });
+  await page.goto("/admin/design-preview/quiet-elegance-v1/menu");
+  await expect(page.locator("[data-layout]")).toHaveAttribute("data-layout", "tabs");
+  await expect(page.locator("section[hidden]")).toHaveCount(5);
 });
 
 async function signIn(page: Page) {
@@ -307,7 +388,7 @@ async function signIn(page: Page) {
   await expect(page).toHaveURL(/\/admin\/restaurant$/);
 }
 
-async function setContentMode(page: Page, mode: "standard" | "long" | "minimal") {
+async function setContentMode(page: Page, mode: "standard" | "long" | "minimal" | "many-categories") {
   const response = await page.request.post(
     `http://127.0.0.1:5290/__e2e/design-content?mode=${mode}`,
     { headers: { host: new URL(page.url()).hostname } },

@@ -100,6 +100,7 @@
 .legacy-current-v1__panels { margin-top: 2.25rem; }
 .legacy-current-v1__panel { scroll-margin-top: 6rem; }
 .legacy-current-v1__panel[hidden] { display: none; }
+.legacy-current-v1__panel:not([hidden]) ~ .legacy-current-v1__panel:not([hidden]) { margin-top: 2.25rem; }
 .legacy-current-v1__categoryHeading { scroll-margin-top: 6rem; }
 .legacy-current-v1__categoryHeading h2 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.85rem, 5vw, 3rem); font-weight: 500; letter-spacing: -.025em; }
 .legacy-current-v1__categoryHeading p { max-width: 42rem; margin: .7rem 0 0; color: var(--colour-muted); line-height: 1.6; }

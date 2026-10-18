@@ -95,6 +95,44 @@ describe("DesignMenuBrowser", () => {
     expect(panelFor("starters").hidden).toBe(false);
   });
 
+  describe("on a phone-width screen", () => {
+    function usePhoneWidth() {
+      vi.spyOn(window, "matchMedia").mockImplementation((query: string) => ({
+        matches: query === "(width < 48rem)",
+        media: query,
+        onchange: null,
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      }));
+      return vi.spyOn(window, "scrollTo").mockImplementation(() => undefined);
+    }
+
+    it("keeps every category shown so the reader can scroll through all of them", () => {
+      usePhoneWidth();
+      renderBrowser();
+
+      expect(screen.getByText("Starters", { selector: "a" }).closest("[data-layout]"))
+        .toHaveAttribute("data-layout", "continuous");
+      for (const category of categories) expect(panelFor(category.slug).hidden).toBe(false);
+    });
+
+    it("scrolls the page to a tapped category and highlights its tab", () => {
+      const scrollTo = usePhoneWidth();
+      renderBrowser();
+      const soups = screen.getByRole("link", { name: "Soups" });
+
+      act(() => soups.click());
+
+      expect(window.location.hash).toBe("#soups");
+      expect(scrollTo).toHaveBeenCalled();
+      expect(soups).toHaveAttribute("aria-current", "true");
+      expect(panelFor("starters").hidden).toBe(false);
+    });
+  });
+
   it("maps only the badge codes the registry knows", () => {
     renderBrowser([
       {

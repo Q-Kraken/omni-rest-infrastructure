@@ -146,6 +146,27 @@ function createAdminPortal() {
       preview.menu.categories[0].dishes[0].description = "A deliberately long description that verifies every renderer wraps restaurant-owned menu copy without clipping, overlap, or horizontal overflow at narrow viewport widths.";
     }
 
+    // A real menu's shape: more tabs than a phone shows at once, and categories taller than the
+    // screen. Two one-dish categories never made the tab strip scroll or the page scroll past one.
+    if (designContentMode === "many-categories") {
+      const names = ["Noodle Bowls", "Ramen", "Sides", "Drinks", "Desserts", "Late Night Specials"];
+      preview.menu.categories = names.map((name, categoryIndex) => ({
+        id: `44444444-4444-4444-8444-${String(categoryIndex).padStart(12, "0")}`,
+        slug: name.toLowerCase().replaceAll(" ", "-"),
+        name,
+        description: null,
+        dishes: Array.from({ length: 4 }, (_, dishIndex) => ({
+          id: `55555555-5555-4555-8555-${String(categoryIndex * 10 + dishIndex).padStart(12, "0")}`,
+          name: `${name} ${dishIndex + 1}`,
+          description: "Enough copy to give every category a real height on a phone screen.",
+          price: "12.50",
+          availability: "available",
+          media: null,
+          badges: [],
+        })),
+      }));
+    }
+
     return preview;
   }
 
@@ -184,7 +205,7 @@ function createAdminPortal() {
     }
     if (path === "/__e2e/design-content" && request.method === "POST") {
       const mode = requestUrl.searchParams.get("mode");
-      if (!["standard", "long", "minimal"].includes(mode ?? "")) {
+      if (!["standard", "long", "minimal", "many-categories"].includes(mode ?? "")) {
         return json(response, 400, { code: "invalid_design_content_mode" });
       }
       designContentMode = mode;
