@@ -135,13 +135,13 @@
             "name": "Shrimp Tempura (2 pcs)",
             "description": "Shrimp in tempura batter, deep-fried.",
             "price": 3.99,
-            "image": { "file": "photos/shrimp-tempura-2.jpg", "alt": "Two pieces of shrimp tempura" }
+            "image": { "file": "photos/shrimp-tempura.jpg", "alt": "Shrimp tempura" }
           },
           {
             "name": "Shrimp Tempura (5 pcs)",
             "description": "Shrimp in tempura batter, deep-fried.",
             "price": 7.99,
-            "image": { "file": "photos/shrimp-tempura-5.jpg", "alt": "Five pieces of shrimp tempura" }
+            "image": { "file": "photos/shrimp-tempura.jpg", "alt": "Shrimp tempura" }
           },
           {
             "name": "Crispy Chicken Katsu",
