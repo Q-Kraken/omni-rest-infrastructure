@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 
 import { ordinaryRestaurant } from "@/test/fixtures";
@@ -54,5 +54,26 @@ describe("PublicShell", () => {
     expect(container.querySelector("img")).toBeNull();
     expect(container.querySelector(".publicFooter")?.textContent).toBe("");
     expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
+  });
+
+  it("links home instead of back to the menu when already on the menu", () => {
+    const { unmount } = render(
+      <PublicShell restaurantName="Prairie Table">
+        <main id="main-content" />
+      </PublicShell>,
+    );
+    const navigation = () => screen.getByRole("navigation", { name: "Primary navigation" });
+    expect(within(navigation()).getByRole("link", { name: "Menu" })).toHaveAttribute("href", "/menu");
+    unmount();
+
+    render(
+      <PublicShell restaurantName="Prairie Table" onMenuPage>
+        <main id="main-content" />
+      </PublicShell>,
+    );
+    // A "Menu" link on the menu pointed at the page already open: clicking it only announced
+    // "Loading menu…" and went nowhere.
+    expect(within(navigation()).getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
+    expect(within(navigation()).queryByRole("link", { name: "Menu" })).toBeNull();
   });
 });
