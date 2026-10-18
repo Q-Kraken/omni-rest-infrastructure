@@ -86,7 +86,7 @@ public sealed class RestaurantContentImportApiTests(PostgresFixture postgres) : 
     }
 
     [Fact]
-    public async Task ReimportNeedsReplaceAndThenReplacesTheMenuWithoutDuplicatingPhotos()
+    public async Task ReimportKeepsTheOwnersMenuUnlessReplacedAndNeverDuplicatesPhotos()
     {
         using var factory = postgres.CreateFactory();
         await postgres.RecreateLatestAndSeedAsync(factory);
@@ -95,8 +95,15 @@ public sealed class RestaurantContentImportApiTests(PostgresFixture postgres) : 
         var first = await RestaurantContentImport.ImportAsync(factory.Services, environment, folder, replace: false);
 
         await WriteContentAsync(soupPrice: "15.25");
-        await Assert.ThrowsAsync<InvalidOperationException>(() =>
-            RestaurantContentImport.ImportAsync(factory.Services, environment, folder, replace: false));
+        var kept = await RestaurantContentImport.ImportAsync(factory.Services, environment, folder, replace: false);
+        Assert.False(kept.Imported);
+        Assert.Equal(first.PublishedVersion, kept.PublishedVersion);
+        await using (var check = factory.Services.CreateAsyncScope())
+        {
+            var keptDb = check.ServiceProvider.GetRequiredService<MenuDbContext>();
+            Assert.Equal(14.50m, (await keptDb.Dishes.SingleAsync(item => item.RestaurantId == first.Id && item.Name == "Beef Pho")).Price);
+        }
+
         var second = await RestaurantContentImport.ImportAsync(factory.Services, environment, folder, replace: true);
 
         Assert.Equal(first.Id, second.Id);

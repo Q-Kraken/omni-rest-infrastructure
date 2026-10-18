@@ -323,7 +323,9 @@ if (importIndex >= 0)
     Console.WriteLine($"restaurant-id: {imported.Id}");
     Console.WriteLine($"restaurant-slug: {imported.Slug}");
     Console.WriteLine($"restaurant-name: {imported.Name}");
-    Console.WriteLine($"import-summary: {imported.Categories} categories, {imported.Dishes} dishes, {imported.Images} photos, published version {imported.PublishedVersion}");
+    Console.WriteLine(imported.Imported
+        ? $"import-summary: {imported.Categories} categories, {imported.Dishes} dishes, {imported.Images} photos, published version {imported.PublishedVersion}"
+        : "import-summary: kept the existing menu and photos; run again with replace to reload them from the file");
     return;
 }
 

@@ -67,6 +67,9 @@ public sealed record ImportedRestaurant(
     string Slug,
     string Name,
     bool Created,
+
+    /// <summary>False when the restaurant already had a menu or gallery and <c>replace</c> was not set.</summary>
+    bool Imported,
     int Categories,
     int Dishes,
     int Images,
@@ -81,8 +84,9 @@ public sealed record ImportedRestaurant(
 /// Every value passes the same validators the owner portal uses and every image goes through the same
 /// validation and responsive ladder as an owner upload, so imported content is indistinguishable from
 /// content the owner typed in. The whole file is checked, and every image read, before anything is
-/// written. Importing over a restaurant that already has a menu or gallery is refused unless
-/// <c>replace</c> is set, because a re-import replaces whatever the owner has edited since.
+/// written. A restaurant that already has a menu or gallery is left as it is unless <c>replace</c> is
+/// set, because a re-import replaces whatever the owner has edited since; re-running onboarding for a
+/// launched restaurant therefore changes nothing.
 /// </remarks>
 public static class RestaurantContentImport
 {
@@ -140,8 +144,8 @@ public static class RestaurantContentImport
         var hasContent = menu.Categories.Count != 0 || restaurant.GalleryImages.Count != 0;
         if (hasContent && !onboarded.Created && !replace)
         {
-            throw new InvalidOperationException(
-                $"The restaurant '{onboarded.Slug}' already has a menu or gallery. Re-run with --replace to overwrite it with the file.");
+            return new ImportedRestaurant(
+                restaurant.Id, onboarded.Slug, restaurant.Name, Created: false, Imported: false, 0, 0, 0, restaurant.DraftVersion);
         }
 
         var stored = new List<StoredMedia>();
@@ -204,7 +208,7 @@ public static class RestaurantContentImport
             await transaction.CommitAsync(cancellationToken);
 
             return new ImportedRestaurant(
-                saved.Id, onboarded.Slug, saved.Name, onboarded.Created, categoryCount, dishCount, images.Count, saved.DraftVersion);
+                saved.Id, onboarded.Slug, saved.Name, onboarded.Created, Imported: true, categoryCount, dishCount, images.Count, saved.DraftVersion);
         }
         catch
         {
