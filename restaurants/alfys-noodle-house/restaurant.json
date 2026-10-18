@@ -5,6 +5,7 @@
   //    DoorDash notes online prices may be higher than in-store; confirm with the owner.
   //    Left out: the DoorDash-only "Most Ordered" list and the two "30% off" promo items.
   //  - Hours, coordinates, map link: Google Maps listing (matches DoorDash and Instagram).
+  //  - Spicy Rice Noodle photo: Uber Eats (DoorDash has none for it).
   //  - Logo: Instagram profile picture of @alfysnoodlehouse.
   //  - Main image and dining room: photos posted by the restaurant itself on Google Maps (2021, 2018).
   //  - Not used: alfysnoodle.com only redirects to SkipTheDishes; the SkipTheDishes menu is an older
@@ -98,6 +99,7 @@
             "name": "Spicy Rice Noodle with Sliced Beef (no soup)",
             "description": "Rice noodles in Szechuan-style chili oil sauce, topped with sliced beef, shredded cucumber, boiled egg and preserved Szechuan pickle.",
             "price": 17.59,
+            "image": { "file": "photos/spicy-rice-noodle.jpg", "alt": "Rice noodles with sliced beef, cucumber, egg and Szechuan pickle" },
             "badges": ["spicy"]
           }
         ]
