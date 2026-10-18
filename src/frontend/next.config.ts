@@ -1,6 +1,25 @@
+import { createHash } from "node:crypto";
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { NextConfig } from "next";
 
+// A short content hash per design stylesheet, inlined into `designStylesheets.ts` as a `?v=` query.
+// The stylesheets are cached for a year as immutable (see `headers` below), so without it an edited
+// stylesheet never reaches a browser that loaded the old one.
+const designStylesheetDirectory = join(process.cwd(), "public", "design-previews", "styles");
+const designStylesheetVersions = Object.fromEntries(
+  readdirSync(designStylesheetDirectory)
+    .filter((fileName) => fileName.endsWith(".css"))
+    .map((fileName) => [
+      fileName,
+      createHash("sha256").update(readFileSync(join(designStylesheetDirectory, fileName))).digest("hex").slice(0, 12),
+    ]),
+);
+
 const nextConfig: NextConfig = {
+  env: {
+    OMNI_REST_DESIGN_STYLESHEET_VERSIONS: JSON.stringify(designStylesheetVersions),
+  },
   images: {
     // The hosts allowed to serve optimized media, configured rather than hardcoded so a deployment
     // names its own CDN. Each entry must be an exact hostname: a wildcard here would let any
@@ -34,11 +53,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       // The five design stylesheets are static files under `public/`, which Next serves with no
-      // cache header at all, so every cold load re-fetched 12-16 KB the visitor already had. Each
-      // filename carries its contract version (`-v1`), and a design that changes visually ships as a
-      // new id rather than an edit to an existing file, so the bytes behind a given URL are
-      // immutable and can be cached as such. `immutable` also stops the revalidation request a
-      // long `max-age` alone would still allow on reload.
+      // cache header at all, so every cold load re-fetched 12-16 KB the visitor already had. Pages
+      // link each stylesheet with its content hash in the query (`designStylesheetVersions` above),
+      // so an edited stylesheet gets a new URL and the bytes behind a given URL are immutable and
+      // can be cached as such. `immutable` also stops the revalidation request a long `max-age`
+      // alone would still allow on reload.
       {
         source: "/design-previews/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
