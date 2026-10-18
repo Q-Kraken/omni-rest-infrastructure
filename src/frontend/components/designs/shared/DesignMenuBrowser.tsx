@@ -7,6 +7,7 @@ import { memo, useEffect, useMemo, useState, useSyncExternalStore } from "react"
 import { formatPrice } from "@/lib/format-price";
 import type { PublicBadge, PublicCategory, PublicDish, PublicMedia } from "@/lib/menu-contract";
 import { message } from "@/lib/menu-messages";
+import { tenantMediaLoader } from "@/lib/tenant-media";
 
 export type DesignMenuClasses = Readonly<{
   browser: string;
@@ -233,9 +234,12 @@ function DesignDishMedia({
     return <div className={classes.mediaPlaceholder} role="img" aria-label={`${dishName}: ${message("imageUnavailable")}`}><span aria-hidden="true">◇</span></div>;
   }
   return (
-    <div className={classes.mediaFrame} style={{ aspectRatio: `${variant.width} / ${variant.height}` }}>
+    // A grid item with an aspect ratio sizes its width from its height instead of stretching, so a
+    // design's min-height (12rem on a 3:2 photo makes 18rem) pushed the photo over the dish text.
+    <div className={classes.mediaFrame} style={{ aspectRatio: `${variant.width} / ${variant.height}`, width: "100%", minWidth: 0 }}>
       <Image
         src={variant.url}
+        loader={tenantMediaLoader(media?.variants ?? [])}
         alt={media?.altText ?? ""}
         width={variant.width}
         height={variant.height}

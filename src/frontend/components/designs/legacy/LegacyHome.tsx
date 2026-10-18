@@ -8,7 +8,7 @@ import { message } from "@/lib/menu-messages";
 import type { WebsiteDesignHomeProps } from "../design-contract";
 import { DesignGallery } from "../shared/DesignGallery";
 import { createDesignClassNames } from "../shared/designClassNames";
-import Image from "next/image";
+import { TenantImage } from "@/components/TenantImage";
 import { RestaurantMap } from "@/components/restaurant/RestaurantMap";
 import { RestaurantSpecialHours } from "../shared/PublicDesignParts";
 
@@ -24,7 +24,7 @@ export default function LegacyHome({ restaurant }: WebsiteDesignHomeProps) {
         <main className={styles.homeMain} id="main-content">
           <section className={styles.homeCard} aria-labelledby="page-title">
           <Hero headingId="page-title">
-          {image ? <Image className={styles.homeImage} src={image.url} width={image.width} height={image.height} sizes="(max-width: 704px) 100vw, 704px" alt={restaurant?.mainImage?.altText ?? ""} priority /> : null}
+          {image ? <TenantImage className={styles.homeImage} src={image.url} variants={restaurant?.mainImage?.variants ?? []} width={image.width} height={image.height} sizes="(max-width: 704px) 100vw, 704px" alt={restaurant?.mainImage?.altText ?? ""} priority /> : null}
           <p className={styles.eyebrow}>Welcome</p>
           <h1 id="page-title">{restaurant?.name ?? message("unnamedRestaurant")}</h1>
           <About description={restaurant?.shortDescription} />

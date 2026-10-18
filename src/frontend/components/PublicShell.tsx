@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { brandInitials, brandLogoVariant } from "@/lib/brand";
 import { message } from "@/lib/menu-messages";
 import type { PublicImage } from "@/lib/restaurant-contract";
+import { isTenantMedia } from "@/lib/tenant-media";
 
 import { MenuLink } from "./MenuLink";
 
@@ -44,6 +45,7 @@ export function PublicShell({ restaurantName, logo, children }: PublicShellProps
             <Image
               className="publicBrandLogo"
               src={logoVariant.url}
+              unoptimized={isTenantMedia(logoVariant.url)}
               width={logoVariant.width}
               height={logoVariant.height}
               sizes="2.5rem"

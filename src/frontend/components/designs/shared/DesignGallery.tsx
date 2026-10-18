@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
 
 import type { GalleryPhoto } from "@/lib/restaurant-contract";
+import { isTenantMedia } from "@/lib/tenant-media";
 
 export type DesignGalleryClasses = Readonly<{
   gallerySection: string;
@@ -94,6 +95,7 @@ export function DesignGallery({ photos, classes, headingId, restaurantName }: De
                       <Image
                         className={classes.galleryImage}
                         src={photo.thumbnailUrl}
+                        unoptimized={isTenantMedia(photo.thumbnailUrl)}
                         alt={photo.altText}
                         width={photo.thumbnailWidth}
                         height={photo.thumbnailHeight}

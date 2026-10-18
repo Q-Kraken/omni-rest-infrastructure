@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, type KeyboardEvent, type TouchEvent } from
 import { createPortal } from "react-dom";
 
 import type { GalleryPhoto } from "@/lib/restaurant-contract";
+import { isTenantMedia } from "@/lib/tenant-media";
 import type { DesignGalleryClasses } from "./DesignGallery";
 
 const swipeThresholdPixels = 40;
@@ -158,6 +159,7 @@ export default function GalleryLightbox({ photos, classes, startIndex, onClose }
               <Image
                 className={classes.lightboxImage}
                 src={photo.imageUrl}
+                unoptimized={isTenantMedia(photo.imageUrl)}
                 alt={photo.altText}
                 width={photo.width}
                 height={photo.height}
