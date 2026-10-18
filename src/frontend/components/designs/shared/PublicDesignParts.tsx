@@ -7,6 +7,7 @@ import { MenuLink } from "@/components/MenuLink";
 import { PhoneLink } from "@/components/phone/PhoneLink";
 import { brandLogoVariant } from "@/lib/brand";
 import type { PublicImage, PublicRestaurant } from "@/lib/restaurant-contract";
+import { isTenantMedia, tenantMediaLoader } from "@/lib/tenant-media";
 
 import { BusinessHours, HourIntervals, prepareBusinessHours } from "@/components/restaurant/BusinessHours";
 
@@ -41,6 +42,7 @@ export function HomeLink({
         <Image
           className={logoClassName}
           src={variant.url}
+          unoptimized={isTenantMedia(variant.url)}
           width={variant.width}
           height={variant.height}
           sizes="3rem"
@@ -67,6 +69,7 @@ export function RestaurantHeroImage({
     <Image
       className={className}
       src={image.url}
+      loader={tenantMediaLoader(restaurant.mainImage.variants)}
       width={image.width}
       height={image.height}
       sizes={sizes}

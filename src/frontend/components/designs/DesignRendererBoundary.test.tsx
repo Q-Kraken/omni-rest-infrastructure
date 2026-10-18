@@ -84,9 +84,11 @@ describe("public design server/client boundary", () => {
     expect(gallery).not.toContain("createPortal");
   });
 
-  it("sends gallery tiles through the image optimizer", () => {
+  it("sends gallery tiles through the image optimizer unless they are tenant uploads", () => {
+    // The optimizer's internal fetch carries no Host, so the per-tenant /media route cannot serve it;
+    // see lib/tenant-media.ts. Anything else (a CDN host) is still optimized.
     const gallery = source("components/designs/shared/DesignGallery.tsx");
-    expect(gallery).not.toContain("unoptimized");
+    expect(gallery).toContain("unoptimized={isTenantMedia(photo.thumbnailUrl)}");
     expect(gallery).not.toContain("loader=");
     expect(gallery).toContain("sizes={thumbnailSizes}");
   });

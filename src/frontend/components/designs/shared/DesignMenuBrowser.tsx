@@ -7,6 +7,7 @@ import { memo, useEffect, useMemo, useState, useSyncExternalStore } from "react"
 import { formatPrice } from "@/lib/format-price";
 import type { PublicBadge, PublicCategory, PublicDish, PublicMedia } from "@/lib/menu-contract";
 import { message } from "@/lib/menu-messages";
+import { tenantMediaLoader } from "@/lib/tenant-media";
 
 export type DesignMenuClasses = Readonly<{
   browser: string;
@@ -236,6 +237,7 @@ function DesignDishMedia({
     <div className={classes.mediaFrame} style={{ aspectRatio: `${variant.width} / ${variant.height}` }}>
       <Image
         src={variant.url}
+        loader={tenantMediaLoader(media?.variants ?? [])}
         alt={media?.altText ?? ""}
         width={variant.width}
         height={variant.height}
