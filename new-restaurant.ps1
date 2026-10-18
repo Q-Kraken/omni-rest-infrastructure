@@ -6,13 +6,17 @@
     Runs the backend's controlled onboarding commands inside WSL, against the
     Linux-side copy that start-app.ps1 builds:
 
-      1. --create-restaurant <slug> <name>   empty restaurant, empty menu, first publication
+      1. --import-restaurant restaurants/<slug>   when that folder has a restaurant.json:
+                                                  menu, prices, photos, hours, address, published
+         --create-restaurant <slug> <name>        otherwise: empty restaurant, empty menu
       2. --add-domain <slug> <domain>        only when -Domain is given
       3. --provision-owner <email> <id> <owner name>
 
     Then prints the restaurant's public and admin addresses and the owner's
     one-time password. Running it again for the same slug changes nothing that
-    already exists.
+    already exists. To reload restaurants/<slug>/restaurant.json over a
+    restaurant that already has a menu, add -Replace; that overwrites whatever
+    the owner edited in the portal since.
 
     The local stack must be running: start start-app.cmd first, in another
     window, after pulling new code -- it syncs and builds the copy this script
@@ -21,6 +25,7 @@
 .EXAMPLE
     .\new-restaurant.cmd prairie-table "Prairie Table" owner@prairietable.ca
     .\new-restaurant.cmd prairie-table "Prairie Table" owner@prairietable.ca -OwnerName "Anna" -Domain www.prairietable.ca
+    .\new-restaurant.cmd prairie-table "Prairie Table" owner@prairietable.ca -Replace
 #>
 
 [CmdletBinding()]
@@ -36,7 +41,9 @@ param(
 
     [string]$OwnerName = 'Owner',
 
-    [string]$Domain = ''
+    [string]$Domain = '',
+
+    [switch]$Replace
 )
 
 $ErrorActionPreference = 'Stop'
@@ -66,6 +73,7 @@ NAME=__NAME__
 OWNER_EMAIL=__OWNER_EMAIL__
 OWNER_NAME=__OWNER_NAME__
 DOMAIN=__DOMAIN__
+REPLACE=__REPLACE__
 
 export DOTNET_ROOT="$HOME/.dotnet"
 export PATH="$DOTNET_ROOT:$DOTNET_ROOT/tools:$PATH"
@@ -75,7 +83,11 @@ STATE="$REPO/.local-run"
 BACKEND_DIR="$REPO/src/backend/OmniRest.Api"
 BACKEND_DLL="$BACKEND_DIR/bin/Debug/net10.0/OmniRest.Api.dll"
 ONBOARDING_SOURCE="$BACKEND_DIR/Restaurants/RestaurantOnboarding.cs"
+CONTENT="$REPO/restaurants/$SLUG/restaurant.json"
 LOG="$STATE/new-restaurant.log"
+if [ -f "$CONTENT" ]; then
+  ONBOARDING_SOURCE="$BACKEND_DIR/Restaurants/RestaurantContentImport.cs"
+fi
 
 # The DLL ignores flags it does not know and would start a second web server
 # instead, so refuse to run it unless it was built from code that has them.
@@ -101,12 +113,26 @@ export Logging__LogLevel__Default=Warning
 api() { ( cd "$BACKEND_DIR" && dotnet "$BACKEND_DLL" "$@" ) >>"$LOG" 2>&1; } 2>/dev/null
 fail() { echo "$1 See: $LOG"; tail -n 20 "$LOG"; exit 1; }
 
-echo "==> Restaurant"
-api --create-restaurant "$SLUG" "$NAME" || fail "Could not create the restaurant."
+if [ -f "$CONTENT" ]; then
+  echo "==> Restaurant and content (restaurants/$SLUG/restaurant.json)"
+  if [ "$REPLACE" = "1" ]; then
+    api --import-restaurant "$CONTENT" --replace || fail "Could not import the restaurant content."
+  else
+    api --import-restaurant "$CONTENT" || fail "Could not import the restaurant content."
+  fi
+  # The file is the source of truth, so its slug and name are the ones that were used.
+  SLUG=$(grep '^restaurant-slug: ' "$LOG" | tail -n 1 | cut -d' ' -f2)
+  NAME=$(grep '^restaurant-name: ' "$LOG" | tail -n 1 | cut -d' ' -f2-)
+else
+  echo "==> Restaurant"
+  api --create-restaurant "$SLUG" "$NAME" || fail "Could not create the restaurant."
+fi
 RESTAURANT_ID=$(grep '^restaurant-id: ' "$LOG" | tail -n 1 | cut -d' ' -f2)
 STATUS=$(grep '^restaurant-status: ' "$LOG" | tail -n 1 | cut -d' ' -f2)
 [ -n "$RESTAURANT_ID" ] || fail "The restaurant id was not reported."
 echo "    $STATUS ($RESTAURANT_ID)"
+SUMMARY=$(grep '^import-summary: ' "$LOG" | tail -n 1 | cut -d' ' -f2-)
+[ -n "$SUMMARY" ] && echo "    $SUMMARY"
 
 if [ -n "$DOMAIN" ]; then
   echo "==> Domain"
@@ -145,6 +171,7 @@ $bash = $bash.Replace('__NAME__', (ConvertTo-BashLiteral $Name))
 $bash = $bash.Replace('__OWNER_EMAIL__', (ConvertTo-BashLiteral $OwnerEmail))
 $bash = $bash.Replace('__OWNER_NAME__', (ConvertTo-BashLiteral $OwnerName))
 $bash = $bash.Replace('__DOMAIN__', (ConvertTo-BashLiteral $Domain))
+$bash = $bash.Replace('__REPLACE__', $(if ($Replace) { '1' } else { '0' }))
 $bash = $bash.Replace('__REPO__', $RepoPath).Replace("`r`n", "`n")
 [IO.File]::WriteAllText($runner, $bash, (New-Object Text.UTF8Encoding $false))
 

@@ -73,10 +73,21 @@ new-restaurant.cmd prairie-table "Prairie Table" owner@prairietable.ca -OwnerNam
 
 It creates the restaurant with an empty menu and a first publication, optionally attaches a custom domain, provisions the owner with a random password, and prints the public, menu, and admin addresses. Running it again for the same slug changes nothing that already exists. Locally every restaurant answers on `http://<slug>.localhost:3000`, because Development configures `localhost` as a platform base domain.
 
+### Launching with the restaurant's real content
+
+To open a restaurant with its menu already filled in, put its content in `restaurants/<slug>/restaurant.json` (photos next to it, for example in `restaurants/<slug>/photos/`) before running `new-restaurant.cmd`. The command then imports the file instead of creating an empty restaurant: profile, address, phone, hours, social links, main image, logo, cover, gallery, menu categories, dishes, prices, badges and dish photos, published straight away, so the public site and the owner portal both show it. `restaurants/alfys-noodle-house/restaurant.json` is a complete example; `RestaurantContentFile` in `src/backend/OmniRest.Api/Restaurants/RestaurantContentImport.cs` lists every field.
+
+The file goes through the same validation as the owner portal, and every photo through the same checks and resizing as an owner upload (JPEG, PNG or WebP up to 5 MB; a main image at least 704 px wide). Every problem is listed in one run and nothing is written until the whole file is valid. A restaurant that already has a menu or gallery is left alone unless you add `-Replace`, which overwrites whatever the owner has edited in the portal since:
+
+```bat
+new-restaurant.cmd alfys-noodle-house "Alfy's Noodle House" owner@example.ca -Replace
+```
+
 The underlying backend commands, for other environments (Production additionally requires `OMNIREST_ALLOW_RESTAURANT_ONBOARDING=true`, and owner provisioning its own gate described in `specifications/phase-3/backend-operations.md`):
 
 ```sh
 dotnet run --project src/backend/OmniRest.Api/OmniRest.Api.csproj -- --create-restaurant <slug> "<name>"
+dotnet run --project src/backend/OmniRest.Api/OmniRest.Api.csproj -- --import-restaurant restaurants/<slug>/restaurant.json [--replace]
 dotnet run --project src/backend/OmniRest.Api/OmniRest.Api.csproj -- --add-domain <slug> <domain>
 OMNIREST_PROVISION_PASSWORD='<one-time password>' \
   dotnet run --project src/backend/OmniRest.Api/OmniRest.Api.csproj -- --provision-owner <email> <restaurant-id> "<owner name>"

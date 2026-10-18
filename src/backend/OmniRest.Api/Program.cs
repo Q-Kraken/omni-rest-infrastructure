@@ -308,6 +308,25 @@ if (addDomainIndex >= 0)
     return;
 }
 
+var importIndex = Array.IndexOf(args, "--import-restaurant");
+if (importIndex >= 0)
+{
+    if (args.Length < importIndex + 2)
+    {
+        throw new InvalidOperationException("Usage: --import-restaurant <restaurant.json or its folder> [--replace].");
+    }
+
+    var imported = await RestaurantContentImport.ImportAsync(
+        app.Services, app.Environment, args[importIndex + 1], args.Contains("--replace", StringComparer.Ordinal));
+    // The import script reads these lines, so their prefixes are part of the CLI contract.
+    Console.WriteLine($"restaurant-status: {(imported.Created ? "created" : "already-existed")}");
+    Console.WriteLine($"restaurant-id: {imported.Id}");
+    Console.WriteLine($"restaurant-slug: {imported.Slug}");
+    Console.WriteLine($"restaurant-name: {imported.Name}");
+    Console.WriteLine($"import-summary: {imported.Categories} categories, {imported.Dishes} dishes, {imported.Images} photos, published version {imported.PublishedVersion}");
+    return;
+}
+
 var provisionIndex = Array.IndexOf(args, "--provision-owner");
 if (provisionIndex >= 0)
 {
