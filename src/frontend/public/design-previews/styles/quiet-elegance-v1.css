@@ -29,6 +29,8 @@
 .quiet-elegance-v1__menuMain { padding-block: clamp(3rem, 7vw, 7rem); }
 .quiet-elegance-v1__menuHero { display: grid; justify-items: center; padding-bottom: clamp(3rem, 6vw, 6rem); text-align: center; }
 .quiet-elegance-v1__menuHero h1 { max-width: 15ch; }.quiet-elegance-v1__menuHero > p:last-child { color: #596353; font-style: italic; font-size: 1.3rem; }
+.quiet-elegance-v1__menuHero:has(+ .quiet-elegance-v1__actions) { padding-bottom: 0; }
+.quiet-elegance-v1__menuHero + .quiet-elegance-v1__actions { justify-content: center; margin: 2rem 0 clamp(2.5rem, 5vw, 4rem); }
 .quiet-elegance-v1__notice, .quiet-elegance-v1__stateCard, .quiet-elegance-v1__disclaimer { max-width: 60rem; margin: 0 auto 2rem; padding: 1rem; border: 1px solid #c9c5bd; background: #fbfaf7; font-family: ui-sans-serif, system-ui, sans-serif; }
 .quiet-elegance-v1__browser { min-width: 0; }.quiet-elegance-v1__categoryNav { position: sticky; z-index: 5; top: 0; background: rgb(247 245 241 / 96%); border-block: 1px solid #c9c5bd; }
 .quiet-elegance-v1__categoryStrip { display: flex; gap: .5rem; overflow-x: auto; padding: .7rem 0; scrollbar-width: thin; }
