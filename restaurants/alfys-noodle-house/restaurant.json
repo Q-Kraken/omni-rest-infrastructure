@@ -1,0 +1,198 @@
+{
+  // Sources, read 2026-10-18:
+  //  - Menu, prices, dish photos: Alfy's own online ordering page (DoorDash storefront)
+  //    https://order.online/en-CA/store/AlfysNoodleHouse-23077627
+  //    DoorDash notes online prices may be higher than in-store; confirm with the owner.
+  //    Left out: the DoorDash-only "Most Ordered" list and the two "30% off" promo items.
+  //  - Hours, coordinates, map link: Google Maps listing (matches DoorDash and Instagram).
+  //  - Logo: Instagram profile picture of @alfysnoodlehouse.
+  //  - Main image and dining room: photos posted by the restaurant itself on Google Maps (2021, 2018).
+  //  - Not used: alfysnoodle.com only redirects to SkipTheDishes; the SkipTheDishes menu is an older
+  //    one (A1-A17 broths, Pepsi) with different prices; the email on Facebook is left off the site.
+  "slug": "alfys-noodle-house",
+  "name": "Alfy's Noodle House",
+  "description": "A Chinese noodle house on Waverley Street: beef noodle soup, signature wontons, tonkotsu ramen and Japanese-style sides.",
+  "phone": "+12044896814",
+  "phoneDisplay": "(204) 489-6814",
+  "restaurantType": "Restaurant",
+  "priceRange": "$$",
+  "timeZone": "America/Winnipeg",
+  "address": {
+    "line1": "840 Waverley St",
+    "line2": "Unit 3B",
+    "city": "Winnipeg",
+    "region": "MB",
+    "postalCode": "R3T 5Z7",
+    "countryCode": "CA",
+    "latitude": 49.849021,
+    "longitude": -97.177709
+  },
+  // 11 a.m. to 8 p.m., closed Wednesdays (Google Maps, DoorDash and Instagram agree).
+  "hours": {
+    "monday": ["11:00-20:00"],
+    "tuesday": ["11:00-20:00"],
+    "wednesday": [],
+    "thursday": ["11:00-20:00"],
+    "friday": ["11:00-20:00"],
+    "saturday": ["11:00-20:00"],
+    "sunday": ["11:00-20:00"]
+  },
+  "socialLinks": {
+    "instagram": "https://www.instagram.com/alfysnoodlehouse/",
+    "facebook": "https://www.facebook.com/alfysnoodlehouse",
+    "google_business": "https://maps.google.com/?cid=7508818435708972745"
+  },
+  "logo": { "file": "photos/logo.jpg", "alt": "Alfy's Noodle House logo" },
+  "mainImage": { "file": "photos/noodle-bowls-spread.jpg", "alt": "Six of Alfy's noodle bowls seen from above, with beef, chicken, wontons and eggs" },
+  "gallery": [
+    { "file": "photos/noodle-bowls-spread.jpg", "alt": "Six of Alfy's noodle bowls seen from above, with beef, chicken, wontons and eggs", "caption": "House noodle bowls" },
+    { "file": "photos/dining-room.jpg", "alt": "The dining room with red pendant lights and rope curtains", "caption": "The dining room" },
+    { "file": "photos/stew-beef-noodle.jpg", "alt": "A bowl of stewed beef noodle soup with egg and broccoli", "caption": "Stew beef noodle soup" },
+    { "file": "photos/scallion-oil-chicken-noodle.jpg", "alt": "Wheat noodles with shredded chicken, egg and peanuts in scallion oil", "caption": "Shredded chicken with scallion oil noodle" },
+    { "file": "photos/chili-oil-wonton.jpg", "alt": "Pork wontons in Szechuan chili oil with broccoli and peanuts", "caption": "Chili oil wontons" },
+    { "file": "photos/braised-beef-ramen.jpg", "alt": "Braised beef ramen with seasoned egg and bamboo shoots", "caption": "Braised beef ramen" },
+    { "file": "photos/takoyaki.jpg", "alt": "Takoyaki topped with sauce, mayonnaise and bonito flakes", "caption": "Takoyaki" }
+  ],
+  "menu": {
+    "name": "Menu",
+    "categories": [
+      {
+        "name": "Noodle Bowls",
+        "description": "House noodle bowls, in broth or tossed with sauce.",
+        "dishes": [
+          {
+            "name": "Stew Beef Noodle Soup",
+            "description": "Wheat or rice noodles, your choice, with chunks of stewed beef shank, boiled egg and broccoli in beef broth, topped with green onions. The broth contains tomato.",
+            "price": 18.59,
+            "image": { "file": "photos/stew-beef-noodle.jpg", "alt": "A bowl of stewed beef noodle soup with egg and broccoli" },
+            "badges": ["popular"]
+          },
+          {
+            "name": "Shredded Chicken with Scallion Oil Noodle",
+            "description": "Wheat noodles tossed in scallion oil and house-made soy sauce, topped with shredded chicken, boiled egg, onions and peanuts.",
+            "price": 17.59,
+            "image": { "file": "photos/scallion-oil-chicken-noodle.jpg", "alt": "Wheat noodles with shredded chicken, egg and peanuts in scallion oil" },
+            "badges": ["popular", "contains_nuts"]
+          },
+          {
+            "name": "Wonton Soup (16 pcs)",
+            "description": "Sixteen pork wontons with broccoli and green onions in house broth.",
+            "price": 17.59,
+            "image": { "file": "photos/wonton-soup.jpg", "alt": "A bowl of pork wonton soup with broccoli" }
+          },
+          {
+            "name": "Chili Oil Wontons (16 pcs, no soup)",
+            "description": "Sixteen pork wontons tossed in Szechuan-style chili oil sauce, topped with broccoli and peanuts.",
+            "price": 17.59,
+            "image": { "file": "photos/chili-oil-wonton.jpg", "alt": "Pork wontons in Szechuan chili oil with broccoli and peanuts" },
+            "badges": ["spicy", "contains_nuts"]
+          },
+          {
+            "name": "Oil-Splashed Noodle (no soup)",
+            "description": "Wheat noodles with spiced beef, chili powder, hot oil and house-made soy sauce.",
+            "price": 17.59,
+            "image": { "file": "photos/oil-splashed-noodle.jpg", "alt": "Wheat noodles with spiced beef, chili and hot oil" },
+            "badges": ["spicy"]
+          },
+          {
+            "name": "Spicy Rice Noodle with Sliced Beef (no soup)",
+            "description": "Rice noodles in Szechuan-style chili oil sauce, topped with sliced beef, shredded cucumber, boiled egg and preserved Szechuan pickle.",
+            "price": 17.59,
+            "badges": ["spicy"]
+          }
+        ]
+      },
+      {
+        "name": "Ramen",
+        "description": "Tonkotsu broth with thin wheat noodles.",
+        "dishes": [
+          {
+            "name": "Original Tonkotsu Ramen",
+            "description": "Tonkotsu broth, thin wheat noodles, chashu pork, green onions, seasoned egg, bamboo shoots, wood ear mushrooms and nori.",
+            "price": 18.59,
+            "image": { "file": "photos/tonkotsu-ramen.jpg", "alt": "Tonkotsu ramen with chashu pork, egg and nori" }
+          },
+          {
+            "name": "Chicken Katsu Ramen",
+            "description": "Tonkotsu broth, thin wheat noodles, crispy chicken katsu, green onions, seasoned egg, bamboo shoots and wood ear mushrooms.",
+            "price": 19.59,
+            "image": { "file": "photos/chicken-katsu-ramen.jpg", "alt": "Ramen topped with crispy chicken katsu and a seasoned egg" }
+          },
+          {
+            "name": "Braised Beef Ramen",
+            "description": "Tonkotsu broth, thin wheat noodles, braised beef, green onions, seasoned egg, bamboo shoots and wood ear mushrooms.",
+            "price": 19.59,
+            "image": { "file": "photos/braised-beef-ramen.jpg", "alt": "Braised beef ramen with seasoned egg and bamboo shoots" }
+          }
+        ]
+      },
+      {
+        "name": "Sides",
+        "dishes": [
+          {
+            "name": "Gyoza (4 pcs)",
+            "description": "Japanese-style dumplings.",
+            "price": 5.99,
+            "image": { "file": "photos/gyoza.jpg", "alt": "Four pan-fried gyoza" }
+          },
+          {
+            "name": "Takoyaki (4 pcs)",
+            "description": "Octopus balls topped with takoyaki sauce, mayonnaise and bonito flakes.",
+            "price": 4.99,
+            "image": { "file": "photos/takoyaki.jpg", "alt": "Takoyaki topped with sauce, mayonnaise and bonito flakes" }
+          },
+          {
+            "name": "Vegetable Spring Rolls (3 pcs)",
+            "description": "Crispy rolls filled with seasoned vegetables, served with sweet chili sauce.",
+            "price": 3.49,
+            "image": { "file": "photos/spring-rolls.jpg", "alt": "Three crispy vegetable spring rolls" }
+          },
+          {
+            "name": "Shrimp Tempura (2 pcs)",
+            "description": "Shrimp in tempura batter, deep-fried.",
+            "price": 3.99,
+            "image": { "file": "photos/shrimp-tempura.jpg", "alt": "Shrimp tempura" }
+          },
+          {
+            "name": "Shrimp Tempura (5 pcs)",
+            "description": "Shrimp in tempura batter, deep-fried.",
+            "price": 7.99,
+            "image": { "file": "photos/shrimp-tempura.jpg", "alt": "Shrimp tempura" }
+          },
+          {
+            "name": "Crispy Chicken Katsu",
+            "description": "Panko-breaded chicken, deep-fried golden, with katsu sauce.",
+            "price": 5.99
+          },
+          {
+            "name": "Spiced Beef (80 g)",
+            "description": "Sliced spiced beef.",
+            "price": 9.99,
+            "image": { "file": "photos/spiced-beef.jpg", "alt": "Slices of spiced beef" }
+          },
+          {
+            "name": "Potato Puffs",
+            "description": "Deep-fried potato puffs.",
+            "price": 4.99,
+            "image": { "file": "photos/potato-puffs.jpg", "alt": "Golden deep-fried potato puffs" }
+          },
+          {
+            "name": "Seasoned Egg",
+            "price": 1.99
+          }
+        ]
+      },
+      {
+        "name": "Drinks",
+        "dishes": [
+          { "name": "Coke", "price": 1.99 },
+          { "name": "Coke Zero", "price": 1.99 },
+          { "name": "Iced Tea", "price": 1.99 },
+          { "name": "7-Up", "price": 1.99 },
+          { "name": "Root Beer", "price": 1.99 },
+          { "name": "Ginger Ale", "price": 1.99 }
+        ]
+      }
+    ]
+  }
+}
