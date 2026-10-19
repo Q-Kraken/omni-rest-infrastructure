@@ -1,0 +1,82 @@
+name: Deploy test website
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git revision to build and deploy
+        required: true
+        default: main
+
+concurrency:
+  group: deploy-test
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: test
+    timeout-minutes: 45
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: src/frontend/package-lock.json
+      - name: Test backend
+        run: dotnet test src/backend/OmniRest.sln --configuration Release --logger 'console;verbosity=normal'
+      - name: Check frontend
+        working-directory: src/frontend
+        run: |
+          npm ci
+          npm run lint
+          npm run typecheck
+          npm run test
+      - name: Build release images
+        run: |
+          release=$(git rev-parse --short=12 HEAD)
+          printf 'RELEASE_TAG=%s\n' "$release" >> "$GITHUB_ENV"
+          docker build -f ops/deploy/Dockerfile.api -t "omni-rest-api:$release" .
+          docker build -f ops/deploy/Dockerfile.frontend -t "omni-rest-frontend:$release" .
+      - name: Transfer and deploy
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+        run: |
+          set -euo pipefail
+          [[ "$SSH_HOST" =~ ^[a-zA-Z0-9.-]+$ ]] || { echo 'Missing or invalid SSH host'; exit 1; }
+          [[ "$SSH_USER" =~ ^[a-z_][a-z0-9_-]*$ ]] || { echo 'Missing or invalid SSH user'; exit 1; }
+          [[ -n "$SSH_PRIVATE_KEY" && -n "$SSH_KNOWN_HOSTS" ]] || { echo 'Missing SSH authentication or pinned host keys'; exit 1; }
+          credentials=$(mktemp -d)
+          trap 'rm -rf -- "$credentials"' EXIT
+          chmod 700 "$credentials"
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$credentials/key"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$credentials/known_hosts"
+          chmod 600 "$credentials/key" "$credentials/known_hosts"
+          options=(-i "$credentials/key" -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$credentials/known_hosts")
+          remote="$SSH_USER@$SSH_HOST"
+          ssh "${options[@]}" "$remote" 'mkdir -p /opt/omni-rest-test/ops'
+          scp "${options[@]}" -r ops/deploy "$remote:/opt/omni-rest-test/ops/"
+          docker save "omni-rest-api:$RELEASE_TAG" "omni-rest-frontend:$RELEASE_TAG" | gzip | ssh "${options[@]}" "$remote" 'gunzip | docker load'
+          ssh "${options[@]}" "$remote" "bash /opt/omni-rest-test/ops/deploy/deploy.sh /opt/omni-rest-test/server.env '$RELEASE_TAG'"
+      - name: Public smoke check
+        env:
+          SITE_HOST: ${{ vars.SITE_HOST }}
+        run: |
+          [[ "$SITE_HOST" =~ ^[a-z0-9][a-z0-9.-]*$ ]] || { echo 'Set the test environment SITE_HOST variable'; exit 1; }
+          curl --fail --location --max-redirs 3 --silent --show-error --retry 5 --retry-delay 5 "https://$SITE_HOST/admin/login" > /dev/null
+          curl --fail --location --max-redirs 3 --silent --show-error "https://$SITE_HOST/api/v1/public/restaurant" | python3 -c 'import json,sys; assert json.load(sys.stdin).get("id")'

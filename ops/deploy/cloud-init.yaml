@@ -1,0 +1,32 @@
+#cloud-config
+# Render the instance's SSH public key through the cloud provider's SSH-key setting.
+# No private keys, API credentials or application passwords belong in cloud-init/user-data.
+package_update: true
+packages:
+  - docker.io
+  - docker-compose-v2
+  - unattended-upgrades
+  - fail2ban
+  - ufw
+ssh_pwauth: false
+disable_root: true
+write_files:
+  - path: /etc/ssh/sshd_config.d/60-omni-rest.conf
+    permissions: '0644'
+    content: |
+      PasswordAuthentication no
+      KbdInteractiveAuthentication no
+      PermitRootLogin no
+      X11Forwarding no
+runcmd:
+  - [usermod, -aG, docker, ubuntu]
+  - [install, -d, -o, ubuntu, -g, ubuntu, -m, '0750', /opt/omni-rest-test]
+  - [systemctl, enable, --now, docker]
+  - [systemctl, enable, --now, fail2ban]
+  - [systemctl, reload, ssh]
+  - [ufw, default, deny, incoming]
+  - [ufw, default, allow, outgoing]
+  - [ufw, allow, '22/tcp']
+  - [ufw, allow, '80/tcp']
+  - [ufw, allow, '443/tcp']
+  - [ufw, --force, enable]

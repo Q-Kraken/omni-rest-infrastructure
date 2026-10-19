@@ -1,0 +1,25 @@
+{
+    admin off
+    email {$ACME_EMAIL}
+}
+
+{$SITE_HOST} {
+    encode zstd gzip
+    header X-Robots-Tag "noindex, nofollow, noarchive"
+    request_body {
+        max_size 21MB
+    }
+    reverse_proxy frontend:3000
+}
+
+# This listener is never published on the host. All frontend -> API requests pass through it,
+# including server-rendered reads that do not themselves send X-Forwarded-Proto. The API trusts
+# only this container's fixed address. No application service or database port is public.
+http://:8081 {
+    @health path /__gateway_health
+    respond @health "ok" 200
+    reverse_proxy api:8080 {
+        header_up X-Forwarded-Proto https
+        header_up Host {http.request.host}
+    }
+}

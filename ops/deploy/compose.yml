@@ -1,0 +1,133 @@
+name: omni-rest-test
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "3"
+
+services:
+  postgres:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: omni_rest
+      POSTGRES_USER: omni_rest
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Generate a private deployment environment file}
+    volumes:
+      - database:/var/lib/postgresql
+    networks: [backend]
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U omni_rest -d omni_rest"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    logging: *logging
+
+  api:
+    image: omni-rest-api:${RELEASE_TAG:?Set the release tag}
+    build:
+      context: ../..
+      dockerfile: ops/deploy/Dockerfile.api
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_HTTPS_PORT: "443"
+      HOME: /state/home
+      ConnectionStrings__MenuDatabase: Host=postgres;Port=5432;Database=omni_rest;Username=omni_rest;Password=${POSTGRES_PASSWORD}
+      DataProtection__KeyRingPath: /state/keys
+      OMNI_SESSION_CERTIFICATE_FILE: /state/certificates/owner-sessions.pfx
+      OMNI_SESSION_CERTIFICATE_PASSWORD: ${SESSION_CERTIFICATE_PASSWORD:?Generate a certificate password}
+      MediaStorage__LocalRoot: /state/media
+      ReverseProxy__KnownProxies__0: 172.30.72.10
+      ReverseProxy__KnownProxies__1: "::ffff:172.30.72.10"
+      LoginRateLimit__PartitionKey: ${LOGIN_RATE_LIMIT_KEY:?Generate a rate limit key}
+      AllowedHosts: ${SITE_HOST:?Set the public hostname}
+      SITE_HOST: ${SITE_HOST}
+    volumes:
+      - application:/state
+    networks: [backend]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    read_only: true
+    tmpfs: [/tmp]
+    healthcheck:
+      test: [CMD-SHELL, 'test "$$(curl --silent --max-time 5 -o /dev/null -w "%{http_code}" -H "Host: $$SITE_HOST" http://gateway:8081/api/v1/auth/antiforgery)" = 200']
+      interval: 15s
+      timeout: 6s
+      retries: 10
+      start_period: 30s
+    logging: *logging
+
+  frontend:
+    image: omni-rest-frontend:${RELEASE_TAG:?Set the release tag}
+    build:
+      context: ../..
+      dockerfile: ops/deploy/Dockerfile.frontend
+    restart: unless-stopped
+    environment:
+      OMNI_REST_API_BASE_URL: http://gateway:8081
+      OMNI_REST_FORWARDED_PROTO: https
+      OMNI_REST_PUBLIC_SCHEME: https
+    networks: [backend]
+    volumes:
+      - frontend-cache:/app/.next/cache
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    read_only: true
+    tmpfs: [/tmp]
+    healthcheck:
+      test: [CMD, node, -e, "const s=require('net').connect(3000,'127.0.0.1');s.on('connect',()=>{s.destroy();process.exit(0)});s.on('error',()=>process.exit(1));s.setTimeout(3000,()=>process.exit(1))"]
+      interval: 10s
+      timeout: 4s
+      retries: 10
+    logging: *logging
+
+  gateway:
+    image: caddy:2.10.2-alpine
+    restart: unless-stopped
+    environment:
+      SITE_HOST: ${SITE_HOST}
+      ACME_EMAIL: ${ACME_EMAIL:?Set the certificate contact address}
+    ports:
+      - "${EDGE_BIND:-0.0.0.0}:${HTTP_PORT:-80}:80"
+      - "${EDGE_BIND:-0.0.0.0}:${HTTPS_PORT:-443}:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - certificates:/data
+      - gateway-config:/config
+    networks:
+      backend:
+        ipv4_address: 172.30.72.10
+    depends_on:
+      api:
+        condition: service_started
+      frontend:
+        condition: service_started
+    cap_drop: [ALL]
+    cap_add: [NET_BIND_SERVICE]
+    security_opt: [no-new-privileges:true]
+    read_only: true
+    tmpfs: [/tmp]
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1:8081/__gateway_health]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    logging: *logging
+
+networks:
+  backend:
+    ipam:
+      config:
+        - subnet: 172.30.72.0/24
+
+volumes:
+  database:
+  application:
+  certificates:
+  gateway-config:
+  frontend-cache:

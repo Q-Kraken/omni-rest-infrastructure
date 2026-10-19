@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Content Include="seed-media/**/*" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+    <InternalsVisibleTo Include="OmniRest.Api.Tests" />
   </ItemGroup>
 
 </Project>

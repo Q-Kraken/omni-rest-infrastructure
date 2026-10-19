@@ -1,0 +1,24 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0.302-noble AS build
+WORKDIR /source
+COPY global.json ./
+COPY .config/dotnet-tools.json .config/dotnet-tools.json
+COPY src/backend/ src/backend/
+COPY ops/deploy/CertificateSetup/ ops/deploy/CertificateSetup/
+RUN dotnet tool restore \
+    && dotnet publish src/backend/OmniRest.Api/OmniRest.Api.csproj -c Release -o /out/api \
+    && dotnet ef migrations bundle --project src/backend/OmniRest.Api/OmniRest.Api.csproj \
+       --startup-project src/backend/OmniRest.Api/OmniRest.Api.csproj --configuration Release \
+       --no-build --output /out/api/efbundle \
+    && dotnet publish ops/deploy/CertificateSetup/CertificateSetup.csproj -c Release -o /out/certificate
+
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.10-noble
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/* \
+    && install -d -o 1654 -g 1654 /state /state/media /state/keys /state/home /state/certificates
+WORKDIR /app
+COPY --from=build --chown=1654:1654 /out/api/ ./
+COPY --from=build --chown=1654:1654 /out/certificate/ /app/certificate/
+COPY --chmod=755 ops/deploy/api-entrypoint.sh /app/api-entrypoint.sh
+ENV ASPNETCORE_ENVIRONMENT=Production ASPNETCORE_HTTP_PORTS=8080 HOME=/state/home
+USER 1654:1654
+ENTRYPOINT ["/app/api-entrypoint.sh"]
