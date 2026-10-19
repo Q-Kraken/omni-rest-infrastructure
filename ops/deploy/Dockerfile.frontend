@@ -1,0 +1,18 @@
+FROM node:26.5.0-bookworm-slim AS build
+WORKDIR /app
+ENV NEXT_TELEMETRY_DISABLED=1
+RUN npm install --global npm@11.17.0
+COPY src/frontend/package.json src/frontend/package-lock.json ./
+RUN npm ci
+COPY src/frontend/ ./
+RUN npm run build
+
+FROM node:26.5.0-bookworm-slim
+WORKDIR /app
+ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 HOSTNAME=0.0.0.0 PORT=3000
+COPY --from=build --chown=node:node /app/.next/standalone/ ./
+COPY --from=build --chown=node:node /app/.next/static/ ./.next/static/
+COPY --from=build --chown=node:node /app/public/ ./public/
+RUN mkdir -p .next/cache && chown node:node .next/cache
+USER node
+CMD ["node", "server.js"]

@@ -86,7 +86,7 @@ public sealed class LocalMediaStorage(IOptions<LocalMediaStorageOptions> options
         try
         {
             memory.Position = 0;
-            var info = await Image.IdentifyAsync(memory, cancellationToken);
+            var info = await Image.IdentifyAsync(UploadImageDecoding.Options, memory, cancellationToken);
             var format = info.Metadata.DecodedImageFormat;
             if (format is null || !Extensions.TryGetValue(format.DefaultMimeType, out var extension) ||
                 !string.Equals(file.ContentType, format.DefaultMimeType, StringComparison.OrdinalIgnoreCase) ||
@@ -96,7 +96,7 @@ public sealed class LocalMediaStorage(IOptions<LocalMediaStorageOptions> options
                 throw new MediaValidationException("media_content_invalid");
             }
             memory.Position = 0;
-            using var decoded = await Image.LoadAsync(memory, cancellationToken);
+            using var decoded = await Image.LoadAsync(UploadImageDecoding.Options, memory, cancellationToken);
             if (decoded.Width != info.Width || decoded.Height != info.Height)
             {
                 throw new MediaValidationException("media_content_invalid");
@@ -246,7 +246,6 @@ internal static class UnixMediaFileOperations
     private const int CloseOnExec = 0x80000;
     private const uint OwnerOnlyDirectoryMode = 0x1C0; // 0700
     private const uint OwnerOnlyFileModeValue = 0x180; // 0600
-    private const uint RegularFileType = 0x8000;
     private const uint RenameExclusive = 0x4;
     private const int NotFound = 2;
     private const int AlreadyExists = 17;
@@ -382,25 +381,17 @@ internal static class UnixMediaFileOperations
     private static FileStream CreateFileLinux(SafeFileHandle directory, string fileName)
     {
         var directoryDescriptor = Descriptor(directory);
-        if (MknodAtLinux(
-            directoryDescriptor,
-            fileName,
-            RegularFileType | OwnerOnlyFileModeValue,
-            0) != 0)
+        // Atomic exclusive creation needs no device-node capability. mknodat is blocked by
+        // Docker's default seccomp profile when CAP_MKNOD is dropped, even for regular files.
+        var descriptor = OpenAtCreateLinux(directoryDescriptor, fileName,
+            WriteOnly | 0x40 | 0x80 | NoFollowFlag | CloseOnExecFlag, OwnerOnlyFileModeValue);
+        if (descriptor < 0)
         {
             throw FileSystemException("create new file", fileName, Marshal.GetLastPInvokeError());
         }
         FileStream? stream = null;
         try
         {
-            var descriptor = OpenAt(
-                directoryDescriptor,
-                fileName,
-                WriteOnly | NoFollowFlag | CloseOnExecFlag);
-            if (descriptor < 0)
-            {
-                throw FileSystemException("open new file", fileName, Marshal.GetLastPInvokeError());
-            }
             stream = CreateSynchronousStream(new SafeFileHandle((IntPtr)descriptor, ownsHandle: true));
             SetExactFileMode(stream.SafeFileHandle, fileName);
             return stream;
@@ -452,8 +443,10 @@ internal static class UnixMediaFileOperations
     }
 
     private static int DirectoryFlags => ReadOnly | DirectoryFlag | NoFollowFlag | CloseOnExecFlag;
-    private static int DirectoryFlag => OperatingSystem.IsMacOS() ? 0x100000 : Directory;
-    private static int NoFollowFlag => OperatingSystem.IsMacOS() ? 0x100 : NoFollow;
+    private static int DirectoryFlag => OperatingSystem.IsMacOS() ? 0x100000 :
+        RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? 0x4000 : Directory;
+    private static int NoFollowFlag => OperatingSystem.IsMacOS() ? 0x100 :
+        RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? 0x8000 : NoFollow;
     private static int CloseOnExecFlag => OperatingSystem.IsMacOS() ? 0x1000000 : CloseOnExec;
 
     private static int Descriptor(SafeFileHandle handle)
@@ -481,6 +474,8 @@ internal static class UnixMediaFileOperations
             throw new PlatformNotSupportedException(
                 "Hardened local media storage requires Linux or macOS directory-descriptor APIs.");
         }
+        if (OperatingSystem.IsLinux() && RuntimeInformation.ProcessArchitecture is not (Architecture.X64 or Architecture.Arm64))
+            throw new PlatformNotSupportedException("Hardened Linux media storage supports x64 and arm64.");
     }
 
     private static IOException FileSystemException(string operation, string component, int error) =>
@@ -514,12 +509,12 @@ internal static class UnixMediaFileOperations
         [MarshalAs(UnmanagedType.LPUTF8Str)] string toPath,
         uint flags);
 
-    [DllImport("libc", EntryPoint = "mknodat", SetLastError = true)]
-    private static extern int MknodAtLinux(
+    [DllImport("libc", EntryPoint = "openat", SetLastError = true)]
+    private static extern int OpenAtCreateLinux(
         int directoryFileDescriptor,
         [MarshalAs(UnmanagedType.LPUTF8Str)] string path,
-        uint mode,
-        ulong device);
+        int flags,
+        uint mode);
 
     [DllImport("libc", EntryPoint = "mkdirat", SetLastError = true)]
     private static extern int MkdirAt(

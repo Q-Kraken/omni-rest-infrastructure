@@ -17,6 +17,7 @@ const designStylesheetVersions = Object.fromEntries(
 );
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   env: {
     OMNI_REST_DESIGN_STYLESHEET_VERSIONS: JSON.stringify(designStylesheetVersions),
   },

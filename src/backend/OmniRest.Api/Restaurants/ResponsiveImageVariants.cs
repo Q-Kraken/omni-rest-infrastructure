@@ -69,7 +69,7 @@ public sealed class ResponsiveImageVariantFactory : IResponsiveImageVariantFacto
         int longestEdge,
         CancellationToken cancellationToken)
     {
-        using var image = Image.Load(source.Bytes);
+        using var image = Image.Load(UploadImageDecoding.Options, source.Bytes);
         var format = image.Metadata.DecodedImageFormat
             ?? throw new InvalidOperationException("A validated image must carry a decoded format.");
         image.Mutate(context => context.Resize(new ResizeOptions

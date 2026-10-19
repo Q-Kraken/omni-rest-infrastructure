@@ -1,0 +1,158 @@
+name: Deploy test website
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/deploy-test.yml
+      - .dockerignore
+      - ops/deploy/**
+      - src/frontend/next.config.ts
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Git revision to build and deploy
+        required: true
+        default: main
+
+concurrency:
+  group: deploy-test-${{ github.event_name == 'workflow_dispatch' && 'manual' || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    name: Verify release containers
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    outputs:
+      release: ${{ steps.release.outputs.tag }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ inputs.ref || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          global-json-file: global.json
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+          cache-dependency-path: src/frontend/package-lock.json
+      - name: Test backend
+        run: dotnet test src/backend/OmniRest.sln --configuration Release --logger 'console;verbosity=minimal'
+      - name: Check frontend
+        working-directory: src/frontend
+        run: |
+          npm ci
+          npm run lint
+          npm run typecheck
+          npm run test
+      - name: Select release
+        id: release
+        run: |
+          release=$(git rev-parse HEAD)
+          printf 'tag=%s\n' "$release" >> "$GITHUB_OUTPUT"
+          printf 'RELEASE_TAG=%s\n' "$release" >> "$GITHUB_ENV"
+      - name: Build release images
+        run: |
+          docker build -f ops/deploy/Dockerfile.api -t "omni-rest-api:$RELEASE_TAG" .
+          docker build -f ops/deploy/Dockerfile.frontend -t "omni-rest-frontend:$RELEASE_TAG" .
+      - name: Verify Production deployment locally
+        env:
+          EDGE_BIND: 127.0.0.1
+          HTTP_PORT: '18080'
+          HTTPS_PORT: '18443'
+        run: |
+          mkdir -p .local-run
+          python3 ops/deploy/create-env.py --hostname test.localhost --email test@example.com --output "$PWD/.local-run/ci.env"
+          bash ops/deploy/deploy.sh "$PWD/.local-run/ci.env" "$RELEASE_TAG"
+          compose=(docker compose --env-file .local-run/ci.env -f ops/deploy/compose.yml)
+          "${compose[@]}" run --rm --no-deps -e OMNIREST_ALLOW_RESTAURANT_ONBOARDING=true api --create-restaurant ci-test 'CI Test'
+          "${compose[@]}" run --rm --no-deps -e OMNIREST_ALLOW_RESTAURANT_ONBOARDING=true api --add-domain ci-test test.localhost
+          docker cp omni-rest-test-gateway-1:/data/caddy/pki/authorities/local/root.crt .local-run/ci-root.crt
+          options=(--fail --silent --show-error --cacert .local-run/ci-root.crt --resolve test.localhost:18443:127.0.0.1)
+          curl "${options[@]}" https://test.localhost:18443/api/v1/public/restaurant | python3 -c 'import json,sys; assert json.load(sys.stdin).get("name") == "CI Test"'
+          curl "${options[@]}" https://test.localhost:18443/api/v1/public/menu | python3 -c 'import json,sys; assert json.load(sys.stdin)'
+          curl "${options[@]}" https://test.localhost:18443/admin/login > /dev/null
+      - name: Clean up local deployment
+        if: always()
+        env:
+          EDGE_BIND: 127.0.0.1
+          HTTP_PORT: '18080'
+          HTTPS_PORT: '18443'
+        run: |
+          if [[ -f .local-run/ci.env ]]; then
+            docker compose --env-file .local-run/ci.env -f ops/deploy/compose.yml down --volumes
+          fi
+      - name: Package release
+        if: github.event_name == 'workflow_dispatch'
+        run: docker save "omni-rest-api:$RELEASE_TAG" "omni-rest-frontend:$RELEASE_TAG" | gzip > "$RUNNER_TEMP/omni-release.tar.gz"
+      - name: Store release for deployment
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: omni-release-${{ github.run_id }}
+          path: ${{ runner.temp }}/omni-release.tar.gz
+          retention-days: 1
+          compression-level: 0
+
+  deploy:
+    name: Deploy to OVHcloud test server
+    if: github.event_name == 'workflow_dispatch'
+    needs: build
+    runs-on: ubuntu-latest
+    environment: test
+    timeout-minutes: 20
+    env:
+      RELEASE_TAG: ${{ needs.build.outputs.release }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ needs.build.outputs.release }}
+          persist-credentials: false
+      - name: Download verified release
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
+        with:
+          name: omni-release-${{ github.run_id }}
+          path: ${{ runner.temp }}
+      - name: Transfer and deploy
+        env:
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USER }}
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+          SITE_HOST: ${{ vars.SITE_HOST }}
+        run: |
+          set -euo pipefail
+          [[ "$RELEASE_TAG" =~ ^[0-9a-f]{40}$ ]] || { echo 'Invalid release revision'; exit 1; }
+          [[ "$SSH_HOST" =~ ^[a-zA-Z0-9.-]+$ ]] || { echo 'Missing or invalid SSH host'; exit 1; }
+          [[ "$SSH_USER" =~ ^[a-z_][a-z0-9_-]*$ ]] || { echo 'Missing or invalid SSH user'; exit 1; }
+          [[ "$SITE_HOST" =~ ^[a-z0-9][a-z0-9.-]*$ ]] || { echo 'Missing test environment SITE_HOST variable'; exit 1; }
+          [[ -n "$SSH_PRIVATE_KEY" && -n "$SSH_KNOWN_HOSTS" ]] || { echo 'Missing SSH authentication or pinned host keys'; exit 1; }
+          credentials=$(mktemp -d)
+          trap 'rm -rf -- "$credentials"' EXIT
+          chmod 700 "$credentials"
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$credentials/key"
+          printf '%s\n' "$SSH_KNOWN_HOSTS" > "$credentials/known_hosts"
+          chmod 600 "$credentials/key" "$credentials/known_hosts"
+          options=(-i "$credentials/key" -o BatchMode=yes -o StrictHostKeyChecking=yes -o "UserKnownHostsFile=$credentials/known_hosts")
+          remote="$SSH_USER@$SSH_HOST"
+          ssh "${options[@]}" "$remote" 'mkdir -p /opt/omni-rest-test/ops'
+          scp "${options[@]}" -r ops/deploy "$remote:/opt/omni-rest-test/ops/"
+          ssh "${options[@]}" "$remote" 'gunzip | docker load' < "$RUNNER_TEMP/omni-release.tar.gz"
+          ssh "${options[@]}" "$remote" "bash /opt/omni-rest-test/ops/deploy/deploy.sh /opt/omni-rest-test/server.env '$RELEASE_TAG'"
+      - name: Public smoke check
+        env:
+          SITE_HOST: ${{ vars.SITE_HOST }}
+        run: |
+          curl --fail --location --max-redirs 3 --silent --show-error --retry 5 --retry-delay 5 "https://$SITE_HOST/admin/login" > /dev/null
+          curl --fail --location --max-redirs 3 --silent --show-error "https://$SITE_HOST/api/v1/public/restaurant" | python3 -c 'import json,sys; assert json.load(sys.stdin).get("id")'
+          printf 'Deployed release `%s` to https://%s\n' "$RELEASE_TAG" "$SITE_HOST" >> "$GITHUB_STEP_SUMMARY"
