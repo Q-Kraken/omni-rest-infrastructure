@@ -54,14 +54,23 @@ for the public website.
 
 ## Manual deployment pipeline
 
-`.github/workflows/deploy-test.yml` runs backend/frontend checks, builds images, transfers them over
-SSH, runs the release script and checks public HTTPS endpoints. It does not expose OVH API credentials
-to GitHub. It is manually triggered and uses the `test` environment. Configure its `SSH_HOST`,
+`.github/workflows/deploy-test.yml` validates deployment changes on pull requests: backend/frontend
+checks, both release image builds, Production-mode migrations and a local HTTPS smoke check. This job
+has no server credentials. A manual run packages those same verified images as a one-day artifact;
+the separate deploy job transfers them over SSH, runs the release script and checks public HTTPS.
+Images and deployment files use the same immutable full Git commit. Third-party actions are pinned
+to commit SHAs. It does not expose OVH API credentials to GitHub. Deployment uses the `test`
+environment. Configure its `SSH_HOST`,
 `SSH_USER`, `SSH_PRIVATE_KEY`, `SSH_KNOWN_HOSTS` secrets and `SITE_HOST` variable after provisioning.
 Use a dedicated deployment key, pinned host keys and suitable environment access controls. The SSH
 user's Docker access can administer the VM, so protect that key accordingly. Do not merge this branch
 into main without the repository owner's instruction. The new workflow must reach the default branch
 before ordinary workflow dispatch becomes available; direct CLI releases remain possible meanwhile.
+
+Once enabled: GitHub **Actions → Deploy test website → Run workflow**, leave `ref` as `main` for the
+current release, and run it. A successful deployment writes the release revision and website address
+to the run summary. Pull requests never deploy to the cloud. Changing the default to automatic pushes
+should be a separate decision after the test environment is working.
 
 ## Backups and recovery
 

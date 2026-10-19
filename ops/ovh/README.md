@@ -1,7 +1,10 @@
 # OVHcloud test deployment
 
-Status: Canada API authentication verified on 2026-10-18. The account has zero Public Cloud projects.
-No project activation, server provisioning, or public deployment has been completed.
+Status: Canada API authentication and first-project activation verified on 2026-10-18. Two projects
+exist: `Project 2026-10-18` has the CA$270 FREETRIAL credit, CA$0 used, and expires on
+2026-11-19 at 00:42 America/Winnipeg. `omni-rest-test` was created afterward and has no credit.
+Use the funded first project for deployment; do not delete either project during setup.
+Neither project has an instance. No server provisioning or public deployment has been completed.
 Local deployment assets and their verification are described in [the deployment runbook](../deploy/README.md).
 
 ## Agreed setup
