@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test as base, type Page } from "@playwright/test";
+import { expect, test as base, type Locator, type Page } from "@playwright/test";
 
 /** One server-side fixture per project; owner and public pages share that same tenant. */
 const test = base.extend({
@@ -363,6 +363,59 @@ test("on a phone the menu scrolls through every category and the tabs follow", a
   await expect(page.locator("[data-layout]")).toHaveAttribute("data-layout", "tabs");
   await expect(page.locator("section[hidden]")).toHaveCount(5);
 });
+
+test("every opening-hours control stays visible and clear of the others at every width", async ({ page }) => {
+  await signIn(page);
+  const section = (name: string) => page.locator("section").filter({ has: page.getByRole("heading", { name }) });
+  const special = section("Special hours");
+  await special.getByRole("button", { name: "Add special period" }).click();
+  // An overnight period adds the "Closes next day" box, the widest a period row gets.
+  await special.getByLabel("Opens", { exact: true }).first().fill("22:00");
+  await special.getByLabel("Closes", { exact: true }).first().fill("02:00");
+  await expect(special.getByLabel("Closes next day")).toBeVisible();
+  const regular = section("Regular hours");
+  await regular.getByLabel("Closes", { exact: true }).nth(1).fill("01:00");
+  await expect(regular.getByLabel("Closes next day")).toBeVisible();
+
+  for (const width of [1_440, 768, 375, 320]) {
+    await page.setViewportSize({ width, height: 900 });
+    await assertNoHorizontalOverflow(page, `hours ${width}px`);
+    await assertControlsApart(special, `special hours ${width}px`);
+    await assertControlsApart(regular, `regular hours ${width}px`);
+  }
+});
+
+/** Each input and button sits inside its card or section, on top, and touches no other control. */
+async function assertControlsApart(section: Locator, label: string) {
+  const controls = await section.evaluate((root) => [...root.querySelectorAll<HTMLElement>("input, button")].map((control) => {
+    control.scrollIntoView({ behavior: "instant", block: "center", inline: "nearest" });
+    const area = control.closest("fieldset, section")!.getBoundingClientRect();
+    const box = control.getBoundingClientRect();
+    // What a tap on the control's middle lands on: anything drawn over the control shows up here.
+    const hit = document.elementFromPoint(box.left + box.width / 2, box.top + box.height / 2);
+    return {
+      name: control.getAttribute("aria-label") || control.closest("label")?.textContent?.trim() || control.textContent?.trim() || control.tagName,
+      left: box.left + window.scrollX,
+      right: box.right + window.scrollX,
+      top: box.top + window.scrollY,
+      bottom: box.bottom + window.scrollY,
+      contained: box.left >= area.left - 1 && box.right <= area.right + 1,
+      coveredBy: hit === control || (hit && control.contains(hit)) ? null : hit?.outerHTML.slice(0, 120) ?? "nothing",
+    };
+  }));
+
+  for (const control of controls) {
+    expect(control.contained, `${label}: ${control.name} stays inside its card`).toBe(true);
+    expect(control.coveredBy, `${label}: ${control.name} is not covered by another element`).toBeNull();
+  }
+  for (const [index, first] of controls.entries()) {
+    for (const second of controls.slice(index + 1)) {
+      const overlapX = Math.min(first.right, second.right) - Math.max(first.left, second.left);
+      const overlapY = Math.min(first.bottom, second.bottom) - Math.max(first.top, second.top);
+      expect(overlapX > 1 && overlapY > 1, `${label}: ${first.name} overlaps ${second.name}`).toBe(false);
+    }
+  }
+}
 
 async function signIn(page: Page) {
   await page.goto("/admin/restaurant");
