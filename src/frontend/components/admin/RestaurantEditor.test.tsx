@@ -139,7 +139,7 @@ describe("RestaurantEditor", () => {
     const socialSection = screen.getByRole("heading", { name: "Social links" }).parentElement!;
     setValue(within(socialSection).getByLabelText("Platform"), "facebook");
     setValue(within(socialSection).getByLabelText("URL"), "https://facebook.com/example");
-    await user.click(within(socialSection).getByRole("button", { name: "Remove" }));
+    await user.click(within(socialSection).getByRole("button", { name: "Remove Facebook link" }));
     await user.click(screen.getByRole("button", { name: "Add link" }));
     await user.click(screen.getByRole("button", { name: "Save social links" }));
     expect(mocks.mutate).toHaveBeenCalledWith("/api/v1/admin/restaurant/social-links", "PUT", expect.any(Object), '"draft-3"');
@@ -222,12 +222,49 @@ describe("RestaurantEditor", () => {
     render(<RestaurantEditor initial={initial} initialMedia={[initial.mainImage!]} />);
 
     await user.click(screen.getByRole("button", { name: "Save social links" }));
-    const group = await screen.findByRole("group", { name: "instagram social link" });
+    const group = await screen.findByRole("group", { name: "Instagram social link" });
     await waitFor(() => expect(group).toHaveFocus());
     expect(group).toHaveAttribute("aria-invalid", "true");
     expect(within(group).getByLabelText("URL")).toHaveAttribute("aria-describedby", "error-links-instagram");
-    expect(within(group).getByText("Use an approved HTTPS URL for this platform.")).toBeVisible();
+    expect(within(group).getByText("Use a link to your Instagram page that starts with https://, such as https://www.instagram.com/yourpage.")).toBeVisible();
     expect(within(group).getByLabelText("URL")).toHaveValue("https://instagram.com/example");
+    expect(screen.getByRole("alert", { name: "Please correct these fields" })).toHaveTextContent("Instagram link");
+  });
+
+  it("offers social platforms as a list, each one once, and sends the stored ids", async () => {
+    const user = userEvent.setup();
+    const links = [{ platform: "facebook", url: "https://www.facebook.com/example" }, { platform: "instagram", url: "https://instagram.com/example" }];
+    render(<RestaurantEditor initial={{ ...initial, socialLinks: links }} initialMedia={[]} />);
+
+    const facebook = screen.getByRole("group", { name: "Facebook social link" });
+    const platform = within(facebook).getByLabelText("Platform");
+    expect(platform.tagName).toBe("SELECT");
+    expect(within(platform).getByRole("option", { name: "Instagram" })).toBeDisabled();
+    expect(within(platform).getByRole("option", { name: "Facebook" })).toBeEnabled();
+
+    await user.click(screen.getByRole("button", { name: "Add link" }));
+    expect(screen.getByRole("group", { name: "Google Business Profile social link" })).toBeVisible();
+    await user.click(screen.getByRole("button", { name: "Remove Google Business Profile link" }));
+    await user.click(screen.getByRole("button", { name: "Save social links" }));
+    expect(mocks.mutate).toHaveBeenCalledWith("/api/v1/admin/restaurant/social-links", "PUT", { links }, initial.eTag);
+  });
+
+  it("keeps a social link error on its own row and clears it once that row changes", async () => {
+    const user = userEvent.setup();
+    const links = [{ platform: "facebook", url: "https://example.com/wrong" }, { platform: "instagram", url: "https://instagram.com/example" }];
+    mocks.mutate.mockRejectedValueOnce(new BrowserApiError(400, { code: "admin_validation", errors: { "links.facebook": ["social_url_invalid"] } }));
+    render(<RestaurantEditor initial={{ ...initial, socialLinks: links }} initialMedia={[]} />);
+
+    await user.click(screen.getByRole("button", { name: "Save social links" }));
+    const facebook = await screen.findByRole("group", { name: "Facebook social link" });
+    const instagram = screen.getByRole("group", { name: "Instagram social link" });
+    expect(within(facebook).getByText(/Use a link to your Facebook page/)).toBeVisible();
+    expect(instagram).toHaveAttribute("aria-invalid", "false");
+    expect(within(instagram).queryByText(/Use a link/)).not.toBeInTheDocument();
+
+    fireEvent.change(within(facebook).getByLabelText("URL"), { target: { value: "https://www.facebook.com/example" } });
+    expect(within(facebook).queryByText(/Use a link/)).not.toBeInTheDocument();
+    expect(within(facebook).getByLabelText("URL")).toHaveAttribute("aria-invalid", "false");
   });
 
   it("makes destructive confirmation keyboard-safe and restores focus and background state", async () => {

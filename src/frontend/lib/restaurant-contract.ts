@@ -132,6 +132,28 @@ export type PublicRestaurant = {
 };
 
 /**
+ * The social platforms the API accepts, in the order the editor offers them.
+ *
+ * The ids mirror `RestaurantValidation.SocialHosts`. The editor used to take the id as free text, so a
+ * one-letter typo (`faceboo`) made the platform unknown and the API rejected the link's URL — an error
+ * the owner could not trace back to the field they had actually changed. The example is what the
+ * row's error message shows, so it must be a URL the API accepts for that platform.
+ */
+export const socialPlatforms = [
+  { id: "instagram", label: "Instagram", example: "https://www.instagram.com/yourpage" },
+  { id: "facebook", label: "Facebook", example: "https://www.facebook.com/yourpage" },
+  { id: "google_business", label: "Google Business Profile", example: "https://maps.app.goo.gl/yourplace" },
+  { id: "tiktok", label: "TikTok", example: "https://www.tiktok.com/@yourpage" },
+  { id: "youtube", label: "YouTube", example: "https://www.youtube.com/@yourpage" },
+  { id: "x", label: "X (Twitter)", example: "https://x.com/yourpage" },
+  { id: "linkedin", label: "LinkedIn", example: "https://www.linkedin.com/company/yourpage" },
+] as const;
+
+export function socialPlatform(id: string) {
+  return socialPlatforms.find((platform) => platform.id === id);
+}
+
+/**
  * The time zones a Canadian restaurant realistically sits in, with the names an owner recognises.
  *
  * The profile form used to take a free-text IANA identifier, which is a database key an owner has no

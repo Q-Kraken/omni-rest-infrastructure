@@ -6,10 +6,10 @@ import { BrowserApiError, browserGet, mutate, uploadMedia } from "@/lib/browser-
 import { isE164 } from "@/lib/phone";
 import { formatPhoneDisplay } from "@/lib/phone-display";
 import type { AdminMediaAsset, AdminMutation, AdminRestaurant, MainImage, PublicationStatus, RegularHoursDay, SocialLink, SpecialHours } from "@/lib/restaurant-contract";
-import { canadianTimeZones, priceRanges, restaurantTypes } from "@/lib/restaurant-contract";
+import { canadianTimeZones, priceRanges, restaurantTypes, socialPlatform, socialPlatforms } from "@/lib/restaurant-contract";
 import { ConfirmDialog } from "./ConfirmDialog";
 import { DraftStatusBar, publishingLabel, publishingSentence, sessionExpiredNotice } from "./DraftStatusBar";
-import { fieldErrorHelpers } from "./FieldError";
+import { FieldError, fieldErrorHelpers, fieldErrorId } from "./FieldError";
 import { useUnsavedChanges } from "./useUnsavedChanges";
 import styles from "@/app/admin/admin.module.css";
 
@@ -28,7 +28,7 @@ const ERROR_MESSAGES: Record<string, string> = {
   hours_interval_invalid: "Use valid, different opening and closing times.", hours_intervals_overlap: "Opening periods cannot overlap.",
   special_date_invalid: "Choose a valid special date.", closed_date_has_intervals: "A closed date cannot contain opening periods.",
   special_date_duplicate: "You already have special hours on that date. Edit the existing one instead.",
-  social_platform_duplicate: "Provide each social platform once.", social_url_invalid: "Use an approved HTTPS URL for this platform.",
+  social_platform_duplicate: "Provide each social platform once.", social_url_invalid: "Use a link to this platform's own site that starts with https://.",
   website_url_invalid: "Enter a full web address that starts with https://, such as https://example.com.",
 };
 
@@ -66,8 +66,23 @@ function fieldLabel(field: string): string {
   const known = FIELD_LABELS[field];
   if (known) return known;
   if (field.startsWith("days.")) return `${DAYS[Number(field.split(".")[1])] ?? "Regular"} hours`;
-  if (field.startsWith("links.")) return `${field.slice("links.".length)} link`;
+  if (field.startsWith("links.")) return `${platformLabel(field.slice("links.".length))} link`;
   return field;
+}
+
+function platformLabel(id: string): string {
+  return socialPlatform(id)?.label ?? id;
+}
+
+/**
+ * The message under one social link row. The API only says the URL was refused, so the row names the
+ * platform and shows a link it would accept rather than the generic wording the summary uses.
+ */
+function socialLinkMessage(platform: string, codes: string[]): string {
+  const known = socialPlatform(platform);
+  if (codes[0] === "social_url_invalid" && known) return `Use a link to your ${known.label} page that starts with https://, such as ${known.example}.`;
+  if (codes[0] === "social_url_invalid") return "Choose a platform from the list.";
+  return ERROR_MESSAGES[codes[0]] ?? "Enter a valid value.";
 }
 
 function normalizeHours(hours: RegularHoursDay[]): RegularHoursDay[] {
@@ -288,6 +303,19 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
     }
   }
 
+  const unusedPlatforms = socialPlatforms.filter((platform) => !socialLinks.some((link) => link.platform === platform.id));
+
+  /** Drops one field's error once the owner changes what it described, so it cannot linger on a fixed row. */
+  function clearFieldError(field: string) {
+    setFieldErrors((current) => Object.fromEntries(Object.entries(current).filter(([key]) => key !== field)));
+  }
+
+  function changeSocialLink(index: number, change: Partial<SocialLink>) {
+    clearFieldError(`links.${socialLinks[index].platform}`);
+    setSocialLinks(socialLinks.map((item, position) => position === index ? { ...item, ...change } : item));
+    setDirty(true);
+  }
+
   async function uploadSelectedMedia() {
     if (!uploadFile || !mediaAltText.trim()) return;
     setBusy("Media upload"); setNotice(null);
@@ -408,10 +436,22 @@ export function RestaurantEditor({ initial, initialMedia }: { initial: AdminRest
         {errorFor("links")}
         {socialLinks.map((link, index) => {
           const field = `links.${link.platform}`;
-          const describedBy = fieldErrors[field] ? `error-${field.replaceAll(".", "-")}` : undefined;
-          return <div className={styles.inlineForm} key={index} role="group" aria-label={`${link.platform} social link`} tabIndex={-1} {...fieldA11y(field)}><label>Platform<input value={link.platform} onChange={(e) => { setSocialLinks(socialLinks.map((item, position) => position === index ? { ...item, platform: e.target.value } : item)); setDirty(true); }} /></label><label>URL<input type="url" aria-invalid={Boolean(fieldErrors[field])} aria-describedby={describedBy} value={link.url} onChange={(e) => { setSocialLinks(socialLinks.map((item, position) => position === index ? { ...item, url: e.target.value } : item)); setDirty(true); }} /></label>{errorFor(field)}<button type="button" onClick={() => { setSocialLinks(socialLinks.filter((_, position) => position !== index)); setDirty(true); }}>Remove</button></div>;
+          const codes = fieldErrors[field];
+          const errorId = fieldErrorId("error", field);
+          const label = platformLabel(link.platform);
+          // The platform is picked, not typed: the API only knows the ids in `socialPlatforms`, and each
+          // may appear once, so the ones other rows already use are offered but disabled.
+          return <div className={styles.socialRow} key={index} role="group" aria-label={`${label} social link`} tabIndex={-1} {...fieldA11y(field)}>
+            <label>Platform<select value={link.platform} onChange={(e) => changeSocialLink(index, { platform: e.target.value })}>
+              {socialPlatform(link.platform) ? null : <option value={link.platform}>{link.platform}</option>}
+              {socialPlatforms.map((platform) => <option key={platform.id} value={platform.id} disabled={platform.id !== link.platform && socialLinks.some((other) => other.platform === platform.id)}>{platform.label}</option>)}
+            </select></label>
+            <label>URL<input type="url" inputMode="url" maxLength={2048} aria-invalid={Boolean(codes)} aria-describedby={codes ? errorId : undefined} value={link.url} onChange={(e) => changeSocialLink(index, { url: e.target.value })} /></label>
+            <button type="button" aria-label={`Remove ${label} link`} onClick={() => { clearFieldError(field); setSocialLinks(socialLinks.filter((_, position) => position !== index)); setDirty(true); }}>Remove</button>
+            {codes && <FieldError id={errorId}>{socialLinkMessage(link.platform, codes)}</FieldError>}
+          </div>;
         })}
-        <div className={styles.buttonRow}><button type="button" className={styles.secondaryButton} onClick={() => { setSocialLinks([...socialLinks, { platform: "instagram", url: "https://" }]); setDirty(true); }}>Add link</button><button type="button" className={styles.primaryButton} disabled={busy !== null} onClick={() => void save("/api/v1/admin/restaurant/social-links", { links: socialLinks }, "Social links")}>Save social links</button></div>
+        <div className={styles.buttonRow}><button type="button" className={styles.secondaryButton} disabled={unusedPlatforms.length === 0} onClick={() => { setSocialLinks([...socialLinks, { platform: unusedPlatforms[0].id, url: "https://" }]); setDirty(true); }}>Add link</button><button type="button" className={styles.primaryButton} disabled={busy !== null} onClick={() => void save("/api/v1/admin/restaurant/social-links", { links: socialLinks }, "Social links")}>Save social links</button></div>
       </section>
 
       <section className={styles.editorSection} aria-labelledby="image-title">
