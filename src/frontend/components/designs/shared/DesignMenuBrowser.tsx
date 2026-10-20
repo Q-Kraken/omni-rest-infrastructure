@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import type { MouseEvent } from "react";
-import { memo, useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 
 import { formatPrice } from "@/lib/format-price";
 import type { PublicBadge, PublicCategory, PublicDish, PublicMedia } from "@/lib/menu-contract";
@@ -47,6 +47,15 @@ const serverHydratedSnapshot = () => false;
 const locationSnapshot = () => window.location.hash;
 const serverLocationSnapshot = () => "";
 
+/**
+ * Below this width the menu reads as one continuous page: every category stays shown, a tab jumps to
+ * its category, and scrolling moves the highlight. At and above it, one category shows at a time.
+ * `48rem` is the width the dish photo `sizes` hint below already treats as a phone.
+ */
+const continuousLayoutQuery = "(width < 48rem)";
+const layoutSnapshot = () => window.matchMedia(continuousLayoutQuery).matches;
+const serverLayoutSnapshot = () => false;
+
 const badgeRegistry: Readonly<Record<string, string>> = {
   vegetarian: "menu.badge.vegetarian",
   vegan: "menu.badge.vegan",
@@ -58,6 +67,36 @@ const badgeRegistry: Readonly<Record<string, string>> = {
   popular: "menu.badge.popular",
   new: "menu.badge.new",
 };
+
+function subscribeToLayout(callback: () => void) {
+  const query = window.matchMedia(continuousLayoutQuery);
+  query.addEventListener("change", callback);
+  return () => query.removeEventListener("change", callback);
+}
+
+const serverScrollSnapshot = () => null;
+/** Input that means the reader is scrolling on their own, which ends a tab tap's pending scroll. */
+const readerInput = ["wheel", "touchstart", "keydown"] as const;
+
+function subscribeToScroll(callback: () => void) {
+  window.addEventListener("scroll", callback, { passive: true });
+  window.addEventListener("resize", callback);
+  return () => {
+    window.removeEventListener("scroll", callback);
+    window.removeEventListener("resize", callback);
+  };
+}
+
+function scrollBehavior(): ScrollBehavior {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+}
+
+/** How much of the top of the viewport the sticky category nav covers once it has stuck. */
+function stickyNavOffset(nav: HTMLElement | null): number {
+  if (!nav) return 0;
+  const stickyTop = Number.parseFloat(window.getComputedStyle(nav).top);
+  return nav.getBoundingClientRect().height + (Number.isFinite(stickyTop) ? stickyTop : 0);
+}
 
 function subscribeToLocation(callback: () => void) {
   window.addEventListener("hashchange", callback);
@@ -91,23 +130,102 @@ export function DesignMenuBrowser({ categories, locale, currency, classes }: Des
     window.history.replaceState(window.history.state, "", `${window.location.pathname}${window.location.search}`);
   }, [invalidHash]);
 
+  const continuous = useSyncExternalStore(subscribeToLayout, layoutSnapshot, serverLayoutSnapshot) && enhanced;
+  // Held in state rather than a ref so the scroll position read below re-reads once the nav mounts.
+  const [nav, setNav] = useState<HTMLElement | null>(null);
+  const stripRef = useRef<HTMLDivElement>(null);
+
+  // Continuous layout: the category in view is the last one whose panel has reached the sticky nav.
+  const categoryInView = useCallback(() => {
+    if (!continuous || categories.length < 2) return null;
+    const scroller = document.scrollingElement ?? document.documentElement;
+    // At the very bottom a short last category may never reach the nav; it is still the one in view.
+    if (window.innerHeight + window.scrollY >= scroller.scrollHeight - 1) return categories[categories.length - 1].slug;
+    const line = stickyNavOffset(nav) + 1;
+    let current = categories[0].slug;
+    for (const category of categories) {
+      const panel = document.getElementById(`category-panel-${category.id}`);
+      if (!panel || panel.getBoundingClientRect().top > line) break;
+      current = category.slug;
+    }
+    return current;
+  }, [continuous, categories, nav]);
+  const scrolledSlug = useSyncExternalStore(subscribeToScroll, categoryInView, serverScrollSnapshot);
+
+  // Set by a tab tap while the page scrolls to that category, so the categories it passes on the way
+  // do not flash in the nav. Cleared once the target is reached or the reader scrolls on their own.
+  const [pendingSlug, setPendingSlug] = useState<string | null>(null);
+  useEffect(() => {
+    if (!pendingSlug) return;
+    const settle = () => {
+      if (categoryInView() === pendingSlug) setPendingSlug(null);
+    };
+    const release = () => setPendingSlug(null);
+    window.addEventListener("scroll", settle, { passive: true });
+    for (const type of readerInput) window.addEventListener(type, release, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", settle);
+      for (const type of readerInput) window.removeEventListener(type, release);
+    };
+  }, [pendingSlug, categoryInView]);
+
+  const activeSlug = continuous ? pendingSlug ?? scrolledSlug ?? selectedSlug : selectedSlug;
+
+  const scrollToCategory = useCallback(
+    (slug: string) => {
+      const category = categories.find((item) => item.slug === slug);
+      const panel = category ? document.getElementById(`category-panel-${category.id}`) : null;
+      if (!panel) return;
+      const top = window.scrollY + panel.getBoundingClientRect().top - stickyNavOffset(nav);
+      window.scrollTo({ top, behavior: scrollBehavior() });
+    },
+    [categories, nav],
+  );
+
+  // Continuous layout: a tap, a back/forward step and a deep link all arrive as a hash. The page
+  // scrolls to that category, measuring the sticky nav so it never covers the category heading.
+  useEffect(() => {
+    if (!continuous || !hash.startsWith("#") || invalidHash || !selectedSlug) return;
+    scrollToCategory(selectedSlug);
+  }, [continuous, hash, invalidHash, selectedSlug, scrollToCategory]);
+
+  // Keeps the highlighted tab in view. Only the tab strip scrolls: `scrollIntoView` used to do this,
+  // and it also scrolls every scrollable ancestor, the page included, which shifted the page sideways.
+  useEffect(() => {
+    const strip = stripRef.current;
+    const category = categories.find((item) => item.slug === activeSlug);
+    if (!enhanced || !strip || !category || strip.scrollWidth <= strip.clientWidth) return;
+    const link = strip.querySelector<HTMLElement>(`[aria-controls="category-panel-${category.id}"]`);
+    if (!link) return;
+    const stripBox = strip.getBoundingClientRect();
+    const linkBox = link.getBoundingClientRect();
+    const left = strip.scrollLeft + (linkBox.left - stripBox.left) - (stripBox.width - linkBox.width) / 2;
+    strip.scrollTo({ left, behavior: scrollBehavior() });
+  }, [enhanced, activeSlug, categories]);
+
   function selectCategory(event: MouseEvent<HTMLAnchorElement>, slug: string) {
     event.preventDefault();
+    if (continuous) setPendingSlug(slug);
     if (window.location.hash !== `#${slug}`) {
       window.history.pushState({ category: slug }, "", `#${slug}`);
       window.dispatchEvent(new Event(selectionEvent));
+    } else if (continuous) {
+      // The hash is unchanged, so the effect above will not run: the reader scrolled away and tapped again.
+      scrollToCategory(slug);
     }
-    const behavior = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
-    event.currentTarget.scrollIntoView({ behavior, block: "nearest", inline: "center" });
   }
 
   return (
-    <div className={classes.browser} data-enhanced={enhanced ? "true" : "false"}>
+    <div
+      className={classes.browser}
+      data-enhanced={enhanced ? "true" : "false"}
+      data-layout={continuous ? "continuous" : "tabs"}
+    >
       {categories.length > 1 ? (
-        <nav className={classes.categoryNav} aria-label={message("categories")}>
-          <div className={classes.categoryStrip}>
+        <nav className={classes.categoryNav} aria-label={message("categories")} ref={setNav}>
+          <div className={classes.categoryStrip} ref={stripRef}>
             {categories.map((category) => {
-              const selected = selectedSlug === category.slug;
+              const selected = activeSlug === category.slug;
               return (
                 <a
                   className={classes.categoryLink}
@@ -137,7 +255,7 @@ export function DesignMenuBrowser({ categories, locale, currency, classes }: Des
             id={`category-panel-${category.id}`}
             key={category.id}
             aria-labelledby={`category-heading-${category.id}`}
-            hidden={enhanced && selectedSlug !== category.slug}
+            hidden={enhanced && !continuous && selectedSlug !== category.slug}
           >
             <div className={classes.categoryHeading} id={category.slug}>
               <h2 id={`category-heading-${category.id}`}>{category.name}</h2>

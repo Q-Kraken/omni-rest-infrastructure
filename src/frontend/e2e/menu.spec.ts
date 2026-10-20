@@ -16,7 +16,13 @@ test("renders the real menu accessibly without horizontal clipping", async ({ pa
   await expect
     .poll(() => page.locator("[data-enhanced]").getAttribute("data-enhanced"))
     .toBe("true");
-  await expect(page.locator("#desserts").locator("xpath=..")).toBeHidden();
+  // Phone widths read as one continuous menu; wider screens show one category at a time.
+  const desserts = page.locator("#desserts").locator("xpath=..");
+  if (await page.locator("[data-layout]").getAttribute("data-layout") === "continuous") {
+    await expect(desserts).toBeVisible();
+  } else {
+    await expect(desserts).toBeHidden();
+  }
 
   const seriousOrCritical = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])

@@ -6,6 +6,15 @@
   //    Left out: the DoorDash-only "Most Ordered" list and the two "30% off" promo items.
   //  - Hours, coordinates, map link: Google Maps listing (matches DoorDash and Instagram).
   //  - Spicy Rice Noodle photo: Uber Eats (DoorDash has none for it).
+  //  - Drink photos: neither DoorDash nor Uber Eats has any, so these are Wikimedia Commons photos,
+  //    cropped square. Iced Tea, Root Beer and Ginger Ale show no brand, since the menu names none.
+  //      coke.jpg       "Coca-cola 50cl can - Italia" by M0tty, CC BY-SA 3.0
+  //      coke-zero.jpg  "2 cans of Coca-Cola Zero Sugar 20220124" by Solomon203, CC BY-SA 4.0
+  //      iced-tea.jpg   "Glass of iced tea" by Evan Swigart, CC BY 2.0
+  //      7-up.jpg       "Can of Seven Up" by IBERZA, CC BY 3.0
+  //      root-beer.jpg  "Root beer in glass mug" by Markmark28, CC BY-SA 4.0
+  //      ginger-ale.jpg "Ginger ale" by Hisakazu Watanabe, CC BY-SA 2.0
+  //    Each is at https://commons.wikimedia.org/wiki/File:<title with spaces as underscores>.jpg
   //  - Logo: Instagram profile picture of @alfysnoodlehouse.
   //  - Main image and dining room: photos posted by the restaurant itself on Google Maps (2021, 2018).
   //  - Not used: alfysnoodle.com only redirects to SkipTheDishes; the SkipTheDishes menu is an older
@@ -187,12 +196,36 @@
       {
         "name": "Drinks",
         "dishes": [
-          { "name": "Coke", "price": 1.99 },
-          { "name": "Coke Zero", "price": 1.99 },
-          { "name": "Iced Tea", "price": 1.99 },
-          { "name": "7-Up", "price": 1.99 },
-          { "name": "Root Beer", "price": 1.99 },
-          { "name": "Ginger Ale", "price": 1.99 }
+          {
+            "name": "Coke",
+            "price": 1.99,
+            "image": { "file": "photos/coke.jpg", "alt": "A can of Coca-Cola" }
+          },
+          {
+            "name": "Coke Zero",
+            "price": 1.99,
+            "image": { "file": "photos/coke-zero.jpg", "alt": "Two cans of Coca-Cola Zero Sugar" }
+          },
+          {
+            "name": "Iced Tea",
+            "price": 1.99,
+            "image": { "file": "photos/iced-tea.jpg", "alt": "A glass of iced tea with ice and a lemon wedge" }
+          },
+          {
+            "name": "7-Up",
+            "price": 1.99,
+            "image": { "file": "photos/7-up.jpg", "alt": "A can of 7-Up" }
+          },
+          {
+            "name": "Root Beer",
+            "price": 1.99,
+            "image": { "file": "photos/root-beer.jpg", "alt": "A glass mug of root beer with foam" }
+          },
+          {
+            "name": "Ginger Ale",
+            "price": 1.99,
+            "image": { "file": "photos/ginger-ale.jpg", "alt": "A glass of ginger ale" }
+          }
         ]
       }
     ]

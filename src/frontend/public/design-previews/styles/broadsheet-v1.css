@@ -43,6 +43,7 @@
 .broadsheet-v1__categoryLink[data-selected="true"] { background: #b03a2e; color: #fff; }
 .broadsheet-v1__panels { padding-top: 2.5rem; }
 .broadsheet-v1__panel[hidden] { display: none; }
+.broadsheet-v1__panel:not([hidden]) ~ .broadsheet-v1__panel:not([hidden]) { margin-top: 2.5rem; }
 .broadsheet-v1__categoryHeading { display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 2rem; padding-block: .8rem; border-block: .2rem double #23211e; }
 .broadsheet-v1__categoryHeading h2 { margin: 0; font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: .9; }
 .broadsheet-v1__categoryHeading p { margin: 0; font-style: italic; }
@@ -51,7 +52,7 @@
 .broadsheet-v1__dishCard { display: grid; min-width: 0; grid-template-columns: 8.5rem 1fr; gap: 1rem; padding: 1.25rem 1.25rem 1.25rem 0; border-bottom: 1px solid #777168; }
 .broadsheet-v1__dishCard:nth-child(odd) { padding-right: 2rem; border-right: 1px solid #777168; }
 .broadsheet-v1__dishCard:nth-child(even) { padding-left: 2rem; }
-.broadsheet-v1__unavailableCard { opacity: .62; }
+.broadsheet-v1__unavailableCard .broadsheet-v1__mediaFrame, .broadsheet-v1__unavailableCard .broadsheet-v1__mediaPlaceholder { opacity: .62; }
 .broadsheet-v1__mediaFrame, .broadsheet-v1__mediaPlaceholder { min-height: 8.5rem; background: #ded8c9; overflow: hidden; }
 .broadsheet-v1__mediaFrame img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(.35); }
 .broadsheet-v1__mediaPlaceholder { display: grid; place-items: center; color: #b03a2e; font-size: 2rem; }
