@@ -52,6 +52,13 @@
 .specialPeriods { display: grid; justify-items: start; }
 .specialPeriods > .intervalRow { justify-self: stretch; }
 .inlineForm { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); align-items: end; gap: .75rem; }
+/* Platform, URL and Remove share a line while they fit and wrap one per line on a phone; the row's
+   error always takes a full line of its own below them rather than a squeezed column beside them. */
+.socialRow { display: flex; flex-wrap: wrap; align-items: end; gap: .5rem .75rem; margin-bottom: .75rem; }
+.socialRow > label { min-width: 0; }
+.socialRow > label:first-of-type { flex: 1 1 12rem; }
+.socialRow > label:last-of-type { flex: 3 1 16rem; }
+.socialRow > .fieldError { flex: 1 0 100%; }
 .checkLabel { display: flex !important; min-height: 2.75rem; align-items: center; grid-template-columns: auto 1fr; }
 .checkLabel input { width: 1.25rem; min-height: 1.25rem; }
 .specialList { display: grid; gap: .5rem; padding: 0; list-style: none; }

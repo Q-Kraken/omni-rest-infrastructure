@@ -92,7 +92,7 @@ test("real owner workflow persists and publishes every Phase 3 restaurant field"
 
   const socialLinks = page.locator("section").filter({ has: page.getByRole("heading", { name: "Social links" }) });
   await socialLinks.getByRole("button", { name: "Add link" }).click();
-  await socialLinks.getByLabel("Platform").fill("instagram");
+  await socialLinks.getByLabel("Platform").selectOption("instagram");
   await socialLinks.getByLabel("URL").fill("https://www.instagram.com/real_prairie");
   await socialLinks.getByRole("button", { name: "Save social links" }).click();
   await expectSaved(page, "Social links");
