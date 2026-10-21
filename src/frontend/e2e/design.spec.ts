@@ -256,6 +256,67 @@ test("retained design styles stay isolated across real public links and browser 
   expect(await designStyleSnapshot(page, "sunroom-v1")).toEqual(cleanSunroomHome);
 });
 
+// The design picker sells Nightfall on its darkened photo behind the title. The public menu once had
+// only a plain gradient there, so a visitor who landed on the menu never saw the photo.
+test("Nightfall shows the restaurant photo behind the title on the public Home and Menu", async ({ page }) => {
+  await page.goto("/");
+  await setContentMode(page, "standard");
+  await setPublishedDesign(page, "nightfall-v1");
+
+  for (const viewport of [{ width: 1440, height: 900 }, { width: 375, height: 812 }]) {
+    await page.setViewportSize(viewport);
+    for (const { path, hero } of [
+      { path: "/", hero: ".nightfall-v1__hero" },
+      { path: "/menu", hero: ".nightfall-v1__menuHero" },
+    ]) {
+      const label = `${path} at ${viewport.width}px`;
+      await page.goto(path);
+      const heroBox = page.locator(hero);
+      const photo = heroBox.getByRole("img", { name: "Dining room at night" });
+      await expect(photo, label).toBeVisible();
+      // `decode()` rejects a broken image. `naturalWidth` cannot tell: the 1x1 fixture behind a
+      // `1920w` srcset entry reports a natural width that rounds down to 0 even when it drew.
+      await expect.poll(() => photo.evaluate((image: HTMLImageElement) => image.decode().then(() => true, () => false)), {
+        message: `${label}: the photo never loaded`,
+      }).toBe(true);
+
+      // The photo fills the hero, inside its border, rather than sitting in a corner of it.
+      const gaps = await photo.evaluate((image) => {
+        const frame = image.parentElement!;
+        const outer = frame.getBoundingClientRect();
+        const picture = image.getBoundingClientRect();
+        const left = outer.left + frame.clientLeft;
+        const top = outer.top + frame.clientTop;
+        return [
+          picture.left - left,
+          picture.top - top,
+          left + frame.clientWidth - picture.right,
+          top + frame.clientHeight - picture.bottom,
+        ].map(Math.abs);
+      });
+      for (const gap of gaps) expect(gap, `${label}: photo leaves a gap ${gaps}`).toBeLessThanOrEqual(1);
+
+      // The title is drawn over the photo and its shade, not under them.
+      const heading = heroBox.getByRole("heading", { level: 1 });
+      await heading.scrollIntoViewIfNeeded();
+      expect(await heading.evaluate((element) => {
+        const box = element.getBoundingClientRect();
+        return element.contains(document.elementFromPoint(box.left + 4, box.top + box.height / 2));
+      }), `${label}: title covered`).toBe(true);
+    }
+  }
+
+  // Nightfall is left-aligned, so the tax note lines up with the title panel instead of floating
+  // in from both sides on a wide screen.
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/menu");
+  const [panel, note] = await Promise.all([
+    page.locator(".nightfall-v1__menuHero").boundingBox(),
+    page.getByRole("note").filter({ hasText: /tax/i }).boundingBox(),
+  ]);
+  expect(Math.abs(note!.x - panel!.x)).toBeLessThanOrEqual(1);
+});
+
 test("menu keyboard navigation honors reduced motion", async ({ page }) => {
   await page.addInitScript(() => {
     const record = window as unknown as { __designScrollBehaviors: string[] };

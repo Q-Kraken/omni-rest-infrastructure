@@ -53,7 +53,8 @@ function createAdminPortal() {
     specialHours: [],
     status: { state: "open", label: "Open", nextChangeAt: null, source: "regularHours" },
     socialLinks: adminRestaurant.socialLinks,
-    mainImage: null,
+    // A real 1x1 PNG served below at /media/seed/, so every design draws its hero photo for the specs.
+    mainImage: { altText: "Dining room at night", variants: [{ url: "/media/seed/hero.png", width: 1600, height: 900 }] },
     publicationVersion: "3",
     websiteDesignId: "legacy-current-v1",
   };

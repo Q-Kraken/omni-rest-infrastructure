@@ -10,6 +10,7 @@ import {
   HomeLink,
   HomeNavigationLink,
   MenuRestaurantActions,
+  RestaurantHeroImage,
 } from "../shared/PublicDesignParts";
 import { createDesignClassNames } from "../shared/designClassNames";
 
@@ -51,6 +52,12 @@ export default function NightfallMenu({ site }: WebsiteDesignMenuProps) {
       </header>
       <main className={styles.menuMain} id="main-content" lang={site.locale}>
         <header className={styles.menuHero}>
+          {/* Nightfall's look is the darkened restaurant photo behind the title, so the menu keeps it too. */}
+          <RestaurantHeroImage
+            restaurant={site.restaurant}
+            className={styles.heroImage}
+            sizes="(max-width: 90rem) 100vw, 88rem"
+          />
           <p className={styles.eyebrow}>Evening menu</p>
           <h1>{site.restaurantName}</h1>
           {site.menu ? <p>{site.menu.name}</p> : null}
