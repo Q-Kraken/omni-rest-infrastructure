@@ -1,0 +1,32 @@
+{
+  "verifiedAt": "2026-10-23T00:31:50-05:00",
+  "sourceCommit": "12f29aa54a522469d9e5b19285cf20f3df09a919",
+  "releaseTag": "12f29aa54a522469d9e5b19285cf20f3df09a919-full",
+  "site": "https://logan-corner.51-79-102-231.sslip.io/",
+  "menu": "https://logan-corner.51-79-102-231.sslip.io/menu",
+  "existingSitePreserved": "https://omni-rest.51-79-102-231.sslip.io/",
+  "sameHosting": true,
+  "loganPublicationVersion": "2",
+  "alfysPublicationVersionUnchanged": "8",
+  "categories": 21,
+  "menuEntries": 260,
+  "importedPhotoAssets": 54,
+  "loganMediaUrlsVerified": 162,
+  "alfysMediaUrlsVerified": 46,
+  "crossRestaurantMediaRejected": true,
+  "allSourcePricesMatchPublicMenu": true,
+  "serviceHealthChecksPassed": true,
+  "frontendBuild": "Full Next.js build with regenerated stylesheet version hashes; application backend unchanged from the prior production release",
+  "ui": {
+    "contentWidth": 1280,
+    "fontSize": "76.8px",
+    "heroLoaded": true,
+    "restaurantWordLines": 1,
+    "stylesheet": "https://logan-corner.51-79-102-231.sslip.io/design-previews/styles/quiet-elegance-v1.css?v=37a92301fa0d",
+    "title": "Logan Corner Restaurant",
+    "viewportWidth": 1280
+  },
+  "backupBeforeImportVerifiedOffServer": true,
+  "backupContainingNewRestaurantVerifiedOffServer": true,
+  "mainBranchMerged": false
+}
