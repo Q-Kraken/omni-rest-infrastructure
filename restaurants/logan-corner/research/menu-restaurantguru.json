@@ -1,0 +1,1537 @@
+{
+  "source": "https://restaurantguru.com/Logan-Corner-Restaurant-Winnipeg/menu",
+  "retrievedAt": "2026-10-22T23:08:33-05:00",
+  "role": "Secondary comparison only; not merged into import prices",
+  "items": [
+    {
+      "category": "Tofu / 豆 腐",
+      "name": "120c. Braised Tofu Hot Pot (No Meat) / 红烧豆腐煲",
+      "menuNumber": "120C",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Tofu / 豆 腐",
+      "name": "120d. Bean Curd with Minced Beef and Chilli Sauce (Mapo Tofu) / 麻婆豆腐",
+      "menuNumber": "120D",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Tofu / 豆 腐",
+      "name": "120b. Tofu with Shredded Pork / 肉丝扒豆腐",
+      "menuNumber": "120B",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Tofu / 豆 腐",
+      "name": "120. Deep-Fried Bean Curd with Spice Salt / 椒盐豆腐",
+      "menuNumber": "120",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Tofu / 豆 腐",
+      "name": "120e. King Place Tofu with Seafood and Mixed Mushroom / 宫庭豆腐",
+      "menuNumber": "120E",
+      "priceCAD": 21.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "82. Chinese Long Donut (One Piece) 炸油条(一条)",
+      "menuNumber": "82",
+      "priceCAD": 5.5
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "205. Pork and Preserved Egg Congee / 皮蛋瘦肉粥",
+      "menuNumber": "205",
+      "priceCAD": 12.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "206. Freshly Boiled Fish Flake Congee / 生滚鱼片粥",
+      "menuNumber": "206",
+      "priceCAD": 12.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "207. Freshly Boiled Beef Congee / 生滚牛肉粥",
+      "menuNumber": "207",
+      "priceCAD": 12.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "208. Freshly Boiled Chicken Congee / 生滚鸡粥",
+      "menuNumber": "208",
+      "priceCAD": 12.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "209. Special House Congee (with Peanuts) / 及第粥",
+      "menuNumber": "209",
+      "priceCAD": 13.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "209a. Seafood Congee / 海鲜粥",
+      "menuNumber": "209A",
+      "priceCAD": 14.5
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "210. Fried Vermicelli Singapore Style with Curry Sauce / 星洲炒米",
+      "menuNumber": "210",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "211. Fried Vermicelli Home Land Style / 家乡炒米粉",
+      "menuNumber": "211",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "212. Deluxe Chow Mein (with Mixed Vegetable and Meat) / 广东炒面(什菜）",
+      "menuNumber": "212",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "212a. Tofu Mixed Vegetable Chow Mein / 豆腐什菜炒面",
+      "menuNumber": "212A",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "213. Noodles with Chinese Vegetable & Mixed Meat / 八珍炒面/河",
+      "menuNumber": "213",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "214. Noodles with Chinese Vegetable & Seafood / 海鲜炒面/河",
+      "menuNumber": "214",
+      "priceCAD": 20.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "215. Noodles with Chinese Vegetable & Shrimp / 虾球炒面/河",
+      "menuNumber": "215",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "217. Spareribs & Chinese Vegetable Chow Fan / 时菜排骨炒河",
+      "menuNumber": "217",
+      "priceCAD": 19.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "218. Beef Stew and Chinese Vegetable Chowfan / 时菜牛腩炒河",
+      "menuNumber": "218",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "219. Mushroom Tofu & Chinese Vegetable Chow Fan / 时菜冬菇豆腐炒河",
+      "menuNumber": "219",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "220. Satay Beef & Green Pepper Onion Chowfan / 沙爹牛河",
+      "menuNumber": "220",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "221. Beef & Bean Sprout Chow Fan 干炒牛河",
+      "menuNumber": "221",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "222. Beef & Black Bean & Pepper Sauce Chowfan / 豉椒牛河",
+      "menuNumber": "222",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "223. Pan-Fried Shanghai Thick Noodles / 上海面",
+      "menuNumber": "223",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "224. Fried Egg Noodles with Shredded Pork and Bean Sprout / 肉丝炒面",
+      "menuNumber": "224",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "224a. Boiled Egg Noodles with Beef Stew (No Soup) / 时菜牛腩捞面",
+      "menuNumber": "224A",
+      "priceCAD": 17.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "224b. Fried Egg Noodles with Soy Sauce / 豉油皇炒面(不脆)",
+      "menuNumber": "224B",
+      "priceCAD": 14.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "225. Noodle Soup with Shredded Duck & Snow Vegetables / 雪菜鸭丝汤米/面/河",
+      "menuNumber": "225",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "226. Noodle Soup with Shredded Pork & Snow Vegetables / 雪菜肉丝汤米/面/河",
+      "menuNumber": "226",
+      "priceCAD": 14.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "227. Noodle Soup with Shredded Duck & Crunchy Preserved Vegetables / 榨菜鸭丝汤米/面/河",
+      "menuNumber": "227",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "228. Noodle Soup in Beef Stew Noodle Soup / 牛腩汤面",
+      "menuNumber": "228",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "229. Wonton and Egg Noodle Soup with BBQ Pork and Mixed Vegetable Noodle Soup / 叉烧什菜云吞汤面",
+      "menuNumber": "229",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "230. House Special Wonton and Egg Noodle Soup / 旺角雲吞面/河",
+      "menuNumber": "230",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "233. Egg Noodle and Rice Noodle Soup with Lamb Stew / 羊腩汤面/河",
+      "menuNumber": "233",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "234. Seafood Egg Noodle Soup / 海鲜汤面",
+      "menuNumber": "234",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "235. Wonton Egg Noodle Soup / 雲吞面",
+      "menuNumber": "235",
+      "priceCAD": 14.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "237. Salted Fish & Diced Chicken Fried Rice / 咸鱼鸡粒炒饭",
+      "menuNumber": "237",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "238. Yangzhou-Style Fried Rice (No Soy Sauce) / 扬洲炒饭",
+      "menuNumber": "238",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "239. Fried Rice & Beef (No Soy Sauce) / 生炒牛肉饭",
+      "menuNumber": "239",
+      "priceCAD": 17.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "240. Fujian Fried Rice / 福建炒饭",
+      "menuNumber": "240",
+      "priceCAD": 17.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "241. Chinese Sausage Fried Rice / 腊肠炒饭",
+      "menuNumber": "241",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "242. Seafood Fried Rice / 海鲜炒饭",
+      "menuNumber": "242",
+      "priceCAD": 18.5
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "244. Beef White Rice with Silky Egg Sauce / 滑蛋牛肉饭",
+      "menuNumber": "244",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "244a. Mixed Vegetable Fried Rice with Soy Sauce and Egg / 什菜豆腐炒饭",
+      "menuNumber": "244A",
+      "priceCAD": 13.5
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "246. BBQ Pork and Vegetables on Steamed Rice / 叉烧饭",
+      "menuNumber": "246",
+      "priceCAD": 13.75
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "248. Beef Stew & Vegetables on Steamed Rice / 牛腩饭",
+      "menuNumber": "248",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "248a. Lamb Stew and Vegetables on Steamed Rice / 羊腩饭",
+      "menuNumber": "248A",
+      "priceCAD": 18.85
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "249. Steamed Rice with Spareribs in Black Bean Sauce / 豉汁排骨饭",
+      "menuNumber": "249",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+      "name": "249a. Mixed Meat & Green on Steamed Rice 双拼饭",
+      "menuNumber": "249A",
+      "priceCAD": 18.75
+    },
+    {
+      "category": "Egg Foo Young / 芙 蓉",
+      "name": "35. Deluxe Egg Foo Young with Meat / 什锦芙蓉",
+      "menuNumber": "35",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Egg Foo Young / 芙 蓉",
+      "name": "36. Shrimp Egg Foo Young / 虾芙蓉",
+      "menuNumber": "36",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Egg Foo Young / 芙 蓉",
+      "name": "37. Beef Egg Foo Young / 牛芙蓉",
+      "menuNumber": "37",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Egg Foo Young / 芙 蓉",
+      "name": "38. Chicken Egg Foo Young / 鸡芙蓉",
+      "menuNumber": "38",
+      "priceCAD": 14.95
+    },
+    {
+      "category": "Egg Foo Young / 芙 蓉",
+      "name": "39. BBQ Pork Egg Foo Young / 叉烧芙蓉",
+      "menuNumber": "39",
+      "priceCAD": 14.95
+    },
+    {
+      "category": "Egg Foo Young / 芙 蓉",
+      "name": "40. Mushroom Egg Foo Young / 磨菇芙蓉",
+      "menuNumber": "40",
+      "priceCAD": 14.95
+    },
+    {
+      "category": "Egg Foo Young / 芙 蓉",
+      "name": "41. Plain Egg Foo Young / 净芙蓉",
+      "menuNumber": "41",
+      "priceCAD": 14.75
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "83. Minced Chicken with Fish Maw Soup Special / 鸡茸魚肚羹",
+      "menuNumber": "83",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "83a. Minced Chicken with Corn Soup Special / 鸡茸粟米羹",
+      "menuNumber": "83A",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "84. Crab Meat with Fish Maw Soup Special / 蟹肉魚肚羹",
+      "menuNumber": "84",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "85. Mixed Seafood with Bean Curd Soup Special / 海皇豆腐羹",
+      "menuNumber": "85",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "86. Seaweed, Bean Curd, and Seafood Soup Special / 海皇紫菜豆腐羹",
+      "menuNumber": "86",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "87. Shredded Duck Soup (No Noodle) Special / 鸭丝羹",
+      "menuNumber": "87",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "88. Snow Fungus Pork Chinese Mushroom Egg Soup Special /雪耳肉丝冬菇蛋花汤",
+      "menuNumber": "88",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "89. Hot-and-Sour Soup Special / 酸辣汤",
+      "menuNumber": "89",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "90. Egg Drops with Minced Beef Soup Special / 西湖牛肉豆腐羹",
+      "menuNumber": "90",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "91. Slice Meat with Mixed Vegetable Soup Special / 杂菜肉片汤",
+      "menuNumber": "91",
+      "priceCAD": 13.75
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "92. Deluxe Wonton Soup with Meat and Vegetable Special / SP云吞汤",
+      "menuNumber": "92",
+      "priceCAD": 14.25
+    },
+    {
+      "category": "Special Soups / 汤 羹",
+      "name": "93. Mixed Vegetable Wonton Soup Special / 云吞汤",
+      "menuNumber": "93",
+      "priceCAD": 12.5
+    },
+    {
+      "category": "Vegetables / 蔬 菜 类",
+      "name": "9. Deluxe Mixed Vegetables and Meat / 大什会",
+      "menuNumber": "9",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Vegetables / 蔬 菜 类",
+      "name": "10. Shrimp Mixed Vegetables / 虾杂菜",
+      "menuNumber": "10",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Vegetables / 蔬 菜 类",
+      "name": "11. Beef Mixed Vegetables / 牛杂菜",
+      "menuNumber": "11",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Vegetables / 蔬 菜 类",
+      "name": "12. BBQ Pork Mixed Vegetables / 叉烧杂菜",
+      "menuNumber": "12",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Vegetables / 蔬 菜 类",
+      "name": "13. Chicken Mixed Vegetables / 鸡杂菜",
+      "menuNumber": "13",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Vegetables / 蔬 菜 类",
+      "name": "14. Plain Mixed Vegetables / 净杂菜",
+      "menuNumber": "14",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Mooshi / 木 须",
+      "name": "MS1. Mooshi with 6 Pancakes / 木须 选择 (猪肉, 鸡肉, 牛肉) 跟6块薄饼",
+      "menuNumber": "MS1",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Mooshi / 木 须",
+      "name": "MS2. Deluxe Mooshi with 6 Pancakes / 什锦木须 (跟6块薄饼）",
+      "menuNumber": "MS2",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "159. Lamb Stew with Bean Gluten and Black Mushrooms / 枝竹冬菇羊腩煲",
+      "menuNumber": "159",
+      "priceCAD": 27.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "160. Fish Fillet with Tofu and BBQ Pork / 斑腩豆腐煲",
+      "menuNumber": "160",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "161. Eggplant with Pork & Salted Fish / 鹹鱼鸡粒茄子煲",
+      "menuNumber": "161",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "162. Diced Chicken with Tofu & Salted Fish / 鹹鱼鸡粒豆腐煲",
+      "menuNumber": "162",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "163. Deep-Fried Tofu & Mixed Vegetables & Meat / 八珍豆腐煲",
+      "menuNumber": "163",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "164. Beef Stew Tofu Hot Pot / 牛腩豆腐煲",
+      "menuNumber": "164",
+      "priceCAD": 21.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "165. Beef Stew Bean Gluten Hot Pot / 枝竹牛腩煲",
+      "menuNumber": "165",
+      "priceCAD": 21.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "167. Braised Egg Plants (No Meat) / 红烧茄子煲",
+      "menuNumber": "167",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "168. Tofu Hot Pot with Sea Food / 海鲜豆腐煲",
+      "menuNumber": "168",
+      "priceCAD": 20.75
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "170. Satay Beef & Mung Bean Vermicelli Hot Pot / 沙爹牛肉粉丝煲",
+      "menuNumber": "170",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "171. Chicken with Ginger Onion Hot Pot / 嗜嗜鸡煲",
+      "menuNumber": "171",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "172. Chicken Hot Pot with Curry Sauce / 葡汁滑鸡煲",
+      "menuNumber": "172",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Hot Pots / 煲 仔 菜",
+      "name": "173. Zhongshan Fish Hot Pot / 中山鱼煲",
+      "menuNumber": "173",
+      "priceCAD": 22.75
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "42. Deep-Fried Shrimp with Spicy Salt without Shell / 椒盐虾球",
+      "menuNumber": "42",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "43. Dry Breaded Shrimp / 干粉虾",
+      "menuNumber": "43",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "44. Shrimp with Black Bean & Garlic Sauce / 豉汁虾",
+      "menuNumber": "44",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "45. Sweet-&-Sour Shrimp / 甜酸虾",
+      "menuNumber": "45",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "46. Pan-Fried Shrimp / 干煎虾",
+      "menuNumber": "46",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "47. Kung Po Shrimp / 宫保虾",
+      "menuNumber": "47",
+      "priceCAD": 17.75
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "48. Shrimp with Diced Vegetables & Cashew Nuts / 腰果虾",
+      "menuNumber": "48",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "49. Curry Shrimp / 咖哩虾",
+      "menuNumber": "49",
+      "priceCAD": 17.75
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "50. Szechuan Shrimp / 四川虾",
+      "menuNumber": "50",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "51. Deep-Fried Squid with Spicy Salt / 椒盐鲜鱿",
+      "menuNumber": "51",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Seafood and Fish / 海鲜、鱼",
+      "name": "52. Fish Fillet Tofu and Pork Hot Pot / 斑腩豆腐煲",
+      "menuNumber": "52",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Soups and Appetizers / 汤羹 和 小吃",
+      "name": "1. Deluxe Wonton Soup with Meat and Vegetables / 什锦云吞汤",
+      "menuNumber": "1",
+      "priceCAD": 14.25
+    },
+    {
+      "category": "Soups and Appetizers / 汤羹 和 小吃",
+      "name": "2. Wonton Soup with Vegetables / 云吞汤",
+      "menuNumber": "2",
+      "priceCAD": 12.5
+    },
+    {
+      "category": "Soups and Appetizers / 汤羹 和 小吃",
+      "name": "84. Crab Meat with Fish Maw Soup / 蟹肉鱼肚更",
+      "menuNumber": "84",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Soups and Appetizers / 汤羹 和 小吃",
+      "name": "3. Consomme Soup / 清汤",
+      "menuNumber": "3",
+      "priceCAD": 5.25
+    },
+    {
+      "category": "Soups and Appetizers / 汤羹 和 小吃",
+      "name": "4. BBQ Pork / 叉烧",
+      "menuNumber": "4",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Soups and Appetizers / 汤羹 和 小吃",
+      "name": "5. Hot-and-Sour Soup / 酸辣汤",
+      "menuNumber": "5",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Soups and Appetizers / 汤羹 和 小吃",
+      "name": "6. Egg Roll / 春卷 (素) 1pc",
+      "menuNumber": "6",
+      "priceCAD": 3.25
+    },
+    {
+      "category": "Soups and Appetizers / 汤羹 和 小吃",
+      "name": "6a. Shrimp Spring Roll / 虾卷 3pc",
+      "menuNumber": "6A",
+      "priceCAD": 6.95
+    },
+    {
+      "category": "Soups and Appetizers / 汤羹 和 小吃",
+      "name": "7. Deep-Fried Wonton with Sweet-and-Sour Sauce / 炸云吞",
+      "menuNumber": "7",
+      "priceCAD": 10.25
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "54. Sweet-&-Sour Chicken Balls / 甜酸鸡球",
+      "menuNumber": "54",
+      "priceCAD": 15.75
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "55. Mushroom Chicken Balls / 磨菇鸡球",
+      "menuNumber": "55",
+      "priceCAD": 15.75
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "56. Honey Garlic Chicken Balls / 蜜糖鸡球",
+      "menuNumber": "56",
+      "priceCAD": 16.75
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "57. Chicken with Black Bean and Garlic Sauce / 豉汁鸡",
+      "menuNumber": "57",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "58. Honey Lemon Chicken / 柠檬鸡",
+      "menuNumber": "58",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "59. Breaded Almond Chicken / 酥炸鸡",
+      "menuNumber": "59",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "60. Sliced Chicken with Spicy Salt / 椒盐鸡片",
+      "menuNumber": "60",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "61. Curry Chicken / 咖哩鸡",
+      "menuNumber": "61",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "62. Spicy Honey Garlic Chicken / 蜜辣鸡",
+      "menuNumber": "62",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "63. Kung Po Chicken / 宫保鸡",
+      "menuNumber": "63",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "64. Diced Chicken with Vegetable and Cashew Nuts / 腰果鸡",
+      "menuNumber": "64",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "65. Deep-Fried Crispy Spring Chicken / 炸子鸡 (半)",
+      "menuNumber": "65",
+      "priceCAD": 18.5
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "65a. Deep-Fried Crispy Chicken with Green Onion, Ginger, Soy Sauce / 葱油炸子鸡 (半)",
+      "menuNumber": "65A",
+      "priceCAD": 19.95
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "66. Szechuan Chicken / 四川鸡",
+      "menuNumber": "66",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "66a. Sesame Chicken / 芝蔴鸡",
+      "menuNumber": "66A",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "66B. Butter Chicken / 牛油鸡",
+      "menuNumber": "66B",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Chicken / 鸡 类",
+      "name": "66c. Chicken Mushroom / 磨菇鸡片",
+      "menuNumber": "66C",
+      "priceCAD": 17.25
+    },
+    {
+      "category": "Chicken and Duck / 鸡鸭类",
+      "name": "105. Crispy Spring Chicken / 炸子鸡",
+      "menuNumber": "105",
+      "priceCAD": 18.5
+    },
+    {
+      "category": "Chicken and Duck / 鸡鸭类",
+      "name": "106. Crispy Spring Chicken with Green Onion, Ginger and Soy Sauce / 葱油炸子鸡",
+      "menuNumber": "106",
+      "priceCAD": 19.95
+    },
+    {
+      "category": "Chicken and Duck / 鸡鸭类",
+      "name": "60. Deep-Fried Sliced Chicken with Spice Salt / 椒盐鸡片",
+      "menuNumber": "60",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Chicken and Duck / 鸡鸭类",
+      "name": "61. Curry Chicken / 咖哩鸡",
+      "menuNumber": "61",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Chicken and Duck / 鸡鸭类",
+      "name": "57. Sliced Chicken with Black Bean Sauce / 豉汁鸡",
+      "menuNumber": "57",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Chicken and Duck / 鸡鸭类",
+      "name": "66B. Butter Chicken / 牛油鸡",
+      "menuNumber": "66B",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Chicken and Duck / 鸡鸭类",
+      "name": "116. Deep-Fried Chicken Wings with Spice Salt / 椒盐鸡翼",
+      "menuNumber": "116",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Fried Rice / 炒 饭",
+      "name": "27. Deluxe Fried Rice with Meat / 什锦炒饭",
+      "menuNumber": "27",
+      "priceCAD": 14.25
+    },
+    {
+      "category": "Fried Rice / 炒 饭",
+      "name": "28. Shrimp Fried Rice / 虾炒饭",
+      "menuNumber": "28",
+      "priceCAD": 14.25
+    },
+    {
+      "category": "Fried Rice / 炒 饭",
+      "name": "29. Beef Fried Rice / 牛炒饭",
+      "menuNumber": "29",
+      "priceCAD": 13.5
+    },
+    {
+      "category": "Fried Rice / 炒 饭",
+      "name": "30. BBQ Pork Fried Rice / 叉烧炒饭",
+      "menuNumber": "30",
+      "priceCAD": 12.95
+    },
+    {
+      "category": "Fried Rice / 炒 饭",
+      "name": "31. Chicken Fried Rice / 鸡炒饭",
+      "menuNumber": "31",
+      "priceCAD": 12.95
+    },
+    {
+      "category": "Fried Rice / 炒 饭",
+      "name": "32. Plain Fried Rice / 净炒饭",
+      "menuNumber": "32",
+      "priceCAD": 12.5
+    },
+    {
+      "category": "Fried Rice / 炒 饭",
+      "name": "33. Mushroom Fried Rice / 磨菇炒饭",
+      "menuNumber": "33",
+      "priceCAD": 12.95
+    },
+    {
+      "category": "Fried Rice / 炒 饭",
+      "name": "34. Steamed Rice (Small) / 白饭",
+      "menuNumber": "34",
+      "priceCAD": 4.25
+    },
+    {
+      "category": "Chop Suey / 什 碎",
+      "name": "20. Deluxe Chop Suey with Meat / 什锦杂碎",
+      "menuNumber": "20",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Chop Suey / 什 碎",
+      "name": "21. Shrimp Chop Suey / 虾杂碎",
+      "menuNumber": "21",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Chop Suey / 什 碎",
+      "name": "22. Beef Chop Suey / 牛杂碎",
+      "menuNumber": "22",
+      "priceCAD": 14.95
+    },
+    {
+      "category": "Chop Suey / 什 碎",
+      "name": "23. Chicken Chop Suey / 鸡杂碎",
+      "menuNumber": "23",
+      "priceCAD": 14.75
+    },
+    {
+      "category": "Chop Suey / 什 碎",
+      "name": "24. BBQ Pork Chop Suey / 叉烧杂碎",
+      "menuNumber": "24",
+      "priceCAD": 14.75
+    },
+    {
+      "category": "Chop Suey / 什 碎",
+      "name": "25. Mushroom Chop Suey / 磨菇杂碎",
+      "menuNumber": "25",
+      "priceCAD": 14.75
+    },
+    {
+      "category": "Chop Suey / 什 碎",
+      "name": "26. Plain Chop Suey / 净什碎",
+      "menuNumber": "26",
+      "priceCAD": 13.95
+    },
+    {
+      "category": "Combination Plates",
+      "name": "#A. Egg Roll, Sweet-and-Sour Shrimp, Mixed Vegetables, and Fried Rice",
+      "menuNumber": "A",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Combination Plates",
+      "name": "#B. Egg Roll, Sweet-and-Sour Chicken Balls, Mixed Vegetables, and Fried Rice",
+      "menuNumber": "B",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Combination Plates",
+      "name": "#C. Egg Roll, Dry Breaded Shrimp, Mixed Vegetables, and Fried Rice",
+      "menuNumber": "C",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Combination Plates",
+      "name": "#D. Dry Breaded Veal, Mixed Vegetables, and Fried Rice",
+      "menuNumber": "D",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Combination Plates",
+      "name": "#E. Sweet-and-Sour Pork, Mixed Vegetables, and Fried Rice",
+      "menuNumber": "E",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Combination Plates",
+      "name": "#F. Szechuan Chicken, Mixed Vegetables, and Fried Rice",
+      "menuNumber": "F",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Combination Plates",
+      "name": "#G. Szechuan Beef, Mixed Vegetables, and Fried Rice",
+      "menuNumber": "G",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Combination Plates",
+      "name": "#H. Sweet-and-Sour Ribs, Mixed Vegetables, and Fried Rice",
+      "menuNumber": "H",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Combination Plates",
+      "name": "#K. Deep Fried Crispy Chicken, Mixed Vegetables, and Fried Rice",
+      "menuNumber": "K",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",
+      "name": "15. Deluxe Chow Mein with Mixed Vegetables and Meat / 广东炒面",
+      "menuNumber": "15",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",
+      "name": "16. Shrimp Chow Mein / 虾炒面",
+      "menuNumber": "16",
+      "priceCAD": 18.85
+    },
+    {
+      "category": "Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",
+      "name": "17. Beef Chow Mein / 牛炒面",
+      "menuNumber": "17",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",
+      "name": "18. Chicken Chow Mein / 鸡炒面",
+      "menuNumber": "18",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",
+      "name": "19. BBQ Pork Chow Mein / 叉烧炒面",
+      "menuNumber": "19",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "122. Deep-Fried Shrimp with Spice Salt (without Shell) / 椒盐虾(去殻)",
+      "menuNumber": "122",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "123. Deep-Fried Shrimp Seasoned with Salty Egg Yolk / 金沙虾球",
+      "menuNumber": "123",
+      "priceCAD": 19.5
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "124. Whole Shrimp with Special Sauce / 美极虾",
+      "menuNumber": "124",
+      "priceCAD": 17.25
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "125. Curry Whole Shrimp / 咖喱虾",
+      "menuNumber": "125",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "126. Pan-Fried Whole Shrimp (Not Breaded) / 干煎虾",
+      "menuNumber": "126",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "127. Peeled Shrimp with Cashew Nuts / 腰果虾仁",
+      "menuNumber": "127",
+      "priceCAD": 17.75
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "128. Shrimp with Black Bean & Garlic Sauce / 豉汁虾",
+      "menuNumber": "128",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "129. Kung Po Shrimp / 宫保虾仁",
+      "menuNumber": "129",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "130. Shrimp with Chinese Scrambled Eggs / 虾仁炒滑蛋",
+      "menuNumber": "130",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "132. Pan-Fried Shrimp with Walnuts and Mayonnaise / 核桃虾",
+      "menuNumber": "132",
+      "priceCAD": 20.25
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "135. Pan-Fried Seafood with Spice Sauce / 椒盐三鲜",
+      "menuNumber": "135",
+      "priceCAD": 22.5
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "136. Pan-Fried Fish Fillet with Spice Salt / 椒盐鱼块",
+      "menuNumber": "136",
+      "priceCAD": 17.25
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "137. Poached Fish Fillet / 水煮鱼片",
+      "menuNumber": "137",
+      "priceCAD": 19.95
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "138. Fish Fillet in Cream Corn / 粟米斑块",
+      "menuNumber": "138",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "139. Pan-Fried Long Li Fish Fillet with Green Onion Ginger and Soy Sauce / 煎封龙利鱼",
+      "menuNumber": "139",
+      "priceCAD": 20.95
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "140. Sweet-&-Sour Fish Fillet / 糖醋鱼块",
+      "menuNumber": "140",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "141. Deep-Fried Squid with Spice Salt / 椒盐鲜鱿",
+      "menuNumber": "141",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "142. Squid with Black Bean & Garlic Sauce / 豉汁鲜鱿",
+      "menuNumber": "142",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "143. Fried Tentacles of Squid with Cumin / 孜然鱿鱼须",
+      "menuNumber": "143",
+      "priceCAD": 17.75
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "143a. Tentacles of Squid on Hot Plate / 铁板香辣鱿鱼须",
+      "menuNumber": "143A",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "144. Fish Fillet with Celery & Onion / 西芹洋葱炒鱼片",
+      "menuNumber": "144",
+      "priceCAD": 18.5
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "145. Mussel with Black Bean Sauce / 豉汁青口",
+      "menuNumber": "145",
+      "priceCAD": 19.95
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "146. Mussel with Butter Sauce / 牛油青口",
+      "menuNumber": "146",
+      "priceCAD": 19.95
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "147. Satay Seafood Hot Plate / 铁板沙爹三鲜",
+      "menuNumber": "147",
+      "priceCAD": 22.75
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "148. Multi-Spring Fish Fried with Green Onion Pepper and Soy Sauce / 葱椒多春鱼",
+      "menuNumber": "148",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Seafood / 海 鲜",
+      "name": "149. Multi-Spring Fish Fried with Salt & Pepper (Lot of Fish Eggs Inside) / 椒盐多春鱼",
+      "menuNumber": "149",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Beverages",
+      "name": "81. Canned Drink (355 ml) / 罐装饮料",
+      "menuNumber": "81",
+      "priceCAD": 2.95
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "268. Pan-Fried Gai Lan with Salted Fish / 鹹鱼炒芥蘭",
+      "menuNumber": "268",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "258. Garlic with Youchoi or Gailan / 蒜茸油菜芯或芥蘭",
+      "menuNumber": "258",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "255. Peeled Shrimp with Youchoi or Gailan / 虾仁油菜芯或芥蘭",
+      "menuNumber": "255",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "256a. Fish Fillet with Youchoi or Gailan / 鱼片油菜芯或芥蘭",
+      "menuNumber": "256A",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "251. Deluxe Vegetarian / 罗汉斋",
+      "menuNumber": "251",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "266. Youchoi in Special Soup / 上汤油菜芯",
+      "menuNumber": "266",
+      "priceCAD": 18.95
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "265. Tofu Gailan / 豆腐芥蘭",
+      "menuNumber": "265",
+      "priceCAD": 16.5
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "262. Seafood with Youchoi or Gailan / 三鲜油菜芯或芥蘭",
+      "menuNumber": "262",
+      "priceCAD": 19.95
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "253. Deluxe Mixed Vegetables and Meat / 大杂会",
+      "menuNumber": "253",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "256. Squid with Youchoi or Gailan / 鲜鱿油菜芯或芥蘭",
+      "menuNumber": "256",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "257. Beef with Youchoi or Gailan / 牛芥兰",
+      "menuNumber": "257",
+      "priceCAD": 19.95
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "261. Shanghai Bok with Garlic / 蒜茸炒上海白",
+      "menuNumber": "261",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "250. Youchoi or Gailan in Oyster Sauce / 蠔油菜芯或芥蘭",
+      "menuNumber": "250",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "252. Beef Broccoli / 牛西兰花",
+      "menuNumber": "252",
+      "priceCAD": 18.75
+    },
+    {
+      "category": "Special Vegetables / 小 菜",
+      "name": "259. Ginger Extract with Youchoi or Gailan / 姜汁油菜芯或芥蘭",
+      "menuNumber": "259",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "179. Pork Belly with Cabbage / 回锅肉（五花肉）",
+      "menuNumber": "179",
+      "priceCAD": 17.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "189. Beef Stew / 柱侯牛腩",
+      "menuNumber": "189",
+      "priceCAD": 23.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "69. Sweet-&-Sour Spare Ribs / 甜酸排（不炸）",
+      "menuNumber": "69",
+      "priceCAD": 15.75
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "73. Szechuan Beef / 四川牛",
+      "menuNumber": "73",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "204. Garlic Seasoned Beef with Onions and Green Peppers / 蒜味牛肉",
+      "menuNumber": "204",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "187. Pan-Fried Seasoned Pork Chop with Garlic / 风沙骨",
+      "menuNumber": "187",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "72. Honey Garlic Veal / 蜜糖牛",
+      "menuNumber": "72",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "201. Pig Stomach Szechuan Style / 川味猪肚",
+      "menuNumber": "201",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "78. Ginger Beef / 炸姜牛",
+      "menuNumber": "78",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "74. Curry Beef / 咖哩牛",
+      "menuNumber": "74",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "188. Sweet-and-Sour Pork with Pineapple / 古老肉",
+      "menuNumber": "188",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "180. Pork Belly with Green Peppers and Onions / 农家小炒肉",
+      "menuNumber": "180",
+      "priceCAD": 18.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "183. Seasoned Pork Chop with Spice Salt / 椒盐肉排",
+      "menuNumber": "183",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "203. Deep-Fried Pork Intestines with Sweet-&-Sour Sauce / 红烧猪大肠",
+      "menuNumber": "203",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "71a. Dry Breaded Pork / 干猪",
+      "menuNumber": "71A",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "177. Beef with Sour Vegetables / 酸菜牛肉",
+      "menuNumber": "177",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "76. Honey Garlic Spare Ribs / 蜜糖排",
+      "menuNumber": "76",
+      "priceCAD": 17.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "182. Sliced Beef with Mushroom / 牛肉磨菇",
+      "menuNumber": "182",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "190. Curry Beef Stew / 咖哩牛腩",
+      "menuNumber": "190",
+      "priceCAD": 23.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "200. Beef Short Ribs Seasoned with Onions and Ginger / 姜葱牛仔骨",
+      "menuNumber": "200",
+      "priceCAD": 22.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "195. Sliced Beef in Satay Sauce with Onions & Green Peppers / 沙爹牛肉",
+      "menuNumber": "195",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "198. Beef Short Ribs Seasoned with Black Pepper / 铁板黑椒牛仔骨",
+      "menuNumber": "198",
+      "priceCAD": 23.5
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "181. Seasoned Pork Chop with Hickory Sauce (Sweet and Sour) / 京都肉排",
+      "menuNumber": "181",
+      "priceCAD": 18.5
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "194. Ginger Beef / 子姜牛肉(炸或煮)",
+      "menuNumber": "194",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "67. Dry Breaded Spare Ribs / 干排",
+      "menuNumber": "67",
+      "priceCAD": 15.75
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "184. Deep-Fried Sweet-&-Sour Pork Ribs / 生炒骨",
+      "menuNumber": "184",
+      "priceCAD": 17.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "68. Sweet-and-Sour Pineapple Pork / 古老肉",
+      "menuNumber": "68",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "71. Dry Breaded Veal / 干牛",
+      "menuNumber": "71",
+      "priceCAD": 16.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "193. Curry Beef with Onions and Green Peppers / 咖哩牛肉",
+      "menuNumber": "193",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "185. Poached Beef or Pork / 水煮牛肉",
+      "menuNumber": "185",
+      "priceCAD": 20.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "77. Beef with Black Bean Garlic Sauce / 豉汁牛",
+      "menuNumber": "77",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "75. Beef with Satay Sauce / 沙爹牛",
+      "menuNumber": "75",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "178. Pork Belly Stew with Preserved Cabbages / 梅菜扣肉",
+      "menuNumber": "178",
+      "priceCAD": 20.5
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "196. Sliced Beef with Onions & Green Peppers / 沙爹铁板牛肉",
+      "menuNumber": "196",
+      "priceCAD": 20.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "199. Beef Short Ribs Seasoned with Black Pepper/ 黑椒牛仔骨",
+      "menuNumber": "199",
+      "priceCAD": 22.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "186. Beef with Black Bean and Garlic Sauce / 豉汁牛肉",
+      "menuNumber": "186",
+      "priceCAD": 19.25
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "197. Sliced Pork and Bamboo Shoots with Salted Fish Sauce / 鱼香肉丝",
+      "menuNumber": "197",
+      "priceCAD": 16.95
+    },
+    {
+      "category": "Pork and Beef / 猪、牛",
+      "name": "70. Seasoned Spicy Salt Pork Chop / 椒盐肉排",
+      "menuNumber": "70",
+      "priceCAD": 17.5
+    },
+    {
+      "category": "Side Orders",
+      "name": "Steamed Rice (Small) 小白饭",
+      "menuNumber": null,
+      "priceCAD": 4.25
+    },
+    {
+      "category": "Side Orders",
+      "name": "80. Dry Noodles / 干脆面",
+      "menuNumber": "80",
+      "priceCAD": 4.5
+    },
+    {
+      "category": "Side Orders",
+      "name": "79a. Hot Sauce / 辣椒酱",
+      "menuNumber": "79A",
+      "priceCAD": 0.4
+    },
+    {
+      "category": "Side Orders",
+      "name": "79. Side Sauce / 汁选择",
+      "menuNumber": "79",
+      "priceCAD": 4.95
+    },
+    {
+      "category": "Special Snacks / 烧味小吃",
+      "name": "97. Deep-Fried or Steamed Buns with Condensed Milk / 蒸或炸馒头",
+      "menuNumber": "97",
+      "priceCAD": 15.95
+    },
+    {
+      "category": "Special Snacks / 烧味小吃",
+      "name": "95. Deep-Fried Won Ton / 炸云吞",
+      "menuNumber": "95",
+      "priceCAD": 10.25
+    },
+    {
+      "category": "Special Snacks / 烧味小吃",
+      "name": "96. Pan-Fried Pork Dumplings / 香煎锅贴",
+      "menuNumber": "96",
+      "priceCAD": 16.75
+    },
+    {
+      "category": "Special Snacks / 烧味小吃",
+      "name": "98. Deep-Fried Crispy Stick Chinese Donut / 炸油条(一条)",
+      "menuNumber": "98",
+      "priceCAD": 5.5
+    },
+    {
+      "category": "Special Snacks / 烧味小吃",
+      "name": "99. Eggroll / 春 卷",
+      "menuNumber": "99",
+      "priceCAD": 3.25
+    },
+    {
+      "category": "Special Snacks / 烧味小吃",
+      "name": "94. BBQ Sliced Pork / 叉 烧（净瘦肉）",
+      "menuNumber": "94",
+      "priceCAD": 15.25
+    },
+    {
+      "category": "Special Snacks / 烧味小吃",
+      "name": "100. Jellyfish / 净海蜇",
+      "menuNumber": "100",
+      "priceCAD": 17.75
+    }
+  ]
+}

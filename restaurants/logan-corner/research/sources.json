@@ -1,0 +1,42 @@
+{
+  "retrievedAt": "2026-10-22T23:08:33-05:00",
+  "sources": [
+    {
+      "id": "merchant-ordering",
+      "url": "https://order.online/store/logan-corner-restaurant-341486",
+      "role": "Primary source for the 260 menu entries, displayed base prices, all option groups, logo and food photos",
+      "retrieval": "Browser, rendered page and each item dialog",
+      "mode": "Pickup selected in the observed ordering interface"
+    },
+    {
+      "id": "google-maps",
+      "url": "https://maps.google.com/?cid=6578644208918359529",
+      "role": "Directly observed address, phone, coordinates, venue hours, missing website link and rating snapshot"
+    },
+    {
+      "id": "restaurantguru",
+      "url": "https://restaurantguru.com/Logan-Corner-Restaurant-Winnipeg/menu",
+      "role": "Secondary menu comparison: 255 entries; 250 pairs matched by category and menu number"
+    },
+    {
+      "id": "skip",
+      "url": "https://www.skipthedishes.com/logan-corner-restaurant",
+      "role": "Secondary comparison only; cached public page text differs from the primary storefront for several prices"
+    },
+    {
+      "id": "yellow-pages",
+      "url": "https://www.yellowpages.ca/bus/Manitoba/Winnipeg/Logan-Corner-Restaurant/2380429.html",
+      "role": "Address/phone corroboration and historical website; venue hours disagree with Google Maps"
+    },
+    {
+      "id": "historical-website",
+      "url": "https://logancorner.weebly.com/",
+      "role": "Old website linked by Yellow Pages; no usable home/location/menu body found"
+    },
+    {
+      "id": "doordash",
+      "url": "https://www.doordash.com/en-CA/store/logan-corner-restaurant-winnipeg-341486/",
+      "role": "Corroborates identity and featured menu prices; notes merchant-set prices can differ between delivery and pickup"
+    }
+  ]
+}

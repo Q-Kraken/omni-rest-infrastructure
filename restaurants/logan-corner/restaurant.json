@@ -1,0 +1,1728 @@
+{
+  "slug": "logan-corner",
+  "name": "Logan Corner Restaurant",
+  "description": "Chinese restaurant at 247 Logan Avenue in Winnipeg, with hot pots, congee, noodles, seafood, stir-fries and combination plates.",
+  "phone": "+12049577288",
+  "phoneDisplay": "(204) 957-7288",
+  "email": null,
+  "websiteUrl": null,
+  "restaurantType": "Restaurant",
+  "priceRange": "$$",
+  "timeZone": "America/Winnipeg",
+  "locale": "en-CA",
+  "currency": "CAD",
+  "taxDisplayMode": "exclusive",
+  "address": {
+    "line1": "247 Logan Ave",
+    "line2": null,
+    "city": "Winnipeg",
+    "region": "MB",
+    "postalCode": "R3B 0K9",
+    "countryCode": "CA",
+    "latitude": 49.903366,
+    "longitude": -97.1374289
+  },
+  "hours": {
+    "monday": [
+      "11:00-00:00"
+    ],
+    "tuesday": [
+      "11:00-00:00"
+    ],
+    "wednesday": [
+      "11:00-00:00"
+    ],
+    "thursday": [
+      "11:00-00:00"
+    ],
+    "friday": [
+      "11:00-00:00"
+    ],
+    "saturday": [
+      "11:00-00:00"
+    ],
+    "sunday": [
+      "11:00-00:00"
+    ]
+  },
+  "socialLinks": {
+    "google_business": "https://maps.google.com/?cid=6578644208918359529"
+  },
+  "mainImage": {
+    "file": "photos/15-deluxe-chow-mein-with-mixed-vegetables-and-meat-91e6874d.webp",
+    "alt": "15. Deluxe Chow Mein with Mixed Vegetables and Meat / 广东炒面"
+  },
+  "coverImage": {
+    "file": "photos/15-deluxe-chow-mein-with-mixed-vegetables-and-meat-91e6874d.webp",
+    "alt": "15. Deluxe Chow Mein with Mixed Vegetables and Meat / 广东炒面"
+  },
+  "logo": {
+    "file": "photos/logo-416765a5.webp",
+    "alt": "Logan Corner Restaurant logo"
+  },
+  "gallery": [
+    {
+      "file": "photos/164-beef-stew-tofu-hot-pot-e4306005.webp",
+      "alt": "164. Beef Stew Tofu Hot Pot / 牛腩豆腐煲",
+      "caption": "164. Beef Stew Tofu Hot Pot"
+    },
+    {
+      "file": "photos/15-deluxe-chow-mein-with-mixed-vegetables-and-meat-91e6874d.webp",
+      "alt": "15. Deluxe Chow Mein with Mixed Vegetables and Meat / 广东炒面",
+      "caption": "15. Deluxe Chow Mein with Mixed Vegetables and Meat"
+    },
+    {
+      "file": "photos/238-yangzhou-style-fried-rice-no-soy-sauce-0375b180.webp",
+      "alt": "238. Yangzhou-Style Fried Rice (No Soy Sauce) / 扬洲炒饭",
+      "caption": "238. Yangzhou-Style Fried Rice (No Soy Sauce)"
+    },
+    {
+      "file": "photos/122-deep-fried-shrimp-with-spice-salt-without-shell-84fc872a.webp",
+      "alt": "122. Deep-Fried Shrimp with Spice Salt (without Shell) / 椒盐虾(去殻)",
+      "caption": "122. Deep-Fried Shrimp with Spice Salt (without Shell)"
+    },
+    {
+      "file": "photos/106-crispy-spring-chicken-with-green-onion-ginger-and-soy-sauce-92add42e.webp",
+      "alt": "106. Crispy Spring Chicken with Green Onion, Ginger and Soy Sauce / 葱油炸子鸡",
+      "caption": "106. Crispy Spring Chicken with Green Onion, Ginger and Soy Sauce"
+    },
+    {
+      "file": "photos/141-deep-fried-squid-with-spice-salt-8feb652d.webp",
+      "alt": "141. Deep-Fried Squid with Spice Salt / 椒盐鲜鱿",
+      "caption": "51. Deep-Fried Squid with Spicy Salt"
+    },
+    {
+      "file": "photos/139-pan-fried-long-li-fish-fillet-with-green-onion-ginger-and-soy-sauc-cced35cb.webp",
+      "alt": "139. Pan-Fried Long Li Fish Fillet with Green Onion Ginger and Soy Sauce / 煎封龙利鱼",
+      "caption": "139. Pan-Fried Long Li Fish Fillet with Green Onion Ginger and Soy Sauce"
+    },
+    {
+      "file": "photos/54-sweet-sour-chicken-balls-120cd7db.webp",
+      "alt": "54. Sweet-&-Sour Chicken Balls / 甜酸鸡球",
+      "caption": "54. Sweet-&-Sour Chicken Balls"
+    }
+  ],
+  "menu": {
+    "name": "Menu",
+    "categories": [
+      {
+        "name": "Special Vegetables / 小 菜",
+        "dishes": [
+          {
+            "name": "250. Youchoi or Gailan in Oyster Sauce / 蠔油菜芯或芥蘭",
+            "price": 16.95,
+            "description": "Greens choices: Gailan, Youchoi."
+          },
+          {
+            "name": "251. Deluxe Vegetarian / 罗汉斋",
+            "price": 16.95
+          },
+          {
+            "name": "252. Beef Broccoli / 牛西兰花",
+            "price": 18.75,
+            "image": {
+              "file": "photos/252-beef-broccoli-fa6505b5.webp",
+              "alt": "252. Beef Broccoli / 牛西兰花"
+            }
+          },
+          {
+            "name": "253. Deluxe Mixed Vegetables and Meat / 大杂会",
+            "price": 17.95
+          },
+          {
+            "name": "255. Peeled Shrimp with Youchoi or Gailan / 虾仁油菜芯或芥蘭",
+            "price": 19.25,
+            "description": "Greens choices: Gailan, Youchoi."
+          },
+          {
+            "name": "256. Squid with Youchoi or Gailan / 鲜鱿油菜芯或芥蘭",
+            "price": 19.25,
+            "description": "Greens choices: Gailan, Youchoi."
+          },
+          {
+            "name": "256a. Fish Fillet with Youchoi or Gailan / 鱼片油菜芯或芥蘭",
+            "price": 19.25,
+            "description": "Greens choices: Gailan, Youchoi."
+          },
+          {
+            "name": "257. Beef with Youchoi or Gailan / 牛芥兰",
+            "price": 19.95,
+            "description": "Greens choices: Gailan, Youchoi."
+          },
+          {
+            "name": "258. Garlic with Youchoi or Gailan / 蒜茸油菜芯或芥蘭",
+            "price": 16.95,
+            "description": "Greens choices: Gailan, Youchoi."
+          },
+          {
+            "name": "259. Ginger Extract with Youchoi or Gailan / 姜汁油菜芯或芥蘭",
+            "price": 16.95,
+            "description": "Greens choices: Gailan, Youchoi."
+          },
+          {
+            "name": "268. Pan-Fried Gai Lan with Salted Fish / 鹹鱼炒芥蘭",
+            "price": 17.95
+          },
+          {
+            "name": "261. Shanghai Bok with Garlic / 蒜茸炒上海白",
+            "price": 15.25
+          },
+          {
+            "name": "262. Seafood with Youchoi or Gailan / 三鲜油菜芯或芥蘭",
+            "price": 19.95,
+            "description": "Greens choices: Gailan, Youchoi."
+          },
+          {
+            "name": "265. Tofu Gailan / 豆腐芥蘭",
+            "price": 16.5
+          },
+          {
+            "name": "266. Youchoi in Special Soup / 上汤油菜芯",
+            "price": 18.95
+          }
+        ]
+      },
+      {
+        "name": "Pork and Beef / 猪、牛",
+        "dishes": [
+          {
+            "name": "177. Beef with Sour Vegetables / 酸菜牛肉",
+            "price": 19.25
+          },
+          {
+            "name": "178. Pork Belly Stew with Preserved Cabbages / 梅菜扣肉",
+            "price": 20.5
+          },
+          {
+            "name": "179. Pork Belly with Cabbage / 回锅肉（五花肉）",
+            "price": 17.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "180. Pork Belly with Green Peppers and Onions / 农家小炒肉",
+            "price": 18.25,
+            "image": {
+              "file": "photos/180-pork-belly-with-green-peppers-and-onions-afb22b89.webp",
+              "alt": "180. Pork Belly with Green Peppers and Onions / 农家小炒肉"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "181. Seasoned Pork Chop with Hickory Sauce (Sweet and Sour) / 京都肉排",
+            "price": 18.5,
+            "image": {
+              "file": "photos/181-seasoned-pork-chop-with-hickory-sauce-sweet-and-sour-3f5f4778.webp",
+              "alt": "181. Seasoned Pork Chop with Hickory Sauce (Sweet and Sour) / 京都肉排"
+            }
+          },
+          {
+            "name": "182. Sliced Beef with Mushroom / 牛肉磨菇",
+            "price": 19.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "183. Seasoned Pork Chop with Spice Salt / 椒盐肉排",
+            "price": 17.5,
+            "image": {
+              "file": "photos/183-seasoned-pork-chop-with-spice-salt-5a060650.webp",
+              "alt": "183. Seasoned Pork Chop with Spice Salt / 椒盐肉排"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "184. Deep-Fried Sweet-&-Sour Pork Ribs / 生炒骨",
+            "price": 17.95,
+            "image": {
+              "file": "photos/181-seasoned-pork-chop-with-hickory-sauce-sweet-and-sour-3f5f4778.webp",
+              "alt": "181. Seasoned Pork Chop with Hickory Sauce (Sweet and Sour) / 京都肉排"
+            }
+          },
+          {
+            "name": "185. Poached Beef or Pork / 水煮牛肉",
+            "price": 20.95,
+            "badges": [
+              "spicy"
+            ],
+            "description": "Protein choices: Beef, Pork."
+          },
+          {
+            "name": "186. Beef with Black Bean and Garlic Sauce / 豉汁牛肉",
+            "price": 19.25
+          },
+          {
+            "name": "77. Beef with Black Bean Garlic Sauce / 豉汁牛",
+            "price": 19.25
+          },
+          {
+            "name": "78. Ginger Beef / 炸姜牛",
+            "price": 17.95,
+            "image": {
+              "file": "photos/78-ginger-beef-b0264924.webp",
+              "alt": "78. Ginger Beef / 炸姜牛"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "187. Pan-Fried Seasoned Pork Chop with Garlic / 风沙骨",
+            "price": 17.5,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "188. Sweet-and-Sour Pork with Pineapple / 古老肉",
+            "price": 16.95
+          },
+          {
+            "name": "189. Beef Stew / 柱侯牛腩",
+            "price": 23.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "190. Curry Beef Stew / 咖哩牛腩",
+            "price": 23.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "193. Curry Beef with Onions and Green Peppers / 咖哩牛肉",
+            "price": 19.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "194. Ginger Beef / 子姜牛肉(炸或煮)",
+            "price": 17.95,
+            "image": {
+              "file": "photos/78-ginger-beef-b0264924.webp",
+              "alt": "78. Ginger Beef / 炸姜牛"
+            },
+            "description": "Preparation choices: Deep Fried, Not Deep Fried."
+          },
+          {
+            "name": "195. Sliced Beef in Satay Sauce with Onions & Green Peppers / 沙爹牛肉",
+            "price": 19.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "196. Sliced Beef with Onions & Green Peppers / 沙爹铁板牛肉",
+            "price": 20.25,
+            "image": {
+              "file": "photos/196-sliced-beef-with-onions-green-peppers-881627cf.webp",
+              "alt": "196. Sliced Beef with Onions & Green Peppers / 沙爹铁板牛肉"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "197. Sliced Pork and Bamboo Shoots with Salted Fish Sauce / 鱼香肉丝",
+            "price": 16.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "198. Beef Short Ribs Seasoned with Black Pepper / 铁板黑椒牛仔骨",
+            "price": 23.5,
+            "image": {
+              "file": "photos/198-beef-short-ribs-seasoned-with-black-pepper-e68ba975.webp",
+              "alt": "198. Beef Short Ribs Seasoned with Black Pepper / 铁板黑椒牛仔骨"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "199. Beef Short Ribs Seasoned with Black Pepper/ 黑椒牛仔骨",
+            "price": 22.95,
+            "image": {
+              "file": "photos/198-beef-short-ribs-seasoned-with-black-pepper-e68ba975.webp",
+              "alt": "198. Beef Short Ribs Seasoned with Black Pepper / 铁板黑椒牛仔骨"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "200. Beef Short Ribs Seasoned with Onions and Ginger / 姜葱牛仔骨",
+            "price": 22.95
+          },
+          {
+            "name": "201. Pig Stomach Szechuan Style / 川味猪肚",
+            "price": 17.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "203. Deep-Fried Pork Intestines with Sweet-&-Sour Sauce / 红烧猪大肠",
+            "price": 17.5
+          },
+          {
+            "name": "204. Garlic Seasoned Beef with Onions and Green Peppers / 蒜味牛肉",
+            "price": 19.25
+          },
+          {
+            "name": "67. Dry Breaded Spare Ribs / 干排",
+            "price": 15.75
+          },
+          {
+            "name": "68. Sweet-and-Sour Pineapple Pork / 古老肉",
+            "price": 16.95
+          },
+          {
+            "name": "69. Sweet-&-Sour Spare Ribs / 甜酸排（不炸）",
+            "price": 15.75
+          },
+          {
+            "name": "70. Seasoned Spicy Salt Pork Chop / 椒盐肉排",
+            "price": 17.5,
+            "image": {
+              "file": "photos/70-seasoned-spicy-salt-pork-chop-643b2fff.webp",
+              "alt": "70. Seasoned Spicy Salt Pork Chop / 椒盐肉排"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "71. Dry Breaded Veal / 干牛",
+            "price": 16.25
+          },
+          {
+            "name": "71a. Dry Breaded Pork / 干猪",
+            "price": 15.95,
+            "image": {
+              "file": "photos/71a-dry-breaded-pork-6faf888e.webp",
+              "alt": "71a. Dry Breaded Pork / 干猪"
+            }
+          },
+          {
+            "name": "72. Honey Garlic Veal / 蜜糖牛",
+            "price": 18.25,
+            "image": {
+              "file": "photos/72-honey-garlic-veal-b828a480.webp",
+              "alt": "72. Honey Garlic Veal / 蜜糖牛"
+            }
+          },
+          {
+            "name": "73. Szechuan Beef / 四川牛",
+            "price": 17.95,
+            "image": {
+              "file": "photos/73-szechuan-beef-874cf85b.webp",
+              "alt": "73. Szechuan Beef / 四川牛"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "74. Curry Beef / 咖哩牛",
+            "price": 19.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "75. Beef with Satay Sauce / 沙爹牛",
+            "price": 19.25,
+            "image": {
+              "file": "photos/75-beef-with-satay-sauce-bf99dd6b.webp",
+              "alt": "75. Beef with Satay Sauce / 沙爹牛"
+            }
+          },
+          {
+            "name": "76. Honey Garlic Spare Ribs / 蜜糖排",
+            "price": 17.25
+          }
+        ]
+      },
+      {
+        "name": "Chicken and Duck / 鸡鸭类",
+        "dishes": [
+          {
+            "name": "103. Steamed Chicken with Seasoned Salt / 盐焗肥鸡",
+            "price": 19.5,
+            "description": "Price shown is for half a chicken."
+          },
+          {
+            "name": "104. Steamed Home Land Chicken / 家乡鸡",
+            "price": 19.5,
+            "description": "Price shown is for half a chicken."
+          },
+          {
+            "name": "105. Crispy Spring Chicken / 炸子鸡",
+            "price": 18.5,
+            "description": "Price shown is for half a chicken."
+          },
+          {
+            "name": "106. Crispy Spring Chicken with Green Onion, Ginger and Soy Sauce / 葱油炸子鸡",
+            "price": 19.95,
+            "image": {
+              "file": "photos/106-crispy-spring-chicken-with-green-onion-ginger-and-soy-sauce-92add42e.webp",
+              "alt": "106. Crispy Spring Chicken with Green Onion, Ginger and Soy Sauce / 葱油炸子鸡"
+            },
+            "description": "Price shown is for half a chicken."
+          },
+          {
+            "name": "60. Deep-Fried Sliced Chicken with Spice Salt / 椒盐鸡片",
+            "price": 16.5
+          },
+          {
+            "name": "61. Curry Chicken / 咖哩鸡",
+            "price": 16.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "57. Sliced Chicken with Black Bean Sauce / 豉汁鸡",
+            "price": 16.5
+          },
+          {
+            "name": "66B. Butter Chicken / 牛油鸡",
+            "price": 17.95,
+            "image": {
+              "file": "photos/66b-butter-chicken-ed740dc7.webp",
+              "alt": "66B. Butter Chicken / 牛油鸡"
+            }
+          },
+          {
+            "name": "116. Deep-Fried Chicken Wings with Spice Salt / 椒盐鸡翼",
+            "price": 17.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "101A. Free Run Chicken w/Green Onion, Ginger, SoySauce (Half) / 葱油淋走地鸡 (半)",
+            "price": 23.95
+          }
+        ]
+      },
+      {
+        "name": "Hot Pots / 煲 仔 菜",
+        "dishes": [
+          {
+            "name": "173. Zhongshan Fish Hot Pot / 中山鱼煲",
+            "price": 22.75
+          },
+          {
+            "name": "159. Lamb Stew with Bean Gluten and Black Mushrooms / 枝竹冬菇羊腩煲",
+            "price": 27.95
+          },
+          {
+            "name": "160. Fish Fillet with Tofu and BBQ Pork / 斑腩豆腐煲",
+            "price": 18.95
+          },
+          {
+            "name": "161. Eggplant with Pork & Salted Fish / 鹹鱼鸡粒茄子煲",
+            "price": 18.25,
+            "image": {
+              "file": "photos/161-eggplant-with-pork-salted-fish-8ab10b28.webp",
+              "alt": "161. Eggplant with Pork & Salted Fish / 鹹鱼鸡粒茄子煲"
+            }
+          },
+          {
+            "name": "162. Diced Chicken with Tofu & Salted Fish / 鹹鱼鸡粒豆腐煲",
+            "price": 18.25
+          },
+          {
+            "name": "163. Deep-Fried Tofu & Mixed Vegetables & Meat / 八珍豆腐煲",
+            "price": 18.95
+          },
+          {
+            "name": "164. Beef Stew Tofu Hot Pot / 牛腩豆腐煲",
+            "price": 21.95,
+            "image": {
+              "file": "photos/164-beef-stew-tofu-hot-pot-e4306005.webp",
+              "alt": "164. Beef Stew Tofu Hot Pot / 牛腩豆腐煲"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "165. Beef Stew Bean Gluten Hot Pot / 枝竹牛腩煲",
+            "price": 21.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "167. Braised Egg Plants (No Meat) / 红烧茄子煲",
+            "price": 16.95
+          },
+          {
+            "name": "168. Tofu Hot Pot with Sea Food / 海鲜豆腐煲",
+            "price": 20.75
+          },
+          {
+            "name": "170. Satay Beef & Mung Bean Vermicelli Hot Pot / 沙爹牛肉粉丝煲",
+            "price": 18.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "171. Chicken with Ginger Onion Hot Pot / 嗜嗜鸡煲",
+            "price": 16.95
+          },
+          {
+            "name": "172. Chicken Hot Pot with Curry Sauce / 葡汁滑鸡煲",
+            "price": 16.95,
+            "badges": [
+              "spicy"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Seafood / 海 鲜",
+        "dishes": [
+          {
+            "name": "122. Deep-Fried Shrimp with Spice Salt (without Shell) / 椒盐虾(去殻)",
+            "price": 18.25,
+            "image": {
+              "file": "photos/122-deep-fried-shrimp-with-spice-salt-without-shell-84fc872a.webp",
+              "alt": "122. Deep-Fried Shrimp with Spice Salt (without Shell) / 椒盐虾(去殻)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "123. Deep-Fried Shrimp Seasoned with Salty Egg Yolk / 金沙虾球",
+            "price": 19.5,
+            "image": {
+              "file": "photos/123-deep-fried-shrimp-seasoned-with-salty-egg-yolk-e0cb4289.webp",
+              "alt": "123. Deep-Fried Shrimp Seasoned with Salty Egg Yolk / 金沙虾球"
+            }
+          },
+          {
+            "name": "124. Whole Shrimp with Special Sauce / 美极虾",
+            "price": 17.25,
+            "image": {
+              "file": "photos/124-whole-shrimp-with-special-sauce-71ab4ef8.webp",
+              "alt": "124. Whole Shrimp with Special Sauce / 美极虾"
+            }
+          },
+          {
+            "name": "125. Curry Whole Shrimp / 咖喱虾",
+            "price": 17.5,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "126. Pan-Fried Whole Shrimp (Not Breaded) / 干煎虾",
+            "price": 17.5
+          },
+          {
+            "name": "127. Peeled Shrimp with Cashew Nuts / 腰果虾仁",
+            "price": 17.75
+          },
+          {
+            "name": "128. Shrimp with Black Bean & Garlic Sauce / 豉汁虾",
+            "price": 17.5,
+            "image": {
+              "file": "photos/128-shrimp-with-black-bean-garlic-sauce-908c7187.webp",
+              "alt": "128. Shrimp with Black Bean & Garlic Sauce / 豉汁虾"
+            }
+          },
+          {
+            "name": "129. Kung Po Shrimp / 宫保虾仁",
+            "price": 17.5,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "130. Shrimp with Chinese Scrambled Eggs / 虾仁炒滑蛋",
+            "price": 17.5
+          },
+          {
+            "name": "131. Dry Roast Prawns Szechuan-Style / 川式干烧大虾",
+            "price": 22.5
+          },
+          {
+            "name": "149. Multi-Spring Fish Fried with Salt & Pepper (Lot of Fish Eggs Inside) / 椒盐多春鱼",
+            "price": 17.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "132. Pan-Fried Shrimp with Walnuts and Mayonnaise / 核桃虾",
+            "price": 20.25,
+            "image": {
+              "file": "photos/132-pan-fried-shrimp-with-walnuts-and-mayonnaise-769ebd70.webp",
+              "alt": "132. Pan-Fried Shrimp with Walnuts and Mayonnaise / 核桃虾"
+            }
+          },
+          {
+            "name": "135. Pan-Fried Seafood with Spice Sauce / 椒盐三鲜",
+            "price": 22.5,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "136. Pan-Fried Fish Fillet with Spice Salt / 椒盐鱼块",
+            "price": 17.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "137. Poached Fish Fillet / 水煮鱼片",
+            "price": 19.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "138. Fish Fillet in Cream Corn / 粟米斑块",
+            "price": 17.95
+          },
+          {
+            "name": "139. Pan-Fried Long Li Fish Fillet with Green Onion Ginger and Soy Sauce / 煎封龙利鱼",
+            "price": 20.95,
+            "image": {
+              "file": "photos/139-pan-fried-long-li-fish-fillet-with-green-onion-ginger-and-soy-sauc-cced35cb.webp",
+              "alt": "139. Pan-Fried Long Li Fish Fillet with Green Onion Ginger and Soy Sauce / 煎封龙利鱼"
+            }
+          },
+          {
+            "name": "140. Sweet-&-Sour Fish Fillet / 糖醋鱼块",
+            "price": 16.95
+          },
+          {
+            "name": "141. Deep-Fried Squid with Spice Salt / 椒盐鲜鱿",
+            "price": 18.25,
+            "image": {
+              "file": "photos/141-deep-fried-squid-with-spice-salt-8feb652d.webp",
+              "alt": "141. Deep-Fried Squid with Spice Salt / 椒盐鲜鱿"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "142. Squid with Black Bean & Garlic Sauce / 豉汁鲜鱿",
+            "price": 18.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "143. Fried Tentacles of Squid with Cumin / 孜然鱿鱼须",
+            "price": 17.75,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "143a. Tentacles of Squid on Hot Plate / 铁板香辣鱿鱼须",
+            "price": 18.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "144. Fish Fillet with Celery & Onion / 西芹洋葱炒鱼片",
+            "price": 18.5
+          },
+          {
+            "name": "145. Mussel with Black Bean Sauce / 豉汁青口",
+            "price": 19.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "146. Mussel with Butter Sauce / 牛油青口",
+            "price": 19.95
+          },
+          {
+            "name": "147. Satay Seafood Hot Plate / 铁板沙爹三鲜",
+            "price": 22.75,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "148. Multi-Spring Fish Fried with Green Onion Pepper and Soy Sauce / 葱椒多春鱼",
+            "price": 17.95,
+            "badges": [
+              "spicy"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Side Orders",
+        "dishes": [
+          {
+            "name": "79. Side Sauce / 汁选择",
+            "price": 4.95,
+            "description": "Sauce choices: Black Bean and Garlic Sauce, Curry Sauce, Honey Garlic Sauce, Honey Lemon Sauce, Sweet-and-Sour Sauce."
+          },
+          {
+            "name": "79a. Hot Sauce / 辣椒酱",
+            "price": 0.4
+          },
+          {
+            "name": "80. Dry Noodles / 干脆面",
+            "price": 4.5
+          },
+          {
+            "name": "Steamed Rice (Large) 大白饭",
+            "price": 6.95
+          },
+          {
+            "name": "Steamed Rice (Small) 小白饭",
+            "price": 4.25
+          }
+        ]
+      },
+      {
+        "name": "Vegetables / 蔬 菜 类",
+        "dishes": [
+          {
+            "name": "9. Deluxe Mixed Vegetables and Meat / 大什会",
+            "price": 17.95
+          },
+          {
+            "name": "10. Shrimp Mixed Vegetables / 虾杂菜",
+            "price": 17.95
+          },
+          {
+            "name": "11. Beef Mixed Vegetables / 牛杂菜",
+            "price": 17.95
+          },
+          {
+            "name": "12. BBQ Pork Mixed Vegetables / 叉烧杂菜",
+            "price": 16.95
+          },
+          {
+            "name": "13. Chicken Mixed Vegetables / 鸡杂菜",
+            "price": 16.95
+          },
+          {
+            "name": "14. Plain Mixed Vegetables / 净杂菜",
+            "price": 16.5
+          },
+          {
+            "name": "251. Chinese Deluxe Vegetarian / 罗汉斋",
+            "price": 16.95
+          }
+        ]
+      },
+      {
+        "name": "Chicken / 鸡 类",
+        "dishes": [
+          {
+            "name": "54. Sweet-&-Sour Chicken Balls / 甜酸鸡球",
+            "price": 15.75,
+            "image": {
+              "file": "photos/54-sweet-sour-chicken-balls-120cd7db.webp",
+              "alt": "54. Sweet-&-Sour Chicken Balls / 甜酸鸡球"
+            }
+          },
+          {
+            "name": "55. Mushroom Chicken Balls / 磨菇鸡球",
+            "price": 15.75
+          },
+          {
+            "name": "56. Honey Garlic Chicken Balls / 蜜糖鸡球",
+            "price": 16.75,
+            "image": {
+              "file": "photos/56-honey-garlic-chicken-balls-2e3599ca.webp",
+              "alt": "56. Honey Garlic Chicken Balls / 蜜糖鸡球"
+            }
+          },
+          {
+            "name": "57. Chicken with Black Bean and Garlic Sauce / 豉汁鸡",
+            "price": 16.5
+          },
+          {
+            "name": "58. Honey Lemon Chicken / 柠檬鸡",
+            "price": 16.25,
+            "image": {
+              "file": "photos/58-honey-lemon-chicken-96822f77.webp",
+              "alt": "58. Honey Lemon Chicken / 柠檬鸡"
+            }
+          },
+          {
+            "name": "59. Breaded Almond Chicken / 酥炸鸡",
+            "price": 16.25
+          },
+          {
+            "name": "60. Sliced Chicken with Spicy Salt / 椒盐鸡片",
+            "price": 16.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "61. Curry Chicken / 咖哩鸡",
+            "price": 16.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "62. Spicy Honey Garlic Chicken / 蜜辣鸡",
+            "price": 16.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "63. Kung Po Chicken / 宫保鸡",
+            "price": 16.25,
+            "image": {
+              "file": "photos/63-kung-po-chicken-fe52f81e.webp",
+              "alt": "63. Kung Po Chicken / 宫保鸡"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "64. Diced Chicken with Vegetable and Cashew Nuts / 腰果鸡",
+            "price": 16.25
+          },
+          {
+            "name": "65. Deep-Fried Crispy Spring Chicken / 炸子鸡 (半)",
+            "price": 18.5,
+            "description": "Price shown is for half a chicken."
+          },
+          {
+            "name": "65a. Deep-Fried Crispy Chicken with Green Onion, Ginger, Soy Sauce / 葱油炸子鸡 (半)",
+            "price": 19.95,
+            "image": {
+              "file": "photos/106-crispy-spring-chicken-with-green-onion-ginger-and-soy-sauce-92add42e.webp",
+              "alt": "106. Crispy Spring Chicken with Green Onion, Ginger and Soy Sauce / 葱油炸子鸡"
+            },
+            "description": "Price shown is for half a chicken."
+          },
+          {
+            "name": "66. Szechuan Chicken / 四川鸡",
+            "price": 16.5,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "66a. Sesame Chicken / 芝蔴鸡",
+            "price": 16.25,
+            "image": {
+              "file": "photos/66a-sesame-chicken-de9960c3.webp",
+              "alt": "66a. Sesame Chicken / 芝蔴鸡"
+            }
+          },
+          {
+            "name": "66B. Butter Chicken / 牛油鸡",
+            "price": 17.95,
+            "image": {
+              "file": "photos/66b-butter-chicken-ed740dc7.webp",
+              "alt": "66B. Butter Chicken / 牛油鸡"
+            }
+          },
+          {
+            "name": "66c. Chicken Mushroom / 磨菇鸡片",
+            "price": 17.25
+          }
+        ]
+      },
+      {
+        "name": "Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",
+        "dishes": [
+          {
+            "name": "15. Deluxe Chow Mein with Mixed Vegetables and Meat / 广东炒面",
+            "price": 18.95,
+            "image": {
+              "file": "photos/15-deluxe-chow-mein-with-mixed-vegetables-and-meat-91e6874d.webp",
+              "alt": "15. Deluxe Chow Mein with Mixed Vegetables and Meat / 广东炒面"
+            }
+          },
+          {
+            "name": "16. Shrimp Chow Mein / 虾炒面",
+            "price": 18.85
+          },
+          {
+            "name": "17. Beef Chow Mein / 牛炒面",
+            "price": 17.95
+          },
+          {
+            "name": "18. Chicken Chow Mein / 鸡炒面",
+            "price": 16.95
+          },
+          {
+            "name": "19. BBQ Pork Chow Mein / 叉烧炒面",
+            "price": 16.95
+          }
+        ]
+      },
+      {
+        "name": "Mooshi / 木 须",
+        "dishes": [
+          {
+            "name": "MS1. Mooshi with 6 Pancakes / 木须 选择 (猪肉, 鸡肉, 牛肉) 跟6块薄饼",
+            "price": 15.95,
+            "description": "Protein choices: Beef, Chicken, Pork."
+          },
+          {
+            "name": "MS2. Deluxe Mooshi with 6 Pancakes / 什锦木须 (跟6块薄饼）",
+            "price": 18.95
+          }
+        ]
+      },
+      {
+        "name": "Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",
+        "dishes": [
+          {
+            "name": "205. Pork and Preserved Egg Congee / 皮蛋瘦肉粥",
+            "price": 12.75,
+            "image": {
+              "file": "photos/205-pork-and-preserved-egg-congee-9ebb7e6e.webp",
+              "alt": "205. Pork and Preserved Egg Congee / 皮蛋瘦肉粥"
+            },
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "206. Freshly Boiled Fish Flake Congee / 生滚鱼片粥",
+            "price": 12.75,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "207. Freshly Boiled Beef Congee / 生滚牛肉粥",
+            "price": 12.75,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "208. Freshly Boiled Chicken Congee / 生滚鸡粥",
+            "price": 12.75,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "209. Special House Congee (with Peanuts) / 及第粥",
+            "price": 13.75,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "209a. Seafood Congee / 海鲜粥",
+            "price": 14.5,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "210. Fried Vermicelli Singapore Style with Curry Sauce / 星洲炒米",
+            "price": 16.5,
+            "image": {
+              "file": "photos/210-fried-vermicelli-singapore-style-with-curry-sauce-a3f6d9b2.webp",
+              "alt": "210. Fried Vermicelli Singapore Style with Curry Sauce / 星洲炒米"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "211. Fried Vermicelli Home Land Style / 家乡炒米粉",
+            "price": 16.5
+          },
+          {
+            "name": "212. Deluxe Chow Mein (with Mixed Vegetable and Meat) / 广东炒面(什菜）",
+            "price": 18.95,
+            "image": {
+              "file": "photos/212-deluxe-chow-mein-with-mixed-vegetable-and-meat-cbe0335a.webp",
+              "alt": "212. Deluxe Chow Mein (with Mixed Vegetable and Meat) / 广东炒面(什菜）"
+            }
+          },
+          {
+            "name": "212a. Tofu Mixed Vegetable Chow Mein / 豆腐什菜炒面",
+            "price": 16.95
+          },
+          {
+            "name": "213. Noodles with Chinese Vegetable & Mixed Meat / 八珍炒面/河",
+            "price": 19.25,
+            "description": "Noodles choices: Egg Noodles."
+          },
+          {
+            "name": "214. Noodles with Chinese Vegetable & Seafood / 海鲜炒面/河",
+            "price": 20.95,
+            "description": "Noodles choices: Egg Noodles."
+          },
+          {
+            "name": "215. Noodles with Chinese Vegetable & Shrimp / 虾球炒面/河",
+            "price": 19.25,
+            "description": "Noodles choices: Egg Noodles."
+          },
+          {
+            "name": "216. Beef and Chinese Vegetable Chow Fan (Rice Noodle) / 时菜牛河",
+            "price": 19.25
+          },
+          {
+            "name": "217. Spareribs & Chinese Vegetable Chow Fan / 时菜排骨炒河",
+            "price": 19.95
+          },
+          {
+            "name": "218. Beef Stew and Chinese Vegetable Chowfan / 时菜牛腩炒河",
+            "price": 18.95
+          },
+          {
+            "name": "219. Mushroom Tofu & Chinese Vegetable Chow Fan / 时菜冬菇豆腐炒河",
+            "price": 18.25
+          },
+          {
+            "name": "220. Satay Beef & Green Pepper Onion Chowfan / 沙爹牛河",
+            "price": 18.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "221. Beef & Bean Sprout Chow Fan 干炒牛河",
+            "price": 16.5,
+            "image": {
+              "file": "photos/221-beef-bean-sprout-chow-fan-460e1680.webp",
+              "alt": "221. Beef & Bean Sprout Chow Fan 干炒牛河"
+            }
+          },
+          {
+            "name": "222. Beef & Black Bean & Pepper Sauce Chowfan / 豉椒牛河",
+            "price": 19.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "223. Pan-Fried Shanghai Thick Noodles / 上海面",
+            "price": 16.5,
+            "image": {
+              "file": "photos/223-pan-fried-shanghai-thick-noodles-658317ed.webp",
+              "alt": "223. Pan-Fried Shanghai Thick Noodles / 上海面"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "224. Fried Egg Noodles with Shredded Pork and Bean Sprout / 肉丝炒面",
+            "price": 16.25
+          },
+          {
+            "name": "224a. Boiled Egg Noodles with Beef Stew (No Soup) / 时菜牛腩捞面",
+            "price": 17.25
+          },
+          {
+            "name": "224b. Fried Egg Noodles with Soy Sauce / 豉油皇炒面(不脆)",
+            "price": 14.75
+          },
+          {
+            "name": "225. Noodle Soup with Shredded Duck & Snow Vegetables / 雪菜鸭丝汤米/面/河",
+            "price": 16.25,
+            "description": "Price shown is for the small portion. Noodles choices: Egg Noodles, Vermicelli Noodles."
+          },
+          {
+            "name": "226. Noodle Soup with Shredded Pork & Snow Vegetables / 雪菜肉丝汤米/面/河",
+            "price": 14.95,
+            "description": "Noodles choices: Egg Noodles, Vermicelli Noodles. Price shown is for the small portion."
+          },
+          {
+            "name": "227. Noodle Soup with Shredded Duck & Crunchy Preserved Vegetables / 榨菜鸭丝汤米/面/河",
+            "price": 16.25,
+            "description": "Noodles choices: Egg Noodles, Vermicelli Noodles. Price shown is for the small portion."
+          },
+          {
+            "name": "228. Noodle Soup in Beef Stew Noodle Soup / 牛腩汤面",
+            "price": 15.95,
+            "image": {
+              "file": "photos/228-noodle-soup-in-beef-stew-noodle-soup-1e24f199.webp",
+              "alt": "228. Noodle Soup in Beef Stew Noodle Soup / 牛腩汤面"
+            },
+            "description": "Noodles choices: Egg Noodles, Vermicelli Noodles."
+          },
+          {
+            "name": "229. Wonton and Egg Noodle Soup with BBQ Pork and Mixed Vegetable Noodle Soup / 叉烧什菜云吞汤面",
+            "price": 15.25
+          },
+          {
+            "name": "230. House Special Wonton and Egg Noodle Soup / 旺角雲吞面/河",
+            "price": 16.95
+          },
+          {
+            "name": "232. Noodles Soup with Chicken with Bone 切鸡汤面",
+            "price": 15.5,
+            "description": "Noodles choices: Egg Noodles."
+          },
+          {
+            "name": "233. Egg Noodle and Rice Noodle Soup with Lamb Stew / 羊腩汤面/河",
+            "price": 19.25,
+            "description": "Noodles choices: Egg Noodles."
+          },
+          {
+            "name": "234. Seafood Egg Noodle Soup / 海鲜汤面",
+            "price": 16.95
+          },
+          {
+            "name": "235. Wonton Egg Noodle Soup / 雲吞面",
+            "price": 14.25
+          },
+          {
+            "name": "237. Salted Fish & Diced Chicken Fried Rice / 咸鱼鸡粒炒饭",
+            "price": 18.25,
+            "image": {
+              "file": "photos/237-salted-fish-diced-chicken-fried-rice-0b93a66b.webp",
+              "alt": "237. Salted Fish & Diced Chicken Fried Rice / 咸鱼鸡粒炒饭"
+            }
+          },
+          {
+            "name": "238. Yangzhou-Style Fried Rice (No Soy Sauce) / 扬洲炒饭",
+            "price": 18.25,
+            "image": {
+              "file": "photos/238-yangzhou-style-fried-rice-no-soy-sauce-0375b180.webp",
+              "alt": "238. Yangzhou-Style Fried Rice (No Soy Sauce) / 扬洲炒饭"
+            }
+          },
+          {
+            "name": "239. Fried Rice & Beef (No Soy Sauce) / 生炒牛肉饭",
+            "price": 17.75
+          },
+          {
+            "name": "240. Fujian Fried Rice / 福建炒饭",
+            "price": 17.75
+          },
+          {
+            "name": "241. Chinese Sausage Fried Rice / 腊肠炒饭",
+            "price": 16.95
+          },
+          {
+            "name": "242. Seafood Fried Rice / 海鲜炒饭",
+            "price": 18.5
+          },
+          {
+            "name": "244. Beef White Rice with Silky Egg Sauce / 滑蛋牛肉饭",
+            "price": 16.25
+          },
+          {
+            "name": "244a. Mixed Vegetable Fried Rice with Soy Sauce and Egg / 什菜豆腐炒饭",
+            "price": 13.5
+          },
+          {
+            "name": "246. BBQ Pork and Vegetables on Steamed Rice / 叉烧饭",
+            "price": 13.75
+          },
+          {
+            "name": "247. Steamed Chicken and Vegetables on Steamed Rice 切鸡饭",
+            "price": 14.75,
+            "image": {
+              "file": "photos/247-steamed-chicken-and-vegetables-on-steamed-rice-60730b8a.webp",
+              "alt": "247. Steamed Chicken and Vegetables on Steamed Rice 切鸡饭"
+            }
+          },
+          {
+            "name": "248. Beef Stew & Vegetables on Steamed Rice / 牛腩饭",
+            "price": 15.25
+          },
+          {
+            "name": "248a. Lamb Stew and Vegetables on Steamed Rice / 羊腩饭",
+            "price": 18.85
+          },
+          {
+            "name": "249. Steamed Rice with Spareribs in Black Bean Sauce / 豉汁排骨饭",
+            "price": 16.5
+          },
+          {
+            "name": "249a. Mixed Meat & Green on Steamed Rice 双拼饭",
+            "price": 18.75,
+            "description": "Protein choices: BBQ Pork 叉烧, Steamed Chicken 白切鸡, duck烧鸭."
+          }
+        ]
+      },
+      {
+        "name": "Beverages",
+        "dishes": [
+          {
+            "name": "81. Canned Drink (355 ml) / 罐装饮料",
+            "price": 2.95,
+            "description": "Soda choices: 7-Up, Coke, Dr. Pepper, Ginger Ale, Nestea, Orange Crush, Pepsi, Root Beer."
+          }
+        ]
+      },
+      {
+        "name": "Chop Suey / 什 碎",
+        "dishes": [
+          {
+            "name": "20. Deluxe Chop Suey with Meat / 什锦杂碎",
+            "price": 15.25
+          },
+          {
+            "name": "21. Shrimp Chop Suey / 虾杂碎",
+            "price": 15.25,
+            "image": {
+              "file": "photos/21-shrimp-chop-suey-84a2bc3a.webp",
+              "alt": "21. Shrimp Chop Suey / 虾杂碎"
+            }
+          },
+          {
+            "name": "22. Beef Chop Suey / 牛杂碎",
+            "price": 14.95
+          },
+          {
+            "name": "23. Chicken Chop Suey / 鸡杂碎",
+            "price": 14.75
+          },
+          {
+            "name": "24. BBQ Pork Chop Suey / 叉烧杂碎",
+            "price": 14.75
+          },
+          {
+            "name": "25. Mushroom Chop Suey / 磨菇杂碎",
+            "price": 14.75
+          },
+          {
+            "name": "26. Plain Chop Suey / 净什碎",
+            "price": 13.95
+          }
+        ]
+      },
+      {
+        "name": "Special Soups / 汤 羹",
+        "dishes": [
+          {
+            "name": "83. Minced Chicken with Fish Maw Soup Special / 鸡茸魚肚羹",
+            "price": 16.25,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "83a. Minced Chicken with Corn Soup Special / 鸡茸粟米羹",
+            "price": 16.25,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "84. Crab Meat with Fish Maw Soup Special / 蟹肉魚肚羹",
+            "price": 16.25,
+            "image": {
+              "file": "photos/84-crab-meat-with-fish-maw-soup-special-4100ca23.webp",
+              "alt": "84. Crab Meat with Fish Maw Soup Special / 蟹肉魚肚羹"
+            },
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "85. Mixed Seafood with Bean Curd Soup Special / 海皇豆腐羹",
+            "price": 16.5,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "86. Seaweed, Bean Curd, and Seafood Soup Special / 海皇紫菜豆腐羹",
+            "price": 16.95,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "87. Shredded Duck Soup (No Noodle) Special / 鸭丝羹",
+            "price": 16.95,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "88. Snow Fungus Pork Chinese Mushroom Egg Soup Special /雪耳肉丝冬菇蛋花汤",
+            "price": 16.95,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "89. Hot-and-Sour Soup Special / 酸辣汤",
+            "price": 15.25,
+            "badges": [
+              "spicy"
+            ],
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "90. Egg Drops with Minced Beef Soup Special / 西湖牛肉豆腐羹",
+            "price": 15.25,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "91. Slice Meat with Mixed Vegetable Soup Special / 杂菜肉片汤",
+            "price": 13.75,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "92. Deluxe Wonton Soup with Meat and Vegetable Special / SP云吞汤",
+            "price": 14.25,
+            "image": {
+              "file": "photos/92-deluxe-wonton-soup-with-meat-and-vegetable-special-9ed05894.webp",
+              "alt": "92. Deluxe Wonton Soup with Meat and Vegetable Special / SP云吞汤"
+            },
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "93. Mixed Vegetable Wonton Soup Special / 云吞汤",
+            "price": 12.5,
+            "description": "Price shown is for the small portion."
+          }
+        ]
+      },
+      {
+        "name": "Egg Foo Young / 芙 蓉",
+        "dishes": [
+          {
+            "name": "35. Deluxe Egg Foo Young with Meat / 什锦芙蓉",
+            "price": 17.95,
+            "image": {
+              "file": "photos/35-deluxe-egg-foo-young-with-meat-0749eaf2.webp",
+              "alt": "35. Deluxe Egg Foo Young with Meat / 什锦芙蓉"
+            }
+          },
+          {
+            "name": "36. Shrimp Egg Foo Young / 虾芙蓉",
+            "price": 17.95
+          },
+          {
+            "name": "37. Beef Egg Foo Young / 牛芙蓉",
+            "price": 15.95
+          },
+          {
+            "name": "38. Chicken Egg Foo Young / 鸡芙蓉",
+            "price": 14.95
+          },
+          {
+            "name": "39. BBQ Pork Egg Foo Young / 叉烧芙蓉",
+            "price": 14.95
+          },
+          {
+            "name": "40. Mushroom Egg Foo Young / 磨菇芙蓉",
+            "price": 14.95
+          },
+          {
+            "name": "41. Plain Egg Foo Young / 净芙蓉",
+            "price": 14.75
+          }
+        ]
+      },
+      {
+        "name": "Tofu / 豆 腐",
+        "dishes": [
+          {
+            "name": "120. Deep-Fried Bean Curd with Spice Salt / 椒盐豆腐",
+            "price": 15.95,
+            "image": {
+              "file": "photos/120-deep-fried-bean-curd-with-spice-salt-8d2c9e57.webp",
+              "alt": "120. Deep-Fried Bean Curd with Spice Salt / 椒盐豆腐"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "120b. Tofu with Shredded Pork / 肉丝扒豆腐",
+            "price": 16.95
+          },
+          {
+            "name": "120c. Braised Tofu Hot Pot (No Meat) / 红烧豆腐煲",
+            "price": 16.95
+          },
+          {
+            "name": "120d. Bean Curd with Minced Beef and Chilli Sauce (Mapo Tofu) / 麻婆豆腐",
+            "price": 17.95,
+            "image": {
+              "file": "photos/120d-bean-curd-with-minced-beef-and-chilli-sauce-mapo-tofu-dd0e1165.webp",
+              "alt": "120d. Bean Curd with Minced Beef and Chilli Sauce (Mapo Tofu) / 麻婆豆腐"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "120e. King Place Tofu with Seafood and Mixed Mushroom / 宫庭豆腐",
+            "price": 21.75
+          }
+        ]
+      },
+      {
+        "name": "Soups and Appetizers / 汤羹 和 小吃",
+        "dishes": [
+          {
+            "name": "1. Deluxe Wonton Soup with Meat and Vegetables / 什锦云吞汤",
+            "price": 14.25,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "2. Wonton Soup with Vegetables / 云吞汤",
+            "price": 12.5,
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "84. Crab Meat with Fish Maw Soup / 蟹肉鱼肚更",
+            "price": 16.25,
+            "image": {
+              "file": "photos/84-crab-meat-with-fish-maw-soup-special-4100ca23.webp",
+              "alt": "84. Crab Meat with Fish Maw Soup Special / 蟹肉魚肚羹"
+            },
+            "description": "Price shown is for the small portion."
+          },
+          {
+            "name": "3. Consomme Soup / 清汤",
+            "price": 5.25
+          },
+          {
+            "name": "4. BBQ Pork / 叉烧",
+            "price": 15.25
+          },
+          {
+            "name": "5. Hot-and-Sour Soup / 酸辣汤",
+            "price": 15.25
+          },
+          {
+            "name": "6. Egg Roll / 春卷 (素) 1pc",
+            "price": 3.25
+          },
+          {
+            "name": "7. Deep-Fried Wonton with Sweet-and-Sour Sauce / 炸云吞",
+            "price": 10.25
+          }
+        ]
+      },
+      {
+        "name": "Seafood and Fish / 海鲜、鱼",
+        "dishes": [
+          {
+            "name": "42. Deep-Fried Shrimp with Spicy Salt without Shell / 椒盐虾球",
+            "price": 18.25,
+            "image": {
+              "file": "photos/42-deep-fried-shrimp-with-spicy-salt-without-shell-1a7b383a.webp",
+              "alt": "42. Deep-Fried Shrimp with Spicy Salt without Shell / 椒盐虾球"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "43. Dry Breaded Shrimp / 干粉虾",
+            "price": 17.5
+          },
+          {
+            "name": "44. Shrimp with Black Bean & Garlic Sauce / 豉汁虾",
+            "price": 17.5,
+            "image": {
+              "file": "photos/128-shrimp-with-black-bean-garlic-sauce-908c7187.webp",
+              "alt": "128. Shrimp with Black Bean & Garlic Sauce / 豉汁虾"
+            }
+          },
+          {
+            "name": "45. Sweet-&-Sour Shrimp / 甜酸虾",
+            "price": 17.5
+          },
+          {
+            "name": "46. Pan-Fried Shrimp / 干煎虾",
+            "price": 17.5,
+            "image": {
+              "file": "photos/46-pan-fried-shrimp-4fd28fd4.webp",
+              "alt": "46. Pan-Fried Shrimp / 干煎虾"
+            }
+          },
+          {
+            "name": "47. Kung Po Shrimp / 宫保虾",
+            "price": 17.75,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "48. Shrimp with Diced Vegetables & Cashew Nuts / 腰果虾",
+            "price": 17.95
+          },
+          {
+            "name": "49. Curry Shrimp / 咖哩虾",
+            "price": 17.75,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "50. Szechuan Shrimp / 四川虾",
+            "price": 17.5,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "51. Deep-Fried Squid with Spicy Salt / 椒盐鲜鱿",
+            "price": 18.25,
+            "image": {
+              "file": "photos/141-deep-fried-squid-with-spice-salt-8feb652d.webp",
+              "alt": "141. Deep-Fried Squid with Spice Salt / 椒盐鲜鱿"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "52. Fish Fillet Tofu and Pork Hot Pot / 斑腩豆腐煲",
+            "price": 18.95
+          }
+        ]
+      },
+      {
+        "name": "Fried Rice / 炒 饭",
+        "dishes": [
+          {
+            "name": "27. Deluxe Fried Rice with Meat / 什锦炒饭",
+            "price": 14.25,
+            "image": {
+              "file": "photos/27-deluxe-fried-rice-with-meat-f121ddf5.webp",
+              "alt": "27. Deluxe Fried Rice with Meat / 什锦炒饭"
+            }
+          },
+          {
+            "name": "28. Shrimp Fried Rice / 虾炒饭",
+            "price": 14.25
+          },
+          {
+            "name": "29. Beef Fried Rice / 牛炒饭",
+            "price": 13.5
+          },
+          {
+            "name": "30. BBQ Pork Fried Rice / 叉烧炒饭",
+            "price": 12.95
+          },
+          {
+            "name": "31. Chicken Fried Rice / 鸡炒饭",
+            "price": 12.95
+          },
+          {
+            "name": "32. Plain Fried Rice / 净炒饭",
+            "price": 12.5,
+            "image": {
+              "file": "photos/32-plain-fried-rice-79d6aedb.webp",
+              "alt": "32. Plain Fried Rice / 净炒饭"
+            }
+          },
+          {
+            "name": "33. Mushroom Fried Rice / 磨菇炒饭",
+            "price": 12.95
+          },
+          {
+            "name": "34. Steamed Rice (Small) / 白饭",
+            "price": 4.25,
+            "description": "Price shown is for the small portion."
+          }
+        ]
+      },
+      {
+        "name": "Combination Plates",
+        "dishes": [
+          {
+            "name": "#A. Egg Roll, Sweet-and-Sour Shrimp, Mixed Vegetables, and Fried Rice",
+            "price": 15.95
+          },
+          {
+            "name": "#B. Egg Roll, Sweet-and-Sour Chicken Balls, Mixed Vegetables, and Fried Rice",
+            "price": 15.95,
+            "image": {
+              "file": "photos/b-egg-roll-sweet-and-sour-chicken-balls-mixed-vegetables-and-fried-ric-992f08bd.webp",
+              "alt": "#B. Egg Roll, Sweet-and-Sour Chicken Balls, Mixed Vegetables, and Fried Rice"
+            }
+          },
+          {
+            "name": "#C. Egg Roll, Dry Breaded Shrimp, Mixed Vegetables, and Fried Rice",
+            "price": 15.95
+          },
+          {
+            "name": "#D. Dry Breaded Veal, Mixed Vegetables, and Fried Rice",
+            "price": 15.25,
+            "image": {
+              "file": "photos/d-dry-breaded-veal-mixed-vegetables-and-fried-rice-efdcc287.webp",
+              "alt": "#D. Dry Breaded Veal, Mixed Vegetables, and Fried Rice"
+            }
+          },
+          {
+            "name": "#E. Sweet-and-Sour Pork, Mixed Vegetables, and Fried Rice",
+            "price": 15.25,
+            "image": {
+              "file": "photos/e-sweet-and-sour-pork-mixed-vegetables-and-fried-rice-993d8681.webp",
+              "alt": "#E. Sweet-and-Sour Pork, Mixed Vegetables, and Fried Rice"
+            }
+          },
+          {
+            "name": "#F. Szechuan Chicken, Mixed Vegetables, and Fried Rice",
+            "price": 15.25,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "#G. Szechuan Beef, Mixed Vegetables, and Fried Rice",
+            "price": 15.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "#H. Sweet-and-Sour Ribs, Mixed Vegetables, and Fried Rice",
+            "price": 15.25
+          },
+          {
+            "name": "#K. Deep Fried Crispy Chicken, Mixed Vegetables, and Fried Rice",
+            "price": 15.95
+          }
+        ]
+      },
+      {
+        "name": "Special Snacks / 烧味小吃",
+        "dishes": [
+          {
+            "name": "100. Jellyfish / 净海蜇",
+            "price": 17.75,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "94. BBQ Sliced Pork / 叉 烧（净瘦肉）",
+            "price": 15.25,
+            "image": {
+              "file": "photos/94-bbq-sliced-pork-10b24a25.webp",
+              "alt": "94. BBQ Sliced Pork / 叉 烧（净瘦肉）"
+            }
+          },
+          {
+            "name": "95. Deep-Fried Won Ton / 炸云吞",
+            "price": 10.25
+          },
+          {
+            "name": "97. Deep-Fried or Steamed Buns with Condensed Milk / 蒸或炸馒头",
+            "price": 15.95,
+            "description": "Preparation choices: Deep Fried, Steamed."
+          },
+          {
+            "name": "99. Eggroll / 春 卷",
+            "price": 3.25,
+            "image": {
+              "file": "photos/99-eggroll-93880ca8.webp",
+              "alt": "99. Eggroll / 春 卷"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

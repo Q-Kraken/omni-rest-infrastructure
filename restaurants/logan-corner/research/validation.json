@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "validation": "Existing importer Validate and LoadImagesAsync; no ImportAsync, database connection, onboarding or publication invoked",
+  "restaurant": "Logan Corner Restaurant",
+  "categories": 21,
+  "dishes": 260,
+  "referencedImagesValidated": 54,
+  "databaseWritten": false,
+  "published": false
+}

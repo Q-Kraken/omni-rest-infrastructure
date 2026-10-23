@@ -1,0 +1,74 @@
+{
+  "retrievedAt": "2026-10-22T23:08:33-05:00",
+  "name": "Logan Corner Restaurant",
+  "address": {
+    "line1": "247 Logan Ave",
+    "line2": null,
+    "city": "Winnipeg",
+    "region": "MB",
+    "postalCode": "R3B 0K9",
+    "countryCode": "CA",
+    "latitude": 49.903366,
+    "longitude": -97.1374289
+  },
+  "phone": "+12049577288",
+  "hours": {
+    "monday": [
+      "11:00-00:00"
+    ],
+    "tuesday": [
+      "11:00-00:00"
+    ],
+    "wednesday": [
+      "11:00-00:00"
+    ],
+    "thursday": [
+      "11:00-00:00"
+    ],
+    "friday": [
+      "11:00-00:00"
+    ],
+    "saturday": [
+      "11:00-00:00"
+    ],
+    "sunday": [
+      "11:00-00:00"
+    ]
+  },
+  "hoursEvidence": [
+    "Address: 247 Logan Ave, Winnipeg, MB R3B 0K9 ",
+    "Thursday, 11 a.m. to 12 a.m., Copy open hours",
+    "Friday, 11 a.m. to 12 a.m., Copy open hours",
+    "Saturday, 11 a.m. to 12 a.m., Copy open hours",
+    "Sunday, 11 a.m. to 12 a.m., Copy open hours",
+    "Monday, 11 a.m. to 12 a.m., Copy open hours",
+    "Tuesday, 11 a.m. to 12 a.m., Copy open hours",
+    "Wednesday, 11 a.m. to 12 a.m., Copy open hours",
+    "Phone: (204) 957-7288 ",
+    "Plus code: WV37+82 Winnipeg, Manitoba"
+  ],
+  "googleMapsURL": "https://maps.google.com/?cid=6578644208918359529",
+  "googleMapsObservedURL": "https://www.google.com/maps/place/Logan+Corner+Restaurant/@49.903366,-97.1374289,17z/data=!3m1!4b1!4m6!3m5!1s0x52ea71680aa171e9:0x5b4c0a0d88426de9!8m2!3d49.903366!4d-97.1374289!16s%2Fg%2F1tddxf40?entry=ttu&g_ep=EgoyMDI2MTAyMC4wIKXMDSoASAFQAw%3D%3D",
+  "googleMapsRatingObserved": {
+    "stars": 4.0,
+    "reviews": 401,
+    "imported": false
+  },
+  "publicWebsiteInGoogleMaps": null,
+  "email": null,
+  "verifiedSocialAccounts": [],
+  "historicalWebsite": {
+    "url": "https://logancorner.weebly.com/",
+    "observation": "Home, location and picture-menu pages currently contain navigation but no usable restaurant content; not imported as a current website"
+  },
+  "secondaryHoursDiscrepancy": {
+    "source": "https://www.yellowpages.ca/bus/Manitoba/Winnipeg/Logan-Corner-Restaurant/2380429.html",
+    "hours": "Mon-Sat 11:00-03:00, Sun 11:00-00:00",
+    "decision": "Use directly observed Google Maps hours: daily 11:00-00:00"
+  },
+  "orderingHours": {
+    "source": "https://order.online/store/logan-corner-restaurant-341486",
+    "hours": "11:15-23:05",
+    "decision": "Ordering hours are not substituted for venue opening hours"
+  }
+}

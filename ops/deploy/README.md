@@ -6,6 +6,19 @@ total hourly price before provisioning. Do not activate the trial until local ch
 
 ## Services and state
 
+### Multiple restaurant websites
+
+One deployment can serve several restaurant domains. Keep `SITE_HOST` as the primary host used by
+health checks. For additional domains, set `PUBLIC_SITE_HOSTS` to the comma-separated Caddy site
+addresses and `PUBLIC_SITE_ALLOWED_HOSTS` to the same exact hostnames separated by semicolons for
+ASP.NET Core. Both default to `SITE_HOST`, preserving single-domain deployments.
+
+Each hostname must resolve to the server and be assigned to its restaurant in `restaurant_domains`
+using the onboarding CLI. After taking a backup, import the new restaurant and add its domain, then
+validate Compose and Caddy configuration and recreate only the API and gateway with the current
+application image tag. Caddy obtains the additional HTTPS certificate. Verify both websites and
+cross-restaurant image rejection; adding a website must preserve existing restaurant content.
+
 Only Caddy publishes ports 80 and 443. PostgreSQL and the API have no public ports. Next.js calls the
 private Caddy listener on 8081, which supplies HTTPS forwarding metadata. The API trusts only Caddy's
 fixed container address, 172.30.72.10. Check that subnet against the server's existing routes.

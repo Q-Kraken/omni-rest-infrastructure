@@ -1,0 +1,32 @@
+{
+  "source": "https://www.skipthedishes.com/logan-corner-restaurant",
+  "retrievedAt": "2026-10-22T23:08:33-05:00",
+  "retrievalNote": "Public page text returned by web retrieval; its crawl date was two months earlier, so this is comparison evidence, not proof of current checkout prices",
+  "items": [
+    {
+      "menuNumber": "15",
+      "name": "Deluxe Chow Mein with Mixed Vegetables and Meat",
+      "priceCAD": 17.95
+    },
+    {
+      "menuNumber": "164",
+      "name": "Beef Stew Tofu Hot Pot",
+      "priceCAD": 19.75
+    },
+    {
+      "menuNumber": "71",
+      "name": "Dry Breaded Veal",
+      "priceCAD": 14.95
+    },
+    {
+      "menuNumber": "54",
+      "name": "Sweet and Sour Chicken Balls",
+      "priceCAD": 14.95
+    },
+    {
+      "menuNumber": "27",
+      "name": "Deluxe Fried Rice with Meat",
+      "priceCAD": 14.25
+    }
+  ]
+}

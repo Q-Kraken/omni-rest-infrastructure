@@ -1,0 +1,231 @@
+[
+  {
+    "category": "Chicken and Duck / 鸡鸭类",
+    "dish": "105. Crispy Spring Chicken / 炸子鸡",
+    "issue": "Duplicate-looking size choice with a different surcharge; owner confirmation required",
+    "group": {
+      "name": "Size Choice",
+      "required": true,
+      "choices": [
+        {
+          "label": "Whole / 全隻",
+          "additionalPriceCAD": 17.0,
+          "disabled": false
+        },
+        {
+          "label": "Half / 半隻",
+          "additionalPriceCAD": 0,
+          "disabled": false
+        },
+        {
+          "label": "Copy of Whole / 全隻",
+          "additionalPriceCAD": 16.0,
+          "disabled": false
+        }
+      ]
+    }
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "122. Deep-Fried Shrimp with Spice Salt (without Shell) / 椒盐虾(去殻)",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "123. Deep-Fried Shrimp Seasoned with Salty Egg Yolk / 金沙虾球",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "124. Whole Shrimp with Special Sauce / 美极虾",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "125. Curry Whole Shrimp / 咖喱虾",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "126. Pan-Fried Whole Shrimp (Not Breaded) / 干煎虾",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "127. Peeled Shrimp with Cashew Nuts / 腰果虾仁",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "128. Shrimp with Black Bean & Garlic Sauce / 豉汁虾",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "129. Kung Po Shrimp / 宫保虾仁",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "130. Shrimp with Chinese Scrambled Eggs / 虾仁炒滑蛋",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "131. Dry Roast Prawns Szechuan-Style / 川式干烧大虾",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "149. Multi-Spring Fish Fried with Salt & Pepper (Lot of Fish Eggs Inside) / 椒盐多春鱼",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "132. Pan-Fried Shrimp with Walnuts and Mayonnaise / 核桃虾",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "135. Pan-Fried Seafood with Spice Sauce / 椒盐三鲜",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "136. Pan-Fried Fish Fillet with Spice Salt / 椒盐鱼块",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "137. Poached Fish Fillet / 水煮鱼片",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "138. Fish Fillet in Cream Corn / 粟米斑块",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "139. Pan-Fried Long Li Fish Fillet with Green Onion Ginger and Soy Sauce / 煎封龙利鱼",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "140. Sweet-&-Sour Fish Fillet / 糖醋鱼块",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "141. Deep-Fried Squid with Spice Salt / 椒盐鲜鱿",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "142. Squid with Black Bean & Garlic Sauce / 豉汁鲜鱿",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "143. Fried Tentacles of Squid with Cumin / 孜然鱿鱼须",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "143a. Tentacles of Squid on Hot Plate / 铁板香辣鱿鱼须",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "144. Fish Fillet with Celery & Onion / 西芹洋葱炒鱼片",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "145. Mussel with Black Bean Sauce / 豉汁青口",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "146. Mussel with Butter Sauce / 牛油青口",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "147. Satay Seafood Hot Plate / 铁板沙爹三鲜",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Seafood / 海 鲜",
+    "dish": "148. Multi-Spring Fish Fried with Green Onion Pepper and Soy Sauce / 葱椒多春鱼",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Rice Addition",
+    "count": 2
+  },
+  {
+    "category": "Special Soups / 汤 羹",
+    "dish": "85. Mixed Seafood with Bean Curd Soup Special / 海皇豆腐羹",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Size Choice",
+    "count": 2
+  },
+  {
+    "category": "Soups and Appetizers / 汤羹 和 小吃",
+    "dish": "84. Crab Meat with Fish Maw Soup / 蟹肉鱼肚更",
+    "issue": "Multiple option groups share the same name; do not combine size surcharges automatically",
+    "groupName": "Size Choice",
+    "count": 2
+  }
+]

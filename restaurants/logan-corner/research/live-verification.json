@@ -1,0 +1,82 @@
+{
+  "restaurants": {
+    "logan": {
+      "name": "Logan Corner Restaurant",
+      "host": "logan-corner.51-79-102-231.sslip.io",
+      "restaurantId": "cc34afea-619b-4813-8d82-4646689fcae9",
+      "publicationVersion": "2",
+      "design": "quiet-elegance-v1",
+      "categories": 21,
+      "dishes": 260
+    },
+    "alfys": {
+      "name": "Alfy's Noodle House",
+      "host": "omni-rest.51-79-102-231.sslip.io",
+      "restaurantId": "b3bab231-77ee-477b-a708-864e74c460cd",
+      "publicationVersion": "8",
+      "design": "nightfall-v1",
+      "categories": 4,
+      "dishes": 24
+    }
+  },
+  "pages": [
+    {
+      "restaurant": "logan",
+      "path": "/",
+      "status": 200,
+      "bytes": 42436
+    },
+    {
+      "restaurant": "logan",
+      "path": "/menu",
+      "status": 200,
+      "bytes": 520370
+    },
+    {
+      "restaurant": "logan",
+      "path": "/admin/login",
+      "status": 200,
+      "bytes": 9344
+    },
+    {
+      "restaurant": "alfys",
+      "path": "/",
+      "status": 200,
+      "bytes": 39738
+    },
+    {
+      "restaurant": "alfys",
+      "path": "/menu",
+      "status": 200,
+      "bytes": 96397
+    },
+    {
+      "restaurant": "alfys",
+      "path": "/admin/login",
+      "status": 200,
+      "bytes": 9344
+    }
+  ],
+  "media": {
+    "logan": {
+      "urlsVerified": 162,
+      "bytesRead": 11276340
+    },
+    "alfys": {
+      "urlsVerified": 46,
+      "bytesRead": 3255115
+    }
+  },
+  "isolation": [
+    {
+      "imageOwner": "logan",
+      "requestedOn": "alfys",
+      "status": 404
+    },
+    {
+      "imageOwner": "alfys",
+      "requestedOn": "logan",
+      "status": 404
+    }
+  ]
+}

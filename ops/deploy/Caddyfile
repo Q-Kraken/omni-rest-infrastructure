@@ -3,7 +3,7 @@
     email {$ACME_EMAIL}
 }
 
-{$SITE_HOST} {
+{$PUBLIC_SITE_HOSTS} {
     encode zstd gzip
     header X-Robots-Tag "noindex, nofollow, noarchive"
     request_body {
