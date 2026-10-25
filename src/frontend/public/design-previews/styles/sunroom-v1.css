@@ -9,7 +9,7 @@
 .sunroom-v1__sunShape { position: absolute; width: 18rem; height: 18rem; top: -7rem; left: 42%; border-radius: 50%; background: #f2c84b; opacity: .85; }
 .sunroom-v1__heroCopy { position: relative; z-index: 1; }
 .sunroom-v1__eyebrow { margin: 0 0 1rem; color: #a43a27; font-size: .78rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
-.sunroom-v1__hero h1, .sunroom-v1__menuHero h1 { margin: 0; font-size: clamp(3.4rem, 10vw, 8rem); font-weight: 900; letter-spacing: -.075em; line-height: .83; overflow-wrap: anywhere; }
+.sunroom-v1__hero h1, .sunroom-v1__menuHero h1 { margin: 0; font-size: clamp(2.7rem, 6vw, 5.25rem); font-weight: 900; letter-spacing: -.05em; line-height: 1; overflow-wrap: anywhere; }
 .sunroom-v1__intro { max-width: 35rem; margin: 1.5rem 0 0; font-size: 1.1rem; line-height: 1.65; }
 .sunroom-v1__status { width: fit-content; padding: .35rem .7rem; border-radius: 999px; background: #fff; color: #6f281c; font-size: .8rem; font-weight: 800; }
 .sunroom-v1__actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.5rem; }
@@ -32,7 +32,7 @@
 .sunroom-v1__footer { width: min(100% - 2rem, 80rem); margin-inline: auto; padding-block: 2rem; color: #625e56; font-size: .78rem; font-weight: 800; }
 .sunroom-v1__footer p { margin: 0; }
 .sunroom-v1__menuMain { padding-block: 1rem 5rem; }
-.sunroom-v1__menuHero { position: relative; padding: clamp(3rem, 8vw, 7rem); border-radius: 2rem; background: #f5c8bd; overflow: hidden; }
+.sunroom-v1__menuHero { position: relative; padding: clamp(1.5rem, 6vw, 5rem); border-radius: 2rem; background: #f5c8bd; overflow: hidden; }
 .sunroom-v1__menuHero::after { position: absolute; width: 14rem; height: 14rem; right: -4rem; bottom: -7rem; border-radius: 50%; background: #f2c84b; content: ""; }
 .sunroom-v1__menuHero > * { position: relative; z-index: 1; }
 .sunroom-v1__menuHero > p:last-child { font-size: 1.25rem; font-weight: 750; }
