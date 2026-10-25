@@ -55,6 +55,8 @@
 .sunroom-v1__mediaFrame, .sunroom-v1__mediaPlaceholder { min-height: 12rem; background: #dce7e9; overflow: hidden; }
 .sunroom-v1__mediaFrame img { width: 100%; height: 100%; object-fit: cover; }
 .sunroom-v1__mediaPlaceholder { display: grid; place-items: center; color: #a43a27; font-size: 2.4rem; }
+.sunroom-v1__dishCard:has(> .sunroom-v1__mediaPlaceholder) { grid-template-columns: minmax(0, 1fr); }
+.sunroom-v1__dishCard > .sunroom-v1__mediaPlaceholder { display: none; }
 .sunroom-v1__dishBody { min-width: 0; padding: 1.35rem; }
 .sunroom-v1__dishHeading { display: flex; align-items: start; justify-content: space-between; gap: .75rem; }
 .sunroom-v1__dishHeading h3, .sunroom-v1__price { margin: 0; }
