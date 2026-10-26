@@ -64,6 +64,8 @@ State, PID records, logs, the lockfile-install marker, and persistent local medi
 
 Every restaurant runs on this one codebase and database; a new restaurant is new rows, never a copy of the project. Owners cannot create restaurants — the operator does, once per restaurant, and the owner then manages everything else in the portal.
 
+For sourced content research, publication, live verification and optional admin/wiki setup, use the repository's [restaurant onboarding skill](skills/omni-rest-onboard-restaurant/SKILL.md). Its Markdown instructions and Python helper are AI-vendor agnostic. Ask your assistant to read that file and state which stages you want completed; automatic skill discovery depends on the assistant's own configuration.
+
 On Windows, with `start-app.cmd` already running in another window (it syncs and builds the copy the command uses):
 
 ```bat
