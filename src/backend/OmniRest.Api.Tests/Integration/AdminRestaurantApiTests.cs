@@ -257,7 +257,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         await CreateOwnerAsync(baseFactory, GuardedSampleDataSeeder.OrdinaryRestaurantId);
         using var client = factory.CreateClient(new WebApplicationFactoryClientOptions
         {
-            BaseAddress = new Uri("https://localhost"),
+            BaseAddress = new Uri("https://menu.localhost"),
             HandleCookies = true,
             AllowAutoRedirect = false
         });
@@ -274,7 +274,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         Assert.Equal("Prairie Table", oldPublic!.Name);
 
         failure.Fail = false;
-        client.DefaultRequestHeaders.Host = "localhost";
+        client.DefaultRequestHeaders.Host = "menu.localhost";
         token = await GetAntiforgeryAsync(client);
         using var retry = await SendWithHeadersAsync(client, HttpMethod.Post,
             $"/api/v1/admin/publication-status/{mutation.Publication.OperationId}/retry", new { }, token, null);
@@ -397,7 +397,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         Assert.Equal(WebsiteDesignIds.LegacyCurrent, unchanged?.WebsiteDesignId);
 
         failure.Fail = false;
-        client.DefaultRequestHeaders.Host = "localhost";
+        client.DefaultRequestHeaders.Host = "menu.localhost";
         using var retry = await SendWithHeadersAsync(
             client,
             HttpMethod.Post,
@@ -486,7 +486,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         Assert.Equal(WebsiteDesignIds.Broadsheet, publicAfterRejectedRetry?.WebsiteDesignId);
         Assert.Equal(second.Publication.DraftVersion, publicAfterRejectedRetry?.PublicationVersion);
 
-        client.DefaultRequestHeaders.Host = "localhost";
+        client.DefaultRequestHeaders.Host = "menu.localhost";
         await using (var setupScope = factory.Services.CreateAsyncScope())
         {
             var setup = setupScope.ServiceProvider.GetRequiredService<MenuDbContext>();
@@ -585,7 +585,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
             var asset = new MediaAssetEntity { Id = Guid.NewGuid(), RestaurantId = other.Id, Restaurant = other, AltText = "Private other tenant", ProcessingStatus = "ready" };
             db.MediaAssets.Add(asset); await db.SaveChangesAsync(); otherTenantAsset = asset.Id;
         }
-        client.DefaultRequestHeaders.Host = "localhost";
+        client.DefaultRequestHeaders.Host = "menu.localhost";
         ready = await client.GetFromJsonAsync<AdminMediaAssetResponse[]>("/api/v1/admin/media-assets");
         Assert.DoesNotContain(ready!, item => item.Id == otherTenantAsset.ToString());
         using var denied = await PutWithHeadersAsync(client, $"/api/v1/admin/media-assets/{otherTenantAsset}/alt-text",
@@ -784,7 +784,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         Assert.Equal("$$", published.PriceRange);
         Assert.NotNull(published.PublishedAt);
 
-        client.DefaultRequestHeaders.Host = "localhost";
+        client.DefaultRequestHeaders.Host = "menu.localhost";
         token = await GetAntiforgeryAsync(client);
         using var removedLogo = await SendWithHeadersAsync(
             client, HttpMethod.Delete, "/api/v1/admin/restaurant/logo", new { }, token, identified.Restaurant.ETag);
@@ -896,7 +896,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         client.DefaultRequestHeaders.Host = "menu.localhost";
         var published = await client.GetFromJsonAsync<PublicRestaurantResponse>("/api/v1/public/restaurant");
         Assert.Equal(valid, published!.WebsiteUrl);
-        client.DefaultRequestHeaders.Host = "localhost";
+        client.DefaultRequestHeaders.Host = "menu.localhost";
 
         var rejected = new[]
         {
@@ -930,7 +930,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
         Assert.Equal(
             valid,
             (await client.GetFromJsonAsync<PublicRestaurantResponse>("/api/v1/public/restaurant"))!.WebsiteUrl);
-        client.DefaultRequestHeaders.Host = "localhost";
+        client.DefaultRequestHeaders.Host = "menu.localhost";
 
         // Clearing the link is a normal save rather than a validation failure.
         var cleared = await PutMutationAsync(
@@ -1012,7 +1012,7 @@ public sealed class AdminRestaurantApiTests(PostgresFixture postgres)
     private static HttpClient CreateSecureClient(WebApplicationFactory<Program> factory) => factory.CreateClient(
         new WebApplicationFactoryClientOptions
         {
-            BaseAddress = new Uri("https://localhost"),
+            BaseAddress = new Uri("https://menu.localhost"),
             HandleCookies = true,
             AllowAutoRedirect = false
         });

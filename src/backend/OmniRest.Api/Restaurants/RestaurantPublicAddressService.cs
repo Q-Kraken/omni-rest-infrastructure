@@ -10,7 +10,7 @@ namespace OmniRest.Api.Restaurants;
 /// The single place the owner portal learns which host its restaurant's public menu is served on
 /// (PR-26). There is deliberately no restaurant id parameter: the tenant comes from
 /// <see cref="IRestaurantContext.RestaurantId"/>, which the owner pipeline has already bound from the
-/// caller's membership, so no call site is in a position to ask about somebody else's restaurant.
+/// request host and verified against the caller's membership, so no call site can select another tenant.
 /// </summary>
 public interface IRestaurantPublicAddressService
 {

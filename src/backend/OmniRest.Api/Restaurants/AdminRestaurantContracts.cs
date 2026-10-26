@@ -83,8 +83,8 @@ public sealed record PublicationStatusResponse(
     DateTimeOffset UpdatedAt);
 
 /// <summary>
-/// The host the tenant's public menu is served on, so the dashboard can build a QR target it cannot
-/// derive from its own request host — the owner portal may be served on a different host entirely
+/// The canonical host the tenant's public menu is served on, so the dashboard can build a QR target
+/// even when the owner uses another domain mapped to the same restaurant
 /// (PR-26). <c>Host</c> is null exactly when <c>Source</c> is <c>"none"</c>, meaning the tenant has no
 /// custom domain and the deployment configures no platform base domain to place its slug beneath.
 /// </summary>

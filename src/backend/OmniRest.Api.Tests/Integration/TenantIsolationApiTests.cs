@@ -155,7 +155,7 @@ public sealed class TenantIsolationApiTests(PostgresFixture postgres)
         Assert.NotNull(ordinary);
         Assert.Equal(GuardedSampleDataSeeder.OrdinaryRestaurantId.ToString("D"), ordinary.Id);
 
-        using var alternateClient = CreateSecureClient(factory);
+        using var alternateClient = CreateSecureClient(factory, "alternate.localhost");
         await LoginAsync(alternateClient, AlternateEmail);
         var alternate = await alternateClient.GetFromJsonAsync<AdminRestaurantResponse>("/api/v1/admin/restaurant");
         Assert.NotNull(alternate);

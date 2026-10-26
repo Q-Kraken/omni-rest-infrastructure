@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using OmniRest.Api.Data;
+using OmniRest.Api.Infrastructure;
 
 namespace OmniRest.Api.Security;
 
@@ -77,6 +78,7 @@ internal static class AuthEndpoints
         ILoginPasswordWork passwordWork,
         ILoginAttemptLimiter attemptLimiter,
         MenuDbContext dbContext,
+        IRestaurantContext restaurantContext,
         IOptions<AuthenticationLifecycleOptions> lifecycle,
         TimeProvider timeProvider,
         HttpContext httpContext,
@@ -116,6 +118,20 @@ internal static class AuthEndpoints
             await userManager.AccessFailedAsync(user);
             return InvalidCredentials();
         }
+
+        var restaurant = await restaurantContext.ResolveFromHostAsync(httpContext.Request.Host, cancellationToken);
+        if (restaurant is null)
+        {
+            return ApiProblems.Problem(404, "restaurant_not_found", "Restaurant not found");
+        }
+        if (!await dbContext.RestaurantMemberships.AsNoTracking().AnyAsync(
+            item => item.UserId == user.Id && item.RestaurantId == restaurant.Id &&
+                item.Status == MembershipStatuses.Active && item.Role == MembershipRoles.Owner,
+            cancellationToken))
+        {
+            return InvalidCredentials();
+        }
+
         await userManager.ResetAccessFailedCountAsync(user);
         if (password.RehashNeeded)
         {
@@ -150,6 +166,7 @@ internal static class AuthEndpoints
         ClaimsPrincipal principal,
         UserManager<OwnerUser> userManager,
         MenuDbContext dbContext,
+        IOwnerRestaurantContext ownerContext,
         IOptions<AuthenticationLifecycleOptions> lifecycle,
         TimeProvider timeProvider,
         CancellationToken cancellationToken)
@@ -158,6 +175,11 @@ internal static class AuthEndpoints
         if (user?.CurrentSessionStartedAt is null || !user.IsActive)
         {
             return TypedResults.Unauthorized();
+        }
+
+        if (await ownerContext.ResolveAsync(principal, cancellationToken) is null)
+        {
+            return TypedResults.Forbid();
         }
 
         return TypedResults.Ok(await BuildSessionAsync(

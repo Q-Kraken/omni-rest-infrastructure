@@ -1,3 +1,4 @@
+import { AdminAccessDenied } from "@/components/admin/AdminAccessDenied";
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
@@ -14,7 +15,8 @@ export default async function PreviewPage() {
     getAdminPreview().catch(() => UNREACHABLE_API),
     headers(),
   ]);
-  if (result.status === 401 || result.status === 403) {
+  if (result.status === 403) return <AdminAccessDenied />;
+  if (result.status === 401) {
     const returnPath = safeAdminReturnPath(requestHeaders.get("x-omni-admin-return-path"));
     redirect(`/admin/login?returnPath=${encodeURIComponent(returnPath)}`);
   }

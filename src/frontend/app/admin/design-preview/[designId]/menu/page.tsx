@@ -1,3 +1,4 @@
+import { AdminAccessDenied } from "@/components/admin/AdminAccessDenied";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { notFound, redirect } from "next/navigation";
@@ -22,7 +23,8 @@ export default async function DesignMenuPreviewPage({
   if (!isWebsiteDesignId(designId)) notFound();
 
   const result = await getAdminWebsiteDesignPreview(designId).catch(() => UNREACHABLE_API);
-  if (result.status === 401 || result.status === 403) {
+  if (result.status === 403) return <AdminAccessDenied />;
+  if (result.status === 401) {
     const returnPath = safeAdminReturnPath(requestHeaders.get("x-omni-admin-return-path"));
     redirect(`/admin/login?returnPath=${encodeURIComponent(returnPath)}`);
   }

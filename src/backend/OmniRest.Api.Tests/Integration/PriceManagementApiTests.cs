@@ -106,7 +106,7 @@ public sealed class PriceManagementApiTests(PostgresFixture postgres)
         Assert.Equal("0.00", free.Menu.Categories.SelectMany(item => item.Dishes)
             .Single(item => item.Id == dish.Id).Price);
 
-        using var alternateClient = CreateSecureClient(factory);
+        using var alternateClient = CreateSecureClient(factory, "alternate.localhost");
         await LoginAsync(alternateClient, "alternate@example.test");
         var alternateMenu = await alternateClient.GetFromJsonAsync<AdminMenuResponse>("/api/v1/admin/menu");
         var foreignDish = alternateMenu!.Categories.SelectMany(item => item.Dishes).First();

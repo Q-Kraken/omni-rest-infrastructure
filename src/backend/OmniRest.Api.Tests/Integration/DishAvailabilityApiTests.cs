@@ -153,7 +153,7 @@ public sealed class DishAvailabilityApiTests(PostgresFixture postgres)
             Assert.Contains("admin_validation", payload, StringComparison.Ordinal);
         }
 
-        using var alternateClient = CreateSecureClient(factory);
+        using var alternateClient = CreateSecureClient(factory, "alternate.localhost");
         await LoginAsync(alternateClient, "alternate@example.test");
         var alternateMenu = await alternateClient.GetFromJsonAsync<AdminMenuResponse>("/api/v1/admin/menu");
         var foreignDish = alternateMenu!.Categories.SelectMany(item => item.Dishes).First();

@@ -1,3 +1,4 @@
+import { AdminAccessDenied } from "@/components/admin/AdminAccessDenied";
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { AdminUnavailable } from "@/components/admin/AdminUnavailable";
@@ -13,7 +14,8 @@ export default async function DishesPage() {
     getAdminMediaAssets().catch(() => UNREACHABLE_API),
     headers(),
   ]);
-  if (result.status === 401 || result.status === 403) {
+  if (result.status === 403) return <AdminAccessDenied />;
+  if (result.status === 401) {
     const returnPath = safeAdminReturnPath(requestHeaders.get("x-omni-admin-return-path"));
     redirect(`/admin/login?returnPath=${encodeURIComponent(returnPath)}`);
   }

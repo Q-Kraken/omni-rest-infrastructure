@@ -3,9 +3,10 @@ import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import type { ReactNode } from "react";
 import { AdminNavLink } from "@/components/admin/AdminNavLink";
+import { AdminAccessDenied } from "@/components/admin/AdminAccessDenied";
 import { AdminUnavailable } from "@/components/admin/AdminUnavailable";
 import { LogoutButton } from "@/components/admin/LogoutButton";
-import { readAdminRestaurant } from "@/lib/admin-data";
+import { readAdminRestaurant, readAdminRestaurantResult } from "@/lib/admin-data";
 import { getSession, UNREACHABLE_API } from "@/lib/server-api";
 import { safeAdminReturnPath } from "@/lib/auth-contract";
 import { nonIndexableMetadata } from "@/lib/seo";
@@ -37,11 +38,25 @@ export default async function ProtectedAdminLayout({ children }: { children: Rea
   if (session.status === 0 || session.status >= 500) {
     return <AdminUnavailable reason="unavailable" section="admin.section.portal" />;
   }
+  if (session.status === 403 || session.status === 404) {
+    return <AdminAccessDenied />;
+  }
   if (session.status !== 200 || !session.data) {
     const returnPath = safeAdminReturnPath(requestHeaders.get("x-omni-admin-return-path"));
     redirect(`/admin/login?returnPath=${encodeURIComponent(returnPath)}`);
   }
-  const restaurant = await readAdminRestaurant();
+  const restaurantResult = await readAdminRestaurantResult();
+  if (restaurantResult.status === 403 || restaurantResult.status === 404) {
+    return <AdminAccessDenied />;
+  }
+  if (restaurantResult.status === 401) {
+    const returnPath = safeAdminReturnPath(requestHeaders.get("x-omni-admin-return-path"));
+    redirect(`/admin/login?returnPath=${encodeURIComponent(returnPath)}`);
+  }
+  const restaurant = restaurantResult.data;
+  if (!restaurant) {
+    return <AdminUnavailable reason="unavailable" section="admin.section.portal" />;
+  }
   // The name is shown only for a restaurant this session actually holds a membership for. The backend
   // is what enforces ownership on every request; this keeps the chrome from ever labelling the portal
   // with a restaurant the signed-in owner has no claim to, which is the one thing the UI can get wrong
@@ -51,6 +66,7 @@ export default async function ProtectedAdminLayout({ children }: { children: Rea
     && session.data.memberships.some((membership) => membership.restaurantId === restaurant.id)
     ? restaurant
     : null;
+  if (!managed) return <AdminAccessDenied />;
 
   return (
     <div className={styles.adminShell}>

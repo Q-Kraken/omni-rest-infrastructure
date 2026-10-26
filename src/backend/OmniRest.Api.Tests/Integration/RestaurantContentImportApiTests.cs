@@ -74,7 +74,7 @@ public sealed class RestaurantContentImportApiTests(PostgresFixture postgres) : 
         }
 
         await CreateOwnerAsync(seedFactory, imported.Id, Email);
-        using var ownerClient = CreateSecureClient(factory);
+        using var ownerClient = CreateSecureClient(factory, "noodle-test.example.app");
         await LoginAsync(ownerClient, Email);
         var adminMenu = await ownerClient.GetFromJsonAsync<AdminMenuResponse>("/api/v1/admin/menu");
         Assert.Equal(3, adminMenu!.Categories.Sum(item => item.Dishes.Count));

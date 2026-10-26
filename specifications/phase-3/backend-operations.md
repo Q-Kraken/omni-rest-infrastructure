@@ -58,6 +58,13 @@ Production use requires the short-lived `OMNIREST_ALLOW_OWNER_ADMIN=true` job ga
 
 ## Session and request security
 
+- Owner login and admin requests resolve the restaurant from the validated request host and require
+  an active owner membership for that exact restaurant. A membership for another restaurant is never
+  a fallback. Unknown login hosts return 404; valid credentials for another restaurant return the
+  generic 401 credential failure without issuing a session or invalidating an existing one.
+- Existing authenticated sessions are checked against the current host on every session/admin read
+  and mutation. A host/membership mismatch returns 403 and the portal displays Access denied with a
+  sign-out action. Removing a domain or revoking that membership takes effect on the next request.
 - Cookie idle lifetime is 30 minutes with sliding renewal; the per-user absolute lifetime is 12 hours and cannot be extended by sliding renewal.
 - A successful login rotates the security stamp and session start. A newer login invalidates the previous cookie.
 - Cookies are `HttpOnly`, `Secure`, `SameSite=Lax`, path `/`, without `Domain`; Production uses a `__Host-` name.

@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 
 import { AdminUnavailable } from "@/components/admin/AdminUnavailable";
+import { AdminAccessDenied } from "@/components/admin/AdminAccessDenied";
 import { readAdminRestaurant } from "@/lib/admin-data";
 import { safeAdminReturnPath } from "@/lib/auth-contract";
 import { encodeQr, qrToPathData } from "@/lib/qr-code";
@@ -24,6 +25,7 @@ export const dynamic = "force-dynamic";
 export default async function QrCodePage() {
   const [target, requestHeaders] = await Promise.all([readQrTarget(), headers()]);
 
+  if (target.kind === "denied") return <AdminAccessDenied />;
   if (target.kind === "unauthorized") {
     const returnPath = safeAdminReturnPath(requestHeaders.get("x-omni-admin-return-path"));
     redirect(`/admin/login?returnPath=${encodeURIComponent(returnPath)}`);

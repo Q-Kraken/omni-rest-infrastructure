@@ -10,8 +10,7 @@ using static OmniRest.Api.Tests.Integration.OwnerApiHarness;
 namespace OmniRest.Api.Tests.Integration;
 
 /// <summary>
-/// PR-26: the owner dashboard needs the tenant's public host to build a QR code, and it cannot read that
-/// off its own request host because the portal may be served somewhere else entirely. The seeded fixture
+/// PR-26: the owner dashboard needs the tenant's canonical public host to build a QR code. The seeded fixture
 /// already holds an ordinary and an alternate tenant, each with one <c>restaurant_domains</c> row, so
 /// these use those two as the sides of the cross-restaurant probe.
 /// </summary>
@@ -23,8 +22,7 @@ public sealed class AdminPublicAddressApiTests(PostgresFixture postgres)
     private const string AlternateEmail = "public-address-alternate@example.test";
 
     /// <summary>
-    /// PR-26 Task 6. The tenant comes from membership and never from the request, so two owners hitting
-    /// the identical URL must receive their own host and never each other's.
+    /// PR-26 Task 6. Each owner uses the domain of the restaurant they manage and receives its public host.
     /// </summary>
     [Fact]
     public async Task EachOwnerReadsTheirOwnPublicHostAndAnonymousCallersAreRefused()
@@ -47,7 +45,7 @@ public sealed class AdminPublicAddressApiTests(PostgresFixture postgres)
         Assert.Equal("menu.localhost", ordinary.Host);
         Assert.Equal("domain", ordinary.Source);
 
-        using var alternateClient = CreateSecureClient(factory);
+        using var alternateClient = CreateSecureClient(factory, "alternate.localhost");
         await LoginAsync(alternateClient, AlternateEmail);
         var alternate = await alternateClient.GetFromJsonAsync<AdminPublicAddressResponse>(Endpoint);
         Assert.NotNull(alternate);
@@ -74,7 +72,7 @@ public sealed class AdminPublicAddressApiTests(PostgresFixture postgres)
         // Subdomain resolution is opt-in per deployment, so the base domain is configured here.
         using var factory = seedFactory.WithWebHostBuilder(builder =>
             builder.UseSetting("PublicMenu:PlatformBaseDomains:0", "example.app"));
-        using var client = CreateSecureClient(factory);
+        using var client = CreateSecureClient(factory, "menu.example.app");
 
         using var anonymousRead = await client.GetAsync(Endpoint);
         Assert.Equal(HttpStatusCode.Unauthorized, anonymousRead.StatusCode);
@@ -88,26 +86,22 @@ public sealed class AdminPublicAddressApiTests(PostgresFixture postgres)
     }
 
     /// <summary>
-    /// With neither a domain row nor a slug, the honest answer is that there is no public address. The
-    /// dashboard must be able to say so rather than print a QR code that goes nowhere.
+    /// Removing the restaurant's last address immediately denies existing portal sessions instead of
+    /// falling back to the account's membership on an unrelated host.
     /// </summary>
     [Fact]
-    public async Task TenantWithNeitherACustomDomainNorASlugHasNoPublicAddress()
+    public async Task RemovingTheLastRestaurantAddressDeniesExistingPortalSessions()
     {
         using var factory = postgres.CreateFactory();
         await postgres.RecreateLatestAndSeedAsync(factory);
         await CreateOwnerAsync(factory, GuardedSampleDataSeeder.OrdinaryRestaurantId, OrdinaryEmail);
-        await RemoveDomainsAsync(factory, GuardedSampleDataSeeder.OrdinaryRestaurantId, clearSlug: true);
-
         using var client = CreateSecureClient(factory);
         using var anonymousRead = await client.GetAsync(Endpoint);
         Assert.Equal(HttpStatusCode.Unauthorized, anonymousRead.StatusCode);
         await LoginAsync(client, OrdinaryEmail);
-
-        var address = await client.GetFromJsonAsync<AdminPublicAddressResponse>(Endpoint);
-        Assert.NotNull(address);
-        Assert.Null(address.Host);
-        Assert.Equal("none", address.Source);
+        await RemoveDomainsAsync(factory, GuardedSampleDataSeeder.OrdinaryRestaurantId, clearSlug: true);
+        using var denied = await client.GetAsync(Endpoint);
+        Assert.Equal(HttpStatusCode.Forbidden, denied.StatusCode);
     }
 
     /// <summary>

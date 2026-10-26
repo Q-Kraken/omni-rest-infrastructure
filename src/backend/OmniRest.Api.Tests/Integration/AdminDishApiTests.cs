@@ -206,7 +206,7 @@ public sealed class AdminDishApiTests(PostgresFixture postgres)
             .Single(item => item.Name == "Tap Water").Price);
 
         // A foreign category, dish, or media asset is indistinguishable from a missing one.
-        using var alternateClient = CreateSecureClient(factory);
+        using var alternateClient = CreateSecureClient(factory, "alternate.localhost");
         await LoginAsync(alternateClient, "alternate@example.test");
         var alternateMenu = await alternateClient.GetFromJsonAsync<AdminMenuResponse>("/api/v1/admin/menu");
         var foreignCategory = Guid.Parse(alternateMenu!.Categories[0].Id);

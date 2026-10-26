@@ -123,7 +123,7 @@ public sealed class AdminMenuCategoryApiTests(PostgresFixture postgres)
         Assert.Contains("concurrency_conflict", await staleEtag.Content.ReadAsStringAsync(), StringComparison.Ordinal);
 
         // A category id belonging to another restaurant is indistinguishable from a missing one.
-        using var alternateClient = CreateSecureClient(factory);
+        using var alternateClient = CreateSecureClient(factory, "alternate.localhost");
         await LoginAsync(alternateClient, "alternate@example.test");
         var alternateMenu = await alternateClient.GetFromJsonAsync<AdminMenuResponse>("/api/v1/admin/menu");
         var foreignCategoryId = alternateMenu!.Categories[0].Id;

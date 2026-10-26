@@ -291,7 +291,8 @@ public interface IOwnerRestaurantContext
 
 public sealed class OwnerRestaurantContext(
     MenuDbContext dbContext,
-    OmniRest.Api.Infrastructure.IRestaurantContext restaurantContext) : IOwnerRestaurantContext
+    OmniRest.Api.Infrastructure.IRestaurantContext restaurantContext,
+    IHttpContextAccessor httpContextAccessor) : IOwnerRestaurantContext
 {
     private OwnerRestaurantAccess? resolved;
     private bool attempted;
@@ -313,20 +314,19 @@ public sealed class OwnerRestaurantContext(
             return null;
         }
 
-        // Runs before the tenant scope is bound, so the membership lookup deliberately sees every
-        // restaurant: this query is what decides which one the caller may act for.
-        resolved = await dbContext.RestaurantMemberships.AsNoTracking()
-            .Where(item => item.UserId == userId && item.Status == MembershipStatuses.Active && item.Role == MembershipRoles.Owner)
-            .OrderBy(item => item.CreatedAt).ThenBy(item => item.Id)
-            .Select(item => new OwnerRestaurantAccess(item.UserId, item.RestaurantId, item.Role))
-            .FirstOrDefaultAsync(cancellationToken);
-
-        if (resolved is not null)
+        var request = httpContextAccessor.HttpContext?.Request;
+        if (request is null || await restaurantContext.ResolveFromHostAsync(request.Host, cancellationToken) is not { } restaurant)
         {
-            // From here on every query in this request is filtered to the owner's restaurant, so a
-            // handler that forgets its own predicate still cannot read another tenant's rows.
-            restaurantContext.BindResolved(resolved.RestaurantId);
+            return null;
         }
+
+        // The domain chooses the tenant; membership authorizes the caller for that exact tenant.
+        // Never substitute another membership when the caller does not own this domain's restaurant.
+        resolved = await dbContext.RestaurantMemberships.AsNoTracking()
+            .Where(item => item.UserId == userId && item.RestaurantId == restaurant.Id &&
+                item.Status == MembershipStatuses.Active && item.Role == MembershipRoles.Owner)
+            .Select(item => new OwnerRestaurantAccess(item.UserId, item.RestaurantId, item.Role))
+            .SingleOrDefaultAsync(cancellationToken);
 
         return resolved;
     }

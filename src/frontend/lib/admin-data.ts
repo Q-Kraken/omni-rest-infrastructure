@@ -16,7 +16,7 @@ import { getAdminRestaurant, UNREACHABLE_API } from "./server-api";
  * Any failure reads as "not available": the chrome degrades to an unnamed portal, while the layout's
  * own session check remains the thing that decides whether the page renders at all.
  */
-export const readAdminRestaurant = cache(async (): Promise<AdminRestaurant | null> => {
-  const result = await getAdminRestaurant().catch(() => UNREACHABLE_API);
-  return result.data;
-});
+export const readAdminRestaurantResult = cache(() => getAdminRestaurant().catch(() => UNREACHABLE_API));
+
+export const readAdminRestaurant = cache(async (): Promise<AdminRestaurant | null> =>
+  (await readAdminRestaurantResult()).data);

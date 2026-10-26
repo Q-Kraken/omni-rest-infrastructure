@@ -245,7 +245,7 @@ public sealed class AuthApiTests(PostgresFixture postgres)
     private static HttpClient CreateSecureClient(MenuApiFactory factory) => factory.CreateClient(
         new Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryClientOptions
         {
-            BaseAddress = new Uri("https://localhost"),
+            BaseAddress = new Uri("https://menu.localhost"),
             HandleCookies = true,
             AllowAutoRedirect = false
         });

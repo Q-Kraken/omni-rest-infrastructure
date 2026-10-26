@@ -27,8 +27,8 @@ public interface IRestaurantContext
     Task<RestaurantResolution?> ResolveFromHostAsync(HostString host, CancellationToken cancellationToken);
 
     /// <summary>
-    /// Binds the context to a restaurant already established by authorization rather than by host —
-    /// the owner-portal path, where the tenant comes from the caller's membership.
+    /// Binds a restaurant already established by trusted application code. HTTP owner requests must
+    /// resolve the host first and authorize membership for that restaurant.
     /// </summary>
     void BindResolved(Guid restaurantId);
 

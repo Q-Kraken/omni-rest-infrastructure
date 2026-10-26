@@ -17,10 +17,10 @@ internal static class OwnerApiHarness
 
     private static readonly JsonSerializerOptions Json = new(JsonSerializerDefaults.Web);
 
-    internal static HttpClient CreateSecureClient(WebApplicationFactory<Program> factory) => factory.CreateClient(
+    internal static HttpClient CreateSecureClient(WebApplicationFactory<Program> factory, string host = "menu.localhost") => factory.CreateClient(
         new WebApplicationFactoryClientOptions
         {
-            BaseAddress = new Uri("https://localhost"),
+            BaseAddress = new Uri($"https://{host}"),
             HandleCookies = true,
             AllowAutoRedirect = false
         });

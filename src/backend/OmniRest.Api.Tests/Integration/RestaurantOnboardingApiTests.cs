@@ -57,7 +57,7 @@ public sealed class RestaurantOnboardingApiTests(PostgresFixture postgres)
         }
 
         await CreateOwnerAsync(seedFactory, created.Id, Email);
-        using var ownerClient = CreateSecureClient(factory);
+        using var ownerClient = CreateSecureClient(factory, "new-bistro.example.app");
         await LoginAsync(ownerClient, Email);
         var adminMenu = await ownerClient.GetFromJsonAsync<AdminMenuResponse>("/api/v1/admin/menu");
         Assert.Empty(adminMenu!.Categories);

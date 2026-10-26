@@ -22,6 +22,7 @@ export const dynamic = "force-dynamic";
 
 export async function GET(): Promise<Response> {
   const target = await readQrTarget();
+  if (target.kind === "denied") return new Response("Access denied.", { status: 403, headers: { "cache-control": "no-store" } });
   if (target.kind === "unauthorized") return new Response("Sign in to download this code.", { status: 401 });
   if (target.kind === "unavailable") return new Response("This code is temporarily unavailable.", { status: 503 });
   if (target.kind === "no-address") return new Response("This restaurant has no public address yet.", { status: 404 });
