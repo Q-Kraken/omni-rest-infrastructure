@@ -1,0 +1,200 @@
+category_index,dish_index,category,name,price_cad,owner_photo_needed
+0,0,Special Vegetables / 小 菜,250. Youchoi or Gailan in Oyster Sauce / 蠔油菜芯或芥蘭,16.95,yes
+0,1,Special Vegetables / 小 菜,251. Deluxe Vegetarian / 罗汉斋,16.95,yes
+0,3,Special Vegetables / 小 菜,253. Deluxe Mixed Vegetables and Meat / 大杂会,17.95,yes
+0,4,Special Vegetables / 小 菜,255. Peeled Shrimp with Youchoi or Gailan / 虾仁油菜芯或芥蘭,19.25,yes
+0,5,Special Vegetables / 小 菜,256. Squid with Youchoi or Gailan / 鲜鱿油菜芯或芥蘭,19.25,yes
+0,6,Special Vegetables / 小 菜,256a. Fish Fillet with Youchoi or Gailan / 鱼片油菜芯或芥蘭,19.25,yes
+0,7,Special Vegetables / 小 菜,257. Beef with Youchoi or Gailan / 牛芥兰,19.95,yes
+0,8,Special Vegetables / 小 菜,258. Garlic with Youchoi or Gailan / 蒜茸油菜芯或芥蘭,16.95,yes
+0,9,Special Vegetables / 小 菜,259. Ginger Extract with Youchoi or Gailan / 姜汁油菜芯或芥蘭,16.95,yes
+0,10,Special Vegetables / 小 菜,268. Pan-Fried Gai Lan with Salted Fish / 鹹鱼炒芥蘭,17.95,yes
+0,11,Special Vegetables / 小 菜,261. Shanghai Bok with Garlic / 蒜茸炒上海白,15.25,yes
+0,12,Special Vegetables / 小 菜,262. Seafood with Youchoi or Gailan / 三鲜油菜芯或芥蘭,19.95,yes
+0,13,Special Vegetables / 小 菜,265. Tofu Gailan / 豆腐芥蘭,16.5,yes
+0,14,Special Vegetables / 小 菜,266. Youchoi in Special Soup / 上汤油菜芯,18.95,yes
+1,0,Pork and Beef / 猪、牛,177. Beef with Sour Vegetables / 酸菜牛肉,19.25,yes
+1,1,Pork and Beef / 猪、牛,178. Pork Belly Stew with Preserved Cabbages / 梅菜扣肉,20.5,yes
+1,2,Pork and Beef / 猪、牛,179. Pork Belly with Cabbage / 回锅肉（五花肉）,17.25,yes
+1,5,Pork and Beef / 猪、牛,182. Sliced Beef with Mushroom / 牛肉磨菇,19.25,yes
+1,8,Pork and Beef / 猪、牛,185. Poached Beef or Pork / 水煮牛肉,20.95,yes
+1,9,Pork and Beef / 猪、牛,186. Beef with Black Bean and Garlic Sauce / 豉汁牛肉,19.25,yes
+1,10,Pork and Beef / 猪、牛,77. Beef with Black Bean Garlic Sauce / 豉汁牛,19.25,yes
+1,12,Pork and Beef / 猪、牛,187. Pan-Fried Seasoned Pork Chop with Garlic / 风沙骨,17.5,yes
+1,13,Pork and Beef / 猪、牛,188. Sweet-and-Sour Pork with Pineapple / 古老肉,16.95,yes
+1,14,Pork and Beef / 猪、牛,189. Beef Stew / 柱侯牛腩,23.95,yes
+1,15,Pork and Beef / 猪、牛,190. Curry Beef Stew / 咖哩牛腩,23.95,yes
+1,16,Pork and Beef / 猪、牛,193. Curry Beef with Onions and Green Peppers / 咖哩牛肉,19.25,yes
+1,18,Pork and Beef / 猪、牛,195. Sliced Beef in Satay Sauce with Onions & Green Peppers / 沙爹牛肉,19.25,yes
+1,20,Pork and Beef / 猪、牛,197. Sliced Pork and Bamboo Shoots with Salted Fish Sauce / 鱼香肉丝,16.95,yes
+1,23,Pork and Beef / 猪、牛,200. Beef Short Ribs Seasoned with Onions and Ginger / 姜葱牛仔骨,22.95,yes
+1,24,Pork and Beef / 猪、牛,201. Pig Stomach Szechuan Style / 川味猪肚,17.95,yes
+1,25,Pork and Beef / 猪、牛,203. Deep-Fried Pork Intestines with Sweet-&-Sour Sauce / 红烧猪大肠,17.5,yes
+1,26,Pork and Beef / 猪、牛,204. Garlic Seasoned Beef with Onions and Green Peppers / 蒜味牛肉,19.25,yes
+1,27,Pork and Beef / 猪、牛,67. Dry Breaded Spare Ribs / 干排,15.75,yes
+1,28,Pork and Beef / 猪、牛,68. Sweet-and-Sour Pineapple Pork / 古老肉,16.95,yes
+1,29,Pork and Beef / 猪、牛,69. Sweet-&-Sour Spare Ribs / 甜酸排（不炸）,15.75,yes
+1,31,Pork and Beef / 猪、牛,71. Dry Breaded Veal / 干牛,16.25,yes
+1,35,Pork and Beef / 猪、牛,74. Curry Beef / 咖哩牛,19.25,yes
+1,37,Pork and Beef / 猪、牛,76. Honey Garlic Spare Ribs / 蜜糖排,17.25,yes
+2,0,Chicken and Duck / 鸡鸭类,103. Steamed Chicken with Seasoned Salt / 盐焗肥鸡,19.5,yes
+2,1,Chicken and Duck / 鸡鸭类,104. Steamed Home Land Chicken / 家乡鸡,19.5,yes
+2,2,Chicken and Duck / 鸡鸭类,105. Crispy Spring Chicken / 炸子鸡,18.5,yes
+2,4,Chicken and Duck / 鸡鸭类,60. Deep-Fried Sliced Chicken with Spice Salt / 椒盐鸡片,16.5,yes
+2,5,Chicken and Duck / 鸡鸭类,61. Curry Chicken / 咖哩鸡,16.25,yes
+2,6,Chicken and Duck / 鸡鸭类,57. Sliced Chicken with Black Bean Sauce / 豉汁鸡,16.5,yes
+2,8,Chicken and Duck / 鸡鸭类,116. Deep-Fried Chicken Wings with Spice Salt / 椒盐鸡翼,17.95,yes
+2,9,Chicken and Duck / 鸡鸭类,"101A. Free Run Chicken w/Green Onion, Ginger, SoySauce (Half) / 葱油淋走地鸡 (半)",23.95,yes
+3,0,Hot Pots / 煲 仔 菜,173. Zhongshan Fish Hot Pot / 中山鱼煲,22.75,yes
+3,1,Hot Pots / 煲 仔 菜,159. Lamb Stew with Bean Gluten and Black Mushrooms / 枝竹冬菇羊腩煲,27.95,yes
+3,2,Hot Pots / 煲 仔 菜,160. Fish Fillet with Tofu and BBQ Pork / 斑腩豆腐煲,18.95,yes
+3,4,Hot Pots / 煲 仔 菜,162. Diced Chicken with Tofu & Salted Fish / 鹹鱼鸡粒豆腐煲,18.25,yes
+3,5,Hot Pots / 煲 仔 菜,163. Deep-Fried Tofu & Mixed Vegetables & Meat / 八珍豆腐煲,18.95,yes
+3,7,Hot Pots / 煲 仔 菜,165. Beef Stew Bean Gluten Hot Pot / 枝竹牛腩煲,21.95,yes
+3,8,Hot Pots / 煲 仔 菜,167. Braised Egg Plants (No Meat) / 红烧茄子煲,16.95,yes
+3,9,Hot Pots / 煲 仔 菜,168. Tofu Hot Pot with Sea Food / 海鲜豆腐煲,20.75,yes
+3,10,Hot Pots / 煲 仔 菜,170. Satay Beef & Mung Bean Vermicelli Hot Pot / 沙爹牛肉粉丝煲,18.95,yes
+3,11,Hot Pots / 煲 仔 菜,171. Chicken with Ginger Onion Hot Pot / 嗜嗜鸡煲,16.95,yes
+3,12,Hot Pots / 煲 仔 菜,172. Chicken Hot Pot with Curry Sauce / 葡汁滑鸡煲,16.95,yes
+4,3,Seafood / 海 鲜,125. Curry Whole Shrimp / 咖喱虾,17.5,yes
+4,4,Seafood / 海 鲜,126. Pan-Fried Whole Shrimp (Not Breaded) / 干煎虾,17.5,yes
+4,5,Seafood / 海 鲜,127. Peeled Shrimp with Cashew Nuts / 腰果虾仁,17.75,yes
+4,7,Seafood / 海 鲜,129. Kung Po Shrimp / 宫保虾仁,17.5,yes
+4,8,Seafood / 海 鲜,130. Shrimp with Chinese Scrambled Eggs / 虾仁炒滑蛋,17.5,yes
+4,9,Seafood / 海 鲜,131. Dry Roast Prawns Szechuan-Style / 川式干烧大虾,22.5,yes
+4,10,Seafood / 海 鲜,149. Multi-Spring Fish Fried with Salt & Pepper (Lot of Fish Eggs Inside) / 椒盐多春鱼,17.95,yes
+4,12,Seafood / 海 鲜,135. Pan-Fried Seafood with Spice Sauce / 椒盐三鲜,22.5,yes
+4,13,Seafood / 海 鲜,136. Pan-Fried Fish Fillet with Spice Salt / 椒盐鱼块,17.25,yes
+4,14,Seafood / 海 鲜,137. Poached Fish Fillet / 水煮鱼片,19.95,yes
+4,15,Seafood / 海 鲜,138. Fish Fillet in Cream Corn / 粟米斑块,17.95,yes
+4,17,Seafood / 海 鲜,140. Sweet-&-Sour Fish Fillet / 糖醋鱼块,16.95,yes
+4,19,Seafood / 海 鲜,142. Squid with Black Bean & Garlic Sauce / 豉汁鲜鱿,18.25,yes
+4,20,Seafood / 海 鲜,143. Fried Tentacles of Squid with Cumin / 孜然鱿鱼须,17.75,yes
+4,21,Seafood / 海 鲜,143a. Tentacles of Squid on Hot Plate / 铁板香辣鱿鱼须,18.95,yes
+4,22,Seafood / 海 鲜,144. Fish Fillet with Celery & Onion / 西芹洋葱炒鱼片,18.5,yes
+4,23,Seafood / 海 鲜,145. Mussel with Black Bean Sauce / 豉汁青口,19.95,yes
+4,24,Seafood / 海 鲜,146. Mussel with Butter Sauce / 牛油青口,19.95,yes
+4,25,Seafood / 海 鲜,147. Satay Seafood Hot Plate / 铁板沙爹三鲜,22.75,yes
+4,26,Seafood / 海 鲜,148. Multi-Spring Fish Fried with Green Onion Pepper and Soy Sauce / 葱椒多春鱼,17.95,yes
+5,0,Side Orders,79. Side Sauce / 汁选择,4.95,yes
+5,1,Side Orders,79a. Hot Sauce / 辣椒酱,0.4,yes
+5,2,Side Orders,80. Dry Noodles / 干脆面,4.5,yes
+5,3,Side Orders,Steamed Rice (Large) 大白饭,6.95,yes
+5,4,Side Orders,Steamed Rice (Small) 小白饭,4.25,yes
+6,0,Vegetables / 蔬 菜 类,9. Deluxe Mixed Vegetables and Meat / 大什会,17.95,yes
+6,1,Vegetables / 蔬 菜 类,10. Shrimp Mixed Vegetables / 虾杂菜,17.95,yes
+6,2,Vegetables / 蔬 菜 类,11. Beef Mixed Vegetables / 牛杂菜,17.95,yes
+6,3,Vegetables / 蔬 菜 类,12. BBQ Pork Mixed Vegetables / 叉烧杂菜,16.95,yes
+6,4,Vegetables / 蔬 菜 类,13. Chicken Mixed Vegetables / 鸡杂菜,16.95,yes
+6,5,Vegetables / 蔬 菜 类,14. Plain Mixed Vegetables / 净杂菜,16.5,yes
+6,6,Vegetables / 蔬 菜 类,251. Chinese Deluxe Vegetarian / 罗汉斋,16.95,yes
+7,1,Chicken / 鸡 类,55. Mushroom Chicken Balls / 磨菇鸡球,15.75,yes
+7,3,Chicken / 鸡 类,57. Chicken with Black Bean and Garlic Sauce / 豉汁鸡,16.5,yes
+7,5,Chicken / 鸡 类,59. Breaded Almond Chicken / 酥炸鸡,16.25,yes
+7,6,Chicken / 鸡 类,60. Sliced Chicken with Spicy Salt / 椒盐鸡片,16.25,yes
+7,7,Chicken / 鸡 类,61. Curry Chicken / 咖哩鸡,16.25,yes
+7,8,Chicken / 鸡 类,62. Spicy Honey Garlic Chicken / 蜜辣鸡,16.25,yes
+7,10,Chicken / 鸡 类,64. Diced Chicken with Vegetable and Cashew Nuts / 腰果鸡,16.25,yes
+7,11,Chicken / 鸡 类,65. Deep-Fried Crispy Spring Chicken / 炸子鸡 (半),18.5,yes
+7,13,Chicken / 鸡 类,66. Szechuan Chicken / 四川鸡,16.5,yes
+7,16,Chicken / 鸡 类,66c. Chicken Mushroom / 磨菇鸡片,17.25,yes
+8,1,"Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",16. Shrimp Chow Mein / 虾炒面,18.85,yes
+8,2,"Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",17. Beef Chow Mein / 牛炒面,17.95,yes
+8,3,"Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",18. Chicken Chow Mein / 鸡炒面,16.95,yes
+8,4,"Chow Mein, Chow Fan, and Vermicelli / 炒面, 炒河, 炒米",19. BBQ Pork Chow Mein / 叉烧炒面,16.95,yes
+9,0,Mooshi / 木 须,"MS1. Mooshi with 6 Pancakes / 木须 选择 (猪肉, 鸡肉, 牛肉) 跟6块薄饼",15.95,yes
+9,1,Mooshi / 木 须,MS2. Deluxe Mooshi with 6 Pancakes / 什锦木须 (跟6块薄饼）,18.95,yes
+10,1,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",206. Freshly Boiled Fish Flake Congee / 生滚鱼片粥,12.75,yes
+10,2,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",207. Freshly Boiled Beef Congee / 生滚牛肉粥,12.75,yes
+10,3,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",208. Freshly Boiled Chicken Congee / 生滚鸡粥,12.75,yes
+10,4,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",209. Special House Congee (with Peanuts) / 及第粥,13.75,yes
+10,5,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",209a. Seafood Congee / 海鲜粥,14.5,yes
+10,7,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",211. Fried Vermicelli Home Land Style / 家乡炒米粉,16.5,yes
+10,9,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",212a. Tofu Mixed Vegetable Chow Mein / 豆腐什菜炒面,16.95,yes
+10,10,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",213. Noodles with Chinese Vegetable & Mixed Meat / 八珍炒面/河,19.25,yes
+10,11,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",214. Noodles with Chinese Vegetable & Seafood / 海鲜炒面/河,20.95,yes
+10,12,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",215. Noodles with Chinese Vegetable & Shrimp / 虾球炒面/河,19.25,yes
+10,13,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",216. Beef and Chinese Vegetable Chow Fan (Rice Noodle) / 时菜牛河,19.25,yes
+10,14,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",217. Spareribs & Chinese Vegetable Chow Fan / 时菜排骨炒河,19.95,yes
+10,15,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",218. Beef Stew and Chinese Vegetable Chowfan / 时菜牛腩炒河,18.95,yes
+10,16,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",219. Mushroom Tofu & Chinese Vegetable Chow Fan / 时菜冬菇豆腐炒河,18.25,yes
+10,17,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",220. Satay Beef & Green Pepper Onion Chowfan / 沙爹牛河,18.95,yes
+10,19,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",222. Beef & Black Bean & Pepper Sauce Chowfan / 豉椒牛河,19.25,yes
+10,21,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",224. Fried Egg Noodles with Shredded Pork and Bean Sprout / 肉丝炒面,16.25,yes
+10,22,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",224a. Boiled Egg Noodles with Beef Stew (No Soup) / 时菜牛腩捞面,17.25,yes
+10,23,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",224b. Fried Egg Noodles with Soy Sauce / 豉油皇炒面(不脆),14.75,yes
+10,24,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",225. Noodle Soup with Shredded Duck & Snow Vegetables / 雪菜鸭丝汤米/面/河,16.25,yes
+10,25,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",226. Noodle Soup with Shredded Pork & Snow Vegetables / 雪菜肉丝汤米/面/河,14.95,yes
+10,26,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",227. Noodle Soup with Shredded Duck & Crunchy Preserved Vegetables / 榨菜鸭丝汤米/面/河,16.25,yes
+10,28,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",229. Wonton and Egg Noodle Soup with BBQ Pork and Mixed Vegetable Noodle Soup / 叉烧什菜云吞汤面,15.25,yes
+10,29,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",230. House Special Wonton and Egg Noodle Soup / 旺角雲吞面/河,16.95,yes
+10,30,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",232. Noodles Soup with Chicken with Bone 切鸡汤面,15.5,yes
+10,31,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",233. Egg Noodle and Rice Noodle Soup with Lamb Stew / 羊腩汤面/河,19.25,yes
+10,32,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",234. Seafood Egg Noodle Soup / 海鲜汤面,16.95,yes
+10,33,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",235. Wonton Egg Noodle Soup / 雲吞面,14.25,yes
+10,36,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",239. Fried Rice & Beef (No Soy Sauce) / 生炒牛肉饭,17.75,yes
+10,37,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",240. Fujian Fried Rice / 福建炒饭,17.75,yes
+10,38,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",241. Chinese Sausage Fried Rice / 腊肠炒饭,16.95,yes
+10,39,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",242. Seafood Fried Rice / 海鲜炒饭,18.5,yes
+10,40,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",244. Beef White Rice with Silky Egg Sauce / 滑蛋牛肉饭,16.25,yes
+10,41,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",244a. Mixed Vegetable Fried Rice with Soy Sauce and Egg / 什菜豆腐炒饭,13.5,yes
+10,42,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",246. BBQ Pork and Vegetables on Steamed Rice / 叉烧饭,13.75,yes
+10,44,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",248. Beef Stew & Vegetables on Steamed Rice / 牛腩饭,15.25,yes
+10,45,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",248a. Lamb Stew and Vegetables on Steamed Rice / 羊腩饭,18.85,yes
+10,46,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",249. Steamed Rice with Spareribs in Black Bean Sauce / 豉汁排骨饭,16.5,yes
+10,47,"Congee, Vermicelli, Rice and Rice Noodles / 粥粉饭面",249a. Mixed Meat & Green on Steamed Rice 双拼饭,18.75,yes
+11,0,Beverages,81. Canned Drink (355 ml) / 罐装饮料,2.95,yes
+12,0,Chop Suey / 什 碎,20. Deluxe Chop Suey with Meat / 什锦杂碎,15.25,yes
+12,2,Chop Suey / 什 碎,22. Beef Chop Suey / 牛杂碎,14.95,yes
+12,3,Chop Suey / 什 碎,23. Chicken Chop Suey / 鸡杂碎,14.75,yes
+12,4,Chop Suey / 什 碎,24. BBQ Pork Chop Suey / 叉烧杂碎,14.75,yes
+12,5,Chop Suey / 什 碎,25. Mushroom Chop Suey / 磨菇杂碎,14.75,yes
+12,6,Chop Suey / 什 碎,26. Plain Chop Suey / 净什碎,13.95,yes
+13,0,Special Soups / 汤 羹,83. Minced Chicken with Fish Maw Soup Special / 鸡茸魚肚羹,16.25,yes
+13,1,Special Soups / 汤 羹,83a. Minced Chicken with Corn Soup Special / 鸡茸粟米羹,16.25,yes
+13,3,Special Soups / 汤 羹,85. Mixed Seafood with Bean Curd Soup Special / 海皇豆腐羹,16.5,yes
+13,4,Special Soups / 汤 羹,"86. Seaweed, Bean Curd, and Seafood Soup Special / 海皇紫菜豆腐羹",16.95,yes
+13,5,Special Soups / 汤 羹,87. Shredded Duck Soup (No Noodle) Special / 鸭丝羹,16.95,yes
+13,6,Special Soups / 汤 羹,88. Snow Fungus Pork Chinese Mushroom Egg Soup Special /雪耳肉丝冬菇蛋花汤,16.95,yes
+13,7,Special Soups / 汤 羹,89. Hot-and-Sour Soup Special / 酸辣汤,15.25,yes
+13,8,Special Soups / 汤 羹,90. Egg Drops with Minced Beef Soup Special / 西湖牛肉豆腐羹,15.25,yes
+13,9,Special Soups / 汤 羹,91. Slice Meat with Mixed Vegetable Soup Special / 杂菜肉片汤,13.75,yes
+13,11,Special Soups / 汤 羹,93. Mixed Vegetable Wonton Soup Special / 云吞汤,12.5,yes
+14,1,Egg Foo Young / 芙 蓉,36. Shrimp Egg Foo Young / 虾芙蓉,17.95,yes
+14,2,Egg Foo Young / 芙 蓉,37. Beef Egg Foo Young / 牛芙蓉,15.95,yes
+14,3,Egg Foo Young / 芙 蓉,38. Chicken Egg Foo Young / 鸡芙蓉,14.95,yes
+14,4,Egg Foo Young / 芙 蓉,39. BBQ Pork Egg Foo Young / 叉烧芙蓉,14.95,yes
+14,5,Egg Foo Young / 芙 蓉,40. Mushroom Egg Foo Young / 磨菇芙蓉,14.95,yes
+14,6,Egg Foo Young / 芙 蓉,41. Plain Egg Foo Young / 净芙蓉,14.75,yes
+15,1,Tofu / 豆 腐,120b. Tofu with Shredded Pork / 肉丝扒豆腐,16.95,yes
+15,2,Tofu / 豆 腐,120c. Braised Tofu Hot Pot (No Meat) / 红烧豆腐煲,16.95,yes
+15,4,Tofu / 豆 腐,120e. King Place Tofu with Seafood and Mixed Mushroom / 宫庭豆腐,21.75,yes
+16,0,Soups and Appetizers / 汤羹 和 小吃,1. Deluxe Wonton Soup with Meat and Vegetables / 什锦云吞汤,14.25,yes
+16,1,Soups and Appetizers / 汤羹 和 小吃,2. Wonton Soup with Vegetables / 云吞汤,12.5,yes
+16,3,Soups and Appetizers / 汤羹 和 小吃,3. Consomme Soup / 清汤,5.25,yes
+16,4,Soups and Appetizers / 汤羹 和 小吃,4. BBQ Pork / 叉烧,15.25,yes
+16,5,Soups and Appetizers / 汤羹 和 小吃,5. Hot-and-Sour Soup / 酸辣汤,15.25,yes
+16,6,Soups and Appetizers / 汤羹 和 小吃,6. Egg Roll / 春卷 (素) 1pc,3.25,yes
+16,7,Soups and Appetizers / 汤羹 和 小吃,7. Deep-Fried Wonton with Sweet-and-Sour Sauce / 炸云吞,10.25,yes
+17,1,Seafood and Fish / 海鲜、鱼,43. Dry Breaded Shrimp / 干粉虾,17.5,yes
+17,3,Seafood and Fish / 海鲜、鱼,45. Sweet-&-Sour Shrimp / 甜酸虾,17.5,yes
+17,5,Seafood and Fish / 海鲜、鱼,47. Kung Po Shrimp / 宫保虾,17.75,yes
+17,6,Seafood and Fish / 海鲜、鱼,48. Shrimp with Diced Vegetables & Cashew Nuts / 腰果虾,17.95,yes
+17,7,Seafood and Fish / 海鲜、鱼,49. Curry Shrimp / 咖哩虾,17.75,yes
+17,8,Seafood and Fish / 海鲜、鱼,50. Szechuan Shrimp / 四川虾,17.5,yes
+17,10,Seafood and Fish / 海鲜、鱼,52. Fish Fillet Tofu and Pork Hot Pot / 斑腩豆腐煲,18.95,yes
+18,1,Fried Rice / 炒 饭,28. Shrimp Fried Rice / 虾炒饭,14.25,yes
+18,2,Fried Rice / 炒 饭,29. Beef Fried Rice / 牛炒饭,13.5,yes
+18,3,Fried Rice / 炒 饭,30. BBQ Pork Fried Rice / 叉烧炒饭,12.95,yes
+18,4,Fried Rice / 炒 饭,31. Chicken Fried Rice / 鸡炒饭,12.95,yes
+18,6,Fried Rice / 炒 饭,33. Mushroom Fried Rice / 磨菇炒饭,12.95,yes
+18,7,Fried Rice / 炒 饭,34. Steamed Rice (Small) / 白饭,4.25,yes
+19,0,Combination Plates,"#A. Egg Roll, Sweet-and-Sour Shrimp, Mixed Vegetables, and Fried Rice",15.95,yes
+19,2,Combination Plates,"#C. Egg Roll, Dry Breaded Shrimp, Mixed Vegetables, and Fried Rice",15.95,yes
+19,5,Combination Plates,"#F. Szechuan Chicken, Mixed Vegetables, and Fried Rice",15.25,yes
+19,6,Combination Plates,"#G. Szechuan Beef, Mixed Vegetables, and Fried Rice",15.95,yes
+19,7,Combination Plates,"#H. Sweet-and-Sour Ribs, Mixed Vegetables, and Fried Rice",15.25,yes
+19,8,Combination Plates,"#K. Deep Fried Crispy Chicken, Mixed Vegetables, and Fried Rice",15.95,yes
+20,0,Special Snacks / 烧味小吃,100. Jellyfish / 净海蜇,17.75,yes
+20,2,Special Snacks / 烧味小吃,95. Deep-Fried Won Ton / 炸云吞,10.25,yes
+20,3,Special Snacks / 烧味小吃,97. Deep-Fried or Steamed Buns with Condensed Milk / 蒸或炸馒头,15.95,yes

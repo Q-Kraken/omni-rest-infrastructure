@@ -1,0 +1,77 @@
+{
+  "collectedAt": "2026-10-25",
+  "timeZone": "America/Winnipeg",
+  "method": "Sequential research by one operator (no delegated source researchers). Read-only; nothing published.",
+  "baseline": {
+    "liveHost": "logan-corner.51-79-102-231.sslip.io",
+    "livePublicationVersion": "2 on 2026-10-25; 3 on 2026-10-27 (changed outside this research)",
+    "dishes": 260,
+    "dishesWithPhoto": 61,
+    "dishesWithoutPhoto": 199,
+    "checklist": "missing-photos.csv"
+  },
+  "result": "No new exact dish-photo match was found. The 61 dishes with merchant photos are still the only confirmed matches, so no photo was added to restaurant.json.",
+  "sources": [
+    {
+      "id": "google-maps",
+      "url": "https://maps.google.com/?cid=6578644208918359529",
+      "observed": "Address, phone and daily 11:00-00:00 hours match the package. 837 photos, the sampled ones attributed to individual customers; the limited signed-out view has no By-owner filter.",
+      "classification": "customer uploads, not reused",
+      "limitation": "Owner photos could not be filtered without signing in; not every photo was opened."
+    },
+    {
+      "id": "doordash",
+      "url": "https://www.doordash.com/en-CA/store/logan-corner-restaurant-winnipeg-341486/2177874/",
+      "observed": "Same 260 entries and prices as the package. has_photo is true for exactly 61 entries, the same 61 already published. Item descriptions recorded in doordash-descriptions.json.",
+      "classification": "existing/duplicate",
+      "header": "media/store/header/a8eab88a-c43f-41da-a143-4531168e5be6.jpg is a generic stock spread of mixed Asian dishes, not this restaurant; unrelated."
+    },
+    {
+      "id": "fantuan",
+      "url": "https://www.fantuanorder.com/en-US/store/logan-corner-restaurant/ca-1987315645",
+      "observed": "267 entries, each with its own image. Two sampled originals (600x600 PNG, storage.fantuan.ca) share an identical staged background and carry a 'Fantuan Delivery' watermark; 'Plain Egg Foo Young' is drawn as a steamed egg custard.",
+      "classification": "generated platform illustrations, unusable",
+      "samples": [
+        "https://storage.fantuan.ca/fantuan/CA/default/jpg/ddd0c56d41044739ad0a4b042b279d5c/160fd67e25844de3b5b7a93cf56c90f2.png",
+        "https://storage.fantuan.ca/fantuan/CA/default/jpg/04b16c3db75648f29c1bc928e28c3547/baa9689a93e5440193a3e88b9c3e1abb.png"
+      ],
+      "menuDiscrepancies": "Fantuan names differ from the primary menu and list entries without an exact primary counterpart, for example Pan Fried Pork Dumplings (8pcs), Deep Fried Crispy Stick (Chinese Donuts, 1pc), Shrimp Spring Roll (3pcs), Steamed Chicken with Bok Choi, Egg Noodles/Rice Noodle Soup W/Roast Duck, Mixed Smoke Meat Fried Rice, Roast Duck and Vegetables on Steamed Rice and Add 6 Pcs of Pancake. Observed by reading, not an exhaustive comparison; Fantuan prices were not collected (one seen: Minced Chicken with Corn Soup 15.95 vs 16.25 primary).",
+      "limitation": "order.fantuan.ca showed a slider verification in the automation browser and was not bypassed; the listing was read in the user's own Chrome, where it loaded without a challenge."
+    },
+    {
+      "id": "uber-eats",
+      "url": "https://www.ubereats.com/ca/search?q=Logan%20Corner%20Restaurant",
+      "observed": "Search near 247 Logan Ave returned no Logan Corner listing.",
+      "classification": "no listing found",
+      "limitation": "One bounded search; not proof the restaurant is absent from the platform."
+    },
+    {
+      "id": "skip",
+      "url": "https://www.skipthedishes.com/logan-corner-restaurant",
+      "observed": "Listing exists (247 Logan Avenue); no dish photos rendered.",
+      "classification": "no photos"
+    },
+    {
+      "id": "social",
+      "observed": "Web searches found no Instagram or Facebook account for the restaurant.",
+      "classification": "no account found",
+      "limitation": "Search-engine queries only."
+    },
+    {
+      "id": "wikimedia-commons",
+      "observed": "Representative CC-licensed photos of the same dish types were shortlisted for about 148 entries.",
+      "classification": "unrelated food pictures, not used",
+      "reason": "They show other kitchens' dishes. The onboarding procedure forbids filling gaps with unrelated pictures, so none were added."
+    }
+  ],
+  "notPublished": [
+    "Wikimedia illustrative photos",
+    "Fantuan generated images",
+    "DoorDash item descriptions"
+  ],
+  "ownerQuestions": [
+    "Can the restaurant supply its own photos for the 199 dishes in missing-photos.csv, or photograph the most ordered ones first?",
+    "Are the DoorDash item descriptions written by the restaurant and approved for its own site?",
+    "Do the Fantuan-only entries (dumplings, Chinese donut, shrimp spring roll, roast duck items) exist on the in-store menu?"
+  ]
+}
