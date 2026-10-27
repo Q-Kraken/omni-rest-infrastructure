@@ -62,9 +62,11 @@
 - Fantuan: картинка у каждой позиции, но это сгенерированные иллюстрации с водяным знаком площадки. Не используются.
 - Google Maps: в проверенной выборке только фото посетителей. Без входа фильтр фото владельца недоступен.
 - Uber Eats: ресторан не найден. SkipTheDishes: фото блюд нет. Instagram и Facebook не найдены.
-- Фото похожих блюд с Wikimedia и описания блюд с DoorDash подобраны, но не опубликованы: первые показывают чужие блюда, а у вторых не подтверждено авторство.
+- Описания блюд с DoorDash не опубликованы: у части из них автор — ИИ DoorDash.
 
-Подробности в [research/photo-search-2026-10-25/findings.json](research/photo-search-2026-10-25/findings.json). Список 199 позиций без фото для владельца: [missing-photos.csv](research/photo-search-2026-10-25/missing-photos.csv). Описания DoorDash для проверки: [doordash-descriptions.json](research/photo-search-2026-10-25/doordash-descriptions.json).
+**Иллюстрации Wikimedia, 27 октября 2026.** По прямой просьбе пользователя, вопреки правилу навыка, на сайт загружены фото похожих блюд с Wikimedia Commons: 137 позиций. Ещё 3 позиции получили фото ресторана от того же блюда из другого раздела меню. В описании каждой иллюстрации указано, что фото не из этого ресторана, плюс автор и лицензия. Загрузка шла через админку, `restaurant.json` не менялся: повторный импорт с `--replace` эти фото удалит. Сейчас фото есть у 202 позиций из 260, проверены все 317 адресов изображений, сайт Alfy's не затронут. Список с лицензиями: [wikimedia-illustrations.json](research/photo-search-2026-10-25/wikimedia-illustrations.json).
+
+Подробности в [research/photo-search-2026-10-25/findings.json](research/photo-search-2026-10-25/findings.json). Список 199 позиций без собственного фото ресторана (для владельца): [missing-photos.csv](research/photo-search-2026-10-25/missing-photos.csv). Описания DoorDash для проверки: [doordash-descriptions.json](research/photo-search-2026-10-25/doordash-descriptions.json).
 
 ## Разделы
 
