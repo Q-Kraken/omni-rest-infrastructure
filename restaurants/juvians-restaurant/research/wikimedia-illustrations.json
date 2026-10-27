@@ -1,0 +1,184 @@
+{
+ "publishedAt": "2026-10-27",
+ "decision": "Following the user-approved Logan Corner practice (2026-10-27), menu items with no restaurant photo got labelled Wikimedia Commons illustrations.",
+ "how": "Uploaded through the owner admin in the user's signed-in browser (media upload plus dish PATCH, one publication per dish). There is no restaurant.json import package for this tenant in the repo.",
+ "labelling": "Each illustrative dish description is \"Illustrative photo, not from this restaurant: <author>, <licence>, Wikimedia Commons.\" (or \"(Wikimedia Commons, CC0).\"); alt text \"<dish> (illustrative photo)\".",
+ "restaurantPhotoSearch": "Bounded web search (DoorDash/Caviar listings, general search) on 2026-10-27 found no additional restaurant photos for these items; the 32 existing dish photos were already published on 2026-10-25.",
+ "notUsed": {
+  "Gravy": "Commons results were Indian curries or empty sauce boats.",
+  "Crush": "No usable Crush soda photo (only ads and unrelated results).",
+  "Brisk Iced Tea": "Only photo shows a green and a brown drink in glasses, no Brisk can.",
+  "Celsius Tropical Vibe / Celsius Peach Vibe": "Only a different Celsius flavour can exists.",
+  "Pure Leaf Citron / Pure Leaf Raspberry": "Only a logo close-up of another Pure Leaf bottle exists.",
+  "18 Pieces Bucket Chicken": "KFC bucket photos rejected (competitor branding); a family meal of chicken and fries was used instead."
+ },
+ "liveCheck": "publicationVersion 2 -> 19; 49 of 56 dishes have a photo (was 32); all 146 public media URLs return 200; dish names and prices unchanged; a Juvian media URL on Logan Corner and Alfy hosts returns 404; Logan Corner v143 (202/260 photos) and Alfy v22 (22/24) unchanged.",
+ "dishes": [
+  {
+   "categoryIndex": 2,
+   "dishIndex": 4,
+   "name": "Miki - Bihon Guisado",
+   "kind": "illustrative",
+   "commonsFile": "File:Miki Bihon, July 2025.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Miki_Bihon,_July_2025.jpg",
+   "license": "CC BY-SA 4.0",
+   "author": "Ralff Nestor Nacor"
+  },
+  {
+   "categoryIndex": 2,
+   "dishIndex": 5,
+   "name": "Spaghetti (Filipino Style)",
+   "kind": "illustrative",
+   "commonsFile": "File:Filipino Spaghetti (repost).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Filipino_Spaghetti_(repost).jpg",
+   "license": "CC BY 2.0",
+   "author": "Arnold Gatilao"
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 1,
+   "name": "18 Pieces Bucket Chicken with Rice, Gravy & Fries",
+   "kind": "illustrative",
+   "commonsFile": "File:A whole family meal chicken and fries.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:A_whole_family_meal_chicken_and_fries.jpg",
+   "license": "CC BY-SA 4.0",
+   "author": "Deborah Tjituka"
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 2,
+   "name": "French Fries",
+   "kind": "illustrative",
+   "commonsFile": "File:Hesburger French fries on a plate.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hesburger_French_fries_on_a_plate.jpg",
+   "license": "CC BY-SA 4.0",
+   "author": "JIP"
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 3,
+   "name": "Garlic Fried Rice",
+   "kind": "illustrative",
+   "commonsFile": "File:Sinangag Recipe (Garlic Fried Rice).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sinangag_Recipe_(Garlic_Fried_Rice).jpg",
+   "license": "CC BY 2.0",
+   "author": "Joost Nusselder"
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 5,
+   "name": "Steam Rice",
+   "kind": "illustrative",
+   "commonsFile": "File:Steamed rice in bowl 01.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Steamed_rice_in_bowl_01.jpg",
+   "license": "CC0",
+   "author": "Anna Frodesiak"
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 0,
+   "name": "Jumbo Hotdog with Rice",
+   "kind": "illustrative",
+   "commonsFile": "File:Hotsilog, Mar 2024.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Hotsilog,_Mar_2024.jpg",
+   "license": "CC BY-SA 4.0",
+   "author": "Ralff Nestor Nacor"
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 1,
+   "name": "Chicken Fingers and Fries",
+   "kind": "illustrative",
+   "commonsFile": "File:Chicken fingers and fries.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Chicken_fingers_and_fries.jpg",
+   "license": "CC BY-SA 3.0",
+   "author": "Tom Varco"
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 0,
+   "name": "7 Up",
+   "kind": "illustrative",
+   "commonsFile": "File:Can of Seven Up.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Can_of_Seven_Up.jpg",
+   "license": "CC BY 3.0",
+   "author": "IBERZA"
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 1,
+   "name": "Coconut Juice",
+   "kind": "illustrative",
+   "commonsFile": "File:Coconut Juice.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Coconut_Juice.jpg",
+   "license": "CC0",
+   "author": "SarKaLay"
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 3,
+   "name": "Diet Pepsi",
+   "kind": "illustrative",
+   "commonsFile": "File:An opened can of diet pepsi sitting on a table (2).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:An_opened_can_of_diet_pepsi_sitting_on_a_table_(2).jpg",
+   "license": "CC BY 2.0",
+   "author": "Bradley Gordon"
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 4,
+   "name": "Pepsi",
+   "kind": "illustrative",
+   "commonsFile": "File:Several Pepsi Cans.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Several_Pepsi_Cans.jpg",
+   "license": "CC0",
+   "author": "BigBlobfish"
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 5,
+   "name": "Root Beer",
+   "kind": "illustrative",
+   "commonsFile": "File:Root beer in glass mug.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Root_beer_in_glass_mug.jpg",
+   "license": "CC BY-SA 4.0",
+   "author": "Markmark28"
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 7,
+   "name": "Ginger Ale",
+   "kind": "illustrative",
+   "commonsFile": "File:Canada Dry ginger ale can.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Canada_Dry_ginger_ale_can.jpg",
+   "license": "CC BY-SA 4.0",
+   "author": "Fmvh"
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 8,
+   "name": "Mountain Dew",
+   "kind": "illustrative",
+   "commonsFile": "File:Mountain Dew (22104880).jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Mountain_Dew_(22104880).jpg",
+   "license": "CC BY 2.0",
+   "author": "Jeramey Jannene from Milwaukee, WI, United States of America"
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 13,
+   "name": "Apple Juice (Dole)",
+   "kind": "illustrative",
+   "commonsFile": "File:Apple juice 3.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Apple_juice_3.jpg",
+   "license": "CC0",
+   "author": "Bruno Glätsch"
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 2,
+   "name": "Spaghetti w/ Chicken Kids",
+   "kind": "reused restaurant photo of 'Spaghetti with 2 Pieces Chicken' (regular size); description says so"
+  }
+ ]
+}
