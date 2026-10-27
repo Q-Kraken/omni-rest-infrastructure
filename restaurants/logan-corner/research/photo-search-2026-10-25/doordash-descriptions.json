@@ -1,0 +1,1568 @@
+{
+ "source": "https://www.doordash.com/en-CA/store/logan-corner-restaurant-winnipeg-341486/2177874/",
+ "retrievedAt": "2026-10-25T11:30:00-05:00",
+ "status": "Not published. DoorDash marks some item descriptions as AI-generated and the store page does not say which of these were written by the restaurant, so they stay here for owner review.",
+ "matchedToPackage": 260,
+ "items": [
+  {
+   "categoryIndex": 8,
+   "dishIndex": 0,
+   "name": "15. Deluxe Chow Mein with Mixed Vegetables and Meat / 广东炒面",
+   "doordashDescription": "Traditional chow mein loaded with proteins and vegetables."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 6,
+   "name": "164. Beef Stew Tofu Hot Pot /  牛腩豆腐煲",
+   "doordashDescription": "Hot and Spicy / 辣. Beef stew and tofu hot pot."
+  },
+  {
+   "categoryIndex": 18,
+   "dishIndex": 0,
+   "name": "27. Deluxe Fried Rice with Meat / 什锦炒饭",
+   "doordashDescription": "Stir-fried rice with proteins and vegetables."
+  },
+  {
+   "categoryIndex": 2,
+   "dishIndex": 3,
+   "name": "106. Crispy Spring Chicken with Green Onion, Ginger and Soy Sauce / 葱油炸子鸡",
+   "doordashDescription": "Crisp fried spring chicken dish with onions and ginger."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 0,
+   "name": "122. Deep-Fried Shrimp with Spice Salt (without Shell) / 椒盐虾(去殻)",
+   "doordashDescription": "Spicy. Hot and spicy. Shrimp breaded, fried and perfectly seasoned without shell. / 辣."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 35,
+   "name": "238. Yangzhou-Style Fried Rice (No Soy Sauce) /  扬洲炒饭",
+   "doordashDescription": "Stir-fried rice, pork, shrimp, vegetables, and egg."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 9,
+   "name": "51. Deep-Fried Squid with Spicy Salt / 椒盐鲜鱿",
+   "doordashDescription": "Crisp-fried squid seasoned with spicy salt."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 15,
+   "name": "66B. Butter Chicken / 牛油鸡",
+   "doordashDescription": "Battered chicken stir fried with tasty butter and green onion sauce"
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 0,
+   "name": "54. Sweet-&-Sour Chicken Balls / 甜酸鸡球",
+   "doordashDescription": "Crisp, golden, and tender chicken balls served with sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 4,
+   "name": "58. Honey Lemon Chicken /  柠檬鸡",
+   "doordashDescription": "Stir-fried chicken flavoured with honey-lemon sauce."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 2,
+   "name": "252. Beef Broccoli / 牛西兰花",
+   "doordashDescription": "Beef and broccoli stir fry."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 31,
+   "name": "71. Dry Breaded Veal / 干牛",
+   "doordashDescription": "Breaded and crisp-fried veal."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 7,
+   "name": "257. Beef with Youchoi or Gailan / 牛芥兰",
+   "doordashDescription": "Beef stir fry with your choice of authentic Chinese greens."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 1,
+   "name": "251. Deluxe Vegetarian / 罗汉斋",
+   "doordashDescription": "Deluxe dish with assorted vegetables."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 8,
+   "name": "258. Garlic with Youchoi or Gailan / 蒜茸油菜芯或芥蘭",
+   "doordashDescription": "Your choice of authentic Chinese greens fried with garlic."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 3,
+   "name": "253. Deluxe Mixed Vegetables and Meat / 大杂会",
+   "doordashDescription": "Delicious and plentiful dish with vegetables and assorted meat."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 0,
+   "name": "250. Youchoi or Gailan in Oyster Sauce / 蠔油菜芯或芥蘭",
+   "doordashDescription": "Your choice of authentic Chinese greens fried in oyster sauce."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 4,
+   "name": "255. Peeled Shrimp with Youchoi or Gailan / 虾仁油菜芯或芥蘭",
+   "doordashDescription": "Stir-fried shrimp with your choice of Chinese greens."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 5,
+   "name": "256. Squid with Youchoi or Gailan / 鲜鱿油菜芯或芥蘭",
+   "doordashDescription": "Squid stir fried with your choice of Chinese greens."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 11,
+   "name": "261. Shanghai Bok with Garlic / 蒜茸炒上海白",
+   "doordashDescription": "Shanghai bok choy fried with garlic."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 12,
+   "name": "262. Seafood with Youchoi or Gailan / 三鲜油菜芯或芥蘭",
+   "doordashDescription": "Assorted seafood stir fried with Chinese greens."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 13,
+   "name": "265. Tofu Gailan / 豆腐芥蘭",
+   "doordashDescription": "Tofu and gai LAN stir fry."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 14,
+   "name": "266. Youchoi in Special Soup / 上汤油菜芯",
+   "doordashDescription": "Special house soup with Yu choy."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 10,
+   "name": "268. Pan-Fried Gai Lan with Salted Fish / 鹹鱼炒芥蘭",
+   "doordashDescription": "Gai lan pan fried with seasoned fish."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 6,
+   "name": "256a. Fish Fillet with Youchoi or Gailan / 鱼片油菜芯或芥蘭",
+   "doordashDescription": "Fish fillet and your choice of Chinese greens."
+  },
+  {
+   "categoryIndex": 0,
+   "dishIndex": 9,
+   "name": "259. Ginger Extract with Youchoi or Gailan / 姜汁油菜芯或芥蘭",
+   "doordashDescription": "Chinese greens fried with ginger extract."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 33,
+   "name": "72. Honey Garlic Veal / 蜜糖牛",
+   "doordashDescription": "Deliciously cooked veal served with honey-garlic sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 13,
+   "name": "188. Sweet-and-Sour Pork with Pineapple / 古老肉",
+   "doordashDescription": "Pork and pineapples in a sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 32,
+   "name": "71a. Dry Breaded Pork / 干猪",
+   "doordashDescription": "Breaded and deep-fried pork."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 28,
+   "name": "68. Sweet-and-Sour Pineapple Pork / 古老肉",
+   "doordashDescription": "Tender-cooked pork topped with sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 22,
+   "name": "199. Beef Short Ribs Seasoned with Black Pepper/ 黑椒牛仔骨",
+   "doordashDescription": "Spicy. Hot and spicy. Seasoned beef short ribs. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 14,
+   "name": "189. Beef Stew / 柱侯牛腩",
+   "doordashDescription": "Spicy. Hot and spicy. Beef stew dish. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 17,
+   "name": "194. Ginger Beef /  子姜牛肉(炸或煮)",
+   "doordashDescription": "Beef cooked with ginger."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 10,
+   "name": "77. Beef with Black Bean Garlic Sauce / 豉汁牛",
+   "doordashDescription": "Stir-fried beef with black bean and garlic sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 3,
+   "name": "180. Pork Belly with Green Peppers and Onions / 农家小炒肉",
+   "doordashDescription": "Spicy. Hot and spicy. Pork belly dish with green peppers and onions. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 27,
+   "name": "67. Dry Breaded Spare Ribs / 干排",
+   "doordashDescription": "Breaded and crisp-fried spare ribs."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 34,
+   "name": "73. Szechuan Beef / 四川牛",
+   "doordashDescription": "Spicy Szechuan-style beef."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 6,
+   "name": "183. Seasoned Pork Chop with Spice Salt / 椒盐肉排",
+   "doordashDescription": "Spicy. Hot-and-spicy. pork chop dish. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 11,
+   "name": "78. Ginger Beef / 炸姜牛",
+   "doordashDescription": "Spicy. Ginger-flavoured beef."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 1,
+   "name": "178. Pork Belly Stew with Preserved Cabbages / 梅菜扣肉",
+   "doordashDescription": "Pork belly and cabbage stew."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 4,
+   "name": "181. Seasoned Pork Chop with Hickory Sauce (Sweet and Sour) / 京都肉排",
+   "doordashDescription": "Pork chops in a sweet-and-sour hickory sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 9,
+   "name": "186. Beef with Black Bean and Garlic Sauce / 豉汁牛肉",
+   "doordashDescription": "Beef dish with black bean and garlic sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 18,
+   "name": "195. Sliced Beef in Satay Sauce with Onions & Green Peppers / 沙爹牛肉",
+   "doordashDescription": "Spicy. Hot and spicy. Thinly sliced beef satay with onions and green peppers. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 2,
+   "name": "179. Pork Belly with Cabbage / 回锅肉（五花肉）",
+   "doordashDescription": "Spicy. Hot and spicy. Pork belly cooked and served with cabbage. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 0,
+   "name": "177. Beef with Sour Vegetables / 酸菜牛肉",
+   "doordashDescription": "Beef dish with assorted sour vegetables."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 5,
+   "name": "182. Sliced Beef with Mushroom / 牛肉磨菇",
+   "doordashDescription": "Spicy. Hot and spicy. Thinly sliced beef served with mushrooms. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 7,
+   "name": "184. Deep-Fried Sweet-&-Sour Pork Ribs / 生炒骨",
+   "doordashDescription": "Deep-fried ribs in a sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 8,
+   "name": "185. Poached Beef or Pork /  水煮牛肉",
+   "doordashDescription": "Spicy. Hot and spicy. Served with you your choice of beef or pork poached in a creamy sauce. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 12,
+   "name": "187. Pan-Fried Seasoned Pork Chop with Garlic / 风沙骨",
+   "doordashDescription": "Spicy. Hot and spicy. Seasoned pork dish with garlic. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 15,
+   "name": "190. Curry Beef Stew / 咖哩牛腩",
+   "doordashDescription": "Spicy. Hot-and-spicy curry beef stew dish. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 16,
+   "name": "193. Curry Beef with Onions and Green Peppers / 咖哩牛肉",
+   "doordashDescription": "Spicy. Hot-and-spicy. curried beef with onions and green peppers. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 19,
+   "name": "196. Sliced Beef with Onions & Green Peppers / 沙爹铁板牛肉",
+   "doordashDescription": "Spicy. Hot and spicy. Sliced beef with onions and green peppers served on a hot plate. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 20,
+   "name": "197. Sliced Pork and Bamboo Shoots with Salted Fish Sauce / 鱼香肉丝",
+   "doordashDescription": "Spicy. Hot and spicy. A sliced pork dish with bamboo shoots and fish sauce. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 21,
+   "name": "198. Beef Short Ribs Seasoned with Black Pepper / 铁板黑椒牛仔骨",
+   "doordashDescription": "Spicy. Hot and spicy. Beef short ribs seasoned with black pepper served on a hot plate. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 23,
+   "name": "200. Beef Short Ribs Seasoned with Onions and Ginger / 姜葱牛仔骨",
+   "doordashDescription": "Seasoned beef short ribs with onions and green peppers."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 24,
+   "name": "201. Pig Stomach Szechuan Style / 川味猪肚",
+   "doordashDescription": "Spicy. Hot and spicy. Szechuan-style pork belly dish. / 辣."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 25,
+   "name": "203. Deep-Fried Pork Intestines with Sweet-&-Sour Sauce / 红烧猪大肠",
+   "doordashDescription": "Pork intestines deep fried and served in a sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 26,
+   "name": "204. Garlic Seasoned Beef with Onions and Green Peppers / 蒜味牛肉",
+   "doordashDescription": "Garlic beef dish served with onions and green peppers."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 29,
+   "name": "69. Sweet-&-Sour Spare Ribs / 甜酸排（不炸）",
+   "doordashDescription": "Tender, fall-off-the-bone spare ribs coated with sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 30,
+   "name": "70. Seasoned Spicy Salt Pork Chop / 椒盐肉排",
+   "doordashDescription": "Spicy. A tender pork chop seasoned with spicy salt."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 37,
+   "name": "76. Honey Garlic Spare Ribs / 蜜糖排",
+   "doordashDescription": "Fall-off-the-bone spare ribs topped with honey-garlic sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 36,
+   "name": "75. Beef with Satay Sauce / 沙爹牛",
+   "doordashDescription": "Beef served with homemade satay sauce."
+  },
+  {
+   "categoryIndex": 1,
+   "dishIndex": 35,
+   "name": "74. Curry Beef / 咖哩牛",
+   "doordashDescription": "Spicy. Tender, juicy beef cooked and served in a spicy curry sauce."
+  },
+  {
+   "categoryIndex": 2,
+   "dishIndex": 9,
+   "name": "101A. Free Run Chicken w/Green Onion, Ginger, SoySauce (Half) / 葱油淋走地鸡 (半)",
+   "doordashDescription": "Free run chicken with green onion, ginger, and soy sauce."
+  },
+  {
+   "categoryIndex": 2,
+   "dishIndex": 8,
+   "name": "116. Deep-Fried Chicken Wings with Spice Salt / 椒盐鸡翼",
+   "doordashDescription": "Spicy. Hot and spicy / 辣. Crisp-fried chicken wings seasoned with salt. One order comes with twelve wings."
+  },
+  {
+   "categoryIndex": 2,
+   "dishIndex": 4,
+   "name": "60. Deep-Fried Sliced Chicken with Spice Salt / 椒盐鸡片",
+   "doordashDescription": "Seasoned chicken dish."
+  },
+  {
+   "categoryIndex": 2,
+   "dishIndex": 2,
+   "name": "105. Crispy Spring Chicken / 炸子鸡 ",
+   "doordashDescription": "Crisp fried spring chicken dish."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 7,
+   "name": "61. Curry Chicken / 咖哩鸡",
+   "doordashDescription": "Spicy. Hot and spicy / 辣. Tender chicken in curry."
+  },
+  {
+   "categoryIndex": 2,
+   "dishIndex": 6,
+   "name": "57. Sliced Chicken with Black Bean Sauce / 豉汁鸡",
+   "doordashDescription": "Chicken slices in a black bean sauce."
+  },
+  {
+   "categoryIndex": 2,
+   "dishIndex": 0,
+   "name": "103. Steamed Chicken with Seasoned Salt / 盐焗肥鸡",
+   "doordashDescription": "Steamed chicken seasoned with salt. Available in whole or half."
+  },
+  {
+   "categoryIndex": 2,
+   "dishIndex": 1,
+   "name": "104. Steamed Home Land Chicken / 家乡鸡",
+   "doordashDescription": "Half or whole steamed chicken. Simple home-style flavors."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 3,
+   "name": "161. Eggplant with Pork & Salted Fish / 鹹鱼鸡粒茄子煲",
+   "doordashDescription": "Eggplant served with salted fish and pork."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 2,
+   "name": "160. Fish Fillet with Tofu and BBQ Pork / 斑腩豆腐煲",
+   "doordashDescription": "Hot pot with fish fillet, tofu, and barbequed pork."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 8,
+   "name": "167. Braised Egg Plants (No Meat) / 红烧茄子煲",
+   "doordashDescription": "Vegetarian hot pot with braised eggplant."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 9,
+   "name": "168. Tofu Hot Pot with Sea Food /  海鲜豆腐煲",
+   "doordashDescription": "Hot pot with tofu and assorted seafood."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 1,
+   "name": "159. Lamb Stew with Bean Gluten and Black Mushrooms / 枝竹冬菇羊腩煲",
+   "doordashDescription": "Lamb stew and mushroom hot pot."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 4,
+   "name": "162. Diced Chicken with Tofu & Salted Fish / 鹹鱼鸡粒豆腐煲",
+   "doordashDescription": "Hot pot with diced chicken, tofu, and salted fish."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 5,
+   "name": "163. Deep-Fried Tofu & Mixed Vegetables & Meat / 八珍豆腐煲",
+   "doordashDescription": "Hot pot with assorted vegetables and meats and deep-fried tofu."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 7,
+   "name": "165. Beef Stew Bean Gluten Hot Pot / 枝竹牛腩煲",
+   "doordashDescription": "Hot and Spicy / 辣. Hot pot with beef stew."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 12,
+   "name": "172. Chicken Hot Pot with Curry Sauce / 葡汁滑鸡煲",
+   "doordashDescription": "Hot and Spicy / 辣. Chicken curry hot pot."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 0,
+   "name": "173. Zhongshan Fish Hot Pot / 中山鱼煲",
+   "doordashDescription": "Zhongshan fish hot pot."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 10,
+   "name": "170. Satay Beef & Mung Bean Vermicelli Hot Pot / 沙爹牛肉粉丝煲",
+   "doordashDescription": "Hot and Spicy / 辣. Hot pot with beef satay and vermicelli."
+  },
+  {
+   "categoryIndex": 3,
+   "dishIndex": 11,
+   "name": "171. Chicken with Ginger Onion Hot Pot / 嗜嗜鸡煲",
+   "doordashDescription": "Chicken, ginger, and onion hot pot."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 11,
+   "name": "132. Pan-Fried Shrimp with Walnuts and Mayonnaise / 核桃虾",
+   "doordashDescription": "Crisp, golden-brown shrimp served with walnuts and mayonnaise."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 16,
+   "name": "139. Pan-Fried Long Li Fish Fillet with Green Onion Ginger and Soy Sauce / 煎封龙利鱼",
+   "doordashDescription": "Pan-fried long fish fillet with green onions, ginger, and soy sauce."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 1,
+   "name": "123. Deep-Fried Shrimp Seasoned with Salty Egg Yolk / 金沙虾球",
+   "doordashDescription": "Shrimp breaded and fried and served with egg yolk."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 18,
+   "name": "141. Deep-Fried Squid with Spice Salt / 椒盐鲜鱿",
+   "doordashDescription": "Spicy. Hot and spicy. Deep-fried squid dish. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 17,
+   "name": "140. Sweet-&-Sour Fish Fillet / 糖醋鱼块",
+   "doordashDescription": "Fish fillet with sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 15,
+   "name": "138. Fish Fillet in Cream Corn / 粟米斑块",
+   "doordashDescription": "Fish fillet cooked with creamed corn."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 10,
+   "name": "149. Multi-Spring Fish Fried with Salt & Pepper (Lot of Fish Eggs Inside) / 椒盐多春鱼",
+   "doordashDescription": "Spicy. Hot and spicy. Fresh fish fried with salt and pepper. 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 8,
+   "name": "130. Shrimp with Chinese Scrambled Eggs / 虾仁炒滑蛋",
+   "doordashDescription": "Shrimp cooked with scrambled eggs."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 13,
+   "name": "136. Pan-Fried Fish Fillet with Spice Salt / 椒盐鱼块",
+   "doordashDescription": "Spicy. Hot and spicy pan-fried fish fillet. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 6,
+   "name": "128. Shrimp with Black Bean & Garlic Sauce / 豉汁虾",
+   "doordashDescription": "Shrimp cooked with black bean and garlic sauce."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 2,
+   "name": "124. Whole Shrimp with Special Sauce / 美极虾",
+   "doordashDescription": "Whole shrimp with special house sauce."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 3,
+   "name": "125. Curry Whole Shrimp / 咖喱虾",
+   "doordashDescription": "Spicy. Hot and spicy. Whole shrimp in a spicy curry sauce. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 4,
+   "name": "126. Pan-Fried Whole Shrimp (Not Breaded) / 干煎虾",
+   "doordashDescription": "Whole shrimp fried to perfection in a pan."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 7,
+   "name": "129. Kung Po Shrimp / 宫保虾仁",
+   "doordashDescription": "Spicy. Hot and spicy. Kung Po-style shrimp. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 9,
+   "name": "131. Dry Roast Prawns Szechuan-Style / 川式干烧大虾",
+   "doordashDescription": null
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 12,
+   "name": "135. Pan-Fried Seafood with Spice Sauce / 椒盐三鲜",
+   "doordashDescription": "Spicy. Hot and spicy. Assorted seafood pan-fried in a spicy sauce. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 14,
+   "name": "137. Poached Fish Fillet /  水煮鱼片",
+   "doordashDescription": "Spicy. Hot and spicy. Fish fillet poached in a creamy broth. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 19,
+   "name": "142. Squid with Black Bean & Garlic Sauce / 豉汁鲜鱿",
+   "doordashDescription": "Spicy. Hot and spicy. Squid served with black bean and garlic sauce. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 20,
+   "name": "143. Fried Tentacles of Squid with Cumin / 孜然鱿鱼须",
+   "doordashDescription": "Spicy. Hot and spicy. Fried squid tentacles spiced with cumin. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 21,
+   "name": "143a. Tentacles of Squid on Hot Plate / 铁板香辣鱿鱼须",
+   "doordashDescription": "Spicy. Hot-and-spicy squid tentacles on a hot plate. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 23,
+   "name": "145. Mussel with Black Bean Sauce /  豉汁青口",
+   "doordashDescription": "Spicy. Hot and spicy. Tender mussels in a black bean sauce. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 24,
+   "name": "146. Mussel with Butter Sauce / 牛油青口",
+   "doordashDescription": "Mussels cooked in a rich butter sauce."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 25,
+   "name": "147. Satay Seafood Hot Plate / 铁板沙爹三鲜",
+   "doordashDescription": "Spicy. Hot and spicy. Assorted seafood in a satay sauce. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 26,
+   "name": "148. Multi-Spring Fish Fried with Green Onion Pepper and Soy Sauce / 葱椒多春鱼",
+   "doordashDescription": "Spicy. Hot and spicy. Fresh fish fried with green onions and soy sauce. / 辣."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 5,
+   "name": "127. Peeled Shrimp with Cashew Nuts / 腰果虾仁",
+   "doordashDescription": "Shrimp dish with cashews."
+  },
+  {
+   "categoryIndex": 4,
+   "dishIndex": 22,
+   "name": "144. Fish Fillet with Celery & Onion / 西芹洋葱炒鱼片",
+   "doordashDescription": "Fish fillet dish with celery and onions."
+  },
+  {
+   "categoryIndex": 5,
+   "dishIndex": 3,
+   "name": "Steamed Rice (Large) 大白饭",
+   "doordashDescription": "Large order of plain steamed white rice, typically served as a side dish."
+  },
+  {
+   "categoryIndex": 5,
+   "dishIndex": 1,
+   "name": "79a. Hot Sauce / 辣椒酱 ",
+   "doordashDescription": "Add additional sauces to your meal."
+  },
+  {
+   "categoryIndex": 5,
+   "dishIndex": 4,
+   "name": "Steamed Rice (Small) 小白饭",
+   "doordashDescription": "An order of steamed rice."
+  },
+  {
+   "categoryIndex": 5,
+   "dishIndex": 0,
+   "name": "79. Side Sauce / 汁选择",
+   "doordashDescription": "Please comment your selection of either "
+  },
+  {
+   "categoryIndex": 5,
+   "dishIndex": 2,
+   "name": "80. Dry Noodles / 干脆面",
+   "doordashDescription": "Add a side of dry noodles to your order."
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 5,
+   "name": "14. Plain Mixed Vegetables / 净杂菜",
+   "doordashDescription": "Deliciously stir fried mixed vegetables."
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 6,
+   "name": "251. Chinese Deluxe Vegetarian / 罗汉斋",
+   "doordashDescription": "Assorted vegetables like cabbage, carrots, broccoli, baby corn, bamboo shoots, and water chestnuts cooked in a light sauce."
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 1,
+   "name": "10. Shrimp Mixed Vegetables / 虾杂菜",
+   "doordashDescription": "Shrimp stir fried with mixed vegetables."
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 2,
+   "name": "11. Beef Mixed Vegetables / 牛杂菜",
+   "doordashDescription": "Stir-fried beef and mixed vegetables."
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 3,
+   "name": "12. BBQ Pork Mixed Vegetables / 叉烧杂菜",
+   "doordashDescription": "Mixed vegetables stir fried with barbecued pork."
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 0,
+   "name": "9. Deluxe Mixed Vegetables and Meat / 大什会",
+   "doordashDescription": "Assorted vegetables and meat."
+  },
+  {
+   "categoryIndex": 6,
+   "dishIndex": 4,
+   "name": "13. Chicken Mixed Vegetables / 鸡杂菜",
+   "doordashDescription": "Tender and juicy chicken stir fried with mixed vegetables."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 14,
+   "name": "66a. Sesame Chicken / 芝蔴鸡",
+   "doordashDescription": "Tender, juicy chicken topped with sesame seeds and sauce."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 12,
+   "name": "65a. Deep-Fried Crispy Chicken with Green Onion, Ginger, Soy Sauce /  葱油炸子鸡 (半)",
+   "doordashDescription": "Crisp-fried chicken with green onions, ginger and soy sauce."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 15,
+   "name": "66B. Butter Chicken / 牛油鸡",
+   "doordashDescription": "Battered chicken stir fried with tasty butter and green onion sauce"
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 8,
+   "name": "62. Spicy Honey Garlic Chicken / 蜜辣鸡",
+   "doordashDescription": "Spicy. Tender chicken coated with a spicy honey garlic sauce."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 2,
+   "name": "56. Honey Garlic Chicken Balls / 蜜糖鸡球",
+   "doordashDescription": "Crispy tender chicken balls served with honey garlic sauce."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 13,
+   "name": "66. Szechuan Chicken / 四川鸡",
+   "doordashDescription": "Spicy. Szechuan-style chicken."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 1,
+   "name": "55. Mushroom Chicken Balls / 磨菇鸡球",
+   "doordashDescription": "Golden-brown chicken balls with mushrooms."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 3,
+   "name": "57. Chicken with Black Bean and Garlic Sauce / 豉汁鸡",
+   "doordashDescription": "Stir-fried chicken served with black bean and garlic sauce."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 5,
+   "name": "59. Breaded Almond Chicken / 酥炸鸡",
+   "doordashDescription": "Breaded and crisp-fried chicken served with sauce and almonds."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 6,
+   "name": "60. Sliced Chicken with Spicy Salt / 椒盐鸡片",
+   "doordashDescription": "Spicy. Perfectly cooked and sliced chicken seasoned with spicy salt."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 7,
+   "name": "61. Curry Chicken / 咖哩鸡",
+   "doordashDescription": "Spicy. Tender and juicy chicken served in a spicy curry sauce."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 10,
+   "name": "64. Diced Chicken with Vegetable and Cashew Nuts /  腰果鸡",
+   "doordashDescription": "Diced chicken stir fried with vegetables and cashew nuts."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 16,
+   "name": "66c. Chicken Mushroom / 磨菇鸡片",
+   "doordashDescription": "Stir-fried chicken and mushrooms."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 11,
+   "name": "65. Deep-Fried Crispy Spring Chicken / 炸子鸡 (半)",
+   "doordashDescription": "Crisp-fried spring chicken."
+  },
+  {
+   "categoryIndex": 7,
+   "dishIndex": 9,
+   "name": "63. Kung Po Chicken / 宫保鸡",
+   "doordashDescription": "Spicy. Chicken, chillies, vegetables, and peanuts."
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 3,
+   "name": "18. Chicken Chow Mein / 鸡炒面",
+   "doordashDescription": "Chow mein stir fried with juicy chicken."
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 2,
+   "name": "17. Beef Chow Mein / 牛炒面",
+   "doordashDescription": "Chow mein stir fried with tender, juicy beef."
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 4,
+   "name": "19. BBQ Pork Chow Mein / 叉烧炒面",
+   "doordashDescription": "Perfectly barbecued pork with chow mein."
+  },
+  {
+   "categoryIndex": 8,
+   "dishIndex": 1,
+   "name": "16. Shrimp Chow Mein / 虾炒面",
+   "doordashDescription": "Shrimp-filled chow mein."
+  },
+  {
+   "categoryIndex": 9,
+   "dishIndex": 0,
+   "name": "MS1. Mooshi with 6 Pancakes / 木须 选择 (猪肉, 鸡肉, 牛肉) 跟6块薄饼",
+   "doordashDescription": "Mooshi with six pancakes served with your choice of barbeque pork, chicken, beef, or tofu."
+  },
+  {
+   "categoryIndex": 9,
+   "dishIndex": 1,
+   "name": "MS2. Deluxe Mooshi with 6 Pancakes / 什锦木须 (跟6块薄饼）",
+   "doordashDescription": "Deluxe mooshi with six pancakes."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 18,
+   "name": "221. Beef & Bean Sprout Chow Fan 干炒牛河",
+   "doordashDescription": "Chowfan with beef, green onion, and bean sprouts"
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 0,
+   "name": "205. Pork and Preserved Egg Congee / 皮蛋瘦肉粥 ",
+   "doordashDescription": "Pork and egg served with congee."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 34,
+   "name": "237. Salted Fish & Diced Chicken Fried Rice /  咸鱼鸡粒炒饭",
+   "doordashDescription": "Chicken and fish served with fried rice."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 20,
+   "name": "223. Pan-Fried Shanghai Thick Noodles / 上海面",
+   "doordashDescription": "Spicy. Hot and spicy. Shanghai noodles pan fried to perfection. / 辣."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 6,
+   "name": "210. Fried Vermicelli Singapore Style with Curry Sauce / 星洲炒米",
+   "doordashDescription": "Spicy. Hot and spicy. Singapore-style vermicelli. / 辣."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 27,
+   "name": "228. Noodle Soup in Beef Stew Noodle Soup / 牛腩汤面",
+   "doordashDescription": "Beef stew served with your choice of noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 13,
+   "name": "216. Beef and Chinese Vegetable Chow Fan (Rice Noodle) /  时菜牛河",
+   "doordashDescription": "Chowfan with beef and Chinese vegetables stir-fried with flat rice noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 3,
+   "name": "208. Freshly Boiled Chicken Congee / 生滚鸡粥",
+   "doordashDescription": "Fresh chicken boiled and served with congee."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 8,
+   "name": "212. Deluxe Chow Mein (with Mixed Vegetable and Meat) / 广东炒面(什菜） ",
+   "doordashDescription": "Heaping plate of mixed vegetables and meats."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 19,
+   "name": "222. Beef & Black Bean & Pepper Sauce Chowfan /  豉椒牛河",
+   "doordashDescription": "Spicy. Hot and spicy. Chowfan with beef cooked in black bean and pepper sauce. / 辣."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 1,
+   "name": "206. Freshly Boiled Fish Flake Congee / 生滚鱼片粥",
+   "doordashDescription": "Fresh fish boiled and served with congee."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 37,
+   "name": "240. Fujian Fried Rice /  福建炒饭",
+   "doordashDescription": "Fujian-style fried rice dish."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 16,
+   "name": "219. Mushroom Tofu & Chinese Vegetable Chow Fan / 时菜冬菇豆腐炒河",
+   "doordashDescription": "Chowfan with Chinese greens, mushrooms, and tofu."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 9,
+   "name": "212a. Tofu Mixed Vegetable Chow Mein / 豆腐什菜炒面",
+   "doordashDescription": "Vegetarian. Tofu and mixed vegetable chow mein."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 7,
+   "name": "211. Fried Vermicelli Home Land Style / 家乡炒米粉",
+   "doordashDescription": "Homeland-style fried vermicelli noodle dish."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 44,
+   "name": "248. Beef Stew & Vegetables on Steamed Rice / 牛腩饭 ",
+   "doordashDescription": "Beef stew and assorted vegetables served with steamed rice."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 5,
+   "name": "209a. Seafood Congee / 海鲜粥",
+   "doordashDescription": "Assorted fresh seafood served with congee."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 2,
+   "name": "207. Freshly Boiled Beef Congee / 生滚牛肉粥",
+   "doordashDescription": "Tender beef boiled and served with congee."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 4,
+   "name": "209. Special House Congee (with Peanuts) / 及第粥",
+   "doordashDescription": "House special served with congee and peanuts."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 10,
+   "name": "213. Noodles with Chinese Vegetable & Mixed Meat / 八珍炒面/河 ",
+   "doordashDescription": "Assorted meats and Chinese greens served with fried egg or rice noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 11,
+   "name": "214. Noodles with Chinese Vegetable & Seafood / 海鲜炒面/河 ",
+   "doordashDescription": "Fresh seafood and Chinese greens served with fried egg or rice noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 12,
+   "name": "215. Noodles with Chinese Vegetable & Shrimp / 虾球炒面/河",
+   "doordashDescription": "Shrimp and Chinese greens served with fried egg or rice noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 14,
+   "name": "217. Spareribs & Chinese Vegetable Chow Fan /  时菜排骨炒河",
+   "doordashDescription": "Chowfan with Chinese greens and spareribs."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 15,
+   "name": "218. Beef Stew and Chinese Vegetable Chowfan / 时菜牛腩炒河",
+   "doordashDescription": "Chowfan with Chinese greens and beef stew."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 17,
+   "name": "220. Satay Beef & Green Pepper Onion Chowfan /  沙爹牛河",
+   "doordashDescription": "Spicy. Hot and spicy. Chowfan with satay beef, onions, and green peppers. / 辣."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 21,
+   "name": "224. Fried Egg Noodles with Shredded Pork and Bean Sprout /  肉丝炒面",
+   "doordashDescription": "Shredded pork and bean sprouts in fried egg noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 22,
+   "name": "224a. Boiled Egg Noodles with Beef Stew (No Soup) / 时菜牛腩捞面",
+   "doordashDescription": "Beef stew served with boiled egg noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 23,
+   "name": "224b. Fried Egg Noodles with Soy Sauce / 豉油皇炒面(不脆)",
+   "doordashDescription": "Fried egg noodles served with soy sauce."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 24,
+   "name": "225. Noodle Soup with Shredded Duck & Snow Vegetables / 雪菜鸭丝汤米/面/河",
+   "doordashDescription": "Shredded duck and assorted vegetables served with your choice of noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 25,
+   "name": "226. Noodle Soup with Shredded Pork & Snow Vegetables /  雪菜肉丝汤米/面/河",
+   "doordashDescription": "Shredded pork and assorted vegetables served with your choice of noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 26,
+   "name": "227. Noodle Soup with Shredded Duck & Crunchy Preserved Vegetables /  榨菜鸭丝汤米/面/河",
+   "doordashDescription": "Shredded duck and assorted vegetables served with your choice of noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 28,
+   "name": "229. Wonton and Egg Noodle Soup with BBQ Pork and Mixed Vegetable Noodle Soup /  叉烧什菜云吞汤面",
+   "doordashDescription": "Barbecued pork and assorted vegetables served with wontons and egg noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 29,
+   "name": "230. House Special Wonton and Egg Noodle Soup / 旺角雲吞面/河",
+   "doordashDescription": "House special soup served with wontons and egg noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 30,
+   "name": "232. Noodles Soup with Chicken with Bone 切鸡汤面",
+   "doordashDescription": "Chicken noodle soup with bones. Choose between egg noodles or rice noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 31,
+   "name": "233. Egg Noodle and Rice Noodle Soup with Lamb Stew /  羊腩汤面/河",
+   "doordashDescription": "Lamb stew soup with your choice of noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 32,
+   "name": "234. Seafood Egg Noodle Soup / 海鲜汤面",
+   "doordashDescription": "Assorted seafood and egg noodles."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 33,
+   "name": "235. Wonton Egg Noodle Soup / 雲吞面",
+   "doordashDescription": "Egg noodles and wontons served in a savoury soup."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 36,
+   "name": "239. Fried Rice & Beef (No Soy Sauce) / 生炒牛肉饭",
+   "doordashDescription": "Beef served with fried rice."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 38,
+   "name": "241. Chinese Sausage Fried Rice /  腊肠炒饭",
+   "doordashDescription": "Chinese sausage served with fried rice."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 39,
+   "name": "242. Seafood Fried Rice /  海鲜炒饭",
+   "doordashDescription": "Assorted seafood served with fried rice."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 40,
+   "name": "244. Beef White Rice with Silky Egg Sauce / 滑蛋牛肉饭",
+   "doordashDescription": "Beef served with white rice in a thick egg sauce."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 41,
+   "name": "244a. Mixed Vegetable Fried Rice with Soy Sauce and Egg / 什菜豆腐炒饭",
+   "doordashDescription": "Assorted vegetables cooked with egg and soy sauce."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 45,
+   "name": "248a. Lamb Stew and Vegetables on Steamed Rice / 羊腩饭",
+   "doordashDescription": "Lamb stew and assorted vegetables served with steamed rice."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 46,
+   "name": "249. Steamed Rice with Spareribs in Black Bean Sauce / 豉汁排骨饭",
+   "doordashDescription": "Spareribs cooked in black bean sauce and served with steamed rice."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 47,
+   "name": "249a. Mixed Meat & Green on Steamed Rice 双拼饭",
+   "doordashDescription": "It comes with choices of your meat."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 42,
+   "name": "246. BBQ Pork and Vegetables on Steamed Rice / 叉烧饭",
+   "doordashDescription": "Barbecued pork and assorted vegetables served with steamed rice."
+  },
+  {
+   "categoryIndex": 10,
+   "dishIndex": 43,
+   "name": "247. Steamed Chicken and Vegetables on Steamed Rice 切鸡饭",
+   "doordashDescription": "Tender steamed chicken paired with fresh vegetables on a bed of steamed rice."
+  },
+  {
+   "categoryIndex": 11,
+   "dishIndex": 0,
+   "name": "81. Canned Drink (355 ml) / 罐装饮料",
+   "doordashDescription": "Choose from a selection of canned pop."
+  },
+  {
+   "categoryIndex": 12,
+   "dishIndex": 1,
+   "name": "21. Shrimp Chop Suey / 虾杂碎",
+   "doordashDescription": "Classic shrimp chop suey."
+  },
+  {
+   "categoryIndex": 12,
+   "dishIndex": 3,
+   "name": "23. Chicken Chop Suey / 鸡杂碎",
+   "doordashDescription": "Chop suey with tender chicken."
+  },
+  {
+   "categoryIndex": 12,
+   "dishIndex": 4,
+   "name": "24. BBQ Pork Chop Suey / 叉烧杂碎",
+   "doordashDescription": "Delicious barbecue pork chop suey."
+  },
+  {
+   "categoryIndex": 12,
+   "dishIndex": 5,
+   "name": "25. Mushroom Chop Suey / 磨菇杂碎",
+   "doordashDescription": "Vegetarian-friendly chop suey."
+  },
+  {
+   "categoryIndex": 12,
+   "dishIndex": 6,
+   "name": "26. Plain Chop Suey / 净什碎",
+   "doordashDescription": "Vegetable chop suey served with steamed rice."
+  },
+  {
+   "categoryIndex": 12,
+   "dishIndex": 0,
+   "name": "20. Deluxe Chop Suey with Meat / 什锦杂碎",
+   "doordashDescription": "Special chop suey loaded with proteins and vegetables."
+  },
+  {
+   "categoryIndex": 12,
+   "dishIndex": 2,
+   "name": "22. Beef Chop Suey / 牛杂碎",
+   "doordashDescription": "Chop suey with savory beef."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 10,
+   "name": "92. Deluxe Wonton Soup with Meat and Vegetable Special / SP云吞汤",
+   "doordashDescription": "Deluxe wonton soup with protein and vegetables."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 2,
+   "name": "84. Crab Meat with Fish Maw Soup Special / 蟹肉魚肚羹",
+   "doordashDescription": "Fish maw soup with crab meat."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 1,
+   "name": "83a. Minced Chicken with Corn Soup Special / 鸡茸粟米羹",
+   "doordashDescription": "Corn soup filled with minced chicken."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 7,
+   "name": "89. Hot-and-Sour Soup Special / 酸辣汤",
+   "doordashDescription": "Hot and Spicy / 辣. This soup combines hot-and-sour flavours."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 5,
+   "name": "87. Shredded Duck Soup (No Noodle) Special /  鸭丝羹",
+   "doordashDescription": "Homemade broth with shredded duck."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 0,
+   "name": "83. Minced Chicken with Fish Maw Soup Special /  鸡茸魚肚羹",
+   "doordashDescription": "Fish maw soup loaded with minced chicken."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 3,
+   "name": "85. Mixed Seafood with Bean Curd Soup Special /  海皇豆腐羹 ",
+   "doordashDescription": "Bean curd soup mixed with assorted seafood."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 4,
+   "name": "86. Seaweed, Bean Curd, and Seafood Soup Special / 海皇紫菜豆腐羹 ",
+   "doordashDescription": "Seaweed, bean curd, and seafood soup."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 6,
+   "name": "88. Snow Fungus Pork Chinese Mushroom Egg Soup Special /雪耳肉丝冬菇蛋花汤",
+   "doordashDescription": "This soup combines snow fungus, pork, Chinese mushrooms, and egg."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 9,
+   "name": "91. Slice Meat with Mixed Vegetable Soup Special / 杂菜肉片汤",
+   "doordashDescription": "Authentic soup containing mixed vegetables and sliced meat."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 8,
+   "name": "90. Egg Drops with Minced Beef Soup Special /  西湖牛肉豆腐羹",
+   "doordashDescription": "Minced beef soup with egg drops."
+  },
+  {
+   "categoryIndex": 13,
+   "dishIndex": 11,
+   "name": "93. Mixed Vegetable Wonton Soup Special / 云吞汤",
+   "doordashDescription": "Wonton soup with mixed vegetables."
+  },
+  {
+   "categoryIndex": 14,
+   "dishIndex": 0,
+   "name": "35. Deluxe Egg Foo Young with Meat / 什锦芙蓉",
+   "doordashDescription": "Chinese-style omelette with proteins and vegetables."
+  },
+  {
+   "categoryIndex": 14,
+   "dishIndex": 5,
+   "name": "40. Mushroom Egg Foo Young / 磨菇芙蓉",
+   "doordashDescription": "Chinese-style omelette with mushrooms."
+  },
+  {
+   "categoryIndex": 14,
+   "dishIndex": 2,
+   "name": "37. Beef Egg Foo Young / 牛芙蓉",
+   "doordashDescription": "Chinese-style omelette with beef."
+  },
+  {
+   "categoryIndex": 14,
+   "dishIndex": 4,
+   "name": "39. BBQ Pork Egg Foo Young / 叉烧芙蓉",
+   "doordashDescription": "Chinese-style omelette with barbecued pork."
+  },
+  {
+   "categoryIndex": 14,
+   "dishIndex": 6,
+   "name": "41. Plain Egg Foo Young / 净芙蓉",
+   "doordashDescription": "A plain Chinese-style omelette."
+  },
+  {
+   "categoryIndex": 14,
+   "dishIndex": 1,
+   "name": "36. Shrimp Egg Foo Young / 虾芙蓉",
+   "doordashDescription": "Chinese-style omelette with shrimp."
+  },
+  {
+   "categoryIndex": 14,
+   "dishIndex": 3,
+   "name": "38. Chicken Egg Foo Young / 鸡芙蓉",
+   "doordashDescription": "Chinese-style omelette with chicken."
+  },
+  {
+   "categoryIndex": 15,
+   "dishIndex": 0,
+   "name": "120. Deep-Fried Bean Curd with Spice Salt / 椒盐豆腐",
+   "doordashDescription": "Spicy. Hot and spicy. Vegetarian dish with deep fried bean curds. / 辣."
+  },
+  {
+   "categoryIndex": 15,
+   "dishIndex": 1,
+   "name": "120b. Tofu with Shredded Pork / 肉丝扒豆腐",
+   "doordashDescription": "Tofu dish with shredded pork."
+  },
+  {
+   "categoryIndex": 15,
+   "dishIndex": 4,
+   "name": "120e. King Place Tofu with Seafood and Mixed Mushroom / 宫庭豆腐",
+   "doordashDescription": "Mixed seafood and mushrooms with tofu."
+  },
+  {
+   "categoryIndex": 15,
+   "dishIndex": 3,
+   "name": "120d. Bean Curd with Minced Beef and Chilli Sauce (Mapo Tofu) / 麻婆豆腐",
+   "doordashDescription": "Spicy. Hot and spicy. Minced beef, tofu and bean curds in chilli sauce. / 辣."
+  },
+  {
+   "categoryIndex": 15,
+   "dishIndex": 2,
+   "name": "120c. Braised Tofu Hot Pot (No Meat) / 红烧豆腐煲",
+   "doordashDescription": "Vegetarian dish with braised tofu."
+  },
+  {
+   "categoryIndex": 16,
+   "dishIndex": 0,
+   "name": "1. Deluxe Wonton Soup with Meat and Vegetables / 什锦云吞汤",
+   "doordashDescription": "Deluxe wonton soup with protein and vegetables."
+  },
+  {
+   "categoryIndex": 16,
+   "dishIndex": 7,
+   "name": "7. Deep-Fried Wonton with Sweet-and-Sour Sauce / 炸云吞",
+   "doordashDescription": "Crisp-fried wontons with sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 16,
+   "dishIndex": 2,
+   "name": "84. Crab Meat with Fish Maw Soup / 蟹肉鱼肚更",
+   "doordashDescription": "Fish maw soup with crab meat."
+  },
+  {
+   "categoryIndex": 16,
+   "dishIndex": 6,
+   "name": "6. Egg Roll / 春卷 (素) 1pc",
+   "doordashDescription": "Chicken and vegetable egg roll. One order comes with one piece."
+  },
+  {
+   "categoryIndex": 16,
+   "dishIndex": 3,
+   "name": "3. Consomme Soup / 清汤",
+   "doordashDescription": "Classic consomme soup."
+  },
+  {
+   "categoryIndex": 16,
+   "dishIndex": 4,
+   "name": "4. BBQ Pork / 叉烧",
+   "doordashDescription": "Perfectly barbecued pork."
+  },
+  {
+   "categoryIndex": 16,
+   "dishIndex": 1,
+   "name": "2. Wonton Soup with Vegetables / 云吞汤",
+   "doordashDescription": "Homemade wonton soup filled with vegetables."
+  },
+  {
+   "categoryIndex": 16,
+   "dishIndex": 5,
+   "name": "5. Hot-and-Sour Soup / 酸辣汤",
+   "doordashDescription": "This soup combines hot-and-sour flavours."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 0,
+   "name": "42. Deep-Fried Shrimp with Spicy Salt without Shell / 椒盐虾球",
+   "doordashDescription": "Crisp-fried shrimp seasoned with spicy salt."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 3,
+   "name": "45. Sweet-&-Sour Shrimp / 甜酸虾",
+   "doordashDescription": "Succulent shrimp with sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 4,
+   "name": "46. Pan-Fried Shrimp / 干煎虾",
+   "doordashDescription": "Fresh shrimp is pan fried until a nice crust is formed."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 1,
+   "name": "43. Dry Breaded Shrimp / 干粉虾",
+   "doordashDescription": "Breaded and deep-fried shrimp."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 2,
+   "name": "44. Shrimp with Black Bean & Garlic Sauce / 豉汁虾",
+   "doordashDescription": "Succulent shrimp served with black bean and garlic sauce."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 5,
+   "name": "47. Kung Po Shrimp / 宫保虾",
+   "doordashDescription": "Spicy. Shrimp, chillies, vegetables, and peanuts."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 6,
+   "name": "48. Shrimp with Diced Vegetables & Cashew Nuts / 腰果虾",
+   "doordashDescription": "Shrimp stir fried with diced vegetables and cashew nuts."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 8,
+   "name": "50. Szechuan Shrimp / 四川虾",
+   "doordashDescription": "Spicy. Szechuan-style shrimp."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 7,
+   "name": "49. Curry Shrimp / 咖哩虾",
+   "doordashDescription": "Spicy. Fresh shrimp cooked and served in a spicy curry sauce."
+  },
+  {
+   "categoryIndex": 17,
+   "dishIndex": 10,
+   "name": "52. Fish Fillet Tofu and Pork Hot Pot / 斑腩豆腐煲",
+   "doordashDescription": "A fish fillet, tofu, and pork hot pot."
+  },
+  {
+   "categoryIndex": 18,
+   "dishIndex": 4,
+   "name": "31. Chicken Fried Rice / 鸡炒饭",
+   "doordashDescription": "Stir-fried rice and chicken."
+  },
+  {
+   "categoryIndex": 18,
+   "dishIndex": 2,
+   "name": "29. Beef Fried Rice / 牛炒饭",
+   "doordashDescription": "Rice stir fried with beef."
+  },
+  {
+   "categoryIndex": 18,
+   "dishIndex": 6,
+   "name": "33. Mushroom Fried Rice / 磨菇炒饭",
+   "doordashDescription": "Stir-fried rice and mushrooms."
+  },
+  {
+   "categoryIndex": 18,
+   "dishIndex": 1,
+   "name": "28. Shrimp Fried Rice / 虾炒饭",
+   "doordashDescription": "Stir-fried rice and shrimp."
+  },
+  {
+   "categoryIndex": 18,
+   "dishIndex": 3,
+   "name": "30. BBQ Pork Fried Rice / 叉烧炒饭",
+   "doordashDescription": "Rice stir fried with barbecued pork."
+  },
+  {
+   "categoryIndex": 18,
+   "dishIndex": 5,
+   "name": "32. Plain Fried Rice / 净炒饭",
+   "doordashDescription": "Deliciously stir-fried rice."
+  },
+  {
+   "categoryIndex": 18,
+   "dishIndex": 7,
+   "name": "34. Steamed Rice (Small) / 白饭",
+   "doordashDescription": "An order of steamed rice."
+  },
+  {
+   "categoryIndex": 19,
+   "dishIndex": 1,
+   "name": "#B. Egg Roll, Sweet-and-Sour Chicken Balls, Mixed Vegetables, and Fried Rice",
+   "doordashDescription": "An egg roll, sweet-and-sour chicken balls, mixed vegetables, and fried rice."
+  },
+  {
+   "categoryIndex": 19,
+   "dishIndex": 3,
+   "name": "#D. Dry Breaded Veal, Mixed Vegetables, and Fried Rice",
+   "doordashDescription": "Dry breaded veal, mixed vegetables, and fried rice."
+  },
+  {
+   "categoryIndex": 19,
+   "dishIndex": 6,
+   "name": "#G. Szechuan Beef, Mixed Vegetables, and Fried Rice",
+   "doordashDescription": "Spicy. Szechuan beef, mixed vegetables, and fried rice."
+  },
+  {
+   "categoryIndex": 19,
+   "dishIndex": 5,
+   "name": "#F. Szechuan Chicken, Mixed Vegetables, and Fried Rice",
+   "doordashDescription": "Spicy. Szechuan-style chicken, mixed vegetables, and fried rice."
+  },
+  {
+   "categoryIndex": 19,
+   "dishIndex": 4,
+   "name": "#E. Sweet-and-Sour Pork, Mixed Vegetables, and Fried Rice",
+   "doordashDescription": "Sweet-and-sour pork, mixed vegetables, and fried rice."
+  },
+  {
+   "categoryIndex": 19,
+   "dishIndex": 0,
+   "name": "#A. Egg Roll, Sweet-and-Sour Shrimp, Mixed Vegetables, and Fried Rice",
+   "doordashDescription": "An egg roll, sweet-and-sour shrimp, mixed vegetables, and fried rice."
+  },
+  {
+   "categoryIndex": 19,
+   "dishIndex": 8,
+   "name": "#K. Deep Fried Crispy Chicken, Mixed Vegetables, and Fried Rice",
+   "doordashDescription": "Crisp-fried chicken, mixed vegetables, and fried rice."
+  },
+  {
+   "categoryIndex": 19,
+   "dishIndex": 2,
+   "name": "#C. Egg Roll, Dry Breaded Shrimp, Mixed Vegetables, and Fried Rice",
+   "doordashDescription": "An egg roll, dry breaded shrimp, mixed vegetables, and fried rice."
+  },
+  {
+   "categoryIndex": 19,
+   "dishIndex": 7,
+   "name": "#H. Sweet-and-Sour Ribs, Mixed Vegetables, and Fried Rice",
+   "doordashDescription": "Sweet-and-sour ribs, mixed vegetables, and fried rice."
+  },
+  {
+   "categoryIndex": 20,
+   "dishIndex": 1,
+   "name": "94. BBQ Sliced Pork / 叉 烧（净瘦肉）",
+   "doordashDescription": "Lean meat."
+  },
+  {
+   "categoryIndex": 20,
+   "dishIndex": 2,
+   "name": "95. Deep-Fried Won Ton / 炸云吞",
+   "doordashDescription": "Served with sweet-and-sour sauce."
+  },
+  {
+   "categoryIndex": 20,
+   "dishIndex": 4,
+   "name": "99. Eggroll / 春 卷",
+   "doordashDescription": "One order comes with one eggroll."
+  },
+  {
+   "categoryIndex": 20,
+   "dishIndex": 0,
+   "name": "100. Jellyfish / 净海蜇",
+   "doordashDescription": "Spicy. Hot and spicy. Jellyfish served with sesame oil and soy sauce. / 辣."
+  },
+  {
+   "categoryIndex": 20,
+   "dishIndex": 3,
+   "name": "97. Deep-Fried or Steamed Buns with Condensed Milk / 蒸或炸馒头",
+   "doordashDescription": "One order comes with eight buns."
+  }
+ ]
+}
