@@ -1,0 +1,44 @@
+{
+  "collectedAt": "2026-10-31",
+  "timeZone": "America/Winnipeg",
+  "identity": {
+    "name": "Komodo Chinese Restaurant (printed menu: Komodo Restaurant, Chinese Food Restaurant)",
+    "address": "1031 Autumnwood Dr, Winnipeg, MB",
+    "phone": "(204) 253-3678"
+  },
+  "sources": [
+    {
+      "name": "Google Maps",
+      "url": "https://www.google.com/maps/place/Komodo+Chinese+Restaurant/@49.8629286,-97.0770595,17z/data=!4m6!3m5!1s0x52ea77181322d973:0xb77836c65331d8e8!8m2!3d49.8629286!4d-97.0770595",
+      "role": "Name, address with postal code R2J 4M6, phone, coordinates, hours used on the site. 4.5 stars from 244 reviews; no website listed.",
+      "findings": "Hours: Mon, Wed-Fri 12:00-21:00; Sat-Sun 14:00-21:00; Tuesday closed. Gallery (limited view, 10 photos) has only customer photos without dish captions: storefront (Dec 2025, sign reads Dine-in / Take out / Delivery), interior with a buffet counter, take-out boxes. A 2024 review says take out only.",
+      "limitations": "Limited (signed-out) view: no owner/menu photo filters, only the first 10 of 45 photos. Customer photos are not reusable without permission and were not used."
+    },
+    {
+      "name": "MainMenus menu scan",
+      "url": "https://mainmenus.com/winnipeg-mb-restaurants/chinese-cuisine/komodo-restaurant/menu",
+      "image": "https://mainmenus.com/wp-content/uploads/2022/07/0afacfc06f64a39a3df9a4ee5d21940b-scaled.jpg",
+      "localCopy": "research/menu-scan-mainmenus.jpg",
+      "role": "Menu and prices: printed take-out menu, uploaded July 2022 (folder date in the URL). 124 entries in 15 sections plus family dinners.",
+      "findings": "Menu header: Tuesday closed; Mon, Wed, Thu 11am-9pm; Fri 11am-10pm; Sat 4pm-10pm; Sun & holidays 4pm-9pm. Lunch buffet Mon, Wed, Thu, Fri 11:00-2:00. 10% off pick-up orders over $35 (cash only), free delivery over $35 within 5 km. 'Behind Circle K in Windsor Park Plaza'. Prices before GST & PST. Prices subject to change.",
+      "limitations": "The MainMenus page text itself is generic filler; only the scan is used. Scan is at least three years old."
+    },
+    {
+      "name": "Food Winnipeg blog (Ray Yuen), 11 Aug 2021",
+      "url": "https://foodwinnipeg.blogspot.com/2021/08/komodo.html",
+      "role": "Identity check (address and phone). Mentions Deluxe Fried Rice, Chow Mein, Sesame Seed Breaded Chicken and Soo Guy Chicken, all on the scanned menu.",
+      "limitations": "Blog photos are the author's own and were not used."
+    },
+    {
+      "name": "PagesJaunes / Yellow Pages",
+      "url": "https://www.pagesjaunes.ca/bus/Manitoba/Winnipeg/Komodo-Chinese-Restaurant/2357483.html",
+      "role": "Discrepancy only: lists unit 7-1031 Autumnwood Dr and postal code R2J 1C6."
+    }
+  ],
+  "searchedWithoutListing": [
+    "SkipTheDishes: skipthedishes.com/komodo-chinese-restaurant redirects to the home page; no listing found by web search.",
+    "DoorDash, Uber Eats, order.online: no Komodo Winnipeg listing in web searches.",
+    "Restaurant Guru: no Komodo Winnipeg page found.",
+    "Not the same business: Comodo Chinese Restaurant, 797 McLeod Ave (order.online store -24760576)."
+  ]
+}

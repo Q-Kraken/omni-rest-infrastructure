@@ -1,0 +1,1029 @@
+{
+  "slug": "komodo-chinese-restaurant",
+  "name": "Komodo Chinese Restaurant",
+  "description": "Chinese food in Windsor Park Plaza on Autumnwood Drive: chop suey, Cantonese chow mein, ginger beef, honey garlic and sweet & sour dishes, Szechuan and curry dishes, and family dinners. Prices are from the printed take-out menu and may have changed, so please call to confirm.",
+  "phone": "+12042533678",
+  "phoneDisplay": "(204) 253-3678",
+  "email": null,
+  "websiteUrl": null,
+  "restaurantType": "Restaurant",
+  "priceRange": "$$",
+  "timeZone": "America/Winnipeg",
+  "locale": "en-CA",
+  "currency": "CAD",
+  "taxDisplayMode": "exclusive",
+  "designId": "quiet-elegance-v1",
+  "address": {
+    "line1": "1031 Autumnwood Dr",
+    "line2": null,
+    "city": "Winnipeg",
+    "region": "MB",
+    "postalCode": "R2J 4M6",
+    "countryCode": "CA",
+    "latitude": 49.8629286,
+    "longitude": -97.0770595
+  },
+  "hours": {
+    "monday": [
+      "12:00-21:00"
+    ],
+    "tuesday": [],
+    "wednesday": [
+      "12:00-21:00"
+    ],
+    "thursday": [
+      "12:00-21:00"
+    ],
+    "friday": [
+      "12:00-21:00"
+    ],
+    "saturday": [
+      "14:00-21:00"
+    ],
+    "sunday": [
+      "14:00-21:00"
+    ]
+  },
+  "socialLinks": {
+    "google_business": "https://maps.google.com/?cid=13220376931573291240"
+  },
+  "menu": {
+    "name": "Menu",
+    "categories": [
+      {
+        "name": "Appetizers",
+        "dishes": [
+          {
+            "name": "1. Egg Roll / Spring Roll",
+            "price": 1.5,
+            "description": "Illustrative photo, not from this restaurant: NoNo and Iain at English Wikipedia, Public domain, Wikimedia Commons.",
+            "image": {
+              "file": "photos/egg-roll.webp",
+              "alt": "Egg roll cut open (illustrative photo)"
+            }
+          },
+          {
+            "name": "2. Crispy Chicken Wings",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: Elsie Hui, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/chicken-wings.webp",
+              "alt": "Fried chicken wings (illustrative photo)"
+            }
+          },
+          {
+            "name": "3. Dry Breaded Veal",
+            "price": 12.99,
+            "description": "Illustrative photo, not from this restaurant: Gatorfan252525, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/breaded-veal.webp",
+              "alt": "Breaded veal cutlets (illustrative photo)"
+            }
+          },
+          {
+            "name": "4. BBQ Pork",
+            "price": 9.95,
+            "description": "Illustrative photo, not from this restaurant: Michael, Public domain, Wikimedia Commons.",
+            "image": {
+              "file": "photos/char-siu.webp",
+              "alt": "Sliced Chinese barbecue pork (illustrative photo)"
+            }
+          },
+          {
+            "name": "5. Dry Breaded Chicken",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: FotoosVanRobin from Netherlands, CC BY-SA 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/breaded-chicken.webp",
+              "alt": "Breaded chicken strips (illustrative photo)"
+            }
+          },
+          {
+            "name": "5b. Dry Breaded Pork",
+            "price": 10.95
+          },
+          {
+            "name": "6. Dry Breaded Shrimp",
+            "price": 11.99
+          },
+          {
+            "name": "6a. Almond Shrimp",
+            "price": 13.95
+          },
+          {
+            "name": "7. Dry Breaded Spare Ribs",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: Benjwong, Public domain, Wikimedia Commons.",
+            "image": {
+              "file": "photos/dry-ribs.webp",
+              "alt": "Fried salt and pepper pork ribs (illustrative photo)"
+            }
+          },
+          {
+            "name": "7a. Chinese Perogies",
+            "price": 9.95
+          },
+          {
+            "name": "7b. Deep Fried Mushrooms",
+            "price": 7.95
+          }
+        ]
+      },
+      {
+        "name": "Soups",
+        "dishes": [
+          {
+            "name": "8. Wonton Soup",
+            "price": 3.5,
+            "description": "Illustrative photo, not from this restaurant: N509FZ, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/wonton-soup.webp",
+              "alt": "Bowl of wonton soup (illustrative photo)"
+            }
+          },
+          {
+            "name": "9. Deluxe Wonton soup",
+            "price": 8.95,
+            "description": "Illustrative photo, not from this restaurant: N509FZ, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/wonton-soup.webp",
+              "alt": "Bowl of wonton soup (illustrative photo)"
+            }
+          },
+          {
+            "name": "10. Consomme & Fried Noodles",
+            "price": 2.0
+          },
+          {
+            "name": "11. Wonton Noodle Soup",
+            "price": 8.95,
+            "description": "Illustrative photo, not from this restaurant: Jlje, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/wonton-noodle-soup.jpg",
+              "alt": "Bowl of wonton noodle soup (illustrative photo)"
+            }
+          },
+          {
+            "name": "12. Hot & Sour Soup",
+            "price": 6.95,
+            "description": "Illustrative photo, not from this restaurant: NeoBatfreak, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/hot-sour-soup.webp",
+              "alt": "Bowl of hot and sour soup (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Chop Suey",
+        "description": "Dry noodles for $0.75.",
+        "dishes": [
+          {
+            "name": "13. Vegetable Chop Suey",
+            "price": 9.5,
+            "description": "Illustrative photo, not from this restaurant: Eli Hodapp from Naperville, United States, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/chop-suey.webp",
+              "alt": "Plate of chop suey (illustrative photo)"
+            }
+          },
+          {
+            "name": "14. Chicken Chop Suey",
+            "price": 9.5,
+            "description": "Illustrative photo, not from this restaurant: Eli Hodapp from Naperville, United States, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/chop-suey.webp",
+              "alt": "Plate of chop suey (illustrative photo)"
+            }
+          },
+          {
+            "name": "15. Pork Chop Suey",
+            "price": 9.5,
+            "description": "Illustrative photo, not from this restaurant: Eli Hodapp from Naperville, United States, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/chop-suey.webp",
+              "alt": "Plate of chop suey (illustrative photo)"
+            }
+          },
+          {
+            "name": "16. Beef Chop Suey",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: Eli Hodapp from Naperville, United States, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/chop-suey.webp",
+              "alt": "Plate of chop suey (illustrative photo)"
+            }
+          },
+          {
+            "name": "17. Shrimp Chop Suey",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: Eli Hodapp from Naperville, United States, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/chop-suey.webp",
+              "alt": "Plate of chop suey (illustrative photo)"
+            }
+          },
+          {
+            "name": "17a. Deluxe Chop Suey",
+            "price": 11.99,
+            "description": "Illustrative photo, not from this restaurant: Eli Hodapp from Naperville, United States, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/chop-suey.webp",
+              "alt": "Plate of chop suey (illustrative photo)"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Cantonese",
+        "description": "#19 to #25 with soft noodles.",
+        "dishes": [
+          {
+            "name": "18. Golden Dragon",
+            "price": 9.95
+          },
+          {
+            "name": "19. Cantonese Pork Chow Mein",
+            "price": 10.9,
+            "description": "Illustrative photo, not from this restaurant: *˙ IAN . from Taiwan, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/cantonese-chow-mein.webp",
+              "alt": "Cantonese chow mein (illustrative photo)"
+            }
+          },
+          {
+            "name": "20. Cantonese Vermicelli",
+            "price": 8.95
+          },
+          {
+            "name": "21. Cantonese Lo Mein",
+            "price": 8.95,
+            "description": "Illustrative photo, not from this restaurant: Eric T Gunther, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/lo-mein.webp",
+              "alt": "Lo mein noodles (illustrative photo)"
+            }
+          },
+          {
+            "name": "22. Cantonese Shrimp Chow Mein",
+            "price": 12.99,
+            "description": "Illustrative photo, not from this restaurant: *˙ IAN . from Taiwan, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/cantonese-chow-mein.webp",
+              "alt": "Cantonese chow mein (illustrative photo)"
+            }
+          },
+          {
+            "name": "23. Cantonese Beef Chow Mein",
+            "price": 11.99,
+            "description": "Illustrative photo, not from this restaurant: *˙ IAN . from Taiwan, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/cantonese-chow-mein.webp",
+              "alt": "Cantonese chow mein (illustrative photo)"
+            }
+          },
+          {
+            "name": "24. Cantonese Chicken Chow Mein",
+            "price": 10.9,
+            "description": "Illustrative photo, not from this restaurant: *˙ IAN . from Taiwan, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/cantonese-chow-mein.webp",
+              "alt": "Cantonese chow mein (illustrative photo)"
+            }
+          },
+          {
+            "name": "25. Cantonese Chow Mein",
+            "price": 11.99,
+            "description": "Illustrative photo, not from this restaurant: *˙ IAN . from Taiwan, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/cantonese-chow-mein.webp",
+              "alt": "Cantonese chow mein (illustrative photo)"
+            }
+          },
+          {
+            "name": "25a. Cantonese Vegetable Chow Mein",
+            "price": 10.9,
+            "description": "Illustrative photo, not from this restaurant: *˙ IAN . from Taiwan, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/cantonese-chow-mein.webp",
+              "alt": "Cantonese chow mein (illustrative photo)"
+            }
+          },
+          {
+            "name": "26. Wok Fried Shanghai Noodle (with BBQ Pork)",
+            "price": 9.95,
+            "description": "Illustrative photo, not from this restaurant: Alpha from Melbourne, Australia, CC BY-SA 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/shanghai-noodles.webp",
+              "alt": "Shanghai-style fried thick noodles (illustrative photo)"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Rice",
+        "dishes": [
+          {
+            "name": "27. Steamed Rice",
+            "price": 2.0,
+            "description": "Illustrative photo, not from this restaurant: Anna Frodesiak, CC0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/steamed-rice.webp",
+              "alt": "Bowl of steamed rice (illustrative photo)"
+            }
+          },
+          {
+            "name": "28. Shrimp Fried Rice",
+            "price": 9.95,
+            "description": "Illustrative photo, not from this restaurant: Ceeseven, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/shrimp-fried-rice.webp",
+              "alt": "Shrimp fried rice (illustrative photo)"
+            }
+          },
+          {
+            "name": "29. Chicken Fried Rice",
+            "price": 7.99,
+            "description": "Illustrative photo, not from this restaurant: Vee Satayamas from Bangkok, Thailand, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/chicken-fried-rice.webp",
+              "alt": "Chicken fried rice (illustrative photo)"
+            }
+          },
+          {
+            "name": "30. BBQ Pork Fried Rice",
+            "price": 7.99,
+            "description": "Illustrative photo, not from this restaurant: Gatorfan252525, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/pork-fried-rice.webp",
+              "alt": "Plate of pork fried rice (illustrative photo)"
+            }
+          },
+          {
+            "name": "31. Deluxe Fried Rice",
+            "price": 9.95,
+            "description": "Illustrative photo, not from this restaurant: Peachyeung316, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/fried-rice.webp",
+              "alt": "Plate of fried rice (illustrative photo)"
+            }
+          },
+          {
+            "name": "32. Vegetable Fried Rice",
+            "price": 7.99
+          },
+          {
+            "name": "33. Beef Fried Rice",
+            "price": 8.99
+          },
+          {
+            "name": "33b. Mushroom Fried Rice",
+            "price": 7.99,
+            "description": "Illustrative photo, not from this restaurant: Thamizhpparithi Maari, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/mushroom-fried-rice.webp",
+              "alt": "Mushroom fried rice (illustrative photo)"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Sweet & Sour",
+        "description": "With pineapple, extra $1.",
+        "dishes": [
+          {
+            "name": "34. Sweet & Sour Chicken Balls",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: Judgefloro, CC0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/sweet-sour-chicken.webp",
+              "alt": "Sweet and sour chicken (illustrative photo)"
+            }
+          },
+          {
+            "name": "35. Sweet & Sour Breaded Shrimp",
+            "price": 11.95
+          },
+          {
+            "name": "36. Sweet & Sour Sauce",
+            "price": 2.0
+          },
+          {
+            "name": "37. Sweet & Sour Spare Ribs",
+            "price": 9.95,
+            "description": "Illustrative photo, not from this restaurant: Lim Ashley, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/sweet-sour-ribs.webp",
+              "alt": "Sweet and sour spareribs (illustrative photo)"
+            }
+          },
+          {
+            "name": "38. Sweet & Sour Wonton",
+            "price": 4.95,
+            "description": "Illustrative photo, not from this restaurant: lazy fri13th, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/fried-wonton.webp",
+              "alt": "Deep-fried wontons (illustrative photo)"
+            }
+          },
+          {
+            "name": "38b. Sweet & Sour Crispy Filled Wonton",
+            "price": 9.95,
+            "description": "Illustrative photo, not from this restaurant: lazy fri13th, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/fried-wonton.webp",
+              "alt": "Deep-fried wontons (illustrative photo)"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Shrimp",
+        "dishes": [
+          {
+            "name": "39. Sweet & Sour Shrimps (battered)",
+            "price": 11.95
+          },
+          {
+            "name": "39b. Pan Fried Shrimp",
+            "price": 11.99
+          },
+          {
+            "name": "40. Wok Fried Shrimp & Pineapples with Vegetables",
+            "price": 11.5
+          },
+          {
+            "name": "41. Hot & Spicy Shrimp",
+            "price": 11.95
+          },
+          {
+            "name": "42. Shrimp with Mixed Greens",
+            "price": 11.99,
+            "description": "Illustrative photo, not from this restaurant: TOMW maowu LOU ShaSha, CC0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/shrimp-veg.webp",
+              "alt": "Shrimp with broccoli (illustrative photo)"
+            }
+          },
+          {
+            "name": "43. Shrimp with Veggies & Almond",
+            "price": 12.99
+          },
+          {
+            "name": "44. Shrimp in Black Bean Sauce",
+            "price": 12.99
+          }
+        ]
+      },
+      {
+        "name": "Komodo Specials",
+        "dishes": [
+          {
+            "name": "45. Komodo Shrimp",
+            "price": 12.99
+          },
+          {
+            "name": "45a. Komodo Chicken",
+            "price": 11.99
+          },
+          {
+            "name": "45b. Komodo Ribs",
+            "price": 11.99
+          },
+          {
+            "name": "45c. Komodo Beef",
+            "price": 11.99
+          },
+          {
+            "name": "45e. Pan Fried Beef",
+            "price": 14.95
+          }
+        ]
+      },
+      {
+        "name": "Beef and Pork",
+        "dishes": [
+          {
+            "name": "46. Ginger Beef or Chicken",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: Mack Male, CC BY-SA 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/ginger-beef.webp",
+              "alt": "Crispy ginger beef (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "47. Beef with Broccoli",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: Joy, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/beef-broccoli.webp",
+              "alt": "Beef with broccoli (illustrative photo)"
+            }
+          },
+          {
+            "name": "48. Beef with Gai Lan",
+            "price": 11.99,
+            "description": "Illustrative photo, not from this restaurant: Fenalannm 223, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/beef-gailan.webp",
+              "alt": "Beef over Chinese greens (illustrative photo)"
+            }
+          },
+          {
+            "name": "49. Beef with Chinese Green",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: Fenalannm 223, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/beef-gailan.webp",
+              "alt": "Beef over Chinese greens (illustrative photo)"
+            }
+          },
+          {
+            "name": "50. Beef Green Pepper",
+            "price": 10.99
+          },
+          {
+            "name": "51. Beef Mixed Green",
+            "price": 10.99
+          },
+          {
+            "name": "52. Beef w/ Mushrooms & Veggies",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: jeffreyw, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/beef-snow-peas.webp",
+              "alt": "Beef stir-fried with snow peas and mushrooms (illustrative photo)"
+            }
+          },
+          {
+            "name": "53. Beef Diced Veggies & Almonds",
+            "price": 11.99
+          },
+          {
+            "name": "53b. Beef with Black Bean Sauce",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: 83Gulf, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/blackbean-beef.webp",
+              "alt": "Beef in black bean sauce (illustrative photo)"
+            }
+          },
+          {
+            "name": "54. Honey Garlic Breaded Veal",
+            "price": 12.99
+          },
+          {
+            "name": "55. Honey Garlic Breaded Pork",
+            "price": 10.99
+          },
+          {
+            "name": "56. Sweet & Sour Pork",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: Walter Grassroot, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/sweet-sour-pork.webp",
+              "alt": "Sweet and sour pork with peppers and pineapple (illustrative photo)"
+            }
+          },
+          {
+            "name": "57. Pork with Chinese Green",
+            "price": 8.99
+          },
+          {
+            "name": "58. Pork with Mixed Green",
+            "price": 8.99
+          },
+          {
+            "name": "59. Pork w/ Mushrooms & Veggies",
+            "price": 8.99
+          },
+          {
+            "name": "60. Dai Dop Voy",
+            "price": 11.99
+          }
+        ]
+      },
+      {
+        "name": "Chicken",
+        "dishes": [
+          {
+            "name": "61. Chicken w/ Mushrooms & Veggies",
+            "price": 10.99
+          },
+          {
+            "name": "62. Chicken with Diced Vegetables & Almond",
+            "price": 11.99
+          },
+          {
+            "name": "63. Chicken Mixed Greens",
+            "price": 10.99
+          },
+          {
+            "name": "64. Pan Fried Mixed Greens",
+            "price": 9.5
+          },
+          {
+            "name": "65. Chicken w/ Black Bean Sauce",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: BrokenSphere, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/blackbean-chicken.webp",
+              "alt": "Chicken in black bean sauce (illustrative photo)"
+            }
+          },
+          {
+            "name": "66. Honey Garlic Breaded Chicken",
+            "price": 11.25
+          },
+          {
+            "name": "67. Sesame Seed Breaded Chicken",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: L0b0t, Public domain, Wikimedia Commons.",
+            "image": {
+              "file": "photos/sesame-chicken.webp",
+              "alt": "Sesame chicken with broccoli (illustrative photo)"
+            }
+          },
+          {
+            "name": "68. Honey Garlic Chicken Wings",
+            "price": 11.25
+          },
+          {
+            "name": "69. Honey Garlic Chicken Balls",
+            "price": 10.99
+          },
+          {
+            "name": "70. Soo Guy w/ Sweet & Sour Pineapple",
+            "price": 11.99
+          },
+          {
+            "name": "71. Lemon Chicken",
+            "price": 11.99,
+            "description": "Illustrative photo, not from this restaurant: Willis Lam, CC BY-SA 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/lemon-chicken.webp",
+              "alt": "Lemon chicken with lemon slices (illustrative photo)"
+            }
+          },
+          {
+            "name": "72. Soo Guy with Almond & Gravy",
+            "price": 11.99,
+            "description": "Illustrative photo, not from this restaurant: Ser Amantio di Nicolao, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/almond-chicken.webp",
+              "alt": "Breaded almond chicken over rice (illustrative photo)"
+            }
+          },
+          {
+            "name": "73. BBQ Chicken",
+            "price": 11.99
+          }
+        ]
+      },
+      {
+        "name": "Ribs",
+        "dishes": [
+          {
+            "name": "74. Honey Garlic Spare Ribs",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: 董辰兴, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/honey-garlic-ribs.webp",
+              "alt": "Glazed spareribs (illustrative photo)"
+            }
+          },
+          {
+            "name": "75. Honey Garlic Sauce",
+            "price": 2.0
+          },
+          {
+            "name": "76. Ribs with Black Bean Sauce",
+            "price": 10.99
+          }
+        ]
+      },
+      {
+        "name": "Egg Foo Young",
+        "dishes": [
+          {
+            "name": "77. Chicken Egg Foo Young",
+            "price": 9.9,
+            "description": "Illustrative photo, not from this restaurant: BrokenSphere, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/egg-foo-young.webp",
+              "alt": "Egg foo young with gravy (illustrative photo)"
+            }
+          },
+          {
+            "name": "78. BBQ Pork Egg Foo Young",
+            "price": 9.9,
+            "description": "Illustrative photo, not from this restaurant: BrokenSphere, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/egg-foo-young.webp",
+              "alt": "Egg foo young with gravy (illustrative photo)"
+            }
+          },
+          {
+            "name": "79. Beef Egg Foo Young",
+            "price": 9.9,
+            "description": "Illustrative photo, not from this restaurant: BrokenSphere, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/egg-foo-young.webp",
+              "alt": "Egg foo young with gravy (illustrative photo)"
+            }
+          },
+          {
+            "name": "80. Mushroom Egg Foo Young",
+            "price": 9.9,
+            "description": "Illustrative photo, not from this restaurant: BrokenSphere, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/egg-foo-young.webp",
+              "alt": "Egg foo young with gravy (illustrative photo)"
+            }
+          },
+          {
+            "name": "81. Shrimp Egg Foo Young",
+            "price": 11.95,
+            "description": "Illustrative photo, not from this restaurant: BrokenSphere, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/egg-foo-young.webp",
+              "alt": "Egg foo young with gravy (illustrative photo)"
+            }
+          }
+        ]
+      },
+      {
+        "name": "Bean Cake (Tofu)",
+        "dishes": [
+          {
+            "name": "82. Bean Cake Mixed Green",
+            "price": 9.95,
+            "description": "Illustrative photo, not from this restaurant: NeoBatfreak, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/tofu-greens.webp",
+              "alt": "Tofu stir-fried with greens (illustrative photo)"
+            }
+          },
+          {
+            "name": "82b. Mah Por Tofu (Spicy)",
+            "price": 9.95,
+            "description": "Illustrative photo, not from this restaurant: NeoBatfreak, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/mapo-tofu.jpg",
+              "alt": "Mapo tofu with rice (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "83. Bean Cake with Black Bean Sauce",
+            "price": 9.95
+          },
+          {
+            "name": "84. Bean Cake with BBQ Pork",
+            "price": 9.95
+          },
+          {
+            "name": "84b. Hot Spicy Tofu",
+            "price": 8.95,
+            "badges": [
+              "spicy"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Spicy Dishes",
+        "dishes": [
+          {
+            "name": "85. Chicken with Satay Sauce",
+            "price": 10.99
+          },
+          {
+            "name": "86. Beef with Satay Sauce",
+            "price": 11.99,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "87. Kung Poa Chicken",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: N509FZ, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/kung-pao.webp",
+              "alt": "Kung pao chicken with peanuts (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "88. Kung Poa Shrimp",
+            "price": 11.99,
+            "description": "Illustrative photo, not from this restaurant: Wade Armstrong, CC BY-SA 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/kung-pao-shrimp.webp",
+              "alt": "Kung pao shrimp (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "89. Black Pepper Beef",
+            "price": 10.99,
+            "description": "Illustrative photo, not from this restaurant: Crisco 1492, CC BY-SA 3.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/black-pepper-beef.webp",
+              "alt": "Beef stir-fried with peppers (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "90. Black Pepper Chicken",
+            "price": 10.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "91. Szechuan Beef",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: JIP, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/szechuan-beef.webp",
+              "alt": "Szechuan beef stir-fry (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "92. Szechuan Shrimp",
+            "price": 11.99,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "93. Curry Shrimp",
+            "price": 11.99,
+            "description": "Illustrative photo, not from this restaurant: Krista, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/curry-shrimp.webp",
+              "alt": "Shrimp in curry sauce (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "94. Curry Beef",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: Ceeseven, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/curry-beef.webp",
+              "alt": "Beef in yellow curry sauce (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "95. Curry Chicken",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: Isovevrhoral WOODS, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/curry-chicken.webp",
+              "alt": "Curry chicken with rice (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "96. Singapore Vermicelli",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: Andy Li, CC0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/curry-vermicelli.webp",
+              "alt": "Curry fried rice vermicelli (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "97. Honey Spicy Chicken",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: Rick Audet from Holyoke, Massachusetts, USA, CC BY 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/hot-honey-chicken.webp",
+              "alt": "Battered chicken in glossy sweet sauce (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "98. Dry Szechuan Beef",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: JIP, CC BY-SA 4.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/szechuan-beef.webp",
+              "alt": "Szechuan beef stir-fry (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "99. Dry Szechuan Chicken",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: Jen Arrr, CC BY-SA 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/szechuan-chicken.webp",
+              "alt": "Szechuan chicken (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "100. Szechuan Chicken",
+            "price": 10.95,
+            "description": "Illustrative photo, not from this restaurant: Jen Arrr, CC BY-SA 2.0, Wikimedia Commons.",
+            "image": {
+              "file": "photos/szechuan-chicken.webp",
+              "alt": "Szechuan chicken (illustrative photo)"
+            },
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "101. Hot Spicy Chicken",
+            "price": 10.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "102. Hot Spicy Spare Ribs",
+            "price": 10.95,
+            "badges": [
+              "spicy"
+            ]
+          },
+          {
+            "name": "103. Deep Fried Crab Rolls",
+            "price": 8.95
+          },
+          {
+            "name": "104. Hot Spicy Fish",
+            "price": 10.95,
+            "badges": [
+              "spicy"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Family Dinners",
+        "dishes": [
+          {
+            "name": "Dinner for 2",
+            "price": 29.95,
+            "description": "2 egg rolls, beef chop suey, sweet & sour chicken balls, chicken fried rice and fortune cookies."
+          },
+          {
+            "name": "Dinner for 3",
+            "price": 42.95,
+            "description": "3 egg rolls, beef mixed greens, sweet & sour chicken balls, breaded shrimp, chicken fried rice and fortune cookies."
+          },
+          {
+            "name": "Dinner for 4",
+            "price": 56.95,
+            "description": "4 egg rolls, beef mixed greens, sweet & sour chicken balls, breaded veal, chicken fried rice, shrimp diced vegetables & almonds and fortune cookies."
+          },
+          {
+            "name": "Dinner for 5",
+            "price": 64.95,
+            "description": "5 egg rolls, chicken fried rice, Cantonese chow mein, breaded shrimp, sweet & sour chicken balls, beef diced vegetables, pork chop suey and fortune cookies."
+          }
+        ]
+      }
+    ]
+  }
+}
