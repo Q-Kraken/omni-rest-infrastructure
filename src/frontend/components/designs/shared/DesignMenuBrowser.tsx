@@ -352,9 +352,10 @@ function DesignDishMedia({
     return <div className={classes.mediaPlaceholder} role="img" aria-label={`${dishName}: ${message("imageUnavailable")}`}><span aria-hidden="true">◇</span></div>;
   }
   return (
-    // A grid item with an aspect ratio sizes its width from its height instead of stretching, so a
-    // design's min-height (12rem on a 3:2 photo makes 18rem) pushed the photo over the dish text.
-    <div className={classes.mediaFrame} style={{ aspectRatio: `${variant.width} / ${variant.height}`, width: "100%", minWidth: 0 }}>
+    // The frame's shape comes from the design, never from the upload, so a portrait photo is not taller
+    // than its neighbours. A grid item with an aspect ratio sizes its width from its height unless the
+    // width is set, which once pushed the photo over the dish text.
+    <div className={classes.mediaFrame} style={{ width: "100%", minWidth: 0 }}>
       <Image
         src={variant.url}
         loader={tenantMediaLoader(media?.variants ?? [])}

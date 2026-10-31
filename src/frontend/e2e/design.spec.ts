@@ -425,6 +425,38 @@ test("on a phone the menu scrolls through every category and the tabs follow", a
   await expect(page.locator("section[hidden]")).toHaveCount(5);
 });
 
+test("every dish photo in a menu grid has the same size, whatever the shape of the upload", async ({ page }) => {
+  await signIn(page);
+  await setContentMode(page, "photos");
+
+  for (const designId of menuDesignIds) {
+    for (const width of [320, 375, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto(`/admin/design-preview/${designId}/menu`);
+      const label = `${designId} ${width}px`;
+      await expect(page.getByRole("heading", { name: "Plate 6" }), label).toBeVisible();
+      const boxes = await page.locator(`.${designId}__mediaFrame`).evaluateAll((frames) => frames.map((frame) => {
+        const box = frame.getBoundingClientRect();
+        const image = frame.querySelector("img")!.getBoundingClientRect();
+        return {
+          width: box.width,
+          height: box.height,
+          fills: Math.abs(image.width - box.width) < 1 && Math.abs(image.height - box.height) < 1,
+        };
+      }));
+      expect(boxes, `${label} photo count`).toHaveLength(6);
+      expect(boxes[0].height, `${label} photo height`).toBeGreaterThan(0);
+      // Within a pixel: grid tracks land on fractional pixels, so equal frames can round apart.
+      for (const box of boxes) {
+        expect(Math.abs(box.width - boxes[0].width), `${label} photo width`).toBeLessThan(1);
+        expect(Math.abs(box.height - boxes[0].height), `${label} photo height`).toBeLessThan(1);
+        expect(box.fills, `${label} photo fills its frame`).toBe(true);
+      }
+      await assertNoHorizontalOverflow(page, label);
+    }
+  }
+});
+
 test("every opening-hours control stays visible and clear of the others at every width", async ({ page }) => {
   await signIn(page);
   const section = (name: string) => page.locator("section").filter({ has: page.getByRole("heading", { name }) });
@@ -502,7 +534,7 @@ async function signIn(page: Page) {
   await expect(page).toHaveURL(/\/admin\/restaurant$/);
 }
 
-async function setContentMode(page: Page, mode: "standard" | "long" | "minimal" | "many-categories") {
+async function setContentMode(page: Page, mode: "standard" | "long" | "minimal" | "many-categories" | "photos") {
   const response = await page.request.post(
     `http://127.0.0.1:5290/__e2e/design-content?mode=${mode}`,
     { headers: { host: new URL(page.url()).hostname } },
