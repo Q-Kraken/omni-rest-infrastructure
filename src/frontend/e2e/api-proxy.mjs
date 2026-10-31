@@ -168,6 +168,24 @@ function createAdminPortal() {
       }));
     }
 
+    // Uploads come in every shape: a portrait phone shot must not make its card taller than a landscape
+    // one beside it. The declared sizes are what the page lays out from; the file is the 1x1 seed PNG.
+    if (designContentMode === "photos") {
+      const shapes = [[900, 1600], [1600, 900], [1200, 1200], [1600, 1200], [2400, 800], [1080, 1350]];
+      preview.menu.categories = [{
+        ...preview.menu.categories[0],
+        dishes: shapes.map(([width, height], index) => ({
+          id: `55555555-5555-4555-8555-${String(index).padStart(12, "0")}`,
+          name: `Plate ${index + 1}`,
+          description: index % 2 === 0 ? "Short." : "A longer description that wraps onto several lines in a narrow card, so the text alone would make this card taller than its neighbours.",
+          price: "12.50",
+          availability: "available",
+          media: { altText: `Plate ${index + 1}`, variants: [{ url: `/media/seed/plate-${index + 1}.png`, width, height }] },
+          badges: [],
+        })),
+      }];
+    }
+
     return preview;
   }
 
@@ -206,7 +224,7 @@ function createAdminPortal() {
     }
     if (path === "/__e2e/design-content" && request.method === "POST") {
       const mode = requestUrl.searchParams.get("mode");
-      if (!["standard", "long", "minimal", "many-categories"].includes(mode ?? "")) {
+      if (!["standard", "long", "minimal", "many-categories", "photos"].includes(mode ?? "")) {
         return json(response, 400, { code: "invalid_design_content_mode" });
       }
       designContentMode = mode;

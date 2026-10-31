@@ -47,7 +47,7 @@
 .nightfall-v1__dishGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; overflow: hidden; }
 .nightfall-v1__dishCard { display: flex; min-width: 0; flex-direction: column; background: #11120f; box-shadow: 0 0 0 1px #514828; }
 .nightfall-v1__unavailableCard .nightfall-v1__mediaFrame, .nightfall-v1__unavailableCard .nightfall-v1__mediaPlaceholder { opacity: .62; }
-.nightfall-v1__mediaFrame, .nightfall-v1__mediaPlaceholder { min-height: 15rem; background: #24241e; overflow: hidden; }
+.nightfall-v1__mediaFrame, .nightfall-v1__mediaPlaceholder { width: 100%; aspect-ratio: 4 / 3; background: #24241e; overflow: hidden; }
 .nightfall-v1__mediaFrame img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.6) contrast(1.05); }
 .nightfall-v1__mediaPlaceholder { display: grid; place-items: center; color: #c9a227; font-size: 2.4rem; }
 .nightfall-v1__dishBody { min-width: 0; padding: 1.5rem; }

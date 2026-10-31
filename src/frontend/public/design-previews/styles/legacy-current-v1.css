@@ -107,9 +107,9 @@
 .legacy-current-v1__dishGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 23rem), 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
 .legacy-current-v1__dishCard { display: grid; grid-template-columns: minmax(7.5rem, .37fr) minmax(0, 1fr); min-width: 0; overflow: clip; border: 1px solid var(--colour-line); border-radius: 1rem; background: var(--colour-surface); box-shadow: 0 .75rem 2.5rem rgb(50 39 24 / 7%); }
 .legacy-current-v1__unavailableCard { border-style: dashed; background: var(--colour-surface-muted); }
-.legacy-current-v1__mediaFrame, .legacy-current-v1__mediaPlaceholder { width: 100%; min-height: 100%; background: #e8dfcf; }
+.legacy-current-v1__mediaFrame, .legacy-current-v1__mediaPlaceholder { width: 100%; aspect-ratio: 1; background: #e8dfcf; overflow: hidden; }
 .legacy-current-v1__mediaFrame img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.legacy-current-v1__mediaPlaceholder { display: grid; min-height: 10rem; place-items: center; color: var(--colour-muted); font-size: 2rem; }
+.legacy-current-v1__mediaPlaceholder { display: grid; place-items: center; color: var(--colour-muted); font-size: 2rem; }
 .legacy-current-v1__dishBody { min-width: 0; padding: 1.25rem; }
 .legacy-current-v1__dishHeading { display: flex; align-items: start; justify-content: space-between; gap: 1rem; }
 .legacy-current-v1__dishHeading h3, .legacy-current-v1__price, .legacy-current-v1__description, .legacy-current-v1__unavailable { margin-top: 0; }
@@ -124,7 +124,7 @@
 
 @media (max-width: 35rem) {
   .legacy-current-v1__dishCard { grid-template-columns: 1fr; }
-  .legacy-current-v1__mediaFrame, .legacy-current-v1__mediaPlaceholder { min-height: 12rem; max-height: 18rem; }
+  .legacy-current-v1__mediaFrame, .legacy-current-v1__mediaPlaceholder { aspect-ratio: 4 / 3; }
 }
 
 @media (prefers-reduced-motion: reduce) {
