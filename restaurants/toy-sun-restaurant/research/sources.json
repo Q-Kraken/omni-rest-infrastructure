@@ -1,0 +1,39 @@
+{
+  "collectedAt": "2026-10-31",
+  "timeZone": "America/Winnipeg",
+  "identity": "Toy Sun Restaurant, 1133 Henderson Hwy, Winnipeg, MB R2G 1L4, (204) 339-0068",
+  "sources": [
+    {
+      "name": "Printed take-out menu (photo uploaded by a Restaurant Guru user, listed as about 6 months old)",
+      "url": "https://restaurantguru.com/Toy-Sun-Winnipeg/menu",
+      "image": "https://menu02.restaurantguru.com/m1/Toy-Sun-Restaurant-menu-e9f.jpg",
+      "localCopy": "research/menu-scan-restaurantguru.jpg",
+      "role": "Menu baseline: every category, item number, name, price, spicy mark, sizes and family dinner contents. Also states 'Every Day 3:00 PM - 9:00 PM (Except Holidays)', 'Chinese and American dishes', dine in, take out, delivery and catering, and 'Prices subject to change without notice'."
+    },
+    {
+      "name": "Google Maps place card",
+      "url": "https://maps.google.com/?cid=11965295561252005475",
+      "role": "Published hours (Mon, Wed-Sun 3-9 p.m., Tuesday closed), coordinates 49.9383077,-97.0920839, postal code, phone. Rating 4.4 from 351 reviews. Seen in limited view without sign-in; photos are customer uploads."
+    },
+    {
+      "name": "toysunrestaurant.com (WordPress page from 2017)",
+      "url": "https://www.toysunrestaurant.com/",
+      "role": "Storefront photo used as the main image; name 'Toy Sun Chinese Restaurant', 'Cantonese and Sichuan' focus, location at Henderson Hwy and Devon Ave. Its hours (Mon-Fri 11-10, Sat-Sun 3-10) and 'Delivery: No' are outdated and were not used. No menu."
+    },
+    {
+      "name": "Yellow Pages, Yelp, Tripadvisor, Restaurantji, Restaurant Guru listings",
+      "url": "https://www.yellowpages.ca/bus/Manitoba/Winnipeg/Toy-Sun-Restaurant/2584852.html",
+      "role": "Identity cross-check only (same address and phone). Their hours disagree with each other and with Google Maps."
+    },
+    {
+      "name": "Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/",
+      "role": "Labelled illustrative dish photos, see research/wikimedia-illustrations.json."
+    }
+  ],
+  "notFound": [
+    "No SkipTheDishes, DoorDash, Uber Eats or order.online listing was found by search, so there are no merchant dish photos and no platform prices.",
+    "No Instagram or Facebook page for this restaurant was found.",
+    "Sirved menu page returned 403 and was not used."
+  ]
+}

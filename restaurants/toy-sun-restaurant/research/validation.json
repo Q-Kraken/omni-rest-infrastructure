@@ -1,0 +1,520 @@
+{
+  "package": "restaurants/toy-sun-restaurant/restaurant.json",
+  "preflightPassed": true,
+  "scope": "Partial local checks; image headers only; not full importer validation or source verification.",
+  "counts": {
+    "categories": 15,
+    "entries": 142,
+    "entriesWithPhoto": 92,
+    "entriesWithoutPhoto": 50,
+    "uniqueReferencedAssets": 63
+  },
+  "assets": [
+    {
+      "file": "photos/storefront.jpg",
+      "bytes": 150934,
+      "format": "JPEG",
+      "width": 1011,
+      "height": 468,
+      "sha256": "5aaef67a621cb89ff6494bf4d9e4e80e5f6de3316b0159599bdc706df356f6c9"
+    },
+    {
+      "file": "photos/wonton-soup.webp",
+      "bytes": 208108,
+      "format": "WebP",
+      "width": 1280,
+      "height": 853,
+      "sha256": "1e977b2153b974a32234d3a3158188abaa24a34877b1e9bab0c6af877256bc84"
+    },
+    {
+      "file": "photos/hot-sour-soup.webp",
+      "bytes": 82712,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "c03e4ecd01ef486a0e348316c251d6f72959906cd65498a740ac531f59172d1a"
+    },
+    {
+      "file": "photos/chicken-noodle-soup.webp",
+      "bytes": 88438,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "fefa4bb8585d3b3c3adf8d9d119e15b754b7242c0dd22e9aa3564ad5c9831404"
+    },
+    {
+      "file": "photos/egg-drop-soup.webp",
+      "bytes": 113440,
+      "format": "WebP",
+      "width": 1280,
+      "height": 849,
+      "sha256": "84298bfb6bbd37cdc291756da8e5f7e43ce412a1f6d49b7860495272a3467077"
+    },
+    {
+      "file": "photos/potstickers.webp",
+      "bytes": 43990,
+      "format": "WebP",
+      "width": 960,
+      "height": 720,
+      "sha256": "103bae283476a300ede4854b7700a50bd8503d4686e611732f3725bc7c28c58c"
+    },
+    {
+      "file": "photos/fried-wonton.webp",
+      "bytes": 91254,
+      "format": "WebP",
+      "width": 1024,
+      "height": 768,
+      "sha256": "b70a932adb124b98245c55017a590f0994a45313acfca6292784d9001f5f2464"
+    },
+    {
+      "file": "photos/char-siu.webp",
+      "bytes": 216634,
+      "format": "WebP",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7e54f1aac95202725983b641abb5a842fb9c087c9d94a50a5deacb901ce7f0bc"
+    },
+    {
+      "file": "photos/spring-roll.webp",
+      "bytes": 58922,
+      "format": "WebP",
+      "width": 1280,
+      "height": 853,
+      "sha256": "94b4e2cb80f840e4980f1068245e45eb2adb3aaeb298a0c31df0f18ae69bcdd6"
+    },
+    {
+      "file": "photos/egg-roll.webp",
+      "bytes": 52954,
+      "format": "WebP",
+      "width": 1024,
+      "height": 768,
+      "sha256": "53775d1b59395ae2cacceed8c68a634fe3aa29cd407146826c6ea2849df05083"
+    },
+    {
+      "file": "photos/fried-rice.webp",
+      "bytes": 190672,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "030047ba1b2565c046a0eda763f7292ced9f0cecee4a464ed7a8b7d5f907d20b"
+    },
+    {
+      "file": "photos/shrimp-fried-rice.webp",
+      "bytes": 108546,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "8a363de0f2eff9bb183d28fde4cc33a46c3414809bd48a440caa81e6103c6f97"
+    },
+    {
+      "file": "photos/chicken-fried-rice.webp",
+      "bytes": 90726,
+      "format": "WebP",
+      "width": 1280,
+      "height": 1280,
+      "sha256": "e230a52ecb4a001934b8c7381e7030c513c5cd51b1f369191de40c6e31fb379b"
+    },
+    {
+      "file": "photos/pork-fried-rice.webp",
+      "bytes": 257508,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "eeba8b375f96bdbdda7f77c8da48ef36c6c9e33ca5c03c60786b6c2c841012cb"
+    },
+    {
+      "file": "photos/mushroom-fried-rice.webp",
+      "bytes": 112250,
+      "format": "WebP",
+      "width": 1280,
+      "height": 720,
+      "sha256": "00eb37b5335c4affd184f94658be18152dbf167a1c4177f93804566fc71f7897"
+    },
+    {
+      "file": "photos/steamed-rice.webp",
+      "bytes": 47722,
+      "format": "WebP",
+      "width": 809,
+      "height": 626,
+      "sha256": "f1319915be63645f923324049fca8d91bea1fea7761c93152d33b2c575025e51"
+    },
+    {
+      "file": "photos/chop-suey.webp",
+      "bytes": 112290,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "dc4ce998cb419ae265a0d83f4b37da0b4780a662acd15e75fda246ff8c31366c"
+    },
+    {
+      "file": "photos/curry-chicken.webp",
+      "bytes": 143648,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "a55ea3b1624fd21ae8c0c6e78aad98b85f483e1ff4d798d42677bcd0ad6896cb"
+    },
+    {
+      "file": "photos/tofu-greens.webp",
+      "bytes": 51398,
+      "format": "WebP",
+      "width": 1280,
+      "height": 720,
+      "sha256": "e746262be1872a3b13077a575dd4c31ba77b532496cffbaa15be47e3c3123ee9"
+    },
+    {
+      "file": "photos/cantonese-chow-mein.webp",
+      "bytes": 108528,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "efda8e14ba4f2c52521a34a4603fa21a2f1038355ef496f368fd23040d0c7e96"
+    },
+    {
+      "file": "photos/lo-mein.webp",
+      "bytes": 138316,
+      "format": "WebP",
+      "width": 960,
+      "height": 1280,
+      "sha256": "aac4bcb454db3d8651ee89f017392662822081787bf272bedaba19f1d7227699"
+    },
+    {
+      "file": "photos/shanghai-noodles.webp",
+      "bytes": 67832,
+      "format": "WebP",
+      "width": 800,
+      "height": 600,
+      "sha256": "30b2d1af837cbd363977a7cf419cb655a798221eec8b0d6ef6768b8be2fa6405"
+    },
+    {
+      "file": "photos/curry-vermicelli.webp",
+      "bytes": 135096,
+      "format": "WebP",
+      "width": 1280,
+      "height": 964,
+      "sha256": "3cf5b431f6b0604f82ef801df7f309d093b11b07d343affb6a3f4205223a9ddd"
+    },
+    {
+      "file": "photos/chow-fun.webp",
+      "bytes": 172732,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "b6f57732ada87041bd8447d864729b8fe8d3d361d4cb36f30daedfe742c7e96d"
+    },
+    {
+      "file": "photos/dry-ribs.webp",
+      "bytes": 251424,
+      "format": "WebP",
+      "width": 915,
+      "height": 685,
+      "sha256": "e0f47b558fea5ffa8431d4aee5744f8dd178c3c52c2ccd0ec29935064e4a4c76"
+    },
+    {
+      "file": "photos/sweet-sour-ribs.webp",
+      "bytes": 45642,
+      "format": "WebP",
+      "width": 640,
+      "height": 640,
+      "sha256": "ffdee9e8254cd41ea07ef71db2a5d9a370506af2ed9edc6db61d107081d9157e"
+    },
+    {
+      "file": "photos/honey-garlic-ribs.webp",
+      "bytes": 227344,
+      "format": "WebP",
+      "width": 1280,
+      "height": 957,
+      "sha256": "0659db06394637ea32934d8b76283611345082f43792f219b794c933d87238f9"
+    },
+    {
+      "file": "photos/sweet-sour-pork.webp",
+      "bytes": 148278,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "24e96886c2f8483e53214c54526b1e7ed850da933606a0da88dd78214677a42f"
+    },
+    {
+      "file": "photos/breaded-veal.webp",
+      "bytes": 501670,
+      "format": "WebP",
+      "width": 1053,
+      "height": 1280,
+      "sha256": "a6e6de4b2f21a86078242a7f036e2f2ab2f8d824b3e6991f1061ec13a5d5c2ec"
+    },
+    {
+      "file": "photos/blackbean-beef.webp",
+      "bytes": 265836,
+      "format": "WebP",
+      "width": 1280,
+      "height": 1095,
+      "sha256": "5dfb7db146ff344cad31d792e68e35650176e6ce747950a89f4da8354f598102"
+    },
+    {
+      "file": "photos/beef-snow-peas.webp",
+      "bytes": 175176,
+      "format": "WebP",
+      "width": 1280,
+      "height": 850,
+      "sha256": "21f16cabd8eab226376b6d09f1917799fbb5abb8cbf633bd8696dbc76e7e37dd"
+    },
+    {
+      "file": "photos/beef-broccoli.webp",
+      "bytes": 479660,
+      "format": "WebP",
+      "width": 1280,
+      "height": 1280,
+      "sha256": "c0f28a2d037d325a633986a6a6c90488d05416342d9049b9c60f0184b225736e"
+    },
+    {
+      "file": "photos/beef-gailan.webp",
+      "bytes": 203616,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "76091d7e1d2d9dfa5de23a70a616a1bbe64b9a7879a03ac1cbdff9d95e6f24d7"
+    },
+    {
+      "file": "photos/curry-beef.webp",
+      "bytes": 127688,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "640a31e8575d0d0c4866322ea77bff5648f35961ba4742d0b1c790c2fb738786"
+    },
+    {
+      "file": "photos/ginger-beef.webp",
+      "bytes": 152274,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "588e650871b766c80a32ec4f1dfadeda68745111281dfa2e100f3ea7961535a6"
+    },
+    {
+      "file": "photos/szechuan-beef.webp",
+      "bytes": 123918,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "1c62eba76e64b3cda3a71f4c8b9c8342d4c78768685ed68bc8dab2c09b655f6a"
+    },
+    {
+      "file": "photos/black-pepper-beef.webp",
+      "bytes": 93358,
+      "format": "WebP",
+      "width": 1280,
+      "height": 765,
+      "sha256": "699155ec4bf347b7ae45d55ebfa75dda22bb1ab2303072c8fd4b62c55c6f5c18"
+    },
+    {
+      "file": "photos/sweet-sour-chicken.webp",
+      "bytes": 158558,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "dbb2f45faa7876e8d080baf977141e6738e39f8e518e9089f89384a93668bcae"
+    },
+    {
+      "file": "photos/chicken-wings.webp",
+      "bytes": 156520,
+      "format": "WebP",
+      "width": 1280,
+      "height": 853,
+      "sha256": "e0444f26e4e904f74c543f36f2a7b400f86897568f1b1a11ed342b15279fea51"
+    },
+    {
+      "file": "photos/lemon-chicken.webp",
+      "bytes": 220524,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "8288602791239b5209be3127528c76303bfaa663c79f68a14da6832d52d4bf69"
+    },
+    {
+      "file": "photos/sesame-chicken.webp",
+      "bytes": 34650,
+      "format": "WebP",
+      "width": 571,
+      "height": 302,
+      "sha256": "ccf32eae187cda3a5f23c51bdb3f0f0ef3755634381d1f9edaa1bd0440c54628"
+    },
+    {
+      "file": "photos/almond-chicken.webp",
+      "bytes": 141834,
+      "format": "WebP",
+      "width": 1280,
+      "height": 766,
+      "sha256": "9512f41b9a9b6f75e8b5e5351f9d61375446d70d00e5dcfea5968abd54303a9d"
+    },
+    {
+      "file": "photos/blackbean-chicken.webp",
+      "bytes": 158896,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "0bed06e3797b793791358bc1db29d4622689631605b94f7a851a548174c4e25c"
+    },
+    {
+      "file": "photos/breaded-chicken.webp",
+      "bytes": 63138,
+      "format": "WebP",
+      "width": 950,
+      "height": 597,
+      "sha256": "7ac9c5f8b54e8a90abdda5c7495d8a4fe7c6fcaba29136915233f47dfd4d66d2"
+    },
+    {
+      "file": "photos/chicken-snow-peas.webp",
+      "bytes": 154402,
+      "format": "WebP",
+      "width": 1280,
+      "height": 824,
+      "sha256": "172dba36f9877f0c93fddc7911cd1ea05efa6313d4be95c1558a3af871eb65f2"
+    },
+    {
+      "file": "photos/hot-honey-chicken.webp",
+      "bytes": 158608,
+      "format": "WebP",
+      "width": 960,
+      "height": 1280,
+      "sha256": "c1ebbd2aea103b377698c51da1daa6158bd6fb51d6dbff890afb1e15388a55cd"
+    },
+    {
+      "file": "photos/kung-pao.webp",
+      "bytes": 231990,
+      "format": "WebP",
+      "width": 1280,
+      "height": 853,
+      "sha256": "f366e0083f79d6381a3963fb41bc6a0284f8cde68f62a7ace25c62ac4c36ccc5"
+    },
+    {
+      "file": "photos/szechuan-chicken.webp",
+      "bytes": 91662,
+      "format": "WebP",
+      "width": 1024,
+      "height": 765,
+      "sha256": "da0e6e08c68ad5d34d7b0173fbbddd5a6c55be23bcd10c5048f12779ed2b949c"
+    },
+    {
+      "file": "photos/sweet-sour-shrimp.webp",
+      "bytes": 110730,
+      "format": "WebP",
+      "width": 1000,
+      "height": 750,
+      "sha256": "88add4181e4642c551e354da61b9796d24443475f941f4c9aab1253abd282067"
+    },
+    {
+      "file": "photos/kung-pao-shrimp.webp",
+      "bytes": 187974,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "3f3c95a09afa5e7df9ec3820bf044a8cae6cddf6edfc7f0a7d9e9d53c5891573"
+    },
+    {
+      "file": "photos/shrimp-veg.webp",
+      "bytes": 147170,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "172b950b7bb610d88441dd7954d9be73df4f30ad9f67a134a049a840a6022ba6"
+    },
+    {
+      "file": "photos/salt-pepper-shrimp.webp",
+      "bytes": 90432,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "1658ff88311c7406ffa15c89a92d61ef613986d9c4457ecc7f14feae0969c5be"
+    },
+    {
+      "file": "photos/curry-shrimp.webp",
+      "bytes": 43726,
+      "format": "WebP",
+      "width": 1000,
+      "height": 666,
+      "sha256": "c82961c94eb6ea3b451969d60592b6b3a091a27f37f6883786fd515c00dacac7"
+    },
+    {
+      "file": "photos/fried-calamari.webp",
+      "bytes": 51780,
+      "format": "WebP",
+      "width": 1280,
+      "height": 576,
+      "sha256": "750b038f320a75775b891bc2571e7c75558e0b3309c7fde5e7ff62ba8a44558e"
+    },
+    {
+      "file": "photos/egg-foo-young.webp",
+      "bytes": 397058,
+      "format": "WebP",
+      "width": 1280,
+      "height": 971,
+      "sha256": "2984f79dbbe66c159114fb63af978ca9cfdee2c545bc8aa6dad9728c1e8e1c74"
+    },
+    {
+      "file": "photos/moo-shu.webp",
+      "bytes": 153836,
+      "format": "WebP",
+      "width": 750,
+      "height": 1000,
+      "sha256": "d526a206e78f6a46e75ad4cd736e26474eabd708b21ed72480482a2fbb0067f3"
+    },
+    {
+      "file": "photos/walnut-shrimp.webp",
+      "bytes": 119016,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "05818b78260c21362cdc7648bf4bc2b3335bac7145529e83edbd2924acda9231"
+    },
+    {
+      "file": "photos/oatmeal-shrimp.webp",
+      "bytes": 239334,
+      "format": "WebP",
+      "width": 1280,
+      "height": 853,
+      "sha256": "e0fbf0806ca4b322cf0df8c032115b6a2fc9597920050bec5d8261bfc7235490"
+    },
+    {
+      "file": "photos/gai-lan.webp",
+      "bytes": 197930,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "bd8cf417f25e34fc911726d2306cd68bb7d914abdd27b7a4c6647183bf97827d"
+    },
+    {
+      "file": "photos/salt-pepper-squid.webp",
+      "bytes": 66804,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "f770fad65e3b5e5f80a4a6196f75441f3313dd20effafa98b88aa04e35657886"
+    },
+    {
+      "file": "photos/orange-chicken.webp",
+      "bytes": 99444,
+      "format": "WebP",
+      "width": 850,
+      "height": 1280,
+      "sha256": "47344c0ba9589c73e4c1c9ab1c862ced0eeeb0976d353396321a16bbbca9d2c9"
+    },
+    {
+      "file": "photos/fortune-cookies.webp",
+      "bytes": 94852,
+      "format": "WebP",
+      "width": 1280,
+      "height": 1067,
+      "sha256": "8bdd2e995e7050e1681c642d928b20630ba098fd2c252f61ce155bfbff82964c"
+    },
+    {
+      "file": "photos/canned-drinks.webp",
+      "bytes": 267050,
+      "format": "WebP",
+      "width": 1280,
+      "height": 960,
+      "sha256": "c09f61f908fed13952f4f68caeb153784488d485a1ab6470f643d8c931071671"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}
