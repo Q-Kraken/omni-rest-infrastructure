@@ -1,0 +1,118 @@
+{
+  // Sources, read 2026-11-01 (America/Winnipeg):
+  //  - Menu, names, descriptions and prices: SkipTheDishes https://skipthedishes.com/kokeb
+  //    (the only complete current menu found). Prices on the site are SkipTheDishes delivery
+  //    prices; in-store prices are not confirmed with the owner.
+  //    DoorDash (store 341816) shows the same five categories but lower prices on its featured
+  //    items (e.g. Tibs 19.99 vs 21.99); see research/discrepancies.md.
+  //  - Address/postal code: Google listing as mirrored by Wanderlog and spinach.guide (R3C 1R9).
+  //  - Hours: MainMenus (Mon-Sat 12:00-20:30, Sun 13:00-20:30, page updated 2025-03-27); DoorDash
+  //    ordering hours 12:00-20:15 agree on the evening close. Google (via Wanderlog) still lists
+  //    late hours to midnight/2 a.m.; the owner should confirm.
+  //  - kokebrestaurant.ca does not respond, so no website URL is published.
+  //  - Photos (2026-11-01): DoorDash/order.online store 341816 item cards and store logo;
+  //    see research/photos.md. Facebook page checked: same address and phone.
+  "slug": "kokeb-restaurant",
+  "name": "Kokeb Restaurant",
+  "description": "An Ethiopian restaurant on Edmonton Street in downtown Winnipeg: tibs, kitfo, wots, vegetarian lentil and vegetable stews, and combination platters to share.",
+  "phone": "+12047849267",
+  "phoneDisplay": "(204) 784-9267",
+  "restaurantType": "Restaurant",
+  "priceRange": "$$",
+  "timeZone": "America/Winnipeg",
+  "designId": "sunroom-v1",
+  "address": {
+    "line1": "266 Edmonton St",
+    "city": "Winnipeg",
+    "region": "MB",
+    "postalCode": "R3C 1R9",
+    "countryCode": "CA"
+  },
+  "hours": {
+    "monday": ["12:00-20:30"],
+    "tuesday": ["12:00-20:30"],
+    "wednesday": ["12:00-20:30"],
+    "thursday": ["12:00-20:30"],
+    "friday": ["12:00-20:30"],
+    "saturday": ["12:00-20:30"],
+    "sunday": ["13:00-20:30"]
+  },
+  "socialLinks": {
+    "facebook": "https://www.facebook.com/people/Kokeb-Restaurant/100054298640408/"
+  },
+  "logo": { "file": "photos/logo.png", "alt": "Kokeb Ethiopian Restaurant logo" },
+  // DoorDash store header; the same photo is the Cha Cha item photo.
+  "mainImage": { "file": "photos/cha-cha.jpg", "alt": "Cha Cha: beef tibs with green pepper and tomato in a black clay dish, with salad and injera" },
+  "gallery": [
+    { "file": "photos/kokeb-mix.jpg", "alt": "Kokeb Mix platter on injera with beef tibs, stews, vegetables and salad", "caption": "Kokeb Mix" },
+    { "file": "photos/veggie-combo.jpg", "alt": "Veggie Combo on injera with lentils, split peas, cabbage, beets, potatoes and salad", "caption": "Veggie Combo" },
+    { "file": "photos/cha-cha.jpg", "alt": "Cha Cha: beef tibs with green pepper and tomato in a black clay dish, with salad and injera", "caption": "Cha Cha" },
+    { "file": "photos/samosa.jpg", "alt": "Fried samosas with stuffed jalapenos and a small bowl of green sauce", "caption": "Samosas" }
+  ],
+  "menu": {
+    "name": "Menu",
+    "categories": [
+      {
+        "name": "Appetizers",
+        "dishes": [
+          { "name": "Siening Kariya", "description": "Jalapenos peppers filled with olive oil, chopped onions, and tomatoes.", "price": 1.99 },
+          { "name": "Samosa", "description": "A flaky pastry pocket bursting with flavour!", "price": 2.49,
+            "image": { "file": "photos/samosa.jpg", "alt": "Fried samosas with stuffed jalapenos and a small bowl of green sauce" } },
+          { "name": "French Fries", "description": "Crisp and golden brown!", "price": 4.99 },
+          { "name": "Chicken Wings with Fries", "description": "Deep fried chicken wings served with crisp fries.", "price": 9.99 },
+          { "name": "Chicken Fingers with Fries", "description": "Breaded and fried chicken fingers served with golden fries.", "price": 9.99 }
+        ]
+      },
+      {
+        "name": "Main Dishes",
+        "dishes": [
+          { "name": "Tibs", "description": "A choice of beef or lamb cooked with onions, tomatoes, and other spices, served with salad.", "price": 21.99 },
+          { "name": "Cha Cha", "description": "Home-style, smoky flavoured beef or lamb tibs with onion, green pepper, and other spices, served with salad.", "price": 22.99,
+            "image": { "file": "photos/cha-cha.jpg", "alt": "Cha Cha: beef tibs with green pepper and tomato in a black clay dish, with salad and injera" } },
+          { "name": "Yegel Tibs", "description": "Home-style, smoky flavoured beef or lamb tibs with onion, green pepper, and other spices, served with salad.", "price": 22.99 },
+          { "name": "Doro Tibs", "description": "Tender, marinated pieces of chicken cooked in spiced butter with peppers, onion, garlic, tomato, a touch of rosemary, and other spices, served with salad.", "price": 21.99 },
+          { "name": "Kitfo", "description": "Very lean minced beef, warmed in special butter to your choice of rare or medium, mixed with mitmita and served with a side of house-made cottage cheese.", "price": 22.99 },
+          { "name": "Dulet Kitfo", "description": "Very lean minced beef, warmed in spiced butter with onions, green peppers, and a side of house-made cottage cheese.", "price": 22.99 },
+          { "name": "Kitfo Very Lean Minced Beef", "description": "Warmed in spiced butter to a choice of rare or medium, mixed with mitmita, and served with a side of house-made cottage cheese and collard greens.", "price": 22.99 },
+          { "name": "Gored Gored", "description": "Very lean beef chopped into cubes, warmed in spiced butter, and mixed with berbere.", "price": 22.99 },
+          { "name": "Qeye Wot", "description": "Beef stew cooked in berbere sauce, onions, tomatoes, and other spices, served with salad.", "price": 19.99 },
+          { "name": "Doro Wot", "description": "Chicken stew simmered in berbere, onions, garlic, and Ethiopian-style butter, served with hard-boiled egg.", "price": 20.99 },
+          { "name": "Qunta Firfir", "description": "Dried beef stewed in Berbere sauce and other spices mixed with bits of Injera.", "price": 21.99 },
+          { "name": "Kokeb Rice", "description": "Rice with a choice of beef, lamb, chicken, or mixed vegetables with a side house salad.", "price": 19.99 }
+        ]
+      },
+      {
+        "name": "Vegetarian",
+        "dishes": [
+          { "name": "Misir", "description": "Split red lentils in berbere sauce with fine herbs then blended with finely chopped onions.", "price": 14.99 },
+          { "name": "Kik Alecha", "description": "Yellow split peas flavoured with turmeric, green peppers, and various spices.", "price": 14.99 },
+          { "name": "Tikil Gomen", "description": "Lightly spiced vegetable stew of cabbage and carrots.", "price": 14.99 },
+          { "name": "Difin Misir", "description": "Whole brown lentils blended with diced onion and green peppers served with salad.", "price": 14.99 },
+          { "name": "Qeye Seir", "description": "Chopped beets and cabbage cooked with onions.", "price": 14.99 },
+          { "name": "Dinich Wot", "description": "Potato stew made with potatoes in Berbere sauce then blended with finely chopped onions.", "price": 14.99 },
+          // SkipTheDishes lists Shiro here but describes it as a lamb stew; kept as listed, owner question.
+          { "name": "Shiro", "description": "Curried lamb stew cooked with onions, jalapeno, exotic spices and mixed with bits of Injera.", "price": 17.99 }
+        ]
+      },
+      {
+        "name": "Combos",
+        "dishes": [
+          { "name": "Kokeb Mix (serves 2 people)", "description": "A combination of qeye wot, tibis, and veggie mix with house salad.", "price": 32.99,
+            "image": { "file": "photos/kokeb-mix.jpg", "alt": "Kokeb Mix platter on injera with beef tibs, stews, vegetables and salad" } },
+          { "name": "Kornis (serves 2 people)", "description": "A combination of kitfo and tibis firfir.", "price": 31.99 },
+          { "name": "Veggie Combo (serves 1 person)", "description": "A combination of all veggie dishes along with potato stew, collard greens, and green lentils.", "price": 16.99,
+            "image": { "file": "photos/veggie-combo.jpg", "alt": "Veggie Combo on injera with lentils, split peas, cabbage, beets, potatoes and salad" } }
+        ]
+      },
+      {
+        "name": "Beverages",
+        "dishes": [
+          { "name": "Canned Soda (355 ml)", "description": "Cold cans of soda.", "price": 2.50,
+            "image": { "file": "photos/canned-soda.jpg", "alt": "A can of Coca-Cola" } },
+          { "name": "Bottle of Water", "description": "Refreshing spring water.", "price": 2.00 },
+          { "name": "Juice", "description": "Bottled juice.", "price": 2.50 }
+        ]
+      }
+    ]
+  }
+}
