@@ -41,13 +41,13 @@ export default function BroadsheetMenu({ site }: WebsiteDesignMenuProps) {
     <div className={styles.shell} data-website-design="broadsheet-v1">
       <DesignSkipLink className={styles.skipLink} />
       <header className={styles.header}>
-        <p className={styles.edition}>Menu edition</p>
+        <span className={styles.edition} aria-hidden="true" />
         <HomeLink className={styles.brand} restaurantName={site.restaurantName} logo={site.restaurant?.logo} logoClassName={styles.brandLogo} />
         <nav aria-label="Primary navigation"><HomeNavigationLink className={styles.navLink} /></nav>
       </header>
       <main className={styles.menuMain} id="main-content" lang={site.locale}>
         <header className={styles.menuHero}>
-          <p className={styles.eyebrow}>The daily bill</p>
+          <span aria-hidden="true" />
           <h1>{site.restaurantName}</h1>
           {site.menu ? <p>{site.menu.name}</p> : null}
         </header>

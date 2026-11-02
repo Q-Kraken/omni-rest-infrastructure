@@ -70,7 +70,7 @@
 .broadsheet-v1__shell :focus-visible { outline: .2rem solid #1263a3; outline-offset: .2rem; }
 @media (max-width: 52rem) {
   .broadsheet-v1__hero, .broadsheet-v1__detailsGrid, .broadsheet-v1__menuHero, .broadsheet-v1__categoryHeading { grid-template-columns: 1fr; }
-  .broadsheet-v1__edition { display: none; }
+  .broadsheet-v1__edition, .broadsheet-v1__menuHero > span:first-child { display: none; }
   .broadsheet-v1__header { grid-template-columns: 1fr auto; }
   .broadsheet-v1__brand, .broadsheet-v1__menuHero h1, .broadsheet-v1__menuHero > p:last-child { text-align: left; }
   .broadsheet-v1__menuHero h1 { font-size: min(clamp(3.5rem, 10vw, 8.5rem), 17cqi); }

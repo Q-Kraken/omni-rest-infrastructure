@@ -26,7 +26,7 @@ export default function BroadsheetHome({ restaurant }: WebsiteDesignHomeProps) {
     <div className={styles.shell} data-website-design="broadsheet-v1">
       <DesignSkipLink className={styles.skipLink} />
       <header className={styles.header}>
-        <p className={styles.edition}>Today&apos;s edition</p>
+        <span className={styles.edition} aria-hidden="true" />
         <HomeLink className={styles.brand} restaurantName={name} logo={restaurant?.logo} logoClassName={styles.brandLogo} />
         <nav aria-label="Primary navigation"><MenuNavigationLink className={styles.navLink} /></nav>
       </header>
