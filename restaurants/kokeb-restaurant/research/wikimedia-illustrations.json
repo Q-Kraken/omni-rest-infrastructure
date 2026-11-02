@@ -387,11 +387,18 @@
    "author": "999real",
    "original": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Blue_Waters_bottle_no_label.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
    "originalSize": "4000x3000",
-   "altText": "Bottle of water, illustrative photo",
+   "altText": "Unlabelled bottle of water standing upright, illustrative photo",
    "descriptionSuffix": "Illustrative photo, not from this restaurant.",
-   "localFile": "research/illustrations/bottle-of-water.jpg",
-   "bytes": 33433,
-   "sha256": "60c08694cf205179ac11332b2f2569092a2f46ac74cd2c599f07bacd1451d56a"
+   "edit": "2026-11-02: the original shows the bottle lying on its side; rotated 90 degrees clockwise so the cap points up and padded left/right with the photo's own grey background (rgb 161,153,143, feathered edges) to a 1000x750 (4:3) frame so the whole bottle shows uncropped. Same source and licence.",
+   "localFile": "research/illustrations/bottle-of-water-upright.jpg",
+   "bytes": 29170,
+   "sha256": "7af4aacfcf1af9c42ef2a7b34fe6cd8a1cdf2ef6b792d3c464ff1a9ee65af944",
+   "replaces": {
+    "localFile": "research/illustrations/bottle-of-water.jpg",
+    "altText": "Bottle of water, illustrative photo",
+    "bytes": 33433,
+    "sha256": "60c08694cf205179ac11332b2f2569092a2f46ac74cd2c599f07bacd1451d56a"
+   }
   },
   {
    "name": "Juice",
